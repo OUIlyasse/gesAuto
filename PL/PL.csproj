@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80306EFD-8CD1-46D1-A9B2-9CED9541D618}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PL</RootNamespace>
+    <AssemblyName>PL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\iText.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="iForms\frmCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="iForms\frmCRUD.Designer.cs">
+      <DependentUpon>frmCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="iForms\frmLCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="iForms\frmLCRUD.Designer.cs">
+      <DependentUpon>frmLCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="iForms\frmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="iForms\frmList.Designer.cs">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Main\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Main\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Main\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Main\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmAddEmplacement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmAddEmplacement.Designer.cs">
+      <DependentUpon>frmAddEmplacement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmArticleInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmArticleInfo.Designer.cs">
+      <DependentUpon>frmArticleInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmBonEntree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmBonEntree.Designer.cs">
+      <DependentUpon>frmBonEntree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmBonRetour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmBonRetour.Designer.cs">
+      <DependentUpon>frmBonRetour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmBonSortie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmBonSortie.Designer.cs">
+      <DependentUpon>frmBonSortie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmFournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmFournisseur.Designer.cs">
+      <DependentUpon>frmFournisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmPersonnel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmPersonnel.Designer.cs">
+      <DependentUpon>frmPersonnel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmRefEBon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmRefEBon.Designer.cs">
+      <DependentUpon>frmRefEBon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmRepresentant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmRepresentant.Designer.cs">
+      <DependentUpon>frmRepresentant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmVehicule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\CRUD\frmVehicule.Designer.cs">
+      <DependentUpon>frmVehicule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmAnne.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmAnne.Designer.cs">
+      <DependentUpon>frmAnne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmArmoire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmArmoire.Designer.cs">
+      <DependentUpon>frmArmoire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmFamille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmFamille.Designer.cs">
+      <DependentUpon>frmFamille.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmGrade.Designer.cs">
+      <DependentUpon>frmGrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmMagasin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmMagasin.Designer.cs">
+      <DependentUpon>frmMagasin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmProfil.Designer.cs">
+      <DependentUpon>frmProfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmRayonnage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmRayonnage.Designer.cs">
+      <DependentUpon>frmRayonnage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmService.Designer.cs">
+      <DependentUpon>frmService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmUniteSoutien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmUniteSoutien.Designer.cs">
+      <DependentUpon>frmUniteSoutien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmVille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\LCRUD\frmVille.Designer.cs">
+      <DependentUpon>frmVille.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLArticleInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLArticleInfo.Designer.cs">
+      <DependentUpon>frmLArticleInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLBonEntree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLBonEntree.Designer.cs">
+      <DependentUpon>frmLBonEntree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLBonRetour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLBonRetour.Designer.cs">
+      <DependentUpon>frmLBonRetour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLBonSortie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLBonSortie.Designer.cs">
+      <DependentUpon>frmLBonSortie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLEmplacement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLEmplacement.Designer.cs">
+      <DependentUpon>frmLEmplacement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLFournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLFournisseur.Designer.cs">
+      <DependentUpon>frmLFournisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLPersonnel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLPersonnel.Designer.cs">
+      <DependentUpon>frmLPersonnel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLReference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLReference.Designer.cs">
+      <DependentUpon>frmLReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLRepresentant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLRepresentant.Designer.cs">
+      <DependentUpon>frmLRepresentant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLVehicule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\List\frmLVehicule.Designer.cs">
+      <DependentUpon>frmLVehicule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAbreviation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAbreviation.Designer.cs">
+      <DependentUpon>frmAbreviation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAdd.Designer.cs">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddEArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddEArticle.Designer.cs">
+      <DependentUpon>frmAddEArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddRArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddRArticle.Designer.cs">
+      <DependentUpon>frmAddRArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddRayoArm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddRayoArm.Designer.cs">
+      <DependentUpon>frmAddRayoArm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddRRefArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddRRefArticle.Designer.cs">
+      <DependentUpon>frmAddRRefArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddSArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddSArticle.Designer.cs">
+      <DependentUpon>frmAddSArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddSCodeBarre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddSCodeBarre.Designer.cs">
+      <DependentUpon>frmAddSCodeBarre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddSRefArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAddSRefArticle.Designer.cs">
+      <DependentUpon>frmAddSRefArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAnalyseCodeBarre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmAnalyseCodeBarre.Designer.cs">
+      <DependentUpon>frmAnalyseCodeBarre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmBackupRestoreData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmBackupRestoreData.Designer.cs">
+      <DependentUpon>frmBackupRestoreData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmCodeBarreRAvancee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmCodeBarreRAvancee.Designer.cs">
+      <DependentUpon>frmCodeBarreRAvancee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmCodeBarreSAvancee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmCodeBarreSAvancee.Designer.cs">
+      <DependentUpon>frmCodeBarreSAvancee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmConfirmation.Designer.cs">
+      <DependentUpon>frmConfirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmEtatExplicatif.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmEtatExplicatif.Designer.cs">
+      <DependentUpon>frmEtatExplicatif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmJournal.Designer.cs">
+      <DependentUpon>frmJournal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmOperation.Designer.cs">
+      <DependentUpon>frmOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmPressePapiers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmPressePapiers.Designer.cs">
+      <DependentUpon>frmPressePapiers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmSAttribuerNSerie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmSAttribuerNSerie.Designer.cs">
+      <DependentUpon>frmSAttribuerNSerie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmStock.Designer.cs">
+      <DependentUpon>frmStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHBonEntree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHBonEntree.Designer.cs">
+      <DependentUpon>frmHBonEntree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHBonRetour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHBonRetour.Designer.cs">
+      <DependentUpon>frmHBonRetour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHBonSortie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHBonSortie.Designer.cs">
+      <DependentUpon>frmHBonSortie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHEArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHEArticle.Designer.cs">
+      <DependentUpon>frmHEArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHRArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHRArticle.Designer.cs">
+      <DependentUpon>frmHRArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHSArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmHSArticle.Designer.cs">
+      <DependentUpon>frmHSArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmH_Entree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmH_Entree.Designer.cs">
+      <DependentUpon>frmH_Entree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmH_Retour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmH_Retour.Designer.cs">
+      <DependentUpon>frmH_Retour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmH_Sortie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\History Forms\frmH_Sortie.Designer.cs">
+      <DependentUpon>frmH_Sortie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="iForms\frmCRUD.resx">
+      <DependentUpon>frmCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="iForms\frmLCRUD.resx">
+      <DependentUpon>frmLCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="iForms\frmList.resx">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Main\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Main\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmAddEmplacement.resx">
+      <DependentUpon>frmAddEmplacement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmArticleInfo.resx">
+      <DependentUpon>frmArticleInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmBonEntree.resx">
+      <DependentUpon>frmBonEntree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmBonRetour.resx">
+      <DependentUpon>frmBonRetour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmBonSortie.resx">
+      <DependentUpon>frmBonSortie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmFournisseur.resx">
+      <DependentUpon>frmFournisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmPersonnel.resx">
+      <DependentUpon>frmPersonnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmRefEBon.resx">
+      <DependentUpon>frmRefEBon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmRepresentant.resx">
+      <DependentUpon>frmRepresentant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\CRUD\frmVehicule.resx">
+      <DependentUpon>frmVehicule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmAnne.resx">
+      <DependentUpon>frmAnne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmArmoire.resx">
+      <DependentUpon>frmArmoire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmFamille.resx">
+      <DependentUpon>frmFamille.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmGrade.resx">
+      <DependentUpon>frmGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmMagasin.resx">
+      <DependentUpon>frmMagasin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmProfil.resx">
+      <DependentUpon>frmProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmRayonnage.resx">
+      <DependentUpon>frmRayonnage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmService.resx">
+      <DependentUpon>frmService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmUniteSoutien.resx">
+      <DependentUpon>frmUniteSoutien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\LCRUD\frmVille.resx">
+      <DependentUpon>frmVille.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\List\frmLArticleInfo.resx">
+      <DependentUpon>frmLArticleInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\List\frmLBonEntree.resx">
+      <DependentUpon>frmLBonEntree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\List\frmLBonRetour.resx">
+      <DependentUpon>frmLBonRetour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\List\frmLBonSortie.resx">
+      <DependentUpon>frmLBonSortie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\List\frmLEmplacement.resx">
+      <DependentUpon>frmLEmplacement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\List\frmLFournisseur.resx">
+      <DependentUpon>frmLFournisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\List\frmLPersonnel.resx">
+      <DependentUpon>frmLPersonnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\List\frmLRepresentant.resx">
+      <DependentUpon>frmLRepresentant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\List\frmLVehicule.resx">
+      <DependentUpon>frmLVehicule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAbreviation.resx">
+      <DependentUpon>frmAbreviation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAdd.resx">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAddEArticle.resx">
+      <DependentUpon>frmAddEArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAddRArticle.resx">
+      <DependentUpon>frmAddRArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAddRayoArm.resx">
+      <DependentUpon>frmAddRayoArm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAddRRefArticle.resx">
+      <DependentUpon>frmAddRRefArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAddSArticle.resx">
+      <DependentUpon>frmAddSArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAddSCodeBarre.resx">
+      <DependentUpon>frmAddSCodeBarre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAddSRefArticle.resx">
+      <DependentUpon>frmAddSRefArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmAnalyseCodeBarre.resx">
+      <DependentUpon>frmAnalyseCodeBarre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmBackupRestoreData.resx">
+      <DependentUpon>frmBackupRestoreData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmCodeBarreRAvancee.resx">
+      <DependentUpon>frmCodeBarreRAvancee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmCodeBarreSAvancee.resx">
+      <DependentUpon>frmCodeBarreSAvancee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmConfirmation.resx">
+      <DependentUpon>frmConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmEtatExplicatif.resx">
+      <DependentUpon>frmEtatExplicatif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmJournal.resx">
+      <DependentUpon>frmJournal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmOperation.resx">
+      <DependentUpon>frmOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmPressePapiers.resx">
+      <DependentUpon>frmPressePapiers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmSAttribuerNSerie.resx">
+      <DependentUpon>frmSAttribuerNSerie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmStock.resx">
+      <DependentUpon>frmStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\History Forms\frmHBonEntree.resx">
+      <DependentUpon>frmHBonEntree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\History Forms\frmHBonRetour.resx">
+      <DependentUpon>frmHBonRetour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\History Forms\frmHBonSortie.resx">
+      <DependentUpon>frmHBonSortie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\History Forms\frmHEArticle.resx">
+      <DependentUpon>frmHEArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\History Forms\frmHRArticle.resx">
+      <DependentUpon>frmHRArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\History Forms\frmHSArticle.resx">
+      <DependentUpon>frmHSArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\History Forms\frmH_Entree.resx">
+      <DependentUpon>frmH_Entree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\History Forms\frmH_Retour.resx">
+      <DependentUpon>frmH_Retour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\History Forms\frmH_Sortie.resx">
+      <DependentUpon>frmH_Sortie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="usControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{a4664fb9-c2fb-497d-a25f-ff74144fe483}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{99d80407-7030-487d-8aab-cea9c701ab8c}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Avertissement_Bouclier-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bin_windows_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close.24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_28px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Coche_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_file_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fichier_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Freehand.24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Haute_Importance_52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image_100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mandatory_action_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modifier_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modifier_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Moins_32_O.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New.24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New_file_28px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok_52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pictures_folder_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus_32_O.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Renew_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Retour_32_O.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Supprimer_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vérifié_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warning_52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add.24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_file_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ajouter_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ajouter_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Approbation_50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Avertissement_Bouclier-32.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

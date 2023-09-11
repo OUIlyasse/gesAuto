@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1dd7623f31d04ee1872c925ade8b9c0b" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="ges_AutoModel.Action" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Annee" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Armoire" Width="1.5" PointX="8.25" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Article_CodeBarre" Width="1.5" PointX="10.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Article_Info" Width="1.5" PointX="3" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Article_Photo" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Article_Reference" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Bon_CodeBarre" Width="1.5" PointX="10.5" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Bon_Entree" Width="1.5" PointX="5.25" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Bon_Entree_Article" Width="1.5" PointX="7.5" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Bon_reference" Width="1.5" PointX="13.5" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Bon_Retour" Width="1.5" PointX="8.25" PointY="50.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Bon_Retour_Article" Width="1.5" PointX="10.5" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Bon_Sortie" Width="1.5" PointX="5.25" PointY="41.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Bon_Sortie_Article" Width="1.5" PointX="7.5" PointY="41.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Emplacement" Width="1.5" PointX="10.5" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Famille" Width="1.5" PointX="0.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Fournisseur" Width="1.5" PointX="6" PointY="54.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Grade" Width="1.5" PointX="9" PointY="59.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.GroupeSanguin" Width="1.5" PointX="9" PointY="62.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Magasin" Width="1.5" PointX="8.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Mouvement" Width="1.5" PointX="7.5" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.pers_Affecte" Width="1.5" PointX="11.25" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.pers_GSM" Width="1.5" PointX="13.5" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Position_Actuelle" Width="1.5" PointX="7.5" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Profil" Width="1.5" PointX="11.25" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Rayonnage" Width="1.5" PointX="8.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Representant" Width="1.5" PointX="8.25" PointY="55.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Service" Width="1.5" PointX="11.25" PointY="59" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Unite_Mesure" Width="1.5" PointX="5.25" PointY="45.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Unite_Soutien" Width="1.5" PointX="6" PointY="50.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Utilisateur" Width="1.5" PointX="13.5" PointY="50.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Vehicule" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Vehicule_Article" Width="1.5" PointX="7.5" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ges_AutoModel.Ville" Width="1.5" PointX="3.75" PointY="50.5" IsExpanded="true" />
+        <AssociationConnector Association="ges_AutoModel.FK_Article_CodeBarre_Action" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Emplacement_Armoire" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Article_CodeBarre_Article_Reference" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Article_Info_Famille" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Article_Photo_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Article_Reference_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_CodeBarre_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Entree_Article_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_reference_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Retour_Article_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Sortie_Article_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Emplacement_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Mouvement_Article_Info1" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Position_Actuelle_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Unite_Mesure_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Vehicule_Article_Article_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_CodeBarre_Article_Reference" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_reference_Article_Reference" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Emplacement_Article_Reference" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Mouvement_Article_Reference1" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Position_Actuelle_Article_Reference" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Vehicule_Article_Article_Reference" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_CodeBarre_Vehicule" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Entree_Article_Bon_Entree" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Entree_Article_Unite_Mesure" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Entree_Article_Vehicule" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_reference_Bon_Entree_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Mouvement_Bon_Entree_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_reference_Bon_Retour_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_reference_Bon_Sortie_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Retour_Article_Bon_Retour" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Retour_Unite_Soutien" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Retour_Article_Unite_Mesure" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Retour_Article_Vehicule" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Mouvement_Bon_Retour_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Sortie_Article_Bon_Sortie" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Sortie_Unite_Soutien" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Sortie_Article_Unite_Mesure" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Bon_Sortie_Article_Vehicule" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Mouvement_Bon_Sortie_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Emplacement_Magasin" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Emplacement_Rayonnage" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Fournisseur_Ville" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Representant_Fournisseur" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_pers_Affecte_Grade" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_pers_Affecte_GroupeSanguin" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Magasin_Ville" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Mouvement_Vehicule" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_pers_Affecte_Unite_Soutien" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_pers_GSM_pers_Affecte" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Utilisateur_pers_Affecte" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Utilisateur_Profil" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Utilisateur_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Unite_Soutien_Ville" ManuallyRouted="false" />
+        <AssociationConnector Association="ges_AutoModel.FK_Vehicule_Article_Vehicule" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
