@@ -155,6 +155,11 @@
             this.tpDivers.SuspendLayout();
             this.SuspendLayout();
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(0, 583);
+            this.groupBox1.Size = new System.Drawing.Size(1112, 100);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tpInformation);
@@ -222,7 +227,7 @@
             this.txtOrigineAr.Location = new System.Drawing.Point(243, 485);
             this.txtOrigineAr.Name = "txtOrigineAr";
             this.txtOrigineAr.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtOrigineAr.Size = new System.Drawing.Size(201, 28);
+            this.txtOrigineAr.Size = new System.Drawing.Size(201, 27);
             this.txtOrigineAr.TabIndex = 11;
             this.txtOrigineAr.Enter += new System.EventHandler(this.Control_Enter);
             this.txtOrigineAr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -231,7 +236,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(395, 462);
             this.label18.Name = "label18";
             this.label18.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -243,7 +248,7 @@
             // 
             this.txtOrigine.Location = new System.Drawing.Point(25, 485);
             this.txtOrigine.Name = "txtOrigine";
-            this.txtOrigine.Size = new System.Drawing.Size(201, 28);
+            this.txtOrigine.Size = new System.Drawing.Size(201, 27);
             this.txtOrigine.TabIndex = 10;
             this.txtOrigine.Enter += new System.EventHandler(this.Control_Enter);
             this.txtOrigine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -253,7 +258,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(25, 462);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(70, 20);
@@ -263,7 +268,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(945, 391);
             this.label16.Name = "label16";
             this.label16.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -286,10 +291,10 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(486, 391);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(183, 20);
+            this.label17.Size = new System.Drawing.Size(181, 20);
             this.label17.TabIndex = 32;
             this.label17.Text = "Adresse personnelle";
             // 
@@ -308,7 +313,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(968, 262);
             this.label15.Name = "label15";
             this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -331,10 +336,10 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(486, 262);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(160, 20);
+            this.label14.Size = new System.Drawing.Size(162, 20);
             this.label14.TabIndex = 28;
             this.label14.Text = "Lieu de naissance";
             // 
@@ -353,20 +358,20 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(788, 21);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(220, 20);
+            this.label13.Size = new System.Drawing.Size(218, 20);
             this.label13.TabIndex = 26;
             this.label13.Text = "Reference de nomination";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(788, 176);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(173, 20);
+            this.label12.Size = new System.Drawing.Size(171, 20);
             this.label12.TabIndex = 25;
             this.label12.Text = "Date d\'engagement";
             // 
@@ -375,16 +380,16 @@
             this.dtEngagement.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtEngagement.Location = new System.Drawing.Point(788, 199);
             this.dtEngagement.Name = "dtEngagement";
-            this.dtEngagement.Size = new System.Drawing.Size(201, 28);
+            this.dtEngagement.Size = new System.Drawing.Size(201, 27);
             this.dtEngagement.TabIndex = 15;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(486, 176);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(164, 20);
+            this.label11.Size = new System.Drawing.Size(166, 20);
             this.label11.TabIndex = 23;
             this.label11.Text = "Date de naissance";
             // 
@@ -393,16 +398,16 @@
             this.dtNaissance.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtNaissance.Location = new System.Drawing.Point(486, 199);
             this.dtNaissance.Name = "dtNaissance";
-            this.dtNaissance.Size = new System.Drawing.Size(201, 28);
+            this.dtNaissance.Size = new System.Drawing.Size(201, 27);
             this.dtNaissance.TabIndex = 14;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(486, 24);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(174, 20);
+            this.label10.Size = new System.Drawing.Size(172, 20);
             this.label10.TabIndex = 21;
             this.label10.Text = "Date de nomination";
             // 
@@ -410,7 +415,7 @@
             // 
             this.txtCarteFA.Location = new System.Drawing.Point(21, 417);
             this.txtCarteFA.Name = "txtCarteFA";
-            this.txtCarteFA.Size = new System.Drawing.Size(201, 28);
+            this.txtCarteFA.Size = new System.Drawing.Size(201, 27);
             this.txtCarteFA.TabIndex = 9;
             this.txtCarteFA.Enter += new System.EventHandler(this.Control_Enter);
             this.txtCarteFA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -420,17 +425,17 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(21, 394);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(81, 20);
+            this.label9.Size = new System.Drawing.Size(84, 20);
             this.label9.TabIndex = 19;
             this.label9.Text = "Carte FA";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(243, 328);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 20);
@@ -450,7 +455,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(21, 328);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 20);
@@ -471,7 +476,7 @@
             // 
             this.txtCIN.Location = new System.Drawing.Point(243, 285);
             this.txtCIN.Name = "txtCIN";
-            this.txtCIN.Size = new System.Drawing.Size(201, 28);
+            this.txtCIN.Size = new System.Drawing.Size(201, 27);
             this.txtCIN.TabIndex = 6;
             this.txtCIN.Enter += new System.EventHandler(this.Control_Enter);
             this.txtCIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -481,7 +486,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(243, 262);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 20);
@@ -492,7 +497,7 @@
             // 
             this.txtMleFA.Location = new System.Drawing.Point(21, 285);
             this.txtMleFA.Name = "txtMleFA";
-            this.txtMleFA.Size = new System.Drawing.Size(201, 28);
+            this.txtMleFA.Size = new System.Drawing.Size(201, 27);
             this.txtMleFA.TabIndex = 5;
             this.txtMleFA.Enter += new System.EventHandler(this.Control_Enter);
             this.txtMleFA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -502,10 +507,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(21, 262);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 20);
+            this.label6.Size = new System.Drawing.Size(116, 20);
             this.label6.TabIndex = 11;
             this.label6.Text = "Matricule FA";
             // 
@@ -513,7 +518,7 @@
             // 
             this.groupBox2.Controls.Add(this.rdoFemme);
             this.groupBox2.Controls.Add(this.rdoHomme);
-            this.groupBox2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(21, 179);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(415, 68);
@@ -524,10 +529,10 @@
             // rdoFemme
             // 
             this.rdoFemme.AutoSize = true;
-            this.rdoFemme.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoFemme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoFemme.Location = new System.Drawing.Point(248, 27);
             this.rdoFemme.Name = "rdoFemme";
-            this.rdoFemme.Size = new System.Drawing.Size(87, 24);
+            this.rdoFemme.Size = new System.Drawing.Size(86, 24);
             this.rdoFemme.TabIndex = 1;
             this.rdoFemme.TabStop = true;
             this.rdoFemme.Text = "Femme";
@@ -536,10 +541,10 @@
             // rdoHomme
             // 
             this.rdoHomme.AutoSize = true;
-            this.rdoHomme.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoHomme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoHomme.Location = new System.Drawing.Point(84, 27);
             this.rdoHomme.Name = "rdoHomme";
-            this.rdoHomme.Size = new System.Drawing.Size(91, 24);
+            this.rdoHomme.Size = new System.Drawing.Size(89, 24);
             this.rdoHomme.TabIndex = 0;
             this.rdoHomme.TabStop = true;
             this.rdoHomme.Text = "Homme";
@@ -550,7 +555,7 @@
             this.txtNomAr.Location = new System.Drawing.Point(243, 113);
             this.txtNomAr.Name = "txtNomAr";
             this.txtNomAr.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtNomAr.Size = new System.Drawing.Size(201, 28);
+            this.txtNomAr.Size = new System.Drawing.Size(201, 27);
             this.txtNomAr.TabIndex = 3;
             this.txtNomAr.Enter += new System.EventHandler(this.Control_Enter);
             this.txtNomAr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -559,7 +564,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(353, 90);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -571,7 +576,7 @@
             // 
             this.txtNom.Location = new System.Drawing.Point(21, 113);
             this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(201, 28);
+            this.txtNom.Size = new System.Drawing.Size(201, 27);
             this.txtNom.TabIndex = 2;
             this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
             this.txtNom.Enter += new System.EventHandler(this.Control_Enter);
@@ -582,10 +587,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(21, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 20);
+            this.label4.Size = new System.Drawing.Size(47, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Nom";
             // 
@@ -594,7 +599,7 @@
             this.txtPrenomAr.Location = new System.Drawing.Point(243, 47);
             this.txtPrenomAr.Name = "txtPrenomAr";
             this.txtPrenomAr.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPrenomAr.Size = new System.Drawing.Size(201, 28);
+            this.txtPrenomAr.Size = new System.Drawing.Size(201, 27);
             this.txtPrenomAr.TabIndex = 1;
             this.txtPrenomAr.Enter += new System.EventHandler(this.Control_Enter);
             this.txtPrenomAr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -603,7 +608,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(341, 24);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -627,14 +632,14 @@
             this.dtNomination.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtNomination.Location = new System.Drawing.Point(486, 47);
             this.dtNomination.Name = "dtNomination";
-            this.dtNomination.Size = new System.Drawing.Size(201, 28);
+            this.dtNomination.Size = new System.Drawing.Size(201, 27);
             this.dtNomination.TabIndex = 12;
             // 
             // txtPrenom
             // 
             this.txtPrenom.Location = new System.Drawing.Point(21, 47);
             this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(201, 28);
+            this.txtPrenom.Size = new System.Drawing.Size(201, 27);
             this.txtPrenom.TabIndex = 0;
             this.txtPrenom.Enter += new System.EventHandler(this.Control_Enter);
             this.txtPrenom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -644,12 +649,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(21, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 20);
+            this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Pénom";
+            this.label1.Text = "Prénom";
             // 
             // tpSitFam
             // 
@@ -676,7 +681,7 @@
             this.gbEpouse.Controls.Add(this.label20);
             this.gbEpouse.Controls.Add(this.txtEPrenom);
             this.gbEpouse.Controls.Add(this.label21);
-            this.gbEpouse.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbEpouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbEpouse.Location = new System.Drawing.Point(33, 148);
             this.gbEpouse.Name = "gbEpouse";
             this.gbEpouse.Size = new System.Drawing.Size(974, 350);
@@ -687,16 +692,16 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(111, 202);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(160, 20);
+            this.label25.Size = new System.Drawing.Size(162, 20);
             this.label25.TabIndex = 30;
             this.label25.Text = "Lieu de naissance";
             // 
             // txtELieu
             // 
-            this.txtELieu.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtELieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtELieu.Location = new System.Drawing.Point(111, 225);
             this.txtELieu.Name = "txtELieu";
             this.txtELieu.Size = new System.Drawing.Size(753, 96);
@@ -710,28 +715,28 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(387, 129);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(164, 20);
+            this.label24.Size = new System.Drawing.Size(166, 20);
             this.label24.TabIndex = 25;
             this.label24.Text = "Date de naissance";
             // 
             // dtENaissance
             // 
-            this.dtENaissance.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtENaissance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtENaissance.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtENaissance.Location = new System.Drawing.Point(387, 152);
             this.dtENaissance.Name = "dtENaissance";
-            this.dtENaissance.Size = new System.Drawing.Size(201, 28);
+            this.dtENaissance.Size = new System.Drawing.Size(201, 27);
             this.dtENaissance.TabIndex = 4;
             // 
             // txtENbrEnfant
             // 
-            this.txtENbrEnfant.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtENbrEnfant.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtENbrEnfant.Location = new System.Drawing.Point(663, 65);
             this.txtENbrEnfant.Name = "txtENbrEnfant";
-            this.txtENbrEnfant.Size = new System.Drawing.Size(201, 28);
+            this.txtENbrEnfant.Size = new System.Drawing.Size(201, 27);
             this.txtENbrEnfant.TabIndex = 2;
             this.txtENbrEnfant.Enter += new System.EventHandler(this.Control_Enter);
             this.txtENbrEnfant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -741,19 +746,19 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(663, 42);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(151, 20);
+            this.label23.Size = new System.Drawing.Size(147, 20);
             this.label23.TabIndex = 17;
             this.label23.Text = "Nombre d\'enfant";
             // 
             // txtECIN
             // 
-            this.txtECIN.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtECIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtECIN.Location = new System.Drawing.Point(111, 145);
             this.txtECIN.Name = "txtECIN";
-            this.txtECIN.Size = new System.Drawing.Size(201, 28);
+            this.txtECIN.Size = new System.Drawing.Size(201, 27);
             this.txtECIN.TabIndex = 3;
             this.txtECIN.Enter += new System.EventHandler(this.Control_Enter);
             this.txtECIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -763,7 +768,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(111, 122);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(40, 20);
@@ -772,10 +777,10 @@
             // 
             // txtENom
             // 
-            this.txtENom.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtENom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtENom.Location = new System.Drawing.Point(387, 65);
             this.txtENom.Name = "txtENom";
-            this.txtENom.Size = new System.Drawing.Size(201, 28);
+            this.txtENom.Size = new System.Drawing.Size(201, 27);
             this.txtENom.TabIndex = 1;
             this.txtENom.Enter += new System.EventHandler(this.Control_Enter);
             this.txtENom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -785,19 +790,19 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(387, 42);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(49, 20);
+            this.label20.Size = new System.Drawing.Size(47, 20);
             this.label20.TabIndex = 10;
             this.label20.Text = "Nom";
             // 
             // txtEPrenom
             // 
-            this.txtEPrenom.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEPrenom.Location = new System.Drawing.Point(111, 65);
             this.txtEPrenom.Name = "txtEPrenom";
-            this.txtEPrenom.Size = new System.Drawing.Size(201, 28);
+            this.txtEPrenom.Size = new System.Drawing.Size(201, 27);
             this.txtEPrenom.TabIndex = 0;
             this.txtEPrenom.Enter += new System.EventHandler(this.Control_Enter);
             this.txtEPrenom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -807,10 +812,10 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(111, 42);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(68, 20);
+            this.label21.Size = new System.Drawing.Size(66, 20);
             this.label21.TabIndex = 8;
             this.label21.Text = "Pénom";
             // 
@@ -819,7 +824,7 @@
             this.groupBox3.Controls.Add(this.rdoD);
             this.groupBox3.Controls.Add(this.rdoM);
             this.groupBox3.Controls.Add(this.rdoC);
-            this.groupBox3.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(33, 39);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(622, 68);
@@ -830,10 +835,10 @@
             // rdoD
             // 
             this.rdoD.AutoSize = true;
-            this.rdoD.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoD.Location = new System.Drawing.Point(412, 27);
             this.rdoD.Name = "rdoD";
-            this.rdoD.Size = new System.Drawing.Size(114, 24);
+            this.rdoD.Size = new System.Drawing.Size(118, 24);
             this.rdoD.TabIndex = 2;
             this.rdoD.TabStop = true;
             this.rdoD.Text = "Divorcé (D)";
@@ -843,10 +848,10 @@
             // rdoM
             // 
             this.rdoM.AutoSize = true;
-            this.rdoM.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoM.Location = new System.Drawing.Point(271, 27);
             this.rdoM.Name = "rdoM";
-            this.rdoM.Size = new System.Drawing.Size(104, 24);
+            this.rdoM.Size = new System.Drawing.Size(103, 24);
             this.rdoM.TabIndex = 1;
             this.rdoM.TabStop = true;
             this.rdoM.Text = "Marié (M)";
@@ -856,10 +861,10 @@
             // rdoC
             // 
             this.rdoC.AutoSize = true;
-            this.rdoC.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoC.Location = new System.Drawing.Point(96, 27);
             this.rdoC.Name = "rdoC";
-            this.rdoC.Size = new System.Drawing.Size(138, 24);
+            this.rdoC.Size = new System.Drawing.Size(139, 24);
             this.rdoC.TabIndex = 0;
             this.rdoC.TabStop = true;
             this.rdoC.Text = "Célibataire (C)";
@@ -890,7 +895,7 @@
             this.groupBox5.Controls.Add(this.label30);
             this.groupBox5.Controls.Add(this.txtImmatriculation);
             this.groupBox5.Controls.Add(this.label31);
-            this.groupBox5.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(94, 114);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(893, 309);
@@ -902,7 +907,7 @@
             // 
             this.cmbxGS.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbxGS.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbxGS.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbxGS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbxGS.FormattingEnabled = true;
             this.cmbxGS.Location = new System.Drawing.Point(70, 194);
             this.cmbxGS.Name = "cmbxGS";
@@ -911,10 +916,10 @@
             // 
             // txtAffiliation
             // 
-            this.txtAffiliation.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAffiliation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAffiliation.Location = new System.Drawing.Point(622, 197);
             this.txtAffiliation.Name = "txtAffiliation";
-            this.txtAffiliation.Size = new System.Drawing.Size(201, 28);
+            this.txtAffiliation.Size = new System.Drawing.Size(201, 27);
             this.txtAffiliation.TabIndex = 6;
             this.txtAffiliation.Enter += new System.EventHandler(this.Control_Enter);
             this.txtAffiliation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -924,17 +929,17 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(622, 174);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(91, 20);
+            this.label32.Size = new System.Drawing.Size(89, 20);
             this.label32.TabIndex = 31;
             this.label32.Text = "Affiliation";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(346, 171);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(148, 20);
@@ -943,19 +948,19 @@
             // 
             // dtAffiliation
             // 
-            this.dtAffiliation.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtAffiliation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtAffiliation.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtAffiliation.Location = new System.Drawing.Point(346, 194);
             this.dtAffiliation.Name = "dtAffiliation";
-            this.dtAffiliation.Size = new System.Drawing.Size(201, 28);
+            this.dtAffiliation.Size = new System.Drawing.Size(201, 27);
             this.dtAffiliation.TabIndex = 5;
             // 
             // txtPPR
             // 
-            this.txtPPR.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPPR.Location = new System.Drawing.Point(622, 107);
             this.txtPPR.Name = "txtPPR";
-            this.txtPPR.Size = new System.Drawing.Size(201, 28);
+            this.txtPPR.Size = new System.Drawing.Size(201, 27);
             this.txtPPR.TabIndex = 3;
             this.txtPPR.Enter += new System.EventHandler(this.Control_Enter);
             this.txtPPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -965,29 +970,29 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(622, 84);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(44, 20);
+            this.label28.Size = new System.Drawing.Size(46, 20);
             this.label28.TabIndex = 17;
             this.label28.Text = "PPR";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(70, 164);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(142, 20);
+            this.label29.Size = new System.Drawing.Size(141, 20);
             this.label29.TabIndex = 15;
             this.label29.Text = "Groupe sanguin";
             // 
             // txtMutuelle
             // 
-            this.txtMutuelle.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMutuelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMutuelle.Location = new System.Drawing.Point(346, 107);
             this.txtMutuelle.Name = "txtMutuelle";
-            this.txtMutuelle.Size = new System.Drawing.Size(201, 28);
+            this.txtMutuelle.Size = new System.Drawing.Size(201, 27);
             this.txtMutuelle.TabIndex = 2;
             this.txtMutuelle.Enter += new System.EventHandler(this.Control_Enter);
             this.txtMutuelle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -997,19 +1002,19 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.Location = new System.Drawing.Point(346, 84);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(82, 20);
+            this.label30.Size = new System.Drawing.Size(80, 20);
             this.label30.TabIndex = 10;
             this.label30.Text = "Mutuelle";
             // 
             // txtImmatriculation
             // 
-            this.txtImmatriculation.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImmatriculation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImmatriculation.Location = new System.Drawing.Point(70, 107);
             this.txtImmatriculation.Name = "txtImmatriculation";
-            this.txtImmatriculation.Size = new System.Drawing.Size(201, 28);
+            this.txtImmatriculation.Size = new System.Drawing.Size(201, 27);
             this.txtImmatriculation.TabIndex = 1;
             this.txtImmatriculation.Enter += new System.EventHandler(this.Control_Enter);
             this.txtImmatriculation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -1019,10 +1024,10 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.Location = new System.Drawing.Point(70, 84);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(144, 20);
+            this.label31.Size = new System.Drawing.Size(138, 20);
             this.label31.TabIndex = 8;
             this.label31.Text = "Immatriculation";
             // 
@@ -1049,7 +1054,7 @@
             this.groupBox7.Controls.Add(this.label40);
             this.groupBox7.Controls.Add(this.txtMPrenom);
             this.groupBox7.Controls.Add(this.label41);
-            this.groupBox7.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(558, 35);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(498, 466);
@@ -1060,16 +1065,16 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(34, 229);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(160, 20);
+            this.label34.Size = new System.Drawing.Size(162, 20);
             this.label34.TabIndex = 30;
             this.label34.Text = "Lieu de naissance";
             // 
             // txtMLieu
             // 
-            this.txtMLieu.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMLieu.Location = new System.Drawing.Point(34, 251);
             this.txtMLieu.Name = "txtMLieu";
             this.txtMLieu.Size = new System.Drawing.Size(431, 191);
@@ -1083,28 +1088,28 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.Location = new System.Drawing.Point(264, 131);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(164, 20);
+            this.label38.Size = new System.Drawing.Size(166, 20);
             this.label38.TabIndex = 25;
             this.label38.Text = "Date de naissance";
             // 
             // dtMNaissance
             // 
-            this.dtMNaissance.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtMNaissance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtMNaissance.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtMNaissance.Location = new System.Drawing.Point(264, 154);
             this.dtMNaissance.Name = "dtMNaissance";
-            this.dtMNaissance.Size = new System.Drawing.Size(201, 28);
+            this.dtMNaissance.Size = new System.Drawing.Size(201, 27);
             this.dtMNaissance.TabIndex = 24;
             // 
             // txtMCIN
             // 
-            this.txtMCIN.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMCIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMCIN.Location = new System.Drawing.Point(34, 154);
             this.txtMCIN.Name = "txtMCIN";
-            this.txtMCIN.Size = new System.Drawing.Size(201, 28);
+            this.txtMCIN.Size = new System.Drawing.Size(201, 27);
             this.txtMCIN.TabIndex = 16;
             this.txtMCIN.Enter += new System.EventHandler(this.Control_Enter);
             this.txtMCIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -1114,7 +1119,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.Location = new System.Drawing.Point(34, 131);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(40, 20);
@@ -1123,10 +1128,10 @@
             // 
             // txtMNom
             // 
-            this.txtMNom.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMNom.Location = new System.Drawing.Point(260, 57);
             this.txtMNom.Name = "txtMNom";
-            this.txtMNom.Size = new System.Drawing.Size(201, 28);
+            this.txtMNom.Size = new System.Drawing.Size(201, 27);
             this.txtMNom.TabIndex = 11;
             this.txtMNom.Enter += new System.EventHandler(this.Control_Enter);
             this.txtMNom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -1136,19 +1141,19 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.Location = new System.Drawing.Point(260, 34);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(49, 20);
+            this.label40.Size = new System.Drawing.Size(47, 20);
             this.label40.TabIndex = 10;
             this.label40.Text = "Nom";
             // 
             // txtMPrenom
             // 
-            this.txtMPrenom.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMPrenom.Location = new System.Drawing.Point(34, 57);
             this.txtMPrenom.Name = "txtMPrenom";
-            this.txtMPrenom.Size = new System.Drawing.Size(201, 28);
+            this.txtMPrenom.Size = new System.Drawing.Size(201, 27);
             this.txtMPrenom.TabIndex = 9;
             this.txtMPrenom.Enter += new System.EventHandler(this.Control_Enter);
             this.txtMPrenom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -1158,10 +1163,10 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.Location = new System.Drawing.Point(34, 34);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(68, 20);
+            this.label41.Size = new System.Drawing.Size(66, 20);
             this.label41.TabIndex = 8;
             this.label41.Text = "Pénom";
             // 
@@ -1177,7 +1182,7 @@
             this.groupBox6.Controls.Add(this.label36);
             this.groupBox6.Controls.Add(this.txtPPrenom);
             this.groupBox6.Controls.Add(this.label37);
-            this.groupBox6.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(24, 35);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(498, 466);
@@ -1188,16 +1193,16 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(34, 229);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(160, 20);
+            this.label26.Size = new System.Drawing.Size(162, 20);
             this.label26.TabIndex = 30;
             this.label26.Text = "Lieu de naissance";
             // 
             // txtPLieu
             // 
-            this.txtPLieu.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPLieu.Location = new System.Drawing.Point(34, 251);
             this.txtPLieu.Name = "txtPLieu";
             this.txtPLieu.Size = new System.Drawing.Size(431, 191);
@@ -1211,28 +1216,28 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(264, 131);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(164, 20);
+            this.label33.Size = new System.Drawing.Size(166, 20);
             this.label33.TabIndex = 25;
             this.label33.Text = "Date de naissance";
             // 
             // dtPNaissance
             // 
-            this.dtPNaissance.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtPNaissance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtPNaissance.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtPNaissance.Location = new System.Drawing.Point(264, 154);
             this.dtPNaissance.Name = "dtPNaissance";
-            this.dtPNaissance.Size = new System.Drawing.Size(201, 28);
+            this.dtPNaissance.Size = new System.Drawing.Size(201, 27);
             this.dtPNaissance.TabIndex = 24;
             // 
             // txtPCIN
             // 
-            this.txtPCIN.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPCIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPCIN.Location = new System.Drawing.Point(34, 154);
             this.txtPCIN.Name = "txtPCIN";
-            this.txtPCIN.Size = new System.Drawing.Size(201, 28);
+            this.txtPCIN.Size = new System.Drawing.Size(201, 27);
             this.txtPCIN.TabIndex = 16;
             this.txtPCIN.Enter += new System.EventHandler(this.Control_Enter);
             this.txtPCIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -1242,7 +1247,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(34, 131);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(40, 20);
@@ -1251,10 +1256,10 @@
             // 
             // txtPNom
             // 
-            this.txtPNom.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPNom.Location = new System.Drawing.Point(260, 57);
             this.txtPNom.Name = "txtPNom";
-            this.txtPNom.Size = new System.Drawing.Size(201, 28);
+            this.txtPNom.Size = new System.Drawing.Size(201, 27);
             this.txtPNom.TabIndex = 11;
             this.txtPNom.Enter += new System.EventHandler(this.Control_Enter);
             this.txtPNom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -1264,19 +1269,19 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(260, 34);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(49, 20);
+            this.label36.Size = new System.Drawing.Size(47, 20);
             this.label36.TabIndex = 10;
             this.label36.Text = "Nom";
             // 
             // txtPPrenom
             // 
-            this.txtPPrenom.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPPrenom.Location = new System.Drawing.Point(34, 57);
             this.txtPPrenom.Name = "txtPPrenom";
-            this.txtPPrenom.Size = new System.Drawing.Size(201, 28);
+            this.txtPPrenom.Size = new System.Drawing.Size(201, 27);
             this.txtPPrenom.TabIndex = 9;
             this.txtPPrenom.Enter += new System.EventHandler(this.Control_Enter);
             this.txtPPrenom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -1286,10 +1291,10 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.Location = new System.Drawing.Point(34, 34);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(68, 20);
+            this.label37.Size = new System.Drawing.Size(66, 20);
             this.label37.TabIndex = 8;
             this.label37.Text = "Pénom";
             // 
@@ -1319,16 +1324,16 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.Location = new System.Drawing.Point(560, 381);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(83, 20);
+            this.label47.Size = new System.Drawing.Size(81, 20);
             this.label47.TabIndex = 42;
             this.label47.Text = "Fonction";
             // 
             // txtFonction
             // 
-            this.txtFonction.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFonction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFonction.Location = new System.Drawing.Point(560, 403);
             this.txtFonction.Name = "txtFonction";
             this.txtFonction.Size = new System.Drawing.Size(471, 95);
@@ -1342,16 +1347,16 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label48.Location = new System.Drawing.Point(46, 381);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(93, 20);
+            this.label48.Size = new System.Drawing.Size(92, 20);
             this.label48.TabIndex = 40;
             this.label48.Text = "Spécialité";
             // 
             // txtSpecialite
             // 
-            this.txtSpecialite.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSpecialite.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSpecialite.Location = new System.Drawing.Point(46, 403);
             this.txtSpecialite.Name = "txtSpecialite";
             this.txtSpecialite.Size = new System.Drawing.Size(471, 95);
@@ -1365,16 +1370,16 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label45.Location = new System.Drawing.Point(564, 238);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(230, 20);
+            this.label45.Size = new System.Drawing.Size(229, 20);
             this.label45.TabIndex = 38;
             this.label45.Text = "Numero d\'arme de chasse";
             // 
             // txtNumArmeChasse
             // 
-            this.txtNumArmeChasse.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumArmeChasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumArmeChasse.Location = new System.Drawing.Point(564, 260);
             this.txtNumArmeChasse.Name = "txtNumArmeChasse";
             this.txtNumArmeChasse.Size = new System.Drawing.Size(471, 95);
@@ -1388,16 +1393,16 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label46.Location = new System.Drawing.Point(46, 238);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(189, 20);
+            this.label46.Size = new System.Drawing.Size(188, 20);
             this.label46.TabIndex = 36;
             this.label46.Text = "Diplôme universitaire";
             // 
             // txtDiplomeUniversitaire
             // 
-            this.txtDiplomeUniversitaire.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiplomeUniversitaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiplomeUniversitaire.Location = new System.Drawing.Point(46, 260);
             this.txtDiplomeUniversitaire.Name = "txtDiplomeUniversitaire";
             this.txtDiplomeUniversitaire.Size = new System.Drawing.Size(471, 95);
@@ -1411,16 +1416,16 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label44.Location = new System.Drawing.Point(560, 106);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(194, 20);
+            this.label44.Size = new System.Drawing.Size(189, 20);
             this.label44.TabIndex = 34;
             this.label44.Text = "Numero de passeport";
             // 
             // txtNumPasseport
             // 
-            this.txtNumPasseport.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumPasseport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumPasseport.Location = new System.Drawing.Point(560, 128);
             this.txtNumPasseport.Name = "txtNumPasseport";
             this.txtNumPasseport.Size = new System.Drawing.Size(471, 95);
@@ -1434,16 +1439,16 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.Location = new System.Drawing.Point(46, 106);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(168, 20);
+            this.label43.Size = new System.Drawing.Size(166, 20);
             this.label43.TabIndex = 32;
             this.label43.Text = "Niveau d\'instrution";
             // 
             // txtNiveauInstruction
             // 
-            this.txtNiveauInstruction.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNiveauInstruction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNiveauInstruction.Location = new System.Drawing.Point(46, 128);
             this.txtNiveauInstruction.Name = "txtNiveauInstruction";
             this.txtNiveauInstruction.Size = new System.Drawing.Size(471, 95);
@@ -1456,10 +1461,10 @@
             // 
             // txtTaille
             // 
-            this.txtTaille.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTaille.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTaille.Location = new System.Drawing.Point(46, 61);
             this.txtTaille.Name = "txtTaille";
-            this.txtTaille.Size = new System.Drawing.Size(191, 28);
+            this.txtTaille.Size = new System.Drawing.Size(191, 27);
             this.txtTaille.TabIndex = 18;
             this.txtTaille.Enter += new System.EventHandler(this.Control_Enter);
             this.txtTaille.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
@@ -1469,10 +1474,10 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.Location = new System.Drawing.Point(46, 38);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(54, 20);
+            this.label42.Size = new System.Drawing.Size(55, 20);
             this.label42.TabIndex = 17;
             this.label42.Text = "Taille";
             // 
@@ -1481,9 +1486,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1112, 683);
             this.Controls.Add(this.tabControl1);
-            this.Font = new System.Drawing.Font("Roboto", 10.2F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.Name = "frmPersonnel";
             this.Load += new System.EventHandler(this.frmPersonnel_Load);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.tabControl1, 0);
             this.tabControl1.ResumeLayout(false);
             this.tpInformation.ResumeLayout(false);

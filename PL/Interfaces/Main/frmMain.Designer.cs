@@ -63,13 +63,20 @@
             this.suivieDenregistrementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.annéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPressePapiers = new System.Windows.Forms.ToolStripMenuItem();
+            this.rayonnageEtArmoireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.permissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.articleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.véhiculeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.personnelToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.journalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseDeDonneesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sauvegardeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.rayonnageEtArmoireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,6 +89,7 @@
             this.sortiesToolStripMenuItem1,
             this.retoursToolStripMenuItem,
             this.utilitaireToolStripMenuItem,
+            this.repportToolStripMenuItem,
             this.baseDeDonneesToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -298,7 +306,8 @@
             this.suivieDenregistrementsToolStripMenuItem,
             this.annéesToolStripMenuItem,
             this.btnPressePapiers,
-            this.rayonnageEtArmoireToolStripMenuItem});
+            this.rayonnageEtArmoireToolStripMenuItem,
+            this.permissionToolStripMenuItem});
             this.utilitaireToolStripMenuItem.Name = "utilitaireToolStripMenuItem";
             this.utilitaireToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.utilitaireToolStripMenuItem.Text = "Utilitaires";
@@ -361,6 +370,62 @@
             this.btnPressePapiers.Text = "Presse-papiers";
             this.btnPressePapiers.Click += new System.EventHandler(this.btnPressePapiers_Click);
             // 
+            // rayonnageEtArmoireToolStripMenuItem
+            // 
+            this.rayonnageEtArmoireToolStripMenuItem.Name = "rayonnageEtArmoireToolStripMenuItem";
+            this.rayonnageEtArmoireToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
+            this.rayonnageEtArmoireToolStripMenuItem.Text = "Rayonnage et Armoire";
+            this.rayonnageEtArmoireToolStripMenuItem.Click += new System.EventHandler(this.rayonnageEtArmoireToolStripMenuItem_Click);
+            // 
+            // permissionToolStripMenuItem
+            // 
+            this.permissionToolStripMenuItem.Name = "permissionToolStripMenuItem";
+            this.permissionToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
+            this.permissionToolStripMenuItem.Text = "Permission";
+            this.permissionToolStripMenuItem.Click += new System.EventHandler(this.permissionToolStripMenuItem_Click);
+            // 
+            // repportToolStripMenuItem
+            // 
+            this.repportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stockToolStripMenuItem1,
+            this.articleToolStripMenuItem1,
+            this.véhiculeToolStripMenuItem1,
+            this.personnelToolStripMenuItem1,
+            this.journalToolStripMenuItem});
+            this.repportToolStripMenuItem.Name = "repportToolStripMenuItem";
+            this.repportToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
+            this.repportToolStripMenuItem.Text = "Report";
+            // 
+            // stockToolStripMenuItem1
+            // 
+            this.stockToolStripMenuItem1.Name = "stockToolStripMenuItem1";
+            this.stockToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
+            this.stockToolStripMenuItem1.Text = "Stock";
+            // 
+            // articleToolStripMenuItem1
+            // 
+            this.articleToolStripMenuItem1.Name = "articleToolStripMenuItem1";
+            this.articleToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
+            this.articleToolStripMenuItem1.Text = "Article";
+            // 
+            // véhiculeToolStripMenuItem1
+            // 
+            this.véhiculeToolStripMenuItem1.Name = "véhiculeToolStripMenuItem1";
+            this.véhiculeToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
+            this.véhiculeToolStripMenuItem1.Text = "Véhicule";
+            // 
+            // personnelToolStripMenuItem1
+            // 
+            this.personnelToolStripMenuItem1.Name = "personnelToolStripMenuItem1";
+            this.personnelToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
+            this.personnelToolStripMenuItem1.Text = "Personnel";
+            // 
+            // journalToolStripMenuItem
+            // 
+            this.journalToolStripMenuItem.Name = "journalToolStripMenuItem";
+            this.journalToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.journalToolStripMenuItem.Text = "Journal";
+            // 
             // baseDeDonneesToolStripMenuItem
             // 
             this.baseDeDonneesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -373,13 +438,14 @@
             // sauvegardeToolStripMenuItem
             // 
             this.sauvegardeToolStripMenuItem.Name = "sauvegardeToolStripMenuItem";
-            this.sauvegardeToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.sauvegardeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.sauvegardeToolStripMenuItem.Text = "Sauvegarde";
+            this.sauvegardeToolStripMenuItem.Click += new System.EventHandler(this.sauvegardeToolStripMenuItem_Click);
             // 
             // restaurationToolStripMenuItem
             // 
             this.restaurationToolStripMenuItem.Name = "restaurationToolStripMenuItem";
-            this.restaurationToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.restaurationToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.restaurationToolStripMenuItem.Text = "Restauration";
             // 
             // helpToolStripMenuItem
@@ -405,13 +471,6 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // rayonnageEtArmoireToolStripMenuItem
-            // 
-            this.rayonnageEtArmoireToolStripMenuItem.Name = "rayonnageEtArmoireToolStripMenuItem";
-            this.rayonnageEtArmoireToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
-            this.rayonnageEtArmoireToolStripMenuItem.Text = "Rayonnage et Armoire";
-            this.rayonnageEtArmoireToolStripMenuItem.Click += new System.EventHandler(this.rayonnageEtArmoireToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -426,6 +485,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GESTION DE STOCK";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -477,5 +538,12 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem btnPressePapiers;
         private System.Windows.Forms.ToolStripMenuItem rayonnageEtArmoireToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem permissionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem repportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem articleToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem véhiculeToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem personnelToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem journalToolStripMenuItem;
     }
 }

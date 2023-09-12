@@ -70,5 +70,50 @@ namespace PL.Properties {
                 this["isConfirmation"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server = WIN-28RLD1ANCTK\\ILYASSE; Database = master; Integrated Security = True;")]
+        public string conStringMaster {
+            get {
+                return ((string)(this["conStringMaster"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SPath {
+            get {
+                return ((string)(this["SPath"]));
+            }
+            set {
+                this["SPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RPath {
+            get {
+                return ((string)(this["RPath"]));
+            }
+            set {
+                this["RPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TBackup {
+            get {
+                return ((string)(this["TBackup"]));
+            }
+            set {
+                this["TBackup"] = value;
+            }
+        }
     }
 }

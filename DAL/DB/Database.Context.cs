@@ -4617,5 +4617,10 @@ namespace DAL.DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Upsert_Unite_Mesure", unit_M_IDParameter, art_IDParameter, unit_M_NomParameter, unit_M_AbreviationParameter, unit_M_CoefficientParameter, unit_M_isDefaultParameter, unit_M_MinParameter, unit_M_MaxParameter);
         }
+    
+        public virtual ObjectResult<Select_PPersonnel_Result> Select_PPersonnel()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_PPersonnel_Result>("Select_PPersonnel");
+        }
     }
 }

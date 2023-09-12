@@ -14,5 +14,17 @@
     <Setting Name="isConfirmation" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="conStringMaster" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server = WIN-28RLD1ANCTK\ILYASSE; Database = master; Integrated Security = True;</Value>
+    </Setting>
+    <Setting Name="SPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TBackup" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

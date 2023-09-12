@@ -1937,6 +1937,7 @@
           <Parameter Name="ref_ID" Type="int" Mode="In" />
           <Parameter Name="art_ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="Select_PPersonnel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Select_Profil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Select_Rayonnage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Select_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -5280,6 +5281,7 @@
             <Parameter Name="unit_M_Min" Mode="In" Type="Decimal" />
             <Parameter Name="unit_M_Max" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="Select_PPersonnel" ReturnType="Collection(ges_AutoModel.Select_PPersonnel_Result)" />
         </EntityContainer>
         <ComplexType Name="Etat_Explicatif_UMesure_Result">
           <Property Type="String" Name="unit_M_Nom" Nullable="true" MaxLength="350" />
@@ -5913,6 +5915,13 @@
           <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="ref_reference" Nullable="true" />
           <Property Type="Decimal" Name="mvt_Qte" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Select_PPersonnel_Result">
+          <Property Type="Int32" Name="pers_ID" Nullable="false" />
+          <Property Type="String" Name="pers_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Mle_FA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="grd_Grade" Nullable="true" MaxLength="300" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7585,6 +7594,17 @@
           <FunctionImportMapping FunctionImportName="Update_Ville" FunctionName="ges_AutoModel.Store.Update_Ville" />
           <FunctionImportMapping FunctionImportName="Upsert_Bon_CodeBarre" FunctionName="ges_AutoModel.Store.Upsert_Bon_CodeBarre" />
           <FunctionImportMapping FunctionImportName="Upsert_Unite_Mesure" FunctionName="ges_AutoModel.Store.Upsert_Unite_Mesure" />
+          <FunctionImportMapping FunctionImportName="Select_PPersonnel" FunctionName="ges_AutoModel.Store.Select_PPersonnel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Select_PPersonnel_Result">
+                <ScalarProperty Name="pers_ID" ColumnName="pers_ID" />
+                <ScalarProperty Name="pers_Prenom" ColumnName="pers_Prenom" />
+                <ScalarProperty Name="pers_Nom" ColumnName="pers_Nom" />
+                <ScalarProperty Name="pers_Mle_FA" ColumnName="pers_Mle_FA" />
+                <ScalarProperty Name="grd_Grade" ColumnName="grd_Grade" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

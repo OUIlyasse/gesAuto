@@ -317,6 +317,9 @@
     <Compile Include="DB\Select_Position_Actuelle_By_Position_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\Select_PPersonnel_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\Select_Profil_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>

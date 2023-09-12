@@ -103,6 +103,16 @@ namespace PL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Ajouter_utilisateur_32 {
+            get {
+                object obj = ResourceManager.GetObject("Ajouter_utilisateur_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Approbation_50 {
             get {
                 object obj = ResourceManager.GetObject("Approbation_50", resourceCulture);
@@ -253,6 +263,16 @@ namespace PL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Mises_a_jour_32 {
+            get {
+                object obj = ResourceManager.GetObject("Mises_a_jour_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Modifier_32 {
             get {
                 object obj = ResourceManager.GetObject("Modifier_32", resourceCulture);
@@ -266,6 +286,16 @@ namespace PL.Properties {
         internal static System.Drawing.Bitmap Modifier_48 {
             get {
                 object obj = ResourceManager.GetObject("Modifier_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Modifier_utilisateur_32 {
+            get {
+                object obj = ResourceManager.GetObject("Modifier_utilisateur_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -396,6 +426,26 @@ namespace PL.Properties {
         internal static System.Drawing.Bitmap Supprimer_48 {
             get {
                 object obj = ResourceManager.GetObject("Supprimer_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Supprimer_utilisateur_32 {
+            get {
+                object obj = ResourceManager.GetObject("Supprimer_utilisateur_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Users_48 {
+            get {
+                object obj = ResourceManager.GetObject("Users_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

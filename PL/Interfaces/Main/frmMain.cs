@@ -3,7 +3,13 @@ using PL.Interfaces.Sub.List;
 using PL.Interfaces.Sub.Normal;
 using PL.Interfaces.Sub.Normal.History_Forms;
 using System;
+using System.Data.SqlClient;
+using System.IO;
+using System.Security.AccessControl;
+using System.Security.Principal;
+using System.Threading;
 using System.Windows.Forms;
+using Tools;
 
 namespace PL.Interfaces.Main
 {
@@ -36,12 +42,50 @@ namespace PL.Interfaces.Main
             Cursor = Cursors.Default;
         }
 
+        private bool Backup()
+        {
+            bool rs = false;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(Properties.Settings.Default.conStringMaster))
+                {
+                    con.Open();
+                    string file = Properties.Settings.Default.SPath + @"\" + "backup" + "" + DateTime.Now.ToString("yyyyMMddHHmm") + ".bak";
+                    DirectorySecurity sec = Directory.GetAccessControl(Properties.Settings.Default.SPath);
+
+                    SecurityIdentifier everyone = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+                    sec.AddAccessRule(new FileSystemAccessRule(everyone, FileSystemRights.Modify | FileSystemRights.Synchronize, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+                    Directory.SetAccessControl(Properties.Settings.Default.SPath, sec);
+                    string sql = $"BACKUP DATABASE ges_Auto TO  DISK = N'{file}' WITH NOFORMAT, NOINIT,  NAME = N'ges_Auto-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.ExecuteNonQuery();
+                        rs = true;
+                        //iMessage.sucMsg("Success", "Votre backup");
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                rs = false;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return rs;
+        }
+
         #endregion Codes
+
+        #region Constracteur
 
         public frmMain()
         {
             InitializeComponent();
         }
+
+        #endregion Constracteur
+
+        #region Click
 
         private void btnMagasin_Click(object sender, EventArgs e)
         {
@@ -180,6 +224,38 @@ namespace PL.Interfaces.Main
         {
             frmRayonnage frm = new frmRayonnage();
             OpenForm(frm);
+        }
+
+        private void permissionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPermission frm = new frmPermission();
+            OpenForm(frm);
+        }
+
+        #endregion Click
+
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+            //frmLogin frm = new frmLogin();
+            //frm.ShowDialog();
+        }
+
+        private void sauvegardeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBackupRestoreData frm = new frmBackupRestoreData();
+            frm.ShowDialog();
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if (MessageBox.Show("Are you sure about closing the form?", "", MessageBoxButtons.YesNo) == DialogResult.No)
+            //    e.Cancel = true;
+            if (Properties.Settings.Default.TBackup == "Auto")
+            {
+                if (!Backup())
+                {
+                }
+            }
         }
     }
 }

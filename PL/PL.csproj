@@ -371,6 +371,12 @@
     <Compile Include="Interfaces\Sub\Normal\frmOperation.Designer.cs">
       <DependentUpon>frmOperation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sub\Normal\frmPermission.Designer.cs">
+      <DependentUpon>frmPermission.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\Sub\Normal\frmPressePapiers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +451,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repport\frmR_Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repport\frmR_Stock.Designer.cs">
+      <DependentUpon>frmR_Stock.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="iForms\frmCRUD.resx">
       <DependentUpon>frmCRUD.cs</DependentUpon>
     </EmbeddedResource>
@@ -597,6 +609,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Sub\Normal\frmOperation.resx">
       <DependentUpon>frmOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sub\Normal\frmPermission.resx">
+      <DependentUpon>frmPermission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Sub\Normal\frmPressePapiers.resx">
       <DependentUpon>frmPressePapiers.cs</DependentUpon>
@@ -777,6 +792,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Avertissement_Bouclier-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Supprimer_utilisateur_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modifier_utilisateur_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ajouter_utilisateur_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mises_a_jour_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
