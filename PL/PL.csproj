@@ -659,6 +659,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Repport\frmR_Stock.resx">
+      <DependentUpon>frmR_Stock.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />

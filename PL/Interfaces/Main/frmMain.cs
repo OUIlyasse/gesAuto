@@ -2,6 +2,7 @@
 using PL.Interfaces.Sub.List;
 using PL.Interfaces.Sub.Normal;
 using PL.Interfaces.Sub.Normal.History_Forms;
+using PL.Repport;
 using System;
 using System.Data.SqlClient;
 using System.IO;
@@ -256,6 +257,12 @@ namespace PL.Interfaces.Main
                 {
                 }
             }
+        }
+
+        private void stockToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmR_Stock frm = new frmR_Stock();
+            OpenForm(frm);
         }
     }
 }

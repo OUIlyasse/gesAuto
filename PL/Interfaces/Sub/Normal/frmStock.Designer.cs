@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvStock = new System.Windows.Forms.DataGridView();
             this.colvl_Marque = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colart_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,22 +72,22 @@
             this.dgvStock.MultiSelect = false;
             this.dgvStock.Name = "dgvStock";
             this.dgvStock.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvStock.RowHeadersVisible = false;
             this.dgvStock.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvStock.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvStock.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvStock.RowTemplate.Height = 24;
             this.dgvStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStock.Size = new System.Drawing.Size(958, 589);
@@ -152,51 +152,51 @@
             this.toolStripSeparator1,
             this.journalToolStripMenuItem});
             this.menuDGV.Name = "menuDGV";
-            this.menuDGV.Size = new System.Drawing.Size(211, 164);
+            this.menuDGV.Size = new System.Drawing.Size(170, 136);
             this.menuDGV.Opening += new System.ComponentModel.CancelEventHandler(this.menuDGV_Opening);
             // 
             // btnEtatExplicatif
             // 
             this.btnEtatExplicatif.Name = "btnEtatExplicatif";
-            this.btnEtatExplicatif.Size = new System.Drawing.Size(210, 24);
+            this.btnEtatExplicatif.Size = new System.Drawing.Size(169, 24);
             this.btnEtatExplicatif.Text = "Etat Explicatif";
             this.btnEtatExplicatif.Click += new System.EventHandler(this.btnEtatExplicatif_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(166, 6);
             // 
             // entreesToolStripMenuItem
             // 
             this.entreesToolStripMenuItem.Name = "entreesToolStripMenuItem";
-            this.entreesToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.entreesToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
             this.entreesToolStripMenuItem.Text = "Entrees";
             this.entreesToolStripMenuItem.Click += new System.EventHandler(this.entreesToolStripMenuItem_Click);
             // 
             // sortiesToolStripMenuItem
             // 
             this.sortiesToolStripMenuItem.Name = "sortiesToolStripMenuItem";
-            this.sortiesToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.sortiesToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
             this.sortiesToolStripMenuItem.Text = "Sorties";
             this.sortiesToolStripMenuItem.Click += new System.EventHandler(this.sortiesToolStripMenuItem_Click);
             // 
             // retoursToolStripMenuItem
             // 
             this.retoursToolStripMenuItem.Name = "retoursToolStripMenuItem";
-            this.retoursToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.retoursToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
             this.retoursToolStripMenuItem.Text = "Retours";
             this.retoursToolStripMenuItem.Click += new System.EventHandler(this.retoursToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
             // 
             // journalToolStripMenuItem
             // 
             this.journalToolStripMenuItem.Name = "journalToolStripMenuItem";
-            this.journalToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.journalToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
             this.journalToolStripMenuItem.Text = "Journal";
             this.journalToolStripMenuItem.Click += new System.EventHandler(this.journalToolStripMenuItem_Click);
             // 
