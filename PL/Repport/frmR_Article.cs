@@ -10,30 +10,21 @@ using System.Windows.Forms;
 
 namespace PL.Repport
 {
-    public partial class frmR_Stock : Form
+    public partial class frmR_Article : Form
     {
         #region Variables
 
         private ges_AutoEntities db = new ges_AutoEntities();
         private int rowSelected;
+        private int idService = Properties.Settings.Default.idService;
 
         #endregion Variables
 
         #region Codes
 
-        private int getIdArticle(string designation)
-        {
-            return db.get_Article_Info_By_Designation(designation).FirstOrDefault().art_ID;
-        }
-
-        private string getUMesure(int idArt)
-        {
-            return db.Select_Unite_Mesure_By_Art_isDefault(idArt).FirstOrDefault().unit_M_Nom;
-        }
-
         private void getData()
         {
-            var rs = db.SommeQte();
+            var rs = db.Select_vwArticle_Info(idService);
             dgvStock.DataSource = rs;
         }
 
@@ -46,7 +37,7 @@ namespace PL.Repport
 
         private void LoadTable()
         {
-            List<string> rs = new List<string> { "Tous", "Véhicule", "Article", "Référence" };
+            List<string> rs = new List<string> { "Tous", "Famille", "Article", "Abreviation" };
             cmbxTable.DataSource = rs;
             cmbxTable.SelectedIndex = 0;
         }
@@ -55,7 +46,7 @@ namespace PL.Repport
         {
             try
             {
-                dgvStock.DataSource = db.Search_R_Stock(txtSearch.Text, cmbxTable.Text, cmbxCondition.Text).ToList();
+                dgvStock.DataSource = db.Search_R_Article(txtSearch.Text, cmbxTable.Text, cmbxCondition.Text, idService).ToList();
             }
             catch (Exception)
             {
@@ -64,7 +55,7 @@ namespace PL.Repport
 
         #endregion Codes
 
-        public frmR_Stock()
+        public frmR_Article()
         {
             InitializeComponent();
         }

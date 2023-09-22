@@ -406,26 +406,31 @@
             // articleToolStripMenuItem1
             // 
             this.articleToolStripMenuItem1.Name = "articleToolStripMenuItem1";
-            this.articleToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
+            this.articleToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.articleToolStripMenuItem1.Text = "Article";
+            this.articleToolStripMenuItem1.Click += new System.EventHandler(this.articleToolStripMenuItem1_Click);
             // 
             // véhiculeToolStripMenuItem1
             // 
             this.véhiculeToolStripMenuItem1.Name = "véhiculeToolStripMenuItem1";
-            this.véhiculeToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
+            this.véhiculeToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.véhiculeToolStripMenuItem1.Text = "Véhicule";
+            this.véhiculeToolStripMenuItem1.Click += new System.EventHandler(this.véhiculeToolStripMenuItem1_Click);
             // 
             // personnelToolStripMenuItem1
             // 
             this.personnelToolStripMenuItem1.Name = "personnelToolStripMenuItem1";
-            this.personnelToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
+            this.personnelToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.personnelToolStripMenuItem1.Text = "Personnel";
+            this.personnelToolStripMenuItem1.Click += new System.EventHandler(this.personnelToolStripMenuItem1_Click);
             // 
             // journalToolStripMenuItem
             // 
+            this.journalToolStripMenuItem.Enabled = false;
             this.journalToolStripMenuItem.Name = "journalToolStripMenuItem";
-            this.journalToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.journalToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.journalToolStripMenuItem.Text = "Journal";
+            this.journalToolStripMenuItem.Click += new System.EventHandler(this.journalToolStripMenuItem_Click);
             // 
             // baseDeDonneesToolStripMenuItem
             // 
@@ -439,14 +444,14 @@
             // sauvegardeToolStripMenuItem
             // 
             this.sauvegardeToolStripMenuItem.Name = "sauvegardeToolStripMenuItem";
-            this.sauvegardeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.sauvegardeToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.sauvegardeToolStripMenuItem.Text = "Sauvegarde";
             this.sauvegardeToolStripMenuItem.Click += new System.EventHandler(this.sauvegardeToolStripMenuItem_Click);
             // 
             // restaurationToolStripMenuItem
             // 
             this.restaurationToolStripMenuItem.Name = "restaurationToolStripMenuItem";
-            this.restaurationToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.restaurationToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.restaurationToolStripMenuItem.Text = "Restauration";
             // 
             // helpToolStripMenuItem

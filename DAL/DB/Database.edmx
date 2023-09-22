@@ -1069,18 +1069,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Utilisateur_Profil">
-          <End Role="Profil" Type="Self.Profil" Multiplicity="0..1" />
-          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Profil">
-              <PropertyRef Name="prof_ID" />
-            </Principal>
-            <Dependent Role="Utilisateur">
-              <PropertyRef Name="prof_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Utilisateur_Service">
           <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
@@ -1307,6 +1295,9 @@
         <Function Name="Delete_Unite_Soutien_Temp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="unt_ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="Delete_Utilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="util_ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Delete_Vehicule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vl_ID" Type="int" Mode="In" />
         </Function>
@@ -1393,6 +1384,9 @@
         </Function>
         <Function Name="get_Unite_Mesure_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="unit_M_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Utilisateur_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pers_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="get_Vehicule_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vl_ID" Type="int" Mode="In" />
@@ -1695,6 +1689,15 @@
           <Parameter Name="vil_ID" Type="int" Mode="In" />
           <Parameter Name="unt_Description" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Insert_Utilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="util_ID" Type="int" Mode="In" />
+          <Parameter Name="pers_ID" Type="int" Mode="In" />
+          <Parameter Name="util_Date" Type="datetime" Mode="In" />
+          <Parameter Name="util_Identifiant" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="util_MotPasse" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="svc_ID" Type="int" Mode="In" />
+          <Parameter Name="prof_ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Insert_Vehicule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vl_ID" Type="int" Mode="In" />
           <Parameter Name="vl_Immatriculation" Type="nvarchar(max)" Mode="In" />
@@ -1744,6 +1747,7 @@
         <Function Name="MAX_Mouvement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MAX_Position_Actuelle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MAX_Rayonnage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MAX_Utilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MaxID_Annees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MaxID_Article_Info" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MaxID_Article_Photo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1794,6 +1798,24 @@
         </Function>
         <Function Name="Search_Profil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_R_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="condition" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="operateur" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="svc_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_R_Personnel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_R_Stock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="condition" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="operateur" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_R_Stock_Qte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="qte" Type="decimal" Mode="In" />
+          <Parameter Name="qteOpear" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="Search_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
@@ -1969,6 +1991,9 @@
         </Function>
         <Function Name="Select_Vehicule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Select_Ville" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_vwArticle_Info" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="svc_ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Show_Annees_By_Annee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="an_Annee" Type="nvarchar(max)" Mode="In" />
         </Function>
@@ -2297,6 +2322,15 @@
           <Parameter Name="vil_ID" Type="int" Mode="In" />
           <Parameter Name="unt_Description" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Update_Utilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="util_ID" Type="int" Mode="In" />
+          <Parameter Name="pers_ID" Type="int" Mode="In" />
+          <Parameter Name="util_Date" Type="datetime" Mode="In" />
+          <Parameter Name="util_Identifiant" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="util_MotPasse" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="svc_ID" Type="int" Mode="In" />
+          <Parameter Name="prof_ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Update_Vehicule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vl_ID" Type="int" Mode="In" />
           <Parameter Name="vl_Immatriculation" Type="nvarchar(max)" Mode="In" />
@@ -2566,10 +2600,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Utilisateur_pers_Affecte" Association="Self.FK_Utilisateur_pers_Affecte">
             <End Role="pers_Affecte" EntitySet="pers_Affecte" />
-            <End Role="Utilisateur" EntitySet="Utilisateur" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Utilisateur_Profil" Association="Self.FK_Utilisateur_Profil">
-            <End Role="Profil" EntitySet="Profil" />
             <End Role="Utilisateur" EntitySet="Utilisateur" />
           </AssociationSet>
           <AssociationSet Name="FK_Utilisateur_Service" Association="Self.FK_Utilisateur_Service">
@@ -5282,6 +5312,43 @@
             <Parameter Name="unit_M_Max" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Select_PPersonnel" ReturnType="Collection(ges_AutoModel.Select_PPersonnel_Result)" />
+          <FunctionImport Name="Search_R_Stock" ReturnType="Collection(ges_AutoModel.Search_R_Stock_Result)">
+            <Parameter Name="search" Mode="In" Type="String" />
+            <Parameter Name="condition" Mode="In" Type="String" />
+            <Parameter Name="operateur" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_R_Stock_Qte" ReturnType="Collection(ges_AutoModel.Search_R_Stock_Qte_Result)">
+            <Parameter Name="qte" Mode="In" Type="Decimal" />
+            <Parameter Name="qteOpear" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Select_vwArticle_Info" ReturnType="Collection(ges_AutoModel.Select_vwArticle_Info_Result)">
+          <Parameter Name="svc_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_R_Article" ReturnType="Collection(ges_AutoModel.Search_R_Article_Result)">
+            <Parameter Name="search" Mode="In" Type="String" />
+            <Parameter Name="condition" Mode="In" Type="String" />
+            <Parameter Name="operateur" Mode="In" Type="String" />
+            <Parameter Name="svc_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_R_Personnel" ReturnType="Collection(ges_AutoModel.Search_R_Personnel_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_Utilisateur_By_ID" EntitySet="Utilisateurs" ReturnType="Collection(ges_AutoModel.Utilisateur)">
+          <Parameter Name="pers_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MAX_Utilisateur" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Delete_Utilisateur">
+          <Parameter Name="util_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Utilisateur" ReturnType="Collection(Int32)">
+            <Parameter Name="util_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pers_ID" Mode="In" Type="Int32" />
+            <Parameter Name="util_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="util_Identifiant" Mode="In" Type="String" />
+            <Parameter Name="util_MotPasse" Mode="In" Type="String" />
+            <Parameter Name="svc_ID" Mode="In" Type="Int32" />
+            <Parameter Name="prof_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Etat_Explicatif_UMesure_Result">
           <Property Type="String" Name="unit_M_Nom" Nullable="true" MaxLength="350" />
@@ -5922,6 +5989,85 @@
           <Property Type="String" Name="pers_Nom" Nullable="true" />
           <Property Type="String" Name="pers_Mle_FA" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="grd_Grade" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="Search_R_Stock_Result">
+          <Property Type="String" Name="vl_Marque" Nullable="true" />
+          <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ref_reference" Nullable="true" />
+          <Property Type="Decimal" Name="mvt_Qte" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Search_R_Stock_Qte_Result">
+          <Property Type="String" Name="vl_Marque" Nullable="true" />
+          <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ref_reference" Nullable="true" />
+          <Property Type="Decimal" Name="mvt_Qte" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Select_vwArticle_Info_Result">
+          <Property Type="Int32" Name="art_ID" Nullable="false" />
+          <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="art_Abreviation" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="fam_Nom" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="Search_R_Article_Result">
+          <Property Type="Int32" Name="art_ID" Nullable="false" />
+          <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="art_Abreviation" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="fam_Nom" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="Search_R_Personnel_Result">
+          <Property Type="Int32" Name="pers_ID" Nullable="false" />
+          <Property Type="String" Name="pers_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Prenom_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Nom_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_Mle_FA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="grd_Grade" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="unt_Unite" Nullable="true" />
+          <Property Type="DateTime" Name="pers_Date_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Lieu_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Lieu_Naissance_Ar" Nullable="true" />
+          <Property Type="DateTime" Name="pers_Date_Engagement" Nullable="true" />
+          <Property Type="DateTime" Name="pers_Date_Nomination" Nullable="true" />
+          <Property Type="String" Name="pers_Reff_Nomination" Nullable="true" />
+          <Property Type="String" Name="pers_Origine" Nullable="true" />
+          <Property Type="String" Name="pers_Origine_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_CIN" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Sexe" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Adresse_Personnelle" Nullable="true" />
+          <Property Type="String" Name="pers_Adresse_Personnelle_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_Carte_FA" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Specialite" Nullable="true" />
+          <Property Type="String" Name="pers_Fonction" Nullable="true" />
+          <Property Type="String" Name="pers_Fonction_Ar" Nullable="true" />
+          <Property Type="Decimal" Name="pers_Taille" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="pers_Sit_Fam" Nullable="true" />
+          <Property Type="String" Name="pers_Sit_Fam_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_E_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_E_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_E_CIN" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="pers_E_Date_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_E_Lieu_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Nbr_Enf" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_PPR" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="gs_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Mutuel" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Immatriculation" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Affiliation" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="pers_Date_Affiliation" Nullable="true" />
+          <Property Type="String" Name="pers_Pere_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Pere_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Pere_CIN" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="pers_Pere_Date_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Pere_Lieu_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Mere_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Mere_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Mere_CIN" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="pers_Mere_Date_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Mere_Lieu_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Niv_Instrution" Nullable="true" />
+          <Property Type="String" Name="pers_Diplome_Universitaire" Nullable="true" />
+          <Property Type="String" Name="pers_Num_Passeport" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="pers_Num_Arm_Chasse" Nullable="true" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7605,6 +7751,109 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_R_Stock" FunctionName="ges_AutoModel.Store.Search_R_Stock">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_R_Stock_Result">
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="mvt_Qte" ColumnName="mvt_Qte" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_R_Stock_Qte" FunctionName="ges_AutoModel.Store.Search_R_Stock_Qte">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_R_Stock_Qte_Result">
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="mvt_Qte" ColumnName="mvt_Qte" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_vwArticle_Info" FunctionName="ges_AutoModel.Store.Select_vwArticle_Info">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Select_vwArticle_Info_Result">
+                <ScalarProperty Name="art_ID" ColumnName="art_ID" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="art_Abreviation" ColumnName="art_Abreviation" />
+                <ScalarProperty Name="fam_Nom" ColumnName="fam_Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_R_Article" FunctionName="ges_AutoModel.Store.Search_R_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_R_Article_Result">
+                <ScalarProperty Name="art_ID" ColumnName="art_ID" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="art_Abreviation" ColumnName="art_Abreviation" />
+                <ScalarProperty Name="fam_Nom" ColumnName="fam_Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_R_Personnel" FunctionName="ges_AutoModel.Store.Search_R_Personnel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_R_Personnel_Result">
+                <ScalarProperty Name="pers_ID" ColumnName="pers_ID" />
+                <ScalarProperty Name="pers_Prenom" ColumnName="pers_Prenom" />
+                <ScalarProperty Name="pers_Prenom_Ar" ColumnName="pers_Prenom_Ar" />
+                <ScalarProperty Name="pers_Nom" ColumnName="pers_Nom" />
+                <ScalarProperty Name="pers_Nom_Ar" ColumnName="pers_Nom_Ar" />
+                <ScalarProperty Name="pers_Mle_FA" ColumnName="pers_Mle_FA" />
+                <ScalarProperty Name="grd_Grade" ColumnName="grd_Grade" />
+                <ScalarProperty Name="unt_Unite" ColumnName="unt_Unite" />
+                <ScalarProperty Name="pers_Date_Naissance" ColumnName="pers_Date_Naissance" />
+                <ScalarProperty Name="pers_Lieu_Naissance" ColumnName="pers_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Lieu_Naissance_Ar" ColumnName="pers_Lieu_Naissance_Ar" />
+                <ScalarProperty Name="pers_Date_Engagement" ColumnName="pers_Date_Engagement" />
+                <ScalarProperty Name="pers_Date_Nomination" ColumnName="pers_Date_Nomination" />
+                <ScalarProperty Name="pers_Reff_Nomination" ColumnName="pers_Reff_Nomination" />
+                <ScalarProperty Name="pers_Origine" ColumnName="pers_Origine" />
+                <ScalarProperty Name="pers_Origine_Ar" ColumnName="pers_Origine_Ar" />
+                <ScalarProperty Name="pers_CIN" ColumnName="pers_CIN" />
+                <ScalarProperty Name="pers_Sexe" ColumnName="pers_Sexe" />
+                <ScalarProperty Name="pers_Adresse_Personnelle" ColumnName="pers_Adresse_Personnelle" />
+                <ScalarProperty Name="pers_Adresse_Personnelle_Ar" ColumnName="pers_Adresse_Personnelle_Ar" />
+                <ScalarProperty Name="pers_Carte_FA" ColumnName="pers_Carte_FA" />
+                <ScalarProperty Name="pers_Specialite" ColumnName="pers_Specialite" />
+                <ScalarProperty Name="pers_Fonction" ColumnName="pers_Fonction" />
+                <ScalarProperty Name="pers_Fonction_Ar" ColumnName="pers_Fonction_Ar" />
+                <ScalarProperty Name="pers_Taille" ColumnName="pers_Taille" />
+                <ScalarProperty Name="pers_Sit_Fam" ColumnName="pers_Sit_Fam" />
+                <ScalarProperty Name="pers_Sit_Fam_Ar" ColumnName="pers_Sit_Fam_Ar" />
+                <ScalarProperty Name="pers_E_Prenom" ColumnName="pers_E_Prenom" />
+                <ScalarProperty Name="pers_E_Nom" ColumnName="pers_E_Nom" />
+                <ScalarProperty Name="pers_E_CIN" ColumnName="pers_E_CIN" />
+                <ScalarProperty Name="pers_E_Date_Naissance" ColumnName="pers_E_Date_Naissance" />
+                <ScalarProperty Name="pers_E_Lieu_Naissance" ColumnName="pers_E_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Nbr_Enf" ColumnName="pers_Nbr_Enf" />
+                <ScalarProperty Name="pers_PPR" ColumnName="pers_PPR" />
+                <ScalarProperty Name="gs_Nom" ColumnName="gs_Nom" />
+                <ScalarProperty Name="pers_Mutuel" ColumnName="pers_Mutuel" />
+                <ScalarProperty Name="pers_Immatriculation" ColumnName="pers_Immatriculation" />
+                <ScalarProperty Name="pers_Affiliation" ColumnName="pers_Affiliation" />
+                <ScalarProperty Name="pers_Date_Affiliation" ColumnName="pers_Date_Affiliation" />
+                <ScalarProperty Name="pers_Pere_Prenom" ColumnName="pers_Pere_Prenom" />
+                <ScalarProperty Name="pers_Pere_Nom" ColumnName="pers_Pere_Nom" />
+                <ScalarProperty Name="pers_Pere_CIN" ColumnName="pers_Pere_CIN" />
+                <ScalarProperty Name="pers_Pere_Date_Naissance" ColumnName="pers_Pere_Date_Naissance" />
+                <ScalarProperty Name="pers_Pere_Lieu_Naissance" ColumnName="pers_Pere_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Mere_Prenom" ColumnName="pers_Mere_Prenom" />
+                <ScalarProperty Name="pers_Mere_Nom" ColumnName="pers_Mere_Nom" />
+                <ScalarProperty Name="pers_Mere_CIN" ColumnName="pers_Mere_CIN" />
+                <ScalarProperty Name="pers_Mere_Date_Naissance" ColumnName="pers_Mere_Date_Naissance" />
+                <ScalarProperty Name="pers_Mere_Lieu_Naissance" ColumnName="pers_Mere_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Niv_Instrution" ColumnName="pers_Niv_Instrution" />
+                <ScalarProperty Name="pers_Diplome_Universitaire" ColumnName="pers_Diplome_Universitaire" />
+                <ScalarProperty Name="pers_Num_Passeport" ColumnName="pers_Num_Passeport" />
+                <ScalarProperty Name="pers_Num_Arm_Chasse" ColumnName="pers_Num_Arm_Chasse" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Utilisateur_By_ID" FunctionName="ges_AutoModel.Store.get_Utilisateur_By_ID" />
+          <FunctionImportMapping FunctionImportName="MAX_Utilisateur" FunctionName="ges_AutoModel.Store.MAX_Utilisateur" />
+          <FunctionImportMapping FunctionImportName="Delete_Utilisateur" FunctionName="ges_AutoModel.Store.Delete_Utilisateur" />
+          <FunctionImportMapping FunctionImportName="Insert_Utilisateur" FunctionName="ges_AutoModel.Store.Insert_Utilisateur" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

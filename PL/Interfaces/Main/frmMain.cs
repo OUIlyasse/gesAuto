@@ -264,5 +264,27 @@ namespace PL.Interfaces.Main
             frmR_Stock frm = new frmR_Stock();
             OpenForm(frm);
         }
+
+        private void articleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmR_Article frm = new frmR_Article();
+            OpenForm(frm);
+        }
+
+        private void personnelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmR_Personnel frm = new frmR_Personnel();
+            OpenForm(frm);
+        }
+
+        private void véhiculeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmR_Vehicule frm = new frmR_Vehicule();
+            OpenForm(frm);
+        }
+
+        private void journalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

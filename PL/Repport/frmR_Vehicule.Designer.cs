@@ -1,6 +1,6 @@
 ﻿namespace PL.Repport
 {
-    partial class frmR_Stock
+    partial class frmR_Vehicule
     {
         /// <summary>
         /// Required designer variable.
@@ -34,12 +34,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbxCondition = new System.Windows.Forms.ComboBox();
             this.cmbxTable = new System.Windows.Forms.ComboBox();
-            this.dgvStock = new System.Windows.Forms.DataGridView();
-            this.colvl_Marque = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colart_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQuantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearch = new PL.Controls.iText();
+            this.dgvStock = new System.Windows.Forms.DataGridView();
+            this.colart_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colfam_Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colart_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colart_Abreviation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +85,14 @@
             this.cmbxTable.TabIndex = 6;
             this.cmbxTable.SelectedIndexChanged += new System.EventHandler(this.cmbxTable_SelectedIndexChanged);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(6, 38);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(333, 27);
+            this.txtSearch.TabIndex = 5;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
             // dgvStock
             // 
             this.dgvStock.AllowUserToAddRows = false;
@@ -98,10 +106,10 @@
             this.dgvStock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colvl_Marque,
+            this.colart_ID,
+            this.colfam_Nom,
             this.colart_Designation,
-            this.colReference,
-            this.colQuantite});
+            this.colart_Abreviation});
             this.dgvStock.GridColor = System.Drawing.SystemColors.Control;
             this.dgvStock.Location = new System.Drawing.Point(12, 120);
             this.dgvStock.MultiSelect = false;
@@ -128,16 +136,22 @@
             this.dgvStock.Size = new System.Drawing.Size(958, 521);
             this.dgvStock.TabIndex = 8;
             // 
-            // colvl_Marque
+            // colart_ID
             // 
-            this.colvl_Marque.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colvl_Marque.DataPropertyName = "vl_Marque";
-            this.colvl_Marque.FillWeight = 270.7086F;
-            this.colvl_Marque.HeaderText = "Véhicule";
-            this.colvl_Marque.MinimumWidth = 6;
-            this.colvl_Marque.Name = "colvl_Marque";
-            this.colvl_Marque.ReadOnly = true;
-            this.colvl_Marque.Width = 160;
+            this.colart_ID.DataPropertyName = "art_ID";
+            this.colart_ID.HeaderText = "code Article";
+            this.colart_ID.Name = "colart_ID";
+            this.colart_ID.ReadOnly = true;
+            this.colart_ID.Visible = false;
+            // 
+            // colfam_Nom
+            // 
+            this.colfam_Nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colfam_Nom.DataPropertyName = "fam_Nom";
+            this.colfam_Nom.HeaderText = "Famille";
+            this.colfam_Nom.Name = "colfam_Nom";
+            this.colfam_Nom.ReadOnly = true;
+            this.colfam_Nom.Width = 92;
             // 
             // colart_Designation
             // 
@@ -149,37 +163,16 @@
             this.colart_Designation.Name = "colart_Designation";
             this.colart_Designation.ReadOnly = true;
             // 
-            // colReference
+            // colart_Abreviation
             // 
-            this.colReference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colReference.DataPropertyName = "ref_reference";
-            this.colReference.FillWeight = 38.32801F;
-            this.colReference.HeaderText = "Reference";
-            this.colReference.MinimumWidth = 6;
-            this.colReference.Name = "colReference";
-            this.colReference.ReadOnly = true;
-            this.colReference.Width = 200;
+            this.colart_Abreviation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colart_Abreviation.DataPropertyName = "art_Abreviation";
+            this.colart_Abreviation.HeaderText = "Abreviation";
+            this.colart_Abreviation.Name = "colart_Abreviation";
+            this.colart_Abreviation.ReadOnly = true;
+            this.colart_Abreviation.Width = 121;
             // 
-            // colQuantite
-            // 
-            this.colQuantite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colQuantite.DataPropertyName = "mvt_Qte";
-            this.colQuantite.FillWeight = 175.1565F;
-            this.colQuantite.HeaderText = "Quantite";
-            this.colQuantite.MinimumWidth = 6;
-            this.colQuantite.Name = "colQuantite";
-            this.colQuantite.ReadOnly = true;
-            this.colQuantite.Width = 150;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(6, 38);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(333, 27);
-            this.txtSearch.TabIndex = 5;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // frmR_Stock
+            // frmR_Vehicule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(982, 653);
@@ -187,9 +180,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvStock);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.Name = "frmR_Stock";
+            this.Name = "frmR_Vehicule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Report etat de stock";
+            this.Text = "Report etat des véhicules";
             this.Load += new System.EventHandler(this.frmR_Stock_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -206,9 +199,9 @@
         private System.Windows.Forms.ComboBox cmbxTable;
         private Controls.iText txtSearch;
         public System.Windows.Forms.DataGridView dgvStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colvl_Marque;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colart_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colfam_Nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn colart_Designation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colReference;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQuantite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colart_Abreviation;
     }
 }
