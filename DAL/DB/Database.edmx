@@ -253,6 +253,13 @@
           <Property Name="gs_ID" Type="int" Nullable="false" />
           <Property Name="gs_Nom" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Lists">
+          <Key>
+            <PropertyRef Name="list_ID" />
+          </Key>
+          <Property Name="list_ID" Type="int" Nullable="false" />
+          <Property Name="list_Nom" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Magasin">
           <Key>
             <PropertyRef Name="mags_ID" />
@@ -394,6 +401,14 @@
           <Property Name="rep_Observation" Type="nvarchar(max)" />
           <Property Name="rep_Status" Type="bit" />
         </EntityType>
+        <EntityType Name="Screen">
+          <Key>
+            <PropertyRef Name="scrn_ID" />
+          </Key>
+          <Property Name="scrn_ID" Type="int" Nullable="false" />
+          <Property Name="scrn_Nom" Type="nvarchar(max)" />
+          <Property Name="list_ID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Service">
           <Key>
             <PropertyRef Name="svc_ID" />
@@ -402,6 +417,16 @@
           <Property Name="svc_Nom" Type="nvarchar" MaxLength="250" />
           <Property Name="svc_description" Type="nvarchar(max)" />
           <Property Name="svc_Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Unite_Mesure">
           <Key>
@@ -468,6 +493,338 @@
           <Property Name="vil_Nom" Type="nvarchar" MaxLength="500" />
           <Property Name="vil_Description" Type="nvarchar(max)" />
           <Property Name="vil_Status" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.v_Bon_Reference' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Bon_Reference">
+          <Key>
+            <PropertyRef Name="br_ID" />
+          </Key>
+          <Property Name="br_ID" Type="int" Nullable="false" />
+          <Property Name="br_Type" Type="nchar" MaxLength="10" />
+          <Property Name="art_ID" Type="int" />
+          <Property Name="ref_reference" Type="nvarchar(max)" />
+          <Property Name="bon_ID" Type="int" />
+          <Property Name="br_Qte" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="bs_A_ID" Type="int" />
+          <Property Name="be_A_ID" Type="int" />
+          <Property Name="bt_A_ID" Type="int" />
+          <Property Name="br_Status_Gravage" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.v_Bon_Retour_Article' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Bon_Retour_Article">
+          <Key>
+            <PropertyRef Name="bt_A_ID" />
+            <PropertyRef Name="unit_M_ID" />
+          </Key>
+          <Property Name="bt_A_ID" Type="int" Nullable="false" />
+          <Property Name="bt_A_Date" Type="date" />
+          <Property Name="vl_Marque" Type="nvarchar(max)" />
+          <Property Name="art_Designation" Type="nvarchar" MaxLength="500" />
+          <Property Name="bt_A_Etat" Type="bit" />
+          <Property Name="bt_Qte_Livree" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="bt_ID" Type="int" />
+          <Property Name="bt_A_Description" Type="nvarchar(max)" />
+          <Property Name="unit_M_ID" Type="int" Nullable="false" />
+          <Property Name="unit_M_Nom" Type="nvarchar" MaxLength="350" />
+          <Property Name="unit_M_Abreviation" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.v_Bon_Sortie_Article' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Bon_Sortie_Article">
+          <Key>
+            <PropertyRef Name="bs_A_ID" />
+            <PropertyRef Name="unit_M_ID" />
+          </Key>
+          <Property Name="bs_A_ID" Type="int" Nullable="false" />
+          <Property Name="bs_A_Date" Type="date" />
+          <Property Name="vl_Marque" Type="nvarchar(max)" />
+          <Property Name="art_Designation" Type="nvarchar" MaxLength="500" />
+          <Property Name="bs_A_Etat" Type="bit" />
+          <Property Name="bs_Qte_Livree" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="bs_ID" Type="int" />
+          <Property Name="bs_A_Description" Type="nvarchar(max)" />
+          <Property Name="unit_M_ID" Type="int" Nullable="false" />
+          <Property Name="unit_M_Nom" Type="nvarchar" MaxLength="350" />
+          <Property Name="unit_M_Abreviation" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.v_Emplacement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Emplacement">
+          <Key>
+            <PropertyRef Name="eplc_ID" />
+          </Key>
+          <Property Name="eplc_ID" Type="int" Nullable="false" />
+          <Property Name="eplc_Date" Type="datetime" />
+          <Property Name="mags_Magasin" Type="nvarchar" MaxLength="250" />
+          <Property Name="art_Designation" Type="nvarchar" MaxLength="500" />
+          <Property Name="ref_reference" Type="nvarchar(max)" />
+          <Property Name="rayo_Nom" Type="nvarchar" MaxLength="200" />
+          <Property Name="arm_Nom" Type="nvarchar" MaxLength="350" />
+          <Property Name="eplc_Description" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.v_Get_E_Bon_Article' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Get_E_Bon_Article">
+          <Key>
+            <PropertyRef Name="br_ID" />
+          </Key>
+          <Property Name="br_ID" Type="int" Nullable="false" />
+          <Property Name="br_Type" Type="nchar" MaxLength="10" />
+          <Property Name="art_ID" Type="int" />
+          <Property Name="ref_reference" Type="nvarchar(max)" />
+          <Property Name="bon_ID" Type="int" />
+          <Property Name="br_Qte" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="be_A_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.v_Priv' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Priv">
+          <Key>
+            <PropertyRef Name="list_ID" />
+          </Key>
+          <Property Name="util_ID" Type="int" />
+          <Property Name="scrn_ID" Type="int" />
+          <Property Name="scrn_Nom" Type="nvarchar(max)" />
+          <Property Name="list_ID" Type="int" Nullable="false" />
+          <Property Name="priv_Afficher" Type="bit" />
+          <Property Name="priv_Ajouter" Type="bit" />
+          <Property Name="priv_Modifier" Type="bit" />
+          <Property Name="priv_Supprimer" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.v_Utilisateur' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Utilisateur">
+          <Key>
+            <PropertyRef Name="util_ID" />
+            <PropertyRef Name="pers_ID" />
+          </Key>
+          <Property Name="util_ID" Type="int" Nullable="false" />
+          <Property Name="pers_ID" Type="int" Nullable="false" />
+          <Property Name="pers_Prenom" Type="nvarchar(max)" />
+          <Property Name="pers_Nom" Type="nvarchar(max)" />
+          <Property Name="pers_Mle_FA" Type="nvarchar" MaxLength="50" />
+          <Property Name="grd_Grade" Type="nvarchar" MaxLength="300" />
+          <Property Name="util_Identifiant" Type="nvarchar(max)" />
+          <Property Name="util_MotPasse" Type="nvarchar(max)" />
+          <Property Name="svc_ID" Type="int" />
+          <Property Name="prof_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.View_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="mvt_ID" />
+            <PropertyRef Name="ref_ID" />
+            <PropertyRef Name="vl_ID" />
+            <PropertyRef Name="art_ID" />
+            <PropertyRef Name="unit_M_ID" />
+          </Key>
+          <Property Name="mvt_ID" Type="int" Nullable="false" />
+          <Property Name="vl_Marque" Type="nvarchar(max)" />
+          <Property Name="art_Designation" Type="nvarchar" MaxLength="500" />
+          <Property Name="ref_reference" Type="nvarchar(max)" />
+          <Property Name="mvt_Qte" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="bon_Type" Type="nchar" MaxLength="10" />
+          <Property Name="be_A_ID" Type="int" />
+          <Property Name="bt_A_ID" Type="int" />
+          <Property Name="bs_A_ID" Type="int" />
+          <Property Name="ref_ID" Type="int" Nullable="false" />
+          <Property Name="vl_ID" Type="int" Nullable="false" />
+          <Property Name="art_ID" Type="int" Nullable="false" />
+          <Property Name="unit_M_Coefficient" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mvt_Qte_Calc" Type="decimal" Precision="37" Scale="2" />
+          <Property Name="unit_M_ID" Type="int" Nullable="false" />
+          <Property Name="unit_M_Nom" Type="nvarchar" MaxLength="350" />
+          <Property Name="unit_M_Abreviation" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.Views' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Views">
+          <Key>
+            <PropertyRef Name="ref_ID" />
+            <PropertyRef Name="bs_ID" />
+          </Key>
+          <Property Name="bc_N_Serie" Type="nvarchar(max)" />
+          <Property Name="ref_ID" Type="int" Nullable="false" />
+          <Property Name="ref_reference" Type="nvarchar(max)" />
+          <Property Name="bon_ID" Type="int" />
+          <Property Name="bs_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.vwArticle_Info' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwArticle_Info">
+          <Key>
+            <PropertyRef Name="art_ID" />
+            <PropertyRef Name="fam_Nom" />
+          </Key>
+          <Property Name="art_ID" Type="int" Nullable="false" />
+          <Property Name="art_Designation" Type="nvarchar" MaxLength="500" />
+          <Property Name="art_Abreviation" Type="nchar" MaxLength="10" />
+          <Property Name="art_Description" Type="nvarchar(max)" />
+          <Property Name="svc_ID" Type="int" />
+          <Property Name="svc_Nom" Type="nvarchar" MaxLength="250" />
+          <Property Name="fam_Nom" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="art_Status" Type="bit" />
+          <Property Name="fam_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.vwBon_Entree_Article' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwBon_Entree_Article">
+          <Key>
+            <PropertyRef Name="be_A_ID" />
+          </Key>
+          <Property Name="be_A_ID" Type="int" Nullable="false" />
+          <Property Name="be_A_Date" Type="date" />
+          <Property Name="vl_Marque" Type="nvarchar(max)" />
+          <Property Name="art_Designation" Type="nvarchar" MaxLength="500" />
+          <Property Name="be_A_Etat" Type="bit" />
+          <Property Name="be_Qte_Livree" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="be_ID" Type="int" />
+          <Property Name="be_A_Description" Type="nvarchar(max)" />
+          <Property Name="unit_M_ID" Type="int" />
+          <Property Name="unit_M_Nom" Type="nvarchar" MaxLength="350" />
+          <Property Name="unit_M_Abreviation" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.vwCodeBarres' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwCodeBarres">
+          <Key>
+            <PropertyRef Name="bc_ID" />
+          </Key>
+          <Property Name="bc_ID" Type="int" Nullable="false" />
+          <Property Name="bc_Date" Type="date" />
+          <Property Name="bc_Type" Type="nchar" MaxLength="10" />
+          <Property Name="bon_ID" Type="int" />
+          <Property Name="bc_N_Serie" Type="nvarchar(max)" />
+          <Property Name="bc_Numero" Type="int" />
+          <Property Name="bc_Annee" Type="int" />
+          <Property Name="ref_reference" Type="nvarchar(max)" />
+          <Property Name="art_Designation" Type="nvarchar" MaxLength="500" />
+          <Property Name="vl_Marque" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.vwFournisseurs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwFournisseurs">
+          <Key>
+            <PropertyRef Name="frns_ID" />
+          </Key>
+          <Property Name="frns_ID" Type="int" Nullable="false" />
+          <Property Name="frns_Nom" Type="nvarchar(max)" />
+          <Property Name="frns_Adresse" Type="nvarchar(max)" />
+          <Property Name="frns_Adresse2" Type="nvarchar(max)" />
+          <Property Name="frns_Code_Postal" Type="nvarchar(max)" />
+          <Property Name="vil_Nom" Type="nvarchar" MaxLength="500" />
+          <Property Name="frns_Email" Type="nvarchar(max)" />
+          <Property Name="frns_GSM" Type="nvarchar(max)" />
+          <Property Name="frns_GSM2" Type="nvarchar(max)" />
+          <Property Name="frns_Fixe1" Type="nvarchar(max)" />
+          <Property Name="frns_Fixe2" Type="nvarchar(max)" />
+          <Property Name="frns_Description" Type="nvarchar(max)" />
+          <Property Name="frns_Status" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.vwMagasin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwMagasin">
+          <Key>
+            <PropertyRef Name="mags_ID" />
+          </Key>
+          <Property Name="mags_ID" Type="int" Nullable="false" />
+          <Property Name="mags_Magasin" Type="nvarchar" MaxLength="250" />
+          <Property Name="vil_Nom" Type="nvarchar" MaxLength="500" />
+          <Property Name="mags_Description" Type="nvarchar(max)" />
+          <Property Name="mags_Status" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.vwPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwPersonnel">
+          <Key>
+            <PropertyRef Name="pers_ID" />
+          </Key>
+          <Property Name="pers_ID" Type="int" Nullable="false" />
+          <Property Name="pers_Prenom" Type="nvarchar(max)" />
+          <Property Name="pers_Prenom_Ar" Type="nvarchar(max)" />
+          <Property Name="pers_Nom" Type="nvarchar(max)" />
+          <Property Name="pers_Nom_Ar" Type="nvarchar(max)" />
+          <Property Name="pers_Mle_FA" Type="nvarchar" MaxLength="50" />
+          <Property Name="grd_Grade" Type="nvarchar" MaxLength="300" />
+          <Property Name="unt_Unite" Type="nvarchar(max)" />
+          <Property Name="pers_Date_Naissance" Type="date" />
+          <Property Name="pers_Lieu_Naissance" Type="nvarchar(max)" />
+          <Property Name="pers_Lieu_Naissance_Ar" Type="nvarchar(max)" />
+          <Property Name="pers_Date_Engagement" Type="date" />
+          <Property Name="pers_Date_Nomination" Type="date" />
+          <Property Name="pers_Reff_Nomination" Type="nvarchar(max)" />
+          <Property Name="pers_Origine" Type="nvarchar(max)" />
+          <Property Name="pers_Origine_Ar" Type="nvarchar(max)" />
+          <Property Name="pers_CIN" Type="nchar" MaxLength="10" />
+          <Property Name="pers_Sexe" Type="nchar" MaxLength="10" />
+          <Property Name="pers_Adresse_Personnelle" Type="nvarchar(max)" />
+          <Property Name="pers_Adresse_Personnelle_Ar" Type="nvarchar(max)" />
+          <Property Name="pers_Carte_FA" Type="nchar" MaxLength="10" />
+          <Property Name="pers_Specialite" Type="nvarchar(max)" />
+          <Property Name="pers_Fonction" Type="nvarchar(max)" />
+          <Property Name="pers_Fonction_Ar" Type="nvarchar(max)" />
+          <Property Name="pers_Taille" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pers_Sit_Fam" Type="nvarchar(max)" />
+          <Property Name="pers_Sit_Fam_Ar" Type="nvarchar(max)" />
+          <Property Name="pers_E_Prenom" Type="nvarchar(max)" />
+          <Property Name="pers_E_Nom" Type="nvarchar(max)" />
+          <Property Name="pers_E_CIN" Type="nchar" MaxLength="10" />
+          <Property Name="pers_E_Date_Naissance" Type="date" />
+          <Property Name="pers_E_Lieu_Naissance" Type="nvarchar(max)" />
+          <Property Name="pers_Nbr_Enf" Type="nchar" MaxLength="10" />
+          <Property Name="pers_PPR" Type="nchar" MaxLength="10" />
+          <Property Name="gs_Nom" Type="nvarchar(max)" />
+          <Property Name="pers_Mutuel" Type="nchar" MaxLength="10" />
+          <Property Name="pers_Immatriculation" Type="nchar" MaxLength="10" />
+          <Property Name="pers_Affiliation" Type="nchar" MaxLength="10" />
+          <Property Name="pers_Date_Affiliation" Type="date" />
+          <Property Name="pers_Pere_Prenom" Type="nvarchar(max)" />
+          <Property Name="pers_Pere_Nom" Type="nvarchar(max)" />
+          <Property Name="pers_Pere_CIN" Type="nchar" MaxLength="10" />
+          <Property Name="pers_Pere_Date_Naissance" Type="date" />
+          <Property Name="pers_Pere_Lieu_Naissance" Type="nvarchar(max)" />
+          <Property Name="pers_Mere_Prenom" Type="nvarchar(max)" />
+          <Property Name="pers_Mere_Nom" Type="nvarchar(max)" />
+          <Property Name="pers_Mere_CIN" Type="nchar" MaxLength="10" />
+          <Property Name="pers_Mere_Date_Naissance" Type="date" />
+          <Property Name="pers_Mere_Lieu_Naissance" Type="nvarchar(max)" />
+          <Property Name="pers_Niv_Instrution" Type="nvarchar(max)" />
+          <Property Name="pers_Diplome_Universitaire" Type="nvarchar(max)" />
+          <Property Name="pers_Num_Passeport" Type="nchar" MaxLength="20" />
+          <Property Name="pers_Num_Arm_Chasse" Type="nchar" MaxLength="20" />
+          <Property Name="pers_Status" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.vwRepresentant' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwRepresentant">
+          <Key>
+            <PropertyRef Name="rep_ID" />
+            <PropertyRef Name="frns_ID" />
+          </Key>
+          <Property Name="rep_ID" Type="int" Nullable="false" />
+          <Property Name="rep_Nom" Type="nvarchar(max)" />
+          <Property Name="rep_Prenom" Type="nvarchar(max)" />
+          <Property Name="rep_Cin" Type="nchar" MaxLength="10" />
+          <Property Name="rep_Tele" Type="nvarchar(max)" />
+          <Property Name="rep_Observation" Type="nvarchar(max)" />
+          <Property Name="rep_Status" Type="bit" />
+          <Property Name="frns_ID" Type="int" Nullable="false" />
+          <Property Name="frns_Nom" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwUniteSoutien">
+          <Key>
+            <PropertyRef Name="unt_ID" />
+          </Key>
+          <Property Name="unt_ID" Type="int" Nullable="false" />
+          <Property Name="unt_Unite" Type="nvarchar(max)" />
+          <Property Name="vil_Nom" Type="nvarchar" MaxLength="500" />
+          <Property Name="unt_Description" Type="nvarchar(max)" />
+          <Property Name="unt_status" Type="bit" />
         </EntityType>
         <Association Name="FK_Article_CodeBarre_Action">
           <End Role="Action" Type="Self.Action" Multiplicity="0..1" />
@@ -1033,6 +1390,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Screen_Lists">
+          <End Role="Lists" Type="Self.Lists" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Screen" Type="Self.Screen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lists">
+              <PropertyRef Name="list_ID" />
+            </Principal>
+            <Dependent Role="Screen">
+              <PropertyRef Name="list_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Unite_Mesure_Article_Info">
           <End Role="Article_Info" Type="Self.Article_Info" Multiplicity="0..1" />
           <End Role="Unite_Mesure" Type="Self.Unite_Mesure" Multiplicity="*" />
@@ -1322,6 +1693,7 @@
           <Parameter Name="art_Abreviation" Type="nchar" Mode="In" />
           <Parameter Name="svc_ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="get_Annees_By_Annee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="an_Annee" Type="nvarchar(max)" Mode="In" />
         </Function>
@@ -1384,6 +1756,10 @@
         </Function>
         <Function Name="get_Unite_Mesure_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="unit_M_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Utilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="util_Identifiant" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="util_MotPasse" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="get_Utilisateur_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pers_ID" Type="int" Mode="In" />
@@ -1946,6 +2322,10 @@
         <Function Name="Select_Last_Type_CodeBarre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="bc_N_Serie" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Select_Lists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_Lists_By_Lists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="list_Nom" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="Select_Magasin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Select_Mouvement_By_Operation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TypeBon" Type="nchar" Mode="In" />
@@ -1960,10 +2340,22 @@
           <Parameter Name="art_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="Select_PPersonnel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_Priv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="util_ID" Type="int" Mode="In" />
+          <Parameter Name="list_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Priv_Screen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="util_ID" Type="int" Mode="In" />
+          <Parameter Name="scrn_Nom" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="list_ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Select_Profil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Select_Rayonnage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Select_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="frns_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Screen_By_idList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="list_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="Select_Service" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Select_Unite_Mesure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2055,6 +2447,36 @@
           <Parameter Name="vil_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="SommeQte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Status_Unite_Mesure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="art_ID" Type="int" Mode="In" />
           <Parameter Name="unit_M_Nom" Type="nvarchar" Mode="In" />
@@ -2282,6 +2704,14 @@
           <Parameter Name="ref_ID" Type="int" Mode="In" />
           <Parameter Name="art_ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="Update_Priv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="util_ID" Type="int" Mode="In" />
+          <Parameter Name="scrn_ID" Type="int" Mode="In" />
+          <Parameter Name="priv_Afficher" Type="bit" Mode="In" />
+          <Parameter Name="priv_Ajouter" Type="bit" Mode="In" />
+          <Parameter Name="priv_Modifier" Type="bit" Mode="In" />
+          <Parameter Name="priv_Supprimer" Type="bit" Mode="In" />
+        </Function>
         <Function Name="Update_Profil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="prof_ID" Type="int" Mode="In" />
           <Parameter Name="prof_Nom" Type="nvarchar" Mode="In" />
@@ -2325,11 +2755,9 @@
         <Function Name="Update_Utilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="util_ID" Type="int" Mode="In" />
           <Parameter Name="pers_ID" Type="int" Mode="In" />
-          <Parameter Name="util_Date" Type="datetime" Mode="In" />
           <Parameter Name="util_Identifiant" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="util_MotPasse" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="svc_ID" Type="int" Mode="In" />
-          <Parameter Name="prof_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="Update_Vehicule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vl_ID" Type="int" Mode="In" />
@@ -2366,6 +2794,10 @@
           <Parameter Name="unit_M_Min" Type="decimal" Mode="In" />
           <Parameter Name="unit_M_Max" Type="decimal" Mode="In" />
         </Function>
+        <Function Name="Validate_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_Username" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="user_Password" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <EntityContainer Name="ges_AutoModelStoreContainer">
           <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Annees" EntityType="Self.Annees" Schema="dbo" store:Type="Tables" />
@@ -2387,6 +2819,7 @@
           <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupeSanguin" EntityType="Self.GroupeSanguin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lists" EntityType="Self.Lists" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Magasin" EntityType="Self.Magasin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mouvement" EntityType="Self.Mouvement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pers_Affecte" EntityType="Self.pers_Affecte" Schema="dbo" store:Type="Tables" />
@@ -2395,13 +2828,286 @@
           <EntitySet Name="Profil" EntityType="Self.Profil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rayonnage" EntityType="Self.Rayonnage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Representant" EntityType="Self.Representant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Screen" EntityType="Self.Screen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unite_Mesure" EntityType="Self.Unite_Mesure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unite_Soutien" EntityType="Self.Unite_Soutien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehicule" EntityType="Self.Vehicule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehicule_Article" EntityType="Self.Vehicule_Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ville" EntityType="Self.Ville" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_Bon_Reference" EntityType="Self.v_Bon_Reference" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Bon_Reference].[br_ID] AS [br_ID], 
+    [v_Bon_Reference].[br_Type] AS [br_Type], 
+    [v_Bon_Reference].[art_ID] AS [art_ID], 
+    [v_Bon_Reference].[ref_reference] AS [ref_reference], 
+    [v_Bon_Reference].[bon_ID] AS [bon_ID], 
+    [v_Bon_Reference].[br_Qte] AS [br_Qte], 
+    [v_Bon_Reference].[bs_A_ID] AS [bs_A_ID], 
+    [v_Bon_Reference].[be_A_ID] AS [be_A_ID], 
+    [v_Bon_Reference].[bt_A_ID] AS [bt_A_ID], 
+    [v_Bon_Reference].[br_Status_Gravage] AS [br_Status_Gravage]
+    FROM [dbo].[v_Bon_Reference] AS [v_Bon_Reference]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Bon_Retour_Article" EntityType="Self.v_Bon_Retour_Article" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Bon_Retour_Article].[bt_A_ID] AS [bt_A_ID], 
+    [v_Bon_Retour_Article].[bt_A_Date] AS [bt_A_Date], 
+    [v_Bon_Retour_Article].[vl_Marque] AS [vl_Marque], 
+    [v_Bon_Retour_Article].[art_Designation] AS [art_Designation], 
+    [v_Bon_Retour_Article].[bt_A_Etat] AS [bt_A_Etat], 
+    [v_Bon_Retour_Article].[bt_Qte_Livree] AS [bt_Qte_Livree], 
+    [v_Bon_Retour_Article].[bt_ID] AS [bt_ID], 
+    [v_Bon_Retour_Article].[bt_A_Description] AS [bt_A_Description], 
+    [v_Bon_Retour_Article].[unit_M_ID] AS [unit_M_ID], 
+    [v_Bon_Retour_Article].[unit_M_Nom] AS [unit_M_Nom], 
+    [v_Bon_Retour_Article].[unit_M_Abreviation] AS [unit_M_Abreviation]
+    FROM [dbo].[v_Bon_Retour_Article] AS [v_Bon_Retour_Article]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Bon_Sortie_Article" EntityType="Self.v_Bon_Sortie_Article" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Bon_Sortie_Article].[bs_A_ID] AS [bs_A_ID], 
+    [v_Bon_Sortie_Article].[bs_A_Date] AS [bs_A_Date], 
+    [v_Bon_Sortie_Article].[vl_Marque] AS [vl_Marque], 
+    [v_Bon_Sortie_Article].[art_Designation] AS [art_Designation], 
+    [v_Bon_Sortie_Article].[bs_A_Etat] AS [bs_A_Etat], 
+    [v_Bon_Sortie_Article].[bs_Qte_Livree] AS [bs_Qte_Livree], 
+    [v_Bon_Sortie_Article].[bs_ID] AS [bs_ID], 
+    [v_Bon_Sortie_Article].[bs_A_Description] AS [bs_A_Description], 
+    [v_Bon_Sortie_Article].[unit_M_ID] AS [unit_M_ID], 
+    [v_Bon_Sortie_Article].[unit_M_Nom] AS [unit_M_Nom], 
+    [v_Bon_Sortie_Article].[unit_M_Abreviation] AS [unit_M_Abreviation]
+    FROM [dbo].[v_Bon_Sortie_Article] AS [v_Bon_Sortie_Article]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Emplacement" EntityType="Self.v_Emplacement" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Emplacement].[eplc_ID] AS [eplc_ID], 
+    [v_Emplacement].[eplc_Date] AS [eplc_Date], 
+    [v_Emplacement].[mags_Magasin] AS [mags_Magasin], 
+    [v_Emplacement].[art_Designation] AS [art_Designation], 
+    [v_Emplacement].[ref_reference] AS [ref_reference], 
+    [v_Emplacement].[rayo_Nom] AS [rayo_Nom], 
+    [v_Emplacement].[arm_Nom] AS [arm_Nom], 
+    [v_Emplacement].[eplc_Description] AS [eplc_Description]
+    FROM [dbo].[v_Emplacement] AS [v_Emplacement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Get_E_Bon_Article" EntityType="Self.v_Get_E_Bon_Article" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Get_E_Bon_Article].[br_ID] AS [br_ID], 
+    [v_Get_E_Bon_Article].[br_Type] AS [br_Type], 
+    [v_Get_E_Bon_Article].[art_ID] AS [art_ID], 
+    [v_Get_E_Bon_Article].[ref_reference] AS [ref_reference], 
+    [v_Get_E_Bon_Article].[bon_ID] AS [bon_ID], 
+    [v_Get_E_Bon_Article].[br_Qte] AS [br_Qte], 
+    [v_Get_E_Bon_Article].[be_A_ID] AS [be_A_ID]
+    FROM [dbo].[v_Get_E_Bon_Article] AS [v_Get_E_Bon_Article]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Priv" EntityType="Self.v_Priv" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Priv].[util_ID] AS [util_ID], 
+    [v_Priv].[scrn_ID] AS [scrn_ID], 
+    [v_Priv].[scrn_Nom] AS [scrn_Nom], 
+    [v_Priv].[list_ID] AS [list_ID], 
+    [v_Priv].[priv_Afficher] AS [priv_Afficher], 
+    [v_Priv].[priv_Ajouter] AS [priv_Ajouter], 
+    [v_Priv].[priv_Modifier] AS [priv_Modifier], 
+    [v_Priv].[priv_Supprimer] AS [priv_Supprimer]
+    FROM [dbo].[v_Priv] AS [v_Priv]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Utilisateur" EntityType="Self.v_Utilisateur" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Utilisateur].[util_ID] AS [util_ID], 
+    [v_Utilisateur].[pers_ID] AS [pers_ID], 
+    [v_Utilisateur].[pers_Prenom] AS [pers_Prenom], 
+    [v_Utilisateur].[pers_Nom] AS [pers_Nom], 
+    [v_Utilisateur].[pers_Mle_FA] AS [pers_Mle_FA], 
+    [v_Utilisateur].[grd_Grade] AS [grd_Grade], 
+    [v_Utilisateur].[util_Identifiant] AS [util_Identifiant], 
+    [v_Utilisateur].[util_MotPasse] AS [util_MotPasse], 
+    [v_Utilisateur].[svc_ID] AS [svc_ID], 
+    [v_Utilisateur].[prof_ID] AS [prof_ID]
+    FROM [dbo].[v_Utilisateur] AS [v_Utilisateur]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_1].[mvt_ID] AS [mvt_ID], 
+    [View_1].[vl_Marque] AS [vl_Marque], 
+    [View_1].[art_Designation] AS [art_Designation], 
+    [View_1].[ref_reference] AS [ref_reference], 
+    [View_1].[mvt_Qte] AS [mvt_Qte], 
+    [View_1].[bon_Type] AS [bon_Type], 
+    [View_1].[be_A_ID] AS [be_A_ID], 
+    [View_1].[bt_A_ID] AS [bt_A_ID], 
+    [View_1].[bs_A_ID] AS [bs_A_ID], 
+    [View_1].[ref_ID] AS [ref_ID], 
+    [View_1].[vl_ID] AS [vl_ID], 
+    [View_1].[art_ID] AS [art_ID], 
+    [View_1].[unit_M_Coefficient] AS [unit_M_Coefficient], 
+    [View_1].[mvt_Qte_Calc] AS [mvt_Qte_Calc], 
+    [View_1].[unit_M_ID] AS [unit_M_ID], 
+    [View_1].[unit_M_Nom] AS [unit_M_Nom], 
+    [View_1].[unit_M_Abreviation] AS [unit_M_Abreviation]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Views" EntityType="Self.Views" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Views].[bc_N_Serie] AS [bc_N_Serie], 
+    [Views].[ref_ID] AS [ref_ID], 
+    [Views].[ref_reference] AS [ref_reference], 
+    [Views].[bon_ID] AS [bon_ID], 
+    [Views].[bs_ID] AS [bs_ID]
+    FROM [dbo].[Views] AS [Views]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwArticle_Info" EntityType="Self.vwArticle_Info" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwArticle_Info].[art_ID] AS [art_ID], 
+    [vwArticle_Info].[art_Designation] AS [art_Designation], 
+    [vwArticle_Info].[art_Abreviation] AS [art_Abreviation], 
+    [vwArticle_Info].[art_Description] AS [art_Description], 
+    [vwArticle_Info].[svc_ID] AS [svc_ID], 
+    [vwArticle_Info].[svc_Nom] AS [svc_Nom], 
+    [vwArticle_Info].[fam_Nom] AS [fam_Nom], 
+    [vwArticle_Info].[art_Status] AS [art_Status], 
+    [vwArticle_Info].[fam_ID] AS [fam_ID]
+    FROM [dbo].[vwArticle_Info] AS [vwArticle_Info]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwBon_Entree_Article" EntityType="Self.vwBon_Entree_Article" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwBon_Entree_Article].[be_A_ID] AS [be_A_ID], 
+    [vwBon_Entree_Article].[be_A_Date] AS [be_A_Date], 
+    [vwBon_Entree_Article].[vl_Marque] AS [vl_Marque], 
+    [vwBon_Entree_Article].[art_Designation] AS [art_Designation], 
+    [vwBon_Entree_Article].[be_A_Etat] AS [be_A_Etat], 
+    [vwBon_Entree_Article].[be_Qte_Livree] AS [be_Qte_Livree], 
+    [vwBon_Entree_Article].[be_ID] AS [be_ID], 
+    [vwBon_Entree_Article].[be_A_Description] AS [be_A_Description], 
+    [vwBon_Entree_Article].[unit_M_ID] AS [unit_M_ID], 
+    [vwBon_Entree_Article].[unit_M_Nom] AS [unit_M_Nom], 
+    [vwBon_Entree_Article].[unit_M_Abreviation] AS [unit_M_Abreviation]
+    FROM [dbo].[vwBon_Entree_Article] AS [vwBon_Entree_Article]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwCodeBarres" EntityType="Self.vwCodeBarres" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwCodeBarres].[bc_ID] AS [bc_ID], 
+    [vwCodeBarres].[bc_Date] AS [bc_Date], 
+    [vwCodeBarres].[bc_Type] AS [bc_Type], 
+    [vwCodeBarres].[bon_ID] AS [bon_ID], 
+    [vwCodeBarres].[bc_N_Serie] AS [bc_N_Serie], 
+    [vwCodeBarres].[bc_Numero] AS [bc_Numero], 
+    [vwCodeBarres].[bc_Annee] AS [bc_Annee], 
+    [vwCodeBarres].[ref_reference] AS [ref_reference], 
+    [vwCodeBarres].[art_Designation] AS [art_Designation], 
+    [vwCodeBarres].[vl_Marque] AS [vl_Marque]
+    FROM [dbo].[vwCodeBarres] AS [vwCodeBarres]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwFournisseurs" EntityType="Self.vwFournisseurs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwFournisseurs].[frns_ID] AS [frns_ID], 
+    [vwFournisseurs].[frns_Nom] AS [frns_Nom], 
+    [vwFournisseurs].[frns_Adresse] AS [frns_Adresse], 
+    [vwFournisseurs].[frns_Adresse2] AS [frns_Adresse2], 
+    [vwFournisseurs].[frns_Code_Postal] AS [frns_Code_Postal], 
+    [vwFournisseurs].[vil_Nom] AS [vil_Nom], 
+    [vwFournisseurs].[frns_Email] AS [frns_Email], 
+    [vwFournisseurs].[frns_GSM] AS [frns_GSM], 
+    [vwFournisseurs].[frns_GSM2] AS [frns_GSM2], 
+    [vwFournisseurs].[frns_Fixe1] AS [frns_Fixe1], 
+    [vwFournisseurs].[frns_Fixe2] AS [frns_Fixe2], 
+    [vwFournisseurs].[frns_Description] AS [frns_Description], 
+    [vwFournisseurs].[frns_Status] AS [frns_Status]
+    FROM [dbo].[vwFournisseurs] AS [vwFournisseurs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwMagasin" EntityType="Self.vwMagasin" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwMagasin].[mags_ID] AS [mags_ID], 
+    [vwMagasin].[mags_Magasin] AS [mags_Magasin], 
+    [vwMagasin].[vil_Nom] AS [vil_Nom], 
+    [vwMagasin].[mags_Description] AS [mags_Description], 
+    [vwMagasin].[mags_Status] AS [mags_Status]
+    FROM [dbo].[vwMagasin] AS [vwMagasin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPersonnel" EntityType="Self.vwPersonnel" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwPersonnel].[pers_ID] AS [pers_ID], 
+    [vwPersonnel].[pers_Prenom] AS [pers_Prenom], 
+    [vwPersonnel].[pers_Prenom_Ar] AS [pers_Prenom_Ar], 
+    [vwPersonnel].[pers_Nom] AS [pers_Nom], 
+    [vwPersonnel].[pers_Nom_Ar] AS [pers_Nom_Ar], 
+    [vwPersonnel].[pers_Mle_FA] AS [pers_Mle_FA], 
+    [vwPersonnel].[grd_Grade] AS [grd_Grade], 
+    [vwPersonnel].[unt_Unite] AS [unt_Unite], 
+    [vwPersonnel].[pers_Date_Naissance] AS [pers_Date_Naissance], 
+    [vwPersonnel].[pers_Lieu_Naissance] AS [pers_Lieu_Naissance], 
+    [vwPersonnel].[pers_Lieu_Naissance_Ar] AS [pers_Lieu_Naissance_Ar], 
+    [vwPersonnel].[pers_Date_Engagement] AS [pers_Date_Engagement], 
+    [vwPersonnel].[pers_Date_Nomination] AS [pers_Date_Nomination], 
+    [vwPersonnel].[pers_Reff_Nomination] AS [pers_Reff_Nomination], 
+    [vwPersonnel].[pers_Origine] AS [pers_Origine], 
+    [vwPersonnel].[pers_Origine_Ar] AS [pers_Origine_Ar], 
+    [vwPersonnel].[pers_CIN] AS [pers_CIN], 
+    [vwPersonnel].[pers_Sexe] AS [pers_Sexe], 
+    [vwPersonnel].[pers_Adresse_Personnelle] AS [pers_Adresse_Personnelle], 
+    [vwPersonnel].[pers_Adresse_Personnelle_Ar] AS [pers_Adresse_Personnelle_Ar], 
+    [vwPersonnel].[pers_Carte_FA] AS [pers_Carte_FA], 
+    [vwPersonnel].[pers_Specialite] AS [pers_Specialite], 
+    [vwPersonnel].[pers_Fonction] AS [pers_Fonction], 
+    [vwPersonnel].[pers_Fonction_Ar] AS [pers_Fonction_Ar], 
+    [vwPersonnel].[pers_Taille] AS [pers_Taille], 
+    [vwPersonnel].[pers_Sit_Fam] AS [pers_Sit_Fam], 
+    [vwPersonnel].[pers_Sit_Fam_Ar] AS [pers_Sit_Fam_Ar], 
+    [vwPersonnel].[pers_E_Prenom] AS [pers_E_Prenom], 
+    [vwPersonnel].[pers_E_Nom] AS [pers_E_Nom], 
+    [vwPersonnel].[pers_E_CIN] AS [pers_E_CIN], 
+    [vwPersonnel].[pers_E_Date_Naissance] AS [pers_E_Date_Naissance], 
+    [vwPersonnel].[pers_E_Lieu_Naissance] AS [pers_E_Lieu_Naissance], 
+    [vwPersonnel].[pers_Nbr_Enf] AS [pers_Nbr_Enf], 
+    [vwPersonnel].[pers_PPR] AS [pers_PPR], 
+    [vwPersonnel].[gs_Nom] AS [gs_Nom], 
+    [vwPersonnel].[pers_Mutuel] AS [pers_Mutuel], 
+    [vwPersonnel].[pers_Immatriculation] AS [pers_Immatriculation], 
+    [vwPersonnel].[pers_Affiliation] AS [pers_Affiliation], 
+    [vwPersonnel].[pers_Date_Affiliation] AS [pers_Date_Affiliation], 
+    [vwPersonnel].[pers_Pere_Prenom] AS [pers_Pere_Prenom], 
+    [vwPersonnel].[pers_Pere_Nom] AS [pers_Pere_Nom], 
+    [vwPersonnel].[pers_Pere_CIN] AS [pers_Pere_CIN], 
+    [vwPersonnel].[pers_Pere_Date_Naissance] AS [pers_Pere_Date_Naissance], 
+    [vwPersonnel].[pers_Pere_Lieu_Naissance] AS [pers_Pere_Lieu_Naissance], 
+    [vwPersonnel].[pers_Mere_Prenom] AS [pers_Mere_Prenom], 
+    [vwPersonnel].[pers_Mere_Nom] AS [pers_Mere_Nom], 
+    [vwPersonnel].[pers_Mere_CIN] AS [pers_Mere_CIN], 
+    [vwPersonnel].[pers_Mere_Date_Naissance] AS [pers_Mere_Date_Naissance], 
+    [vwPersonnel].[pers_Mere_Lieu_Naissance] AS [pers_Mere_Lieu_Naissance], 
+    [vwPersonnel].[pers_Niv_Instrution] AS [pers_Niv_Instrution], 
+    [vwPersonnel].[pers_Diplome_Universitaire] AS [pers_Diplome_Universitaire], 
+    [vwPersonnel].[pers_Num_Passeport] AS [pers_Num_Passeport], 
+    [vwPersonnel].[pers_Num_Arm_Chasse] AS [pers_Num_Arm_Chasse], 
+    [vwPersonnel].[pers_Status] AS [pers_Status]
+    FROM [dbo].[vwPersonnel] AS [vwPersonnel]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwRepresentant" EntityType="Self.vwRepresentant" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwRepresentant].[rep_ID] AS [rep_ID], 
+    [vwRepresentant].[rep_Nom] AS [rep_Nom], 
+    [vwRepresentant].[rep_Prenom] AS [rep_Prenom], 
+    [vwRepresentant].[rep_Cin] AS [rep_Cin], 
+    [vwRepresentant].[rep_Tele] AS [rep_Tele], 
+    [vwRepresentant].[rep_Observation] AS [rep_Observation], 
+    [vwRepresentant].[rep_Status] AS [rep_Status], 
+    [vwRepresentant].[frns_ID] AS [frns_ID], 
+    [vwRepresentant].[frns_Nom] AS [frns_Nom]
+    FROM [dbo].[vwRepresentant] AS [vwRepresentant]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwUniteSoutien" EntityType="Self.vwUniteSoutien" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwUniteSoutien].[unt_ID] AS [unt_ID], 
+    [vwUniteSoutien].[unt_Unite] AS [unt_Unite], 
+    [vwUniteSoutien].[vil_Nom] AS [vil_Nom], 
+    [vwUniteSoutien].[unt_Description] AS [unt_Description], 
+    [vwUniteSoutien].[unt_status] AS [unt_status]
+    FROM [dbo].[vwUniteSoutien] AS [vwUniteSoutien]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Article_CodeBarre_Action" Association="Self.FK_Article_CodeBarre_Action">
             <End Role="Action" EntitySet="Action" />
             <End Role="Article_CodeBarre" EntitySet="Article_CodeBarre" />
@@ -2589,6 +3295,10 @@
           <AssociationSet Name="FK_Representant_Fournisseur" Association="Self.FK_Representant_Fournisseur">
             <End Role="Fournisseur" EntitySet="Fournisseur" />
             <End Role="Representant" EntitySet="Representant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Screen_Lists" Association="Self.FK_Screen_Lists">
+            <End Role="Lists" EntitySet="Lists" />
+            <End Role="Screen" EntitySet="Screen" />
           </AssociationSet>
           <AssociationSet Name="FK_Unite_Mesure_Article_Info" Association="Self.FK_Unite_Mesure_Article_Info">
             <End Role="Article_Info" EntitySet="Article_Info" />
@@ -5349,6 +6059,99 @@
             <Parameter Name="svc_ID" Mode="In" Type="Int32" />
             <Parameter Name="prof_ID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Lists" EntityType="ges_AutoModel.List" />
+          <EntitySet Name="Screens" EntityType="ges_AutoModel.Screen" />
+          <EntitySet Name="sysdiagrams" EntityType="ges_AutoModel.sysdiagram" />
+          <AssociationSet Name="FK_Screen_Lists" Association="ges_AutoModel.FK_Screen_Lists">
+            <End Role="List" EntitySet="Lists" />
+            <End Role="Screen" EntitySet="Screens" />
+          </AssociationSet>
+          <FunctionImport Name="Select_Lists" ReturnType="Collection(ges_AutoModel.Select_Lists_Result)" />
+          <FunctionImport Name="Select_Priv" ReturnType="Collection(ges_AutoModel.Select_Priv_Result)">
+            <Parameter Name="util_ID" Mode="In" Type="Int32" />
+            <Parameter Name="list_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Utilisateur">
+            <Parameter Name="util_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pers_ID" Mode="In" Type="Int32" />
+            <Parameter Name="util_Identifiant" Mode="In" Type="String" />
+            <Parameter Name="util_MotPasse" Mode="In" Type="String" />
+            <Parameter Name="svc_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Priv">
+            <Parameter Name="util_ID" Mode="In" Type="Int32" />
+            <Parameter Name="scrn_ID" Mode="In" Type="Int32" />
+            <Parameter Name="priv_Afficher" Mode="In" Type="Boolean" />
+            <Parameter Name="priv_Ajouter" Mode="In" Type="Boolean" />
+            <Parameter Name="priv_Modifier" Mode="In" Type="Boolean" />
+            <Parameter Name="priv_Supprimer" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Screen_By_idList" ReturnType="Collection(ges_AutoModel.Select_Screen_By_idList_Result)">
+          <Parameter Name="list_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ges_AutoModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ges_AutoModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="v_Utilisateur" EntityType="ges_AutoModel.v_Utilisateur" />
+          <EntitySet Name="v_Bon_Reference" EntityType="ges_AutoModel.v_Bon_Reference" />
+          <EntitySet Name="v_Bon_Retour_Article" EntityType="ges_AutoModel.v_Bon_Retour_Article" />
+          <EntitySet Name="v_Bon_Sortie_Article" EntityType="ges_AutoModel.v_Bon_Sortie_Article" />
+          <EntitySet Name="v_Emplacement" EntityType="ges_AutoModel.v_Emplacement" />
+          <EntitySet Name="v_Get_E_Bon_Article" EntityType="ges_AutoModel.v_Get_E_Bon_Article" />
+          <EntitySet Name="v_Priv" EntityType="ges_AutoModel.v_Priv" />
+          <EntitySet Name="View_1" EntityType="ges_AutoModel.View_1" />
+          <EntitySet Name="Views" EntityType="ges_AutoModel.View" />
+          <EntitySet Name="vwArticle_Info" EntityType="ges_AutoModel.vwArticle_Info" />
+          <EntitySet Name="vwBon_Entree_Article" EntityType="ges_AutoModel.vwBon_Entree_Article" />
+          <EntitySet Name="vwCodeBarres" EntityType="ges_AutoModel.vwCodeBarre" />
+          <EntitySet Name="vwFournisseurs" EntityType="ges_AutoModel.vwFournisseur" />
+          <EntitySet Name="vwMagasins" EntityType="ges_AutoModel.vwMagasin" />
+          <EntitySet Name="vwPersonnels" EntityType="ges_AutoModel.vwPersonnel" />
+          <EntitySet Name="vwRepresentants" EntityType="ges_AutoModel.vwRepresentant" />
+          <EntitySet Name="vwUniteSoutiens" EntityType="ges_AutoModel.vwUniteSoutien" />
+          <FunctionImport Name="get_Utilisateur" EntitySet="v_Utilisateur" ReturnType="Collection(ges_AutoModel.v_Utilisateur)">
+            <Parameter Name="util_Identifiant" Mode="In" Type="String" />
+            <Parameter Name="util_MotPasse" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Validate_Users" ReturnType="Collection(Int32)">
+            <Parameter Name="user_Username" Mode="In" Type="String" />
+            <Parameter Name="user_Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Priv_Screen" ReturnType="Collection(ges_AutoModel.Select_Priv_Screen_Result)">
+            <Parameter Name="util_ID" Mode="In" Type="Int32" />
+            <Parameter Name="scrn_Nom" Mode="In" Type="String" />
+            <Parameter Name="list_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Lists_By_Lists" ReturnType="Collection(Int32)">
+          <Parameter Name="list_Nom" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Etat_Explicatif_UMesure_Result">
           <Property Type="String" Name="unit_M_Nom" Nullable="true" MaxLength="350" />
@@ -6068,6 +6871,380 @@
           <Property Type="String" Name="pers_Diplome_Universitaire" Nullable="true" />
           <Property Type="String" Name="pers_Num_Passeport" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="pers_Num_Arm_Chasse" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="List">
+          <Key>
+            <PropertyRef Name="list_ID" />
+          </Key>
+          <Property Name="list_ID" Type="Int32" Nullable="false" />
+          <Property Name="list_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Screens" Relationship="ges_AutoModel.FK_Screen_Lists" FromRole="List" ToRole="Screen" />
+        </EntityType>
+        <EntityType Name="Screen">
+          <Key>
+            <PropertyRef Name="scrn_ID" />
+          </Key>
+          <Property Name="scrn_ID" Type="Int32" Nullable="false" />
+          <Property Name="scrn_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="list_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="List" Relationship="ges_AutoModel.FK_Screen_Lists" FromRole="Screen" ToRole="List" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Screen_Lists">
+          <End Type="ges_AutoModel.List" Role="List" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ges_AutoModel.Screen" Role="Screen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List">
+              <PropertyRef Name="list_ID" />
+            </Principal>
+            <Dependent Role="Screen">
+              <PropertyRef Name="list_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Select_Lists_Result">
+          <Property Type="Int32" Name="list_ID" Nullable="false" />
+          <Property Type="String" Name="list_Nom" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Priv_Result">
+          <Property Type="Int32" Name="util_ID" Nullable="true" />
+          <Property Type="Int32" Name="scrn_ID" Nullable="true" />
+          <Property Type="String" Name="scrn_Nom" Nullable="true" />
+          <Property Type="Boolean" Name="priv_Afficher" Nullable="true" />
+          <Property Type="Boolean" Name="priv_Ajouter" Nullable="true" />
+          <Property Type="Boolean" Name="priv_Modifier" Nullable="true" />
+          <Property Type="Boolean" Name="priv_Supprimer" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Screen_By_idList_Result">
+          <Property Type="Int32" Name="scrn_ID" Nullable="false" />
+          <Property Type="String" Name="scrn_Nom" Nullable="true" />
+          <Property Type="Int32" Name="list_ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="v_Utilisateur">
+          <Key>
+            <PropertyRef Name="util_ID" />
+            <PropertyRef Name="pers_ID" />
+          </Key>
+          <Property Name="util_ID" Type="Int32" Nullable="false" />
+          <Property Name="pers_ID" Type="Int32" Nullable="false" />
+          <Property Name="pers_Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Mle_FA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="grd_Grade" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="util_Identifiant" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="util_MotPasse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="svc_ID" Type="Int32" />
+          <Property Name="prof_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_Bon_Reference">
+          <Key>
+            <PropertyRef Name="br_ID" />
+          </Key>
+          <Property Name="br_ID" Type="Int32" Nullable="false" />
+          <Property Name="br_Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="art_ID" Type="Int32" />
+          <Property Name="ref_reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bon_ID" Type="Int32" />
+          <Property Name="br_Qte" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="bs_A_ID" Type="Int32" />
+          <Property Name="be_A_ID" Type="Int32" />
+          <Property Name="bt_A_ID" Type="Int32" />
+          <Property Name="br_Status_Gravage" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="v_Bon_Retour_Article">
+          <Key>
+            <PropertyRef Name="bt_A_ID" />
+            <PropertyRef Name="unit_M_ID" />
+          </Key>
+          <Property Name="bt_A_ID" Type="Int32" Nullable="false" />
+          <Property Name="bt_A_Date" Type="DateTime" Precision="0" />
+          <Property Name="vl_Marque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="art_Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="bt_A_Etat" Type="Boolean" />
+          <Property Name="bt_Qte_Livree" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="bt_ID" Type="Int32" />
+          <Property Name="bt_A_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unit_M_ID" Type="Int32" Nullable="false" />
+          <Property Name="unit_M_Nom" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="unit_M_Abreviation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_Bon_Sortie_Article">
+          <Key>
+            <PropertyRef Name="bs_A_ID" />
+            <PropertyRef Name="unit_M_ID" />
+          </Key>
+          <Property Name="bs_A_ID" Type="Int32" Nullable="false" />
+          <Property Name="bs_A_Date" Type="DateTime" Precision="0" />
+          <Property Name="vl_Marque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="art_Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="bs_A_Etat" Type="Boolean" />
+          <Property Name="bs_Qte_Livree" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="bs_ID" Type="Int32" />
+          <Property Name="bs_A_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unit_M_ID" Type="Int32" Nullable="false" />
+          <Property Name="unit_M_Nom" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="unit_M_Abreviation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_Emplacement">
+          <Key>
+            <PropertyRef Name="eplc_ID" />
+          </Key>
+          <Property Name="eplc_ID" Type="Int32" Nullable="false" />
+          <Property Name="eplc_Date" Type="DateTime" Precision="3" />
+          <Property Name="mags_Magasin" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="art_Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ref_reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rayo_Nom" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="arm_Nom" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="eplc_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_Get_E_Bon_Article">
+          <Key>
+            <PropertyRef Name="br_ID" />
+          </Key>
+          <Property Name="br_ID" Type="Int32" Nullable="false" />
+          <Property Name="br_Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="art_ID" Type="Int32" />
+          <Property Name="ref_reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bon_ID" Type="Int32" />
+          <Property Name="br_Qte" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="be_A_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_Priv">
+          <Key>
+            <PropertyRef Name="list_ID" />
+          </Key>
+          <Property Name="util_ID" Type="Int32" />
+          <Property Name="scrn_ID" Type="Int32" />
+          <Property Name="scrn_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="list_ID" Type="Int32" Nullable="false" />
+          <Property Name="priv_Afficher" Type="Boolean" />
+          <Property Name="priv_Ajouter" Type="Boolean" />
+          <Property Name="priv_Modifier" Type="Boolean" />
+          <Property Name="priv_Supprimer" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="mvt_ID" />
+            <PropertyRef Name="ref_ID" />
+            <PropertyRef Name="vl_ID" />
+            <PropertyRef Name="art_ID" />
+            <PropertyRef Name="unit_M_ID" />
+          </Key>
+          <Property Name="mvt_ID" Type="Int32" Nullable="false" />
+          <Property Name="vl_Marque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="art_Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ref_reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mvt_Qte" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bon_Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="be_A_ID" Type="Int32" />
+          <Property Name="bt_A_ID" Type="Int32" />
+          <Property Name="bs_A_ID" Type="Int32" />
+          <Property Name="ref_ID" Type="Int32" Nullable="false" />
+          <Property Name="vl_ID" Type="Int32" Nullable="false" />
+          <Property Name="art_ID" Type="Int32" Nullable="false" />
+          <Property Name="unit_M_Coefficient" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mvt_Qte_Calc" Type="Decimal" Precision="37" Scale="2" />
+          <Property Name="unit_M_ID" Type="Int32" Nullable="false" />
+          <Property Name="unit_M_Nom" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="unit_M_Abreviation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View">
+          <Key>
+            <PropertyRef Name="ref_ID" />
+            <PropertyRef Name="bs_ID" />
+          </Key>
+          <Property Name="bc_N_Serie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ref_ID" Type="Int32" Nullable="false" />
+          <Property Name="ref_reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bon_ID" Type="Int32" />
+          <Property Name="bs_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwArticle_Info">
+          <Key>
+            <PropertyRef Name="art_ID" />
+            <PropertyRef Name="fam_Nom" />
+          </Key>
+          <Property Name="art_ID" Type="Int32" Nullable="false" />
+          <Property Name="art_Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="art_Abreviation" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="art_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="svc_ID" Type="Int32" />
+          <Property Name="svc_Nom" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="fam_Nom" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="art_Status" Type="Boolean" />
+          <Property Name="fam_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwBon_Entree_Article">
+          <Key>
+            <PropertyRef Name="be_A_ID" />
+          </Key>
+          <Property Name="be_A_ID" Type="Int32" Nullable="false" />
+          <Property Name="be_A_Date" Type="DateTime" Precision="0" />
+          <Property Name="vl_Marque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="art_Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="be_A_Etat" Type="Boolean" />
+          <Property Name="be_Qte_Livree" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="be_ID" Type="Int32" />
+          <Property Name="be_A_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unit_M_ID" Type="Int32" />
+          <Property Name="unit_M_Nom" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="unit_M_Abreviation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwCodeBarre">
+          <Key>
+            <PropertyRef Name="bc_ID" />
+          </Key>
+          <Property Name="bc_ID" Type="Int32" Nullable="false" />
+          <Property Name="bc_Date" Type="DateTime" Precision="0" />
+          <Property Name="bc_Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="bon_ID" Type="Int32" />
+          <Property Name="bc_N_Serie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bc_Numero" Type="Int32" />
+          <Property Name="bc_Annee" Type="Int32" />
+          <Property Name="ref_reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="art_Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="vl_Marque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwFournisseur">
+          <Key>
+            <PropertyRef Name="frns_ID" />
+          </Key>
+          <Property Name="frns_ID" Type="Int32" Nullable="false" />
+          <Property Name="frns_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Adresse2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Code_Postal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vil_Nom" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_GSM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_GSM2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Fixe1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Fixe2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwMagasin">
+          <Key>
+            <PropertyRef Name="mags_ID" />
+          </Key>
+          <Property Name="mags_ID" Type="Int32" Nullable="false" />
+          <Property Name="mags_Magasin" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="vil_Nom" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="mags_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mags_Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwPersonnel">
+          <Key>
+            <PropertyRef Name="pers_ID" />
+          </Key>
+          <Property Name="pers_ID" Type="Int32" Nullable="false" />
+          <Property Name="pers_Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Prenom_Ar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Nom_Ar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Mle_FA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="grd_Grade" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="unt_Unite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Date_Naissance" Type="DateTime" Precision="0" />
+          <Property Name="pers_Lieu_Naissance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Lieu_Naissance_Ar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Date_Engagement" Type="DateTime" Precision="0" />
+          <Property Name="pers_Date_Nomination" Type="DateTime" Precision="0" />
+          <Property Name="pers_Reff_Nomination" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Origine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Origine_Ar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_CIN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Sexe" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Adresse_Personnelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Adresse_Personnelle_Ar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Carte_FA" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Specialite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Fonction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Fonction_Ar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Taille" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="pers_Sit_Fam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Sit_Fam_Ar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_E_Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_E_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_E_CIN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_E_Date_Naissance" Type="DateTime" Precision="0" />
+          <Property Name="pers_E_Lieu_Naissance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Nbr_Enf" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_PPR" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="gs_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Mutuel" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Immatriculation" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Affiliation" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Date_Affiliation" Type="DateTime" Precision="0" />
+          <Property Name="pers_Pere_Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Pere_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Pere_CIN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Pere_Date_Naissance" Type="DateTime" Precision="0" />
+          <Property Name="pers_Pere_Lieu_Naissance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Mere_Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Mere_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Mere_CIN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Mere_Date_Naissance" Type="DateTime" Precision="0" />
+          <Property Name="pers_Mere_Lieu_Naissance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Niv_Instrution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Diplome_Universitaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pers_Num_Passeport" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Num_Arm_Chasse" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="pers_Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwRepresentant">
+          <Key>
+            <PropertyRef Name="rep_ID" />
+            <PropertyRef Name="frns_ID" />
+          </Key>
+          <Property Name="rep_ID" Type="Int32" Nullable="false" />
+          <Property Name="rep_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rep_Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rep_Cin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="rep_Tele" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rep_Observation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rep_Status" Type="Boolean" />
+          <Property Name="frns_ID" Type="Int32" Nullable="false" />
+          <Property Name="frns_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwUniteSoutien">
+          <Key>
+            <PropertyRef Name="unt_ID" />
+          </Key>
+          <Property Name="unt_ID" Type="Int32" Nullable="false" />
+          <Property Name="unt_Unite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vil_Nom" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="unt_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unt_status" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="Select_Priv_Screen_Result">
+          <Property Type="Boolean" Name="priv_Afficher" Nullable="true" />
+          <Property Type="Boolean" Name="priv_Ajouter" Nullable="true" />
+          <Property Type="Boolean" Name="priv_Modifier" Nullable="true" />
+          <Property Type="Boolean" Name="priv_Supprimer" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7854,6 +9031,408 @@
           <FunctionImportMapping FunctionImportName="MAX_Utilisateur" FunctionName="ges_AutoModel.Store.MAX_Utilisateur" />
           <FunctionImportMapping FunctionImportName="Delete_Utilisateur" FunctionName="ges_AutoModel.Store.Delete_Utilisateur" />
           <FunctionImportMapping FunctionImportName="Insert_Utilisateur" FunctionName="ges_AutoModel.Store.Insert_Utilisateur" />
+          <EntitySetMapping Name="Lists">
+            <EntityTypeMapping TypeName="ges_AutoModel.List">
+              <MappingFragment StoreEntitySet="Lists">
+                <ScalarProperty Name="list_Nom" ColumnName="list_Nom" />
+                <ScalarProperty Name="list_ID" ColumnName="list_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Screens">
+            <EntityTypeMapping TypeName="ges_AutoModel.Screen">
+              <MappingFragment StoreEntitySet="Screen">
+                <ScalarProperty Name="list_ID" ColumnName="list_ID" />
+                <ScalarProperty Name="scrn_Nom" ColumnName="scrn_Nom" />
+                <ScalarProperty Name="scrn_ID" ColumnName="scrn_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ges_AutoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Select_Lists" FunctionName="ges_AutoModel.Store.Select_Lists">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Select_Lists_Result">
+                <ScalarProperty Name="list_ID" ColumnName="list_ID" />
+                <ScalarProperty Name="list_Nom" ColumnName="list_Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Priv" FunctionName="ges_AutoModel.Store.Select_Priv">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Select_Priv_Result">
+                <ScalarProperty Name="util_ID" ColumnName="util_ID" />
+                <ScalarProperty Name="scrn_ID" ColumnName="scrn_ID" />
+                <ScalarProperty Name="scrn_Nom" ColumnName="scrn_Nom" />
+                <ScalarProperty Name="priv_Afficher" ColumnName="priv_Afficher" />
+                <ScalarProperty Name="priv_Ajouter" ColumnName="priv_Ajouter" />
+                <ScalarProperty Name="priv_Modifier" ColumnName="priv_Modifier" />
+                <ScalarProperty Name="priv_Supprimer" ColumnName="priv_Supprimer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Utilisateur" FunctionName="ges_AutoModel.Store.Update_Utilisateur" />
+          <FunctionImportMapping FunctionImportName="Update_Priv" FunctionName="ges_AutoModel.Store.Update_Priv" />
+          <FunctionImportMapping FunctionImportName="Select_Screen_By_idList" FunctionName="ges_AutoModel.Store.Select_Screen_By_idList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Select_Screen_By_idList_Result">
+                <ScalarProperty Name="scrn_ID" ColumnName="scrn_ID" />
+                <ScalarProperty Name="scrn_Nom" ColumnName="scrn_Nom" />
+                <ScalarProperty Name="list_ID" ColumnName="list_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ges_AutoModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ges_AutoModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ges_AutoModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ges_AutoModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ges_AutoModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ges_AutoModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ges_AutoModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="v_Utilisateur">
+            <EntityTypeMapping TypeName="ges_AutoModel.v_Utilisateur">
+              <MappingFragment StoreEntitySet="v_Utilisateur">
+                <ScalarProperty Name="prof_ID" ColumnName="prof_ID" />
+                <ScalarProperty Name="svc_ID" ColumnName="svc_ID" />
+                <ScalarProperty Name="util_MotPasse" ColumnName="util_MotPasse" />
+                <ScalarProperty Name="util_Identifiant" ColumnName="util_Identifiant" />
+                <ScalarProperty Name="grd_Grade" ColumnName="grd_Grade" />
+                <ScalarProperty Name="pers_Mle_FA" ColumnName="pers_Mle_FA" />
+                <ScalarProperty Name="pers_Nom" ColumnName="pers_Nom" />
+                <ScalarProperty Name="pers_Prenom" ColumnName="pers_Prenom" />
+                <ScalarProperty Name="pers_ID" ColumnName="pers_ID" />
+                <ScalarProperty Name="util_ID" ColumnName="util_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Bon_Reference">
+            <EntityTypeMapping TypeName="ges_AutoModel.v_Bon_Reference">
+              <MappingFragment StoreEntitySet="v_Bon_Reference">
+                <ScalarProperty Name="br_Status_Gravage" ColumnName="br_Status_Gravage" />
+                <ScalarProperty Name="bt_A_ID" ColumnName="bt_A_ID" />
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+                <ScalarProperty Name="br_Qte" ColumnName="br_Qte" />
+                <ScalarProperty Name="bon_ID" ColumnName="bon_ID" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="art_ID" ColumnName="art_ID" />
+                <ScalarProperty Name="br_Type" ColumnName="br_Type" />
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Bon_Retour_Article">
+            <EntityTypeMapping TypeName="ges_AutoModel.v_Bon_Retour_Article">
+              <MappingFragment StoreEntitySet="v_Bon_Retour_Article">
+                <ScalarProperty Name="unit_M_Abreviation" ColumnName="unit_M_Abreviation" />
+                <ScalarProperty Name="unit_M_Nom" ColumnName="unit_M_Nom" />
+                <ScalarProperty Name="unit_M_ID" ColumnName="unit_M_ID" />
+                <ScalarProperty Name="bt_A_Description" ColumnName="bt_A_Description" />
+                <ScalarProperty Name="bt_ID" ColumnName="bt_ID" />
+                <ScalarProperty Name="bt_Qte_Livree" ColumnName="bt_Qte_Livree" />
+                <ScalarProperty Name="bt_A_Etat" ColumnName="bt_A_Etat" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="bt_A_Date" ColumnName="bt_A_Date" />
+                <ScalarProperty Name="bt_A_ID" ColumnName="bt_A_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Bon_Sortie_Article">
+            <EntityTypeMapping TypeName="ges_AutoModel.v_Bon_Sortie_Article">
+              <MappingFragment StoreEntitySet="v_Bon_Sortie_Article">
+                <ScalarProperty Name="unit_M_Abreviation" ColumnName="unit_M_Abreviation" />
+                <ScalarProperty Name="unit_M_Nom" ColumnName="unit_M_Nom" />
+                <ScalarProperty Name="unit_M_ID" ColumnName="unit_M_ID" />
+                <ScalarProperty Name="bs_A_Description" ColumnName="bs_A_Description" />
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_Qte_Livree" ColumnName="bs_Qte_Livree" />
+                <ScalarProperty Name="bs_A_Etat" ColumnName="bs_A_Etat" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="bs_A_Date" ColumnName="bs_A_Date" />
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Emplacement">
+            <EntityTypeMapping TypeName="ges_AutoModel.v_Emplacement">
+              <MappingFragment StoreEntitySet="v_Emplacement">
+                <ScalarProperty Name="eplc_Description" ColumnName="eplc_Description" />
+                <ScalarProperty Name="arm_Nom" ColumnName="arm_Nom" />
+                <ScalarProperty Name="rayo_Nom" ColumnName="rayo_Nom" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="mags_Magasin" ColumnName="mags_Magasin" />
+                <ScalarProperty Name="eplc_Date" ColumnName="eplc_Date" />
+                <ScalarProperty Name="eplc_ID" ColumnName="eplc_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Get_E_Bon_Article">
+            <EntityTypeMapping TypeName="ges_AutoModel.v_Get_E_Bon_Article">
+              <MappingFragment StoreEntitySet="v_Get_E_Bon_Article">
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+                <ScalarProperty Name="br_Qte" ColumnName="br_Qte" />
+                <ScalarProperty Name="bon_ID" ColumnName="bon_ID" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="art_ID" ColumnName="art_ID" />
+                <ScalarProperty Name="br_Type" ColumnName="br_Type" />
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Priv">
+            <EntityTypeMapping TypeName="ges_AutoModel.v_Priv">
+              <MappingFragment StoreEntitySet="v_Priv">
+                <ScalarProperty Name="priv_Supprimer" ColumnName="priv_Supprimer" />
+                <ScalarProperty Name="priv_Modifier" ColumnName="priv_Modifier" />
+                <ScalarProperty Name="priv_Ajouter" ColumnName="priv_Ajouter" />
+                <ScalarProperty Name="priv_Afficher" ColumnName="priv_Afficher" />
+                <ScalarProperty Name="list_ID" ColumnName="list_ID" />
+                <ScalarProperty Name="scrn_Nom" ColumnName="scrn_Nom" />
+                <ScalarProperty Name="scrn_ID" ColumnName="scrn_ID" />
+                <ScalarProperty Name="util_ID" ColumnName="util_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_1">
+            <EntityTypeMapping TypeName="ges_AutoModel.View_1">
+              <MappingFragment StoreEntitySet="View_1">
+                <ScalarProperty Name="unit_M_Abreviation" ColumnName="unit_M_Abreviation" />
+                <ScalarProperty Name="unit_M_Nom" ColumnName="unit_M_Nom" />
+                <ScalarProperty Name="unit_M_ID" ColumnName="unit_M_ID" />
+                <ScalarProperty Name="mvt_Qte_Calc" ColumnName="mvt_Qte_Calc" />
+                <ScalarProperty Name="unit_M_Coefficient" ColumnName="unit_M_Coefficient" />
+                <ScalarProperty Name="art_ID" ColumnName="art_ID" />
+                <ScalarProperty Name="vl_ID" ColumnName="vl_ID" />
+                <ScalarProperty Name="ref_ID" ColumnName="ref_ID" />
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+                <ScalarProperty Name="bt_A_ID" ColumnName="bt_A_ID" />
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+                <ScalarProperty Name="bon_Type" ColumnName="bon_Type" />
+                <ScalarProperty Name="mvt_Qte" ColumnName="mvt_Qte" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="mvt_ID" ColumnName="mvt_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Views">
+            <EntityTypeMapping TypeName="ges_AutoModel.View">
+              <MappingFragment StoreEntitySet="Views">
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bon_ID" ColumnName="bon_ID" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="ref_ID" ColumnName="ref_ID" />
+                <ScalarProperty Name="bc_N_Serie" ColumnName="bc_N_Serie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwArticle_Info">
+            <EntityTypeMapping TypeName="ges_AutoModel.vwArticle_Info">
+              <MappingFragment StoreEntitySet="vwArticle_Info">
+                <ScalarProperty Name="fam_ID" ColumnName="fam_ID" />
+                <ScalarProperty Name="art_Status" ColumnName="art_Status" />
+                <ScalarProperty Name="fam_Nom" ColumnName="fam_Nom" />
+                <ScalarProperty Name="svc_Nom" ColumnName="svc_Nom" />
+                <ScalarProperty Name="svc_ID" ColumnName="svc_ID" />
+                <ScalarProperty Name="art_Description" ColumnName="art_Description" />
+                <ScalarProperty Name="art_Abreviation" ColumnName="art_Abreviation" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="art_ID" ColumnName="art_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwBon_Entree_Article">
+            <EntityTypeMapping TypeName="ges_AutoModel.vwBon_Entree_Article">
+              <MappingFragment StoreEntitySet="vwBon_Entree_Article">
+                <ScalarProperty Name="unit_M_Abreviation" ColumnName="unit_M_Abreviation" />
+                <ScalarProperty Name="unit_M_Nom" ColumnName="unit_M_Nom" />
+                <ScalarProperty Name="unit_M_ID" ColumnName="unit_M_ID" />
+                <ScalarProperty Name="be_A_Description" ColumnName="be_A_Description" />
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_Qte_Livree" ColumnName="be_Qte_Livree" />
+                <ScalarProperty Name="be_A_Etat" ColumnName="be_A_Etat" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="be_A_Date" ColumnName="be_A_Date" />
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCodeBarres">
+            <EntityTypeMapping TypeName="ges_AutoModel.vwCodeBarre">
+              <MappingFragment StoreEntitySet="vwCodeBarres">
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="bc_Annee" ColumnName="bc_Annee" />
+                <ScalarProperty Name="bc_Numero" ColumnName="bc_Numero" />
+                <ScalarProperty Name="bc_N_Serie" ColumnName="bc_N_Serie" />
+                <ScalarProperty Name="bon_ID" ColumnName="bon_ID" />
+                <ScalarProperty Name="bc_Type" ColumnName="bc_Type" />
+                <ScalarProperty Name="bc_Date" ColumnName="bc_Date" />
+                <ScalarProperty Name="bc_ID" ColumnName="bc_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwFournisseurs">
+            <EntityTypeMapping TypeName="ges_AutoModel.vwFournisseur">
+              <MappingFragment StoreEntitySet="vwFournisseurs">
+                <ScalarProperty Name="frns_Status" ColumnName="frns_Status" />
+                <ScalarProperty Name="frns_Description" ColumnName="frns_Description" />
+                <ScalarProperty Name="frns_Fixe2" ColumnName="frns_Fixe2" />
+                <ScalarProperty Name="frns_Fixe1" ColumnName="frns_Fixe1" />
+                <ScalarProperty Name="frns_GSM2" ColumnName="frns_GSM2" />
+                <ScalarProperty Name="frns_GSM" ColumnName="frns_GSM" />
+                <ScalarProperty Name="frns_Email" ColumnName="frns_Email" />
+                <ScalarProperty Name="vil_Nom" ColumnName="vil_Nom" />
+                <ScalarProperty Name="frns_Code_Postal" ColumnName="frns_Code_Postal" />
+                <ScalarProperty Name="frns_Adresse2" ColumnName="frns_Adresse2" />
+                <ScalarProperty Name="frns_Adresse" ColumnName="frns_Adresse" />
+                <ScalarProperty Name="frns_Nom" ColumnName="frns_Nom" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwMagasins">
+            <EntityTypeMapping TypeName="ges_AutoModel.vwMagasin">
+              <MappingFragment StoreEntitySet="vwMagasin">
+                <ScalarProperty Name="mags_Status" ColumnName="mags_Status" />
+                <ScalarProperty Name="mags_Description" ColumnName="mags_Description" />
+                <ScalarProperty Name="vil_Nom" ColumnName="vil_Nom" />
+                <ScalarProperty Name="mags_Magasin" ColumnName="mags_Magasin" />
+                <ScalarProperty Name="mags_ID" ColumnName="mags_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPersonnels">
+            <EntityTypeMapping TypeName="ges_AutoModel.vwPersonnel">
+              <MappingFragment StoreEntitySet="vwPersonnel">
+                <ScalarProperty Name="pers_Status" ColumnName="pers_Status" />
+                <ScalarProperty Name="pers_Num_Arm_Chasse" ColumnName="pers_Num_Arm_Chasse" />
+                <ScalarProperty Name="pers_Num_Passeport" ColumnName="pers_Num_Passeport" />
+                <ScalarProperty Name="pers_Diplome_Universitaire" ColumnName="pers_Diplome_Universitaire" />
+                <ScalarProperty Name="pers_Niv_Instrution" ColumnName="pers_Niv_Instrution" />
+                <ScalarProperty Name="pers_Mere_Lieu_Naissance" ColumnName="pers_Mere_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Mere_Date_Naissance" ColumnName="pers_Mere_Date_Naissance" />
+                <ScalarProperty Name="pers_Mere_CIN" ColumnName="pers_Mere_CIN" />
+                <ScalarProperty Name="pers_Mere_Nom" ColumnName="pers_Mere_Nom" />
+                <ScalarProperty Name="pers_Mere_Prenom" ColumnName="pers_Mere_Prenom" />
+                <ScalarProperty Name="pers_Pere_Lieu_Naissance" ColumnName="pers_Pere_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Pere_Date_Naissance" ColumnName="pers_Pere_Date_Naissance" />
+                <ScalarProperty Name="pers_Pere_CIN" ColumnName="pers_Pere_CIN" />
+                <ScalarProperty Name="pers_Pere_Nom" ColumnName="pers_Pere_Nom" />
+                <ScalarProperty Name="pers_Pere_Prenom" ColumnName="pers_Pere_Prenom" />
+                <ScalarProperty Name="pers_Date_Affiliation" ColumnName="pers_Date_Affiliation" />
+                <ScalarProperty Name="pers_Affiliation" ColumnName="pers_Affiliation" />
+                <ScalarProperty Name="pers_Immatriculation" ColumnName="pers_Immatriculation" />
+                <ScalarProperty Name="pers_Mutuel" ColumnName="pers_Mutuel" />
+                <ScalarProperty Name="gs_Nom" ColumnName="gs_Nom" />
+                <ScalarProperty Name="pers_PPR" ColumnName="pers_PPR" />
+                <ScalarProperty Name="pers_Nbr_Enf" ColumnName="pers_Nbr_Enf" />
+                <ScalarProperty Name="pers_E_Lieu_Naissance" ColumnName="pers_E_Lieu_Naissance" />
+                <ScalarProperty Name="pers_E_Date_Naissance" ColumnName="pers_E_Date_Naissance" />
+                <ScalarProperty Name="pers_E_CIN" ColumnName="pers_E_CIN" />
+                <ScalarProperty Name="pers_E_Nom" ColumnName="pers_E_Nom" />
+                <ScalarProperty Name="pers_E_Prenom" ColumnName="pers_E_Prenom" />
+                <ScalarProperty Name="pers_Sit_Fam_Ar" ColumnName="pers_Sit_Fam_Ar" />
+                <ScalarProperty Name="pers_Sit_Fam" ColumnName="pers_Sit_Fam" />
+                <ScalarProperty Name="pers_Taille" ColumnName="pers_Taille" />
+                <ScalarProperty Name="pers_Fonction_Ar" ColumnName="pers_Fonction_Ar" />
+                <ScalarProperty Name="pers_Fonction" ColumnName="pers_Fonction" />
+                <ScalarProperty Name="pers_Specialite" ColumnName="pers_Specialite" />
+                <ScalarProperty Name="pers_Carte_FA" ColumnName="pers_Carte_FA" />
+                <ScalarProperty Name="pers_Adresse_Personnelle_Ar" ColumnName="pers_Adresse_Personnelle_Ar" />
+                <ScalarProperty Name="pers_Adresse_Personnelle" ColumnName="pers_Adresse_Personnelle" />
+                <ScalarProperty Name="pers_Sexe" ColumnName="pers_Sexe" />
+                <ScalarProperty Name="pers_CIN" ColumnName="pers_CIN" />
+                <ScalarProperty Name="pers_Origine_Ar" ColumnName="pers_Origine_Ar" />
+                <ScalarProperty Name="pers_Origine" ColumnName="pers_Origine" />
+                <ScalarProperty Name="pers_Reff_Nomination" ColumnName="pers_Reff_Nomination" />
+                <ScalarProperty Name="pers_Date_Nomination" ColumnName="pers_Date_Nomination" />
+                <ScalarProperty Name="pers_Date_Engagement" ColumnName="pers_Date_Engagement" />
+                <ScalarProperty Name="pers_Lieu_Naissance_Ar" ColumnName="pers_Lieu_Naissance_Ar" />
+                <ScalarProperty Name="pers_Lieu_Naissance" ColumnName="pers_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Date_Naissance" ColumnName="pers_Date_Naissance" />
+                <ScalarProperty Name="unt_Unite" ColumnName="unt_Unite" />
+                <ScalarProperty Name="grd_Grade" ColumnName="grd_Grade" />
+                <ScalarProperty Name="pers_Mle_FA" ColumnName="pers_Mle_FA" />
+                <ScalarProperty Name="pers_Nom_Ar" ColumnName="pers_Nom_Ar" />
+                <ScalarProperty Name="pers_Nom" ColumnName="pers_Nom" />
+                <ScalarProperty Name="pers_Prenom_Ar" ColumnName="pers_Prenom_Ar" />
+                <ScalarProperty Name="pers_Prenom" ColumnName="pers_Prenom" />
+                <ScalarProperty Name="pers_ID" ColumnName="pers_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwRepresentants">
+            <EntityTypeMapping TypeName="ges_AutoModel.vwRepresentant">
+              <MappingFragment StoreEntitySet="vwRepresentant">
+                <ScalarProperty Name="frns_Nom" ColumnName="frns_Nom" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="rep_Status" ColumnName="rep_Status" />
+                <ScalarProperty Name="rep_Observation" ColumnName="rep_Observation" />
+                <ScalarProperty Name="rep_Tele" ColumnName="rep_Tele" />
+                <ScalarProperty Name="rep_Cin" ColumnName="rep_Cin" />
+                <ScalarProperty Name="rep_Prenom" ColumnName="rep_Prenom" />
+                <ScalarProperty Name="rep_Nom" ColumnName="rep_Nom" />
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwUniteSoutiens">
+            <EntityTypeMapping TypeName="ges_AutoModel.vwUniteSoutien">
+              <MappingFragment StoreEntitySet="vwUniteSoutien">
+                <ScalarProperty Name="unt_status" ColumnName="unt_status" />
+                <ScalarProperty Name="unt_Description" ColumnName="unt_Description" />
+                <ScalarProperty Name="vil_Nom" ColumnName="vil_Nom" />
+                <ScalarProperty Name="unt_Unite" ColumnName="unt_Unite" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="get_Utilisateur" FunctionName="ges_AutoModel.Store.get_Utilisateur" />
+          <FunctionImportMapping FunctionImportName="Validate_Users" FunctionName="ges_AutoModel.Store.Validate_Users" />
+          <FunctionImportMapping FunctionImportName="Select_Priv_Screen" FunctionName="ges_AutoModel.Store.Select_Priv_Screen" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Select_Priv_Screen_Result">
+                <ScalarProperty Name="priv_Afficher" ColumnName="priv_Afficher" />
+                <ScalarProperty Name="priv_Ajouter" ColumnName="priv_Ajouter" />
+                <ScalarProperty Name="priv_Modifier" ColumnName="priv_Modifier" />
+                <ScalarProperty Name="priv_Supprimer" ColumnName="priv_Supprimer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Lists_By_Lists" FunctionName="ges_AutoModel.Store.Select_Lists_By_Lists" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -99,7 +99,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1018, 503);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Roboto", 10.2F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmLCRUD";
             this.ShowIcon = false;
@@ -115,8 +115,8 @@
 
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnSupprimer;
-        private System.Windows.Forms.Button btnModifier;
-        private System.Windows.Forms.Button btnAjouter;
+        public System.Windows.Forms.Button btnSupprimer;
+        public System.Windows.Forms.Button btnModifier;
+        public System.Windows.Forms.Button btnAjouter;
     }
 }

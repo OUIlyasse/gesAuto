@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblCount = new System.Windows.Forms.Label();
@@ -56,13 +56,21 @@
             this.menuRows.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.FlatAppearance.BorderSize = 0;
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.FlatAppearance.BorderSize = 0;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 20);
+            this.label4.Size = new System.Drawing.Size(99, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Recherche";
             // 
@@ -70,18 +78,18 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(115, 16);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(279, 28);
+            this.txtSearch.Size = new System.Drawing.Size(279, 27);
             this.txtSearch.TabIndex = 15;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblCount
             // 
             this.lblCount.AutoSize = true;
-            this.lblCount.Font = new System.Drawing.Font("Roboto Condensed", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.lblCount.Location = new System.Drawing.Point(12, 66);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(21, 20);
+            this.lblCount.Size = new System.Drawing.Size(27, 20);
             this.lblCount.TabIndex = 14;
             this.lblCount.Text = "---";
             // 
@@ -115,22 +123,22 @@
             this.dgvFournisseur.MultiSelect = false;
             this.dgvFournisseur.Name = "dgvFournisseur";
             this.dgvFournisseur.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 10.2F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFournisseur.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFournisseur.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFournisseur.RowHeadersVisible = false;
             this.dgvFournisseur.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvFournisseur.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvFournisseur.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFournisseur.RowTemplate.Height = 24;
             this.dgvFournisseur.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFournisseur.Size = new System.Drawing.Size(858, 398);
@@ -139,6 +147,7 @@
             this.dgvFournisseur.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvFournisseur_CellContextMenuStripNeeded);
             this.dgvFournisseur.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFournisseur_CellDoubleClick);
             this.dgvFournisseur.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvFournisseur_CellMouseDown);
+            this.dgvFournisseur.SelectionChanged += new System.EventHandler(this.dgvFournisseur_SelectionChanged);
             // 
             // colfrns_ID
             // 
@@ -268,7 +277,7 @@
             // btnRepresentant
             // 
             this.btnRepresentant.Name = "btnRepresentant";
-            this.btnRepresentant.Size = new System.Drawing.Size(210, 24);
+            this.btnRepresentant.Size = new System.Drawing.Size(171, 24);
             this.btnRepresentant.Text = "Representants";
             this.btnRepresentant.Click += new System.EventHandler(this.btnRepresentant_Click);
             // 
@@ -282,6 +291,9 @@
             this.Controls.Add(this.dgvFournisseur);
             this.Name = "frmLFournisseur";
             this.Text = "Fournisseurs";
+            this.Load += new System.EventHandler(this.frmLFournisseur_Load);
+            this.Controls.SetChildIndex(this.btnAjouter, 0);
+            this.Controls.SetChildIndex(this.btnSupprimer, 0);
             this.Controls.SetChildIndex(this.dgvFournisseur, 0);
             this.Controls.SetChildIndex(this.lblCount, 0);
             this.Controls.SetChildIndex(this.txtSearch, 0);

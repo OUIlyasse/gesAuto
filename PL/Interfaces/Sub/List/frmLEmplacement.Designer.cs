@@ -49,6 +49,10 @@
             // 
             this.btnSupprimer.FlatAppearance.BorderSize = 0;
             // 
+            // btnAjouter
+            // 
+            this.btnAjouter.FlatAppearance.BorderSize = 0;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -192,9 +196,10 @@
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.dgvEmplacement);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.Name = "frmLEmplacement";
             this.Text = "Emplacement";
+            this.Load += new System.EventHandler(this.frmLEmplacement_Load);
+            this.Controls.SetChildIndex(this.btnAjouter, 0);
             this.Controls.SetChildIndex(this.btnSupprimer, 0);
             this.Controls.SetChildIndex(this.dgvEmplacement, 0);
             this.Controls.SetChildIndex(this.lblCount, 0);

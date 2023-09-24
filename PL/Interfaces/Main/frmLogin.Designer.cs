@@ -68,14 +68,15 @@ namespace PL.Interfaces.Main
             this.txtPassword.Location = new System.Drawing.Point(18, 279);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(372, 27);
-            this.txtPassword.TabIndex = 29;
+            this.txtPassword.TabIndex = 1;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(18, 201);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(372, 27);
-            this.txtUsername.TabIndex = 28;
+            this.txtUsername.TabIndex = 0;
             // 
             // ckbRemember
             // 
@@ -84,9 +85,10 @@ namespace PL.Interfaces.Main
             this.ckbRemember.Location = new System.Drawing.Point(34, 363);
             this.ckbRemember.Name = "ckbRemember";
             this.ckbRemember.Size = new System.Drawing.Size(170, 24);
-            this.ckbRemember.TabIndex = 27;
+            this.ckbRemember.TabIndex = 3;
             this.ckbRemember.Text = "Se souvenir de moi";
             this.ckbRemember.UseVisualStyleBackColor = true;
+            this.ckbRemember.CheckedChanged += new System.EventHandler(this.ckbRemember_CheckedChanged);
             // 
             // btnConnect
             // 
@@ -98,9 +100,10 @@ namespace PL.Interfaces.Main
             this.btnConnect.Location = new System.Drawing.Point(43, 455);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(314, 53);
-            this.btnConnect.TabIndex = 26;
+            this.btnConnect.TabIndex = 5;
             this.btnConnect.Text = "Connecter";
             this.btnConnect.UseVisualStyleBackColor = false;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // linkForgetPassword
             // 
@@ -108,7 +111,7 @@ namespace PL.Interfaces.Main
             this.linkForgetPassword.Location = new System.Drawing.Point(219, 336);
             this.linkForgetPassword.Name = "linkForgetPassword";
             this.linkForgetPassword.Size = new System.Drawing.Size(168, 20);
-            this.linkForgetPassword.TabIndex = 25;
+            this.linkForgetPassword.TabIndex = 4;
             this.linkForgetPassword.TabStop = true;
             this.linkForgetPassword.Text = "Mot de passe oublié?";
             // 
@@ -119,7 +122,7 @@ namespace PL.Interfaces.Main
             this.ckbShow.Location = new System.Drawing.Point(34, 332);
             this.ckbShow.Name = "ckbShow";
             this.ckbShow.Size = new System.Drawing.Size(122, 24);
-            this.ckbShow.TabIndex = 24;
+            this.ckbShow.TabIndex = 2;
             this.ckbShow.Text = "Afficher mdp";
             this.ckbShow.UseVisualStyleBackColor = true;
             this.ckbShow.CheckedChanged += new System.EventHandler(this.ckbShow_CheckedChanged);
@@ -153,7 +156,7 @@ namespace PL.Interfaces.Main
             this.btnClose.Location = new System.Drawing.Point(389, 11);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(28, 28);
-            this.btnClose.TabIndex = 21;
+            this.btnClose.TabIndex = 6;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 

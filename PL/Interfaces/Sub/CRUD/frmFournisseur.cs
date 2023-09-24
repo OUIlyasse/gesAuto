@@ -19,10 +19,43 @@ namespace PL.Interfaces.Sub.CRUD
         private int idFournisseur;
         private frmLFournisseur frm;
         private Fournisseur frns;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
         #region Codes
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Fournisseur", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Fournisseur", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Modifier;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Fournisseur", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
 
         private void LoadVille()
         {
@@ -388,5 +421,18 @@ namespace PL.Interfaces.Sub.CRUD
         }
 
         #endregion KeyPress
+
+        private void frmFournisseur_Load(object sender, EventArgs e)
+        {
+            if (Text == "Ajouter un fournisseur")
+            {
+                Refresh_Button_Ajouter();
+            }
+            else
+            {
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
+            }
+        }
     }
 }

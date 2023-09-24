@@ -18,10 +18,43 @@ namespace PL.Interfaces.Sub.CRUD
         private int idVL;
         private frmLVehicule frm;
         private Vehicule vehicule;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
         #region Codes
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Véhicule", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Véhicule", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Modifier;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Véhicule", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
 
         private int maxID()
         {
@@ -204,5 +237,18 @@ namespace PL.Interfaces.Sub.CRUD
         }
 
         #endregion Validating
+
+        private void frmVehicule_Load(object sender, EventArgs e)
+        {
+            if (Text == "Ajouter un véhicule")
+            {
+                Refresh_Button_Ajouter();
+            }
+            else
+            {
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
+            }
+        }
     }
 }

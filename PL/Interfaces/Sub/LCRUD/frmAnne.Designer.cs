@@ -53,6 +53,18 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.FlatAppearance.BorderSize = 0;
+            // 
+            // btnModifier
+            // 
+            this.btnModifier.FlatAppearance.BorderSize = 0;
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.FlatAppearance.BorderSize = 0;
+            // 
             // menuDGV
             // 
             this.menuDGV.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -87,10 +99,10 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(146, 31);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 20);
+            this.label4.Size = new System.Drawing.Size(99, 20);
             this.label4.TabIndex = 5;
             this.label4.Text = "Recherche";
             // 
@@ -99,7 +111,7 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(249, 27);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(279, 28);
+            this.txtSearch.Size = new System.Drawing.Size(279, 27);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
@@ -107,11 +119,11 @@
             // lblCount
             // 
             this.lblCount.AutoSize = true;
-            this.lblCount.Font = new System.Drawing.Font("Roboto Condensed", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.lblCount.Location = new System.Drawing.Point(6, 31);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(21, 20);
+            this.lblCount.Size = new System.Drawing.Size(27, 20);
             this.lblCount.TabIndex = 6;
             this.lblCount.Text = "---";
             // 
@@ -139,7 +151,7 @@
             this.dgvAnnee.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -205,7 +217,7 @@
             // 
             this.txtLNumero.Location = new System.Drawing.Point(66, 224);
             this.txtLNumero.Name = "txtLNumero";
-            this.txtLNumero.Size = new System.Drawing.Size(292, 28);
+            this.txtLNumero.Size = new System.Drawing.Size(292, 27);
             this.txtLNumero.TabIndex = 14;
             this.txtLNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLNumero_KeyPress);
             // 
@@ -216,7 +228,7 @@
             this.dtAnnee.Location = new System.Drawing.Point(66, 144);
             this.dtAnnee.Name = "dtAnnee";
             this.dtAnnee.ShowUpDown = true;
-            this.dtAnnee.Size = new System.Drawing.Size(292, 28);
+            this.dtAnnee.Size = new System.Drawing.Size(292, 27);
             this.dtAnnee.TabIndex = 13;
             // 
             // btnNew
@@ -236,17 +248,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(62, 201);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(178, 20);
+            this.label3.Size = new System.Drawing.Size(179, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Dernier code-barres";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(62, 121);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 20);
@@ -261,6 +273,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "frmAnne";
             this.Text = "Années";
+            this.Load += new System.EventHandler(this.frmAnne_Load);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.menuDGV.ResumeLayout(false);

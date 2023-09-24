@@ -18,10 +18,38 @@ namespace PL.Interfaces.Sub.List
         public int idBonSortie;
         private int idBonArt;
         private int idService = Properties.Settings.Default.idService;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
         #region Codes
+
+        #region Permission
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Bons de sortie courants", getID_Lists("Sorties")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Bons de sortie courants", getID_Lists("Sorties")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
+
+        #endregion Permission
 
         #region Bon sortie
 
@@ -273,6 +301,7 @@ namespace PL.Interfaces.Sub.List
         private void frmLBonEntree_Load(object sender, EventArgs e)
         {
             PositionColumns();
+            Refresh_Button_Ajouter();
         }
 
         private void dgvA_EBon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -383,6 +412,7 @@ namespace PL.Interfaces.Sub.List
                 }
                 else
                     btnSupprimer.Enabled = false;
+                Refresh_Button_Supprimer();
             }
             catch (Exception)
             {

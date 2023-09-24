@@ -24,6 +24,7 @@ namespace PL.Interfaces.Sub.CRUD
         private DataTable dt;
         private int idArticle, idReference, idPhoto, idUnitMesure, indexOUMesure, C2, C3, C4;
         private int idService = Properties.Settings.Default.idService;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
         private Article_Info vl;
         private frmLArticleInfo frmLArticleInfo;
         private string fullPath;
@@ -36,6 +37,38 @@ namespace PL.Interfaces.Sub.CRUD
         #endregion Variables
 
         #region Codes
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Article", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Article", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Modifier;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Article", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
 
         private void LoadFamille()
         {
@@ -838,6 +871,7 @@ namespace PL.Interfaces.Sub.CRUD
             {
                 InitializeControls();
                 activeControls(false);
+                Refresh_Button_Ajouter();
             }
             else
             {
@@ -847,6 +881,8 @@ namespace PL.Interfaces.Sub.CRUD
                 LoadReference();
                 setValue_UMesure();
                 newRecord_Photo();
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
             }
         }
 

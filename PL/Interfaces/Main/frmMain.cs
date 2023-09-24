@@ -1,4 +1,5 @@
-﻿using PL.Interfaces.Sub.LCRUD;
+﻿using DAL.DB;
+using PL.Interfaces.Sub.LCRUD;
 using PL.Interfaces.Sub.List;
 using PL.Interfaces.Sub.Normal;
 using PL.Interfaces.Sub.Normal.History_Forms;
@@ -11,12 +12,31 @@ using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
 using Tools;
+using System.Linq;
 
 namespace PL.Interfaces.Main
 {
     public partial class frmMain : Form
     {
+        #region Variables
+
+        private ges_AutoEntities db = new ges_AutoEntities();
+        public int idUtilisateur;
+
+        #endregion Variables
+
         #region Codes
+
+        private void closallforms()
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                if (frm != Parent)
+                {
+                    frm.Close();
+                }
+            }
+        }
 
         private void OpenForm(Form frm)
         {
@@ -73,6 +93,47 @@ namespace PL.Interfaces.Main
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return rs;
+        }
+
+        private void SetToolStripItems()
+        {
+            foreach (ToolStripMenuItem obj in menuStrip1.Items)
+            {
+                foreach (var item in obj.DropDownItems)
+                {
+                    if (item.GetType().Equals(typeof(ToolStripMenuItem)))
+                    {
+                        if (((ToolStripMenuItem)item).Text != "Quitter" && ((ToolStripMenuItem)item).Text != "About")
+                            ((ToolStripMenuItem)item).Enabled = false;
+                    }
+                }
+            }
+        }
+
+        public void Refresh_Menu()
+        {
+            foreach (ToolStripMenuItem obj in menuStrip1.Items)
+            {
+                foreach (var item in obj.DropDownItems)
+                {
+                    if (item.GetType().Equals(typeof(ToolStripMenuItem)))
+                    {
+                        if (((ToolStripMenuItem)item).Text != "Quitter" && ((ToolStripMenuItem)item).Text != "About" && ((ToolStripMenuItem)item).Text != "Presse-papiers" && ((ToolStripMenuItem)item).Text != "Journal")
+                        {
+                            var rs = db.Select_Priv_Screen(idUtilisateur, ((ToolStripMenuItem)item).Text, getID_Lists(((ToolStripMenuItem)obj).Text)).FirstOrDefault().priv_Afficher;
+                            if (rs != null)
+                                ((ToolStripMenuItem)item).Enabled = (bool)rs;
+                            else
+                                ((ToolStripMenuItem)item).Enabled = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
         }
 
         #endregion Codes
@@ -162,8 +223,6 @@ namespace PL.Interfaces.Main
 
         private void informationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLArticleInfo frm = new frmLArticleInfo();
-            OpenForm(frm);
         }
 
         private void receptionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -237,8 +296,8 @@ namespace PL.Interfaces.Main
 
         private void frmMain_Shown(object sender, EventArgs e)
         {
-            //frmLogin frm = new frmLogin();
-            //frm.ShowDialog();
+            frmLogin frm = new frmLogin(this);
+            frm.ShowDialog();
         }
 
         private void sauvegardeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -285,6 +344,34 @@ namespace PL.Interfaces.Main
 
         private void journalToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void articleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLArticleInfo frm = new frmLArticleInfo();
+            OpenForm(frm);
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            SetToolStripItems();
+            lblFullName.Text = string.Empty;
+            lblFullName.Visible = false;
+        }
+
+        private void seDeconnecterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            closallforms();
+            SetToolStripItems();
+            lblFullName.Text = string.Empty;
+            lblFullName.Visible = false;
+            frmLogin frm = new frmLogin(this);
+            frm.ShowDialog();
+        }
+
+        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

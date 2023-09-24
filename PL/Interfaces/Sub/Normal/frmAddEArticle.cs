@@ -23,10 +23,38 @@ namespace PL.Interfaces.Sub.Normal
         private Bon_Entree bs;
         private int svc_ID = Properties.Settings.Default.idService;
         private int rsStatus;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
         #region Codes
+
+        #region Permission
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Reception d'un BL", getID_Lists("Entrees")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Reception d'un BL", getID_Lists("Entrees")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        #endregion Permission
 
         private void Verify_Buttons(bool status)
         {
@@ -612,6 +640,7 @@ namespace PL.Interfaces.Sub.Normal
                 pnlOk.Visible = false;
                 pnlVerifier.Visible = false;
                 lblQte.Text = string.Empty;
+                Refresh_Button_Ajouter();
             }
             else
             {
@@ -620,6 +649,7 @@ namespace PL.Interfaces.Sub.Normal
                 LoadControls(bonArt);
                 LoadReference_Article();
                 ShowEtatMessage();
+                Refresh_Button_Modifier();
             }
         }
     }

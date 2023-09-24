@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.articleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.informationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.codebarreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.emplacementDesArticlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.véhiculeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +75,11 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblFullName = new System.Windows.Forms.ToolStripDropDownButton();
+            this.seDeconnecterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -126,35 +128,10 @@
             // 
             // articleToolStripMenuItem
             // 
-            this.articleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.informationToolStripMenuItem,
-            this.referenceToolStripMenuItem,
-            this.codebarreToolStripMenuItem});
             this.articleToolStripMenuItem.Name = "articleToolStripMenuItem";
             this.articleToolStripMenuItem.Size = new System.Drawing.Size(253, 26);
             this.articleToolStripMenuItem.Text = "Article";
-            // 
-            // informationToolStripMenuItem
-            // 
-            this.informationToolStripMenuItem.Name = "informationToolStripMenuItem";
-            this.informationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.informationToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
-            this.informationToolStripMenuItem.Tag = "frmArticleInfo";
-            this.informationToolStripMenuItem.Text = "Information";
-            this.informationToolStripMenuItem.Click += new System.EventHandler(this.informationToolStripMenuItem_Click);
-            // 
-            // referenceToolStripMenuItem
-            // 
-            this.referenceToolStripMenuItem.Name = "referenceToolStripMenuItem";
-            this.referenceToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.referenceToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
-            this.referenceToolStripMenuItem.Text = "Reference";
-            // 
-            // codebarreToolStripMenuItem
-            // 
-            this.codebarreToolStripMenuItem.Name = "codebarreToolStripMenuItem";
-            this.codebarreToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
-            this.codebarreToolStripMenuItem.Text = "Codebarre";
+            this.articleToolStripMenuItem.Click += new System.EventHandler(this.articleToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -471,11 +448,37 @@
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblFullName});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 536);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1000, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1000, 26);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.lblFullName.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compteToolStripMenuItem,
+            this.seDeconnecterToolStripMenuItem});
+            this.lblFullName.Image = ((System.Drawing.Image)(resources.GetObject("lblFullName.Image")));
+            this.lblFullName.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(41, 24);
+            this.lblFullName.Text = "---";
+            // 
+            // seDeconnecterToolStripMenuItem
+            // 
+            this.seDeconnecterToolStripMenuItem.Name = "seDeconnecterToolStripMenuItem";
+            this.seDeconnecterToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.seDeconnecterToolStripMenuItem.Text = "Se deconnecter";
+            // 
+            // compteToolStripMenuItem
+            // 
+            this.compteToolStripMenuItem.Name = "compteToolStripMenuItem";
+            this.compteToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.compteToolStripMenuItem.Text = "Compte";
             // 
             // frmMain
             // 
@@ -492,9 +495,12 @@
             this.Text = "GESTION DE STOCK";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,9 +512,6 @@
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem articleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem informationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem codebarreToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem emplacementDesArticlesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem véhiculeToolStripMenuItem;
@@ -551,5 +554,8 @@
         private System.Windows.Forms.ToolStripMenuItem véhiculeToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem personnelToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem journalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seDeconnecterToolStripMenuItem;
+        public System.Windows.Forms.ToolStripDropDownButton lblFullName;
     }
 }

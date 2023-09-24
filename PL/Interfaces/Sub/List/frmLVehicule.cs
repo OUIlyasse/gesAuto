@@ -14,8 +14,36 @@ namespace PL.Interfaces.Sub.List
 
         private ges_AutoEntities db = new ges_AutoEntities();
         private int idVL;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
+
+        #region Permission
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Véhicule", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Véhicule", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
+
+        #endregion Permission
 
         #region Overrides
 
@@ -96,7 +124,10 @@ namespace PL.Interfaces.Sub.List
             DataGridViewRow row = dgvVL.Rows[e.RowIndex];
             idVL = int.Parse(row.Cells[colvl_ID.Name].Value.ToString());
             if (idVL > 0)
+            {
                 Verify_Buttons(false);
+                Refresh_Button_Supprimer();
+            }
         }
 
         private void dgvVL_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -105,6 +136,11 @@ namespace PL.Interfaces.Sub.List
 
             if (e.RowIndex == -1 || e.ColumnIndex == -1)
                 e.ContextMenuStrip = menuDGV;
+        }
+
+        private void frmLVehicule_Load(object sender, EventArgs e)
+        {
+            Refresh_Button_Ajouter();
         }
     }
 }

@@ -15,10 +15,43 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private ges_AutoEntities db = new ges_AutoEntities();
         private int idGrade;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
         #region Codes
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Grade", getID_Lists("Utilitaires")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Grade", getID_Lists("Utilitaires")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Modifier;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Grade", getID_Lists("Utilitaires")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
 
         private int maxID()
         {
@@ -189,6 +222,8 @@ namespace PL.Interfaces.Sub.LCRUD
             Grade grade = db.Show_Grade_By_ID(idGrade).FirstOrDefault();
             setValue(grade);
             Verify_Buttons(false);
+            Refresh_Button_Modifier();
+            Refresh_Button_Supprimer();
         }
 
         private void dgvGrade_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -197,6 +232,11 @@ namespace PL.Interfaces.Sub.LCRUD
 
             if (e.RowIndex == -1 || e.ColumnIndex == -1)
                 e.ContextMenuStrip = menuDGV;
+        }
+
+        private void frmGrade_Load(object sender, EventArgs e)
+        {
+            Refresh_Button_Ajouter();
         }
     }
 }

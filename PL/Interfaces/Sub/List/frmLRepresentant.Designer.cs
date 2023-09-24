@@ -35,8 +35,6 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblCount = new System.Windows.Forms.Label();
             this.dgvRepresentant = new System.Windows.Forms.DataGridView();
-            this.menuDGV = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnColonne = new System.Windows.Forms.ToolStripMenuItem();
             this.colrep_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colrep_Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colrep_Prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,17 +42,27 @@
             this.colrep_Tele = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colrep_Observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colfrns_Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuDGV = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnColonne = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRepresentant)).BeginInit();
             this.menuDGV.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.FlatAppearance.BorderSize = 0;
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.FlatAppearance.BorderSize = 0;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 24);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 20);
+            this.label4.Size = new System.Drawing.Size(99, 20);
             this.label4.TabIndex = 17;
             this.label4.Text = "Recherche";
             // 
@@ -62,18 +70,18 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(115, 20);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(279, 28);
+            this.txtSearch.Size = new System.Drawing.Size(279, 27);
             this.txtSearch.TabIndex = 19;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblCount
             // 
             this.lblCount.AutoSize = true;
-            this.lblCount.Font = new System.Drawing.Font("Roboto Condensed", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.lblCount.Location = new System.Drawing.Point(12, 67);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(21, 20);
+            this.lblCount.Size = new System.Drawing.Size(27, 20);
             this.lblCount.TabIndex = 18;
             this.lblCount.Text = "---";
             // 
@@ -104,7 +112,7 @@
             this.dgvRepresentant.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -125,20 +133,6 @@
             this.dgvRepresentant.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRepresentant_CellClick);
             this.dgvRepresentant.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvRepresentant_CellContextMenuStripNeeded);
             this.dgvRepresentant.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRepresentant_CellDoubleClick);
-            // 
-            // menuDGV
-            // 
-            this.menuDGV.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuDGV.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnColonne});
-            this.menuDGV.Name = "menuDGV";
-            this.menuDGV.Size = new System.Drawing.Size(134, 28);
-            // 
-            // btnColonne
-            // 
-            this.btnColonne.Name = "btnColonne";
-            this.btnColonne.Size = new System.Drawing.Size(133, 24);
-            this.btnColonne.Text = "Colonne";
             // 
             // colrep_ID
             // 
@@ -199,6 +193,20 @@
             this.colfrns_Nom.ReadOnly = true;
             this.colfrns_Nom.Visible = false;
             // 
+            // menuDGV
+            // 
+            this.menuDGV.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuDGV.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnColonne});
+            this.menuDGV.Name = "menuDGV";
+            this.menuDGV.Size = new System.Drawing.Size(134, 28);
+            // 
+            // btnColonne
+            // 
+            this.btnColonne.Name = "btnColonne";
+            this.btnColonne.Size = new System.Drawing.Size(133, 24);
+            this.btnColonne.Text = "Colonne";
+            // 
             // frmLRepresentant
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -209,6 +217,9 @@
             this.Controls.Add(this.dgvRepresentant);
             this.Name = "frmLRepresentant";
             this.Text = "Representants";
+            this.Load += new System.EventHandler(this.frmLRepresentant_Load);
+            this.Controls.SetChildIndex(this.btnAjouter, 0);
+            this.Controls.SetChildIndex(this.btnSupprimer, 0);
             this.Controls.SetChildIndex(this.dgvRepresentant, 0);
             this.Controls.SetChildIndex(this.lblCount, 0);
             this.Controls.SetChildIndex(this.txtSearch, 0);

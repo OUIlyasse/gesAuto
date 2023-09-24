@@ -15,10 +15,43 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private ges_AutoEntities db = new ges_AutoEntities();
         private int idArmoire, idRayonnage;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
         #region Codes
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Rayonnage et Armoire", getID_Lists("Utilitaires")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Rayonnage et Armoire", getID_Lists("Utilitaires")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Modifier;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Rayonnage et Armoire", getID_Lists("Utilitaires")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
 
         private int maxID()
         {
@@ -166,6 +199,8 @@ namespace PL.Interfaces.Sub.LCRUD
             Armoire famille = db.Show_Armoire_By_ID(idArmoire).FirstOrDefault();
             setValue(famille);
             Verify_Buttons(false);
+            Refresh_Button_Modifier();
+            Refresh_Button_Supprimer();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -176,6 +211,7 @@ namespace PL.Interfaces.Sub.LCRUD
         private void frmArmoire_Load(object sender, EventArgs e)
         {
             lblRayonnage.Text = $"Rayonnage: {db.Show_Rayonnage_By_ID(idRayonnage).FirstOrDefault().rayo_Nom}";
+            Refresh_Button_Ajouter();
         }
     }
 }

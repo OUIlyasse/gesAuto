@@ -15,10 +15,43 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private ges_AutoEntities db = new ges_AutoEntities();
         private int idMagasin;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
         #region Codes
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Magasin", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Magasin", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Modifier;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Magasin", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
 
         private void LoadVille()
         {
@@ -190,6 +223,7 @@ namespace PL.Interfaces.Sub.LCRUD
         private void frmMagasin_Load(object sender, EventArgs e)
         {
             LoadVille();
+            Refresh_Button_Ajouter();
         }
 
         private void dgvMagasin_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -200,10 +234,8 @@ namespace PL.Interfaces.Sub.LCRUD
             Magasin mags = db.Show_Magasin_By_ID(idMagasin).FirstOrDefault();
             setValue(mags);
             Verify_Buttons(false);
-            //txtMagasin.Text = row.Cells[colmags_Magasin.Name].Value.ToString();
-            //cmbxVille.SelectedValue = row.Cells[colvil_ID.Name].Value;
-            //txtDescription.Text = row.Cells[colmags_Description.Name].Value.ToString();
-            //Verify_Buttons(false);
+            Refresh_Button_Modifier();
+            Refresh_Button_Supprimer();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

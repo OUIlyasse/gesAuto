@@ -15,8 +15,36 @@ namespace PL.Interfaces.Sub.List
         private ges_AutoEntities db = new ges_AutoEntities();
         private int idArticle;
         private int idService = Properties.Settings.Default.idService;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
+
+        #region Code
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Article", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Article", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
+
+        #endregion Code
 
         #region Overrides
 
@@ -95,7 +123,10 @@ namespace PL.Interfaces.Sub.List
                 DataGridViewRow row = dgvArticle.Rows[e.RowIndex];
                 idArticle = int.Parse(row.Cells[colart_ID.Name].Value.ToString());
                 if (idArticle > 0)
+                {
                     Verify_Buttons(false);
+                    Refresh_Button_Supprimer();
+                }
             }
         }
 
@@ -130,6 +161,11 @@ namespace PL.Interfaces.Sub.List
         {
             dgvArticle.DataSource = db.Search_Article_Info(txtSearch.Text, idService);
             CountRow(dgvArticle.Rows.Count);
+        }
+
+        private void frmLArticleInfo_Load(object sender, EventArgs e)
+        {
+            Refresh_Button_Ajouter();
         }
     }
 }

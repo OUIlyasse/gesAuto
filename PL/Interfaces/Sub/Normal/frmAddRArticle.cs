@@ -23,6 +23,7 @@ namespace PL.Interfaces.Sub.Normal
         private int idArticle, idBon;
         private int rowSelected;
         private int rsStatus;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Fields
 
@@ -53,6 +54,33 @@ namespace PL.Interfaces.Sub.Normal
         #endregion DataGridView
 
         #region Codes
+
+        #region Permission
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Bons de retour courants", getID_Lists("Retours")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Bons de retour courants", getID_Lists("Retours")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        #endregion Permission
 
         private void LoadUMesure(int idArt)
         {
@@ -1179,6 +1207,7 @@ namespace PL.Interfaces.Sub.Normal
             {
                 Verify_Buttons(true);
                 btnArtSupprimer.Enabled = false;
+                Refresh_Button_Ajouter();
             }
             else
             {
@@ -1195,6 +1224,7 @@ namespace PL.Interfaces.Sub.Normal
                 btnArtSupprimer.Enabled = false;
                 LoadControls(bonArt);
                 LoadReference_Article();
+                Refresh_Button_Modifier();
             }
         }
 

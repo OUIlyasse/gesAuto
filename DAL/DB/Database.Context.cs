@@ -62,6 +62,26 @@ namespace DAL.DB
         public virtual DbSet<Vehicule> Vehicules { get; set; }
         public virtual DbSet<Vehicule_Article> Vehicule_Article { get; set; }
         public virtual DbSet<Ville> Villes { get; set; }
+        public virtual DbSet<List> Lists { get; set; }
+        public virtual DbSet<Screen> Screens { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<v_Utilisateur> v_Utilisateur { get; set; }
+        public virtual DbSet<v_Bon_Reference> v_Bon_Reference { get; set; }
+        public virtual DbSet<v_Bon_Retour_Article> v_Bon_Retour_Article { get; set; }
+        public virtual DbSet<v_Bon_Sortie_Article> v_Bon_Sortie_Article { get; set; }
+        public virtual DbSet<v_Emplacement> v_Emplacement { get; set; }
+        public virtual DbSet<v_Get_E_Bon_Article> v_Get_E_Bon_Article { get; set; }
+        public virtual DbSet<v_Priv> v_Priv { get; set; }
+        public virtual DbSet<View_1> View_1 { get; set; }
+        public virtual DbSet<View> Views { get; set; }
+        public virtual DbSet<vwArticle_Info> vwArticle_Info { get; set; }
+        public virtual DbSet<vwBon_Entree_Article> vwBon_Entree_Article { get; set; }
+        public virtual DbSet<vwCodeBarre> vwCodeBarres { get; set; }
+        public virtual DbSet<vwFournisseur> vwFournisseurs { get; set; }
+        public virtual DbSet<vwMagasin> vwMagasins { get; set; }
+        public virtual DbSet<vwPersonnel> vwPersonnels { get; set; }
+        public virtual DbSet<vwRepresentant> vwRepresentants { get; set; }
+        public virtual DbSet<vwUniteSoutien> vwUniteSoutiens { get; set; }
     
         public virtual ObjectResult<Nullable<int>> Count_Annees()
         {
@@ -4755,6 +4775,255 @@ namespace DAL.DB
                 new ObjectParameter("prof_ID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Insert_Utilisateur", util_IDParameter, pers_IDParameter, util_DateParameter, util_IdentifiantParameter, util_MotPasseParameter, svc_IDParameter, prof_IDParameter);
+        }
+    
+        public virtual ObjectResult<Select_Lists_Result> Select_Lists()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_Lists_Result>("Select_Lists");
+        }
+    
+        public virtual ObjectResult<Select_Priv_Result> Select_Priv(Nullable<int> util_ID, Nullable<int> list_ID)
+        {
+            var util_IDParameter = util_ID.HasValue ?
+                new ObjectParameter("util_ID", util_ID) :
+                new ObjectParameter("util_ID", typeof(int));
+    
+            var list_IDParameter = list_ID.HasValue ?
+                new ObjectParameter("list_ID", list_ID) :
+                new ObjectParameter("list_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_Priv_Result>("Select_Priv", util_IDParameter, list_IDParameter);
+        }
+    
+        public virtual int Update_Utilisateur(Nullable<int> util_ID, Nullable<int> pers_ID, string util_Identifiant, string util_MotPasse, Nullable<int> svc_ID)
+        {
+            var util_IDParameter = util_ID.HasValue ?
+                new ObjectParameter("util_ID", util_ID) :
+                new ObjectParameter("util_ID", typeof(int));
+    
+            var pers_IDParameter = pers_ID.HasValue ?
+                new ObjectParameter("pers_ID", pers_ID) :
+                new ObjectParameter("pers_ID", typeof(int));
+    
+            var util_IdentifiantParameter = util_Identifiant != null ?
+                new ObjectParameter("util_Identifiant", util_Identifiant) :
+                new ObjectParameter("util_Identifiant", typeof(string));
+    
+            var util_MotPasseParameter = util_MotPasse != null ?
+                new ObjectParameter("util_MotPasse", util_MotPasse) :
+                new ObjectParameter("util_MotPasse", typeof(string));
+    
+            var svc_IDParameter = svc_ID.HasValue ?
+                new ObjectParameter("svc_ID", svc_ID) :
+                new ObjectParameter("svc_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Utilisateur", util_IDParameter, pers_IDParameter, util_IdentifiantParameter, util_MotPasseParameter, svc_IDParameter);
+        }
+    
+        public virtual int Update_Priv(Nullable<int> util_ID, Nullable<int> scrn_ID, Nullable<bool> priv_Afficher, Nullable<bool> priv_Ajouter, Nullable<bool> priv_Modifier, Nullable<bool> priv_Supprimer)
+        {
+            var util_IDParameter = util_ID.HasValue ?
+                new ObjectParameter("util_ID", util_ID) :
+                new ObjectParameter("util_ID", typeof(int));
+    
+            var scrn_IDParameter = scrn_ID.HasValue ?
+                new ObjectParameter("scrn_ID", scrn_ID) :
+                new ObjectParameter("scrn_ID", typeof(int));
+    
+            var priv_AfficherParameter = priv_Afficher.HasValue ?
+                new ObjectParameter("priv_Afficher", priv_Afficher) :
+                new ObjectParameter("priv_Afficher", typeof(bool));
+    
+            var priv_AjouterParameter = priv_Ajouter.HasValue ?
+                new ObjectParameter("priv_Ajouter", priv_Ajouter) :
+                new ObjectParameter("priv_Ajouter", typeof(bool));
+    
+            var priv_ModifierParameter = priv_Modifier.HasValue ?
+                new ObjectParameter("priv_Modifier", priv_Modifier) :
+                new ObjectParameter("priv_Modifier", typeof(bool));
+    
+            var priv_SupprimerParameter = priv_Supprimer.HasValue ?
+                new ObjectParameter("priv_Supprimer", priv_Supprimer) :
+                new ObjectParameter("priv_Supprimer", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Priv", util_IDParameter, scrn_IDParameter, priv_AfficherParameter, priv_AjouterParameter, priv_ModifierParameter, priv_SupprimerParameter);
+        }
+    
+        public virtual ObjectResult<Select_Screen_By_idList_Result> Select_Screen_By_idList(Nullable<int> list_ID)
+        {
+            var list_IDParameter = list_ID.HasValue ?
+                new ObjectParameter("list_ID", list_ID) :
+                new ObjectParameter("list_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_Screen_By_idList_Result>("Select_Screen_By_idList", list_IDParameter);
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<v_Utilisateur> get_Utilisateur(string util_Identifiant, string util_MotPasse)
+        {
+            var util_IdentifiantParameter = util_Identifiant != null ?
+                new ObjectParameter("util_Identifiant", util_Identifiant) :
+                new ObjectParameter("util_Identifiant", typeof(string));
+    
+            var util_MotPasseParameter = util_MotPasse != null ?
+                new ObjectParameter("util_MotPasse", util_MotPasse) :
+                new ObjectParameter("util_MotPasse", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<v_Utilisateur>("get_Utilisateur", util_IdentifiantParameter, util_MotPasseParameter);
+        }
+    
+        public virtual ObjectResult<v_Utilisateur> get_Utilisateur(string util_Identifiant, string util_MotPasse, MergeOption mergeOption)
+        {
+            var util_IdentifiantParameter = util_Identifiant != null ?
+                new ObjectParameter("util_Identifiant", util_Identifiant) :
+                new ObjectParameter("util_Identifiant", typeof(string));
+    
+            var util_MotPasseParameter = util_MotPasse != null ?
+                new ObjectParameter("util_MotPasse", util_MotPasse) :
+                new ObjectParameter("util_MotPasse", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<v_Utilisateur>("get_Utilisateur", mergeOption, util_IdentifiantParameter, util_MotPasseParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Validate_Users(string user_Username, string user_Password)
+        {
+            var user_UsernameParameter = user_Username != null ?
+                new ObjectParameter("user_Username", user_Username) :
+                new ObjectParameter("user_Username", typeof(string));
+    
+            var user_PasswordParameter = user_Password != null ?
+                new ObjectParameter("user_Password", user_Password) :
+                new ObjectParameter("user_Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Validate_Users", user_UsernameParameter, user_PasswordParameter);
+        }
+    
+        public virtual ObjectResult<Select_Priv_Screen_Result> Select_Priv_Screen(Nullable<int> util_ID, string scrn_Nom, Nullable<int> list_ID)
+        {
+            var util_IDParameter = util_ID.HasValue ?
+                new ObjectParameter("util_ID", util_ID) :
+                new ObjectParameter("util_ID", typeof(int));
+    
+            var scrn_NomParameter = scrn_Nom != null ?
+                new ObjectParameter("scrn_Nom", scrn_Nom) :
+                new ObjectParameter("scrn_Nom", typeof(string));
+    
+            var list_IDParameter = list_ID.HasValue ?
+                new ObjectParameter("list_ID", list_ID) :
+                new ObjectParameter("list_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_Priv_Screen_Result>("Select_Priv_Screen", util_IDParameter, scrn_NomParameter, list_IDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Select_Lists_By_Lists(string list_Nom)
+        {
+            var list_NomParameter = list_Nom != null ?
+                new ObjectParameter("list_Nom", list_Nom) :
+                new ObjectParameter("list_Nom", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Select_Lists_By_Lists", list_NomParameter);
         }
     }
 }

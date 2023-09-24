@@ -17,10 +17,43 @@ namespace PL.Interfaces.Sub.CRUD
         private int idBonSortie;
         private Bon_Sortie bon_Sortie;
         private frmLBonSortie form;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
         #region Codes
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Bons de sortie courants", getID_Lists("Sorties")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Bons de sortie courants", getID_Lists("Sorties")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Modifier;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Bons de sortie courants", getID_Lists("Sorties")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
 
         private void LoadUnite()
         {
@@ -214,6 +247,12 @@ namespace PL.Interfaces.Sub.CRUD
             if (Text.Equals("Ajouter un bon de sortie"))
             {
                 newRecord();
+                Refresh_Button_Ajouter();
+            }
+            else
+            {
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
             }
         }
 

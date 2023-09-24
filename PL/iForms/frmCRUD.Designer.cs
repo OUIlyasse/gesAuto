@@ -100,7 +100,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 553);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -115,10 +115,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnSupprimer;
-        private System.Windows.Forms.Button btnModifier;
-        private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Button btnSupprimer;
+        public System.Windows.Forms.Button btnModifier;
+        public System.Windows.Forms.Button btnAjouter;
     }
 }

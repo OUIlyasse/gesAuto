@@ -15,10 +15,43 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private ges_AutoEntities db = new ges_AutoEntities();
         private int idUniteSoutien;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
         #region Codes
+
+        private int getID_Lists(string list)
+        {
+            return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
+        }
+
+        public void Refresh_Button_Ajouter()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Unite de soutien", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnAjouter.Enabled = (bool)rs.priv_Ajouter;
+            else
+                btnAjouter.Enabled = false;
+        }
+
+        public void Refresh_Button_Modifier()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Unite de soutien", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnModifier.Enabled = (bool)rs.priv_Modifier;
+            else
+                btnModifier.Enabled = false;
+        }
+
+        public void Refresh_Button_Supprimer()
+        {
+            var rs = db.Select_Priv_Screen(idUtilisateur, "Unite de soutien", getID_Lists("Gestion")).FirstOrDefault();
+            if (rs != null)
+                btnSupprimer.Enabled = (bool)rs.priv_Supprimer;
+            else
+                btnSupprimer.Enabled = false;
+        }
 
         private void LoadVille()
         {
@@ -205,6 +238,8 @@ namespace PL.Interfaces.Sub.LCRUD
             Unite_Soutien us = db.Show_Unite_Soutien_By_ID(idUniteSoutien).FirstOrDefault();
             setValue(us);
             Verify_Buttons(false);
+            Refresh_Button_Modifier();
+            Refresh_Button_Supprimer();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -215,6 +250,7 @@ namespace PL.Interfaces.Sub.LCRUD
         private void frmUniteSoutien_Load(object sender, EventArgs e)
         {
             LoadVille();
+            Refresh_Button_Ajouter();
         }
 
         private void dgvUniteSoutien_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)

@@ -115,5 +115,53 @@ namespace PL.Properties {
                 this["TBackup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Nom {
+            get {
+                return ((string)(this["Nom"]));
+            }
+            set {
+                this["Nom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Prenom {
+            get {
+                return ((string)(this["Prenom"]));
+            }
+            set {
+                this["Prenom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isRemember {
+            get {
+                return ((bool)(this["isRemember"]));
+            }
+            set {
+                this["isRemember"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int idUtilisateur {
+            get {
+                return ((int)(this["idUtilisateur"]));
+            }
+            set {
+                this["idUtilisateur"] = value;
+            }
+        }
     }
 }

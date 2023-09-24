@@ -70,7 +70,7 @@
             this.ClientSize = new System.Drawing.Size(882, 503);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnAjouter);
-            this.Font = new System.Drawing.Font("Roboto", 10.2F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmList";
             this.ShowIcon = false;
@@ -82,8 +82,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.Button btnSupprimer;
+        public System.Windows.Forms.Button btnAjouter;
     }
 }
