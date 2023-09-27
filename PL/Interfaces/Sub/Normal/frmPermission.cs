@@ -393,6 +393,7 @@ namespace PL.Interfaces.Sub.Normal
 
         private void txtSearchPersonnel_TextChanged(object sender, EventArgs e)
         {
+            dgvPersonnel.DataSource = db.Search_PPersonnel(txtSearchPersonnel.Text);
         }
 
         private void ckbAdmin_CheckedChanged(object sender, EventArgs e)

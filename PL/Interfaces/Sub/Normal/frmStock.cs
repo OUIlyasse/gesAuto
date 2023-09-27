@@ -150,5 +150,11 @@ namespace PL.Interfaces.Sub.Normal
             else
                 btnEtatExplicatif.Enabled = true;
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            dgvStock.DataSource = db.Search_SommeQte(txtSearch.Text);
+            lblCountA.Text = $"Ligne: {dgvStock.Rows.Count}";
+        }
     }
 }

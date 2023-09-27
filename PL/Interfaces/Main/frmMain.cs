@@ -296,8 +296,35 @@ namespace PL.Interfaces.Main
 
         private void frmMain_Shown(object sender, EventArgs e)
         {
-            frmLogin frm = new frmLogin(this);
-            frm.ShowDialog();
+            bool isRemember = Properties.Settings.Default.isRemember;
+            string username = Properties.Settings.Default.username;
+            string password = Properties.Settings.Default.password;
+
+            if (isRemember)
+            {
+                var rs = db.Validate_Users(username, password).FirstOrDefault();
+                switch (rs)
+                {
+                    case 1:
+                        v_Utilisateur users = db.get_Utilisateur(username, password).FirstOrDefault();
+
+                        string fName = users.pers_Prenom.ToString();
+                        string lName = users.pers_Nom.ToString();
+                        string grade = users.grd_Grade;
+                        string service = db.get_Service_By_ID(users.svc_ID).FirstOrDefault();
+
+                        lblFullName.Text = $"{grade} {fName} {lName}";
+                        lblService.Text = $"Service: {service}";
+                        idUtilisateur = users.util_ID;
+                        Refresh_Menu();
+                        break;
+                }
+            }
+            else
+            {
+                frmLogin frm = new frmLogin(this);
+                frm.ShowDialog();
+            }
         }
 
         private void sauvegardeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -355,16 +382,25 @@ namespace PL.Interfaces.Main
         private void frmMain_Load(object sender, EventArgs e)
         {
             SetToolStripItems();
-            lblFullName.Text = string.Empty;
-            lblFullName.Visible = false;
+            lblFullName.Text = "Utilisateur";
+            lblService.Text = string.Empty;
+            //lblFullName.Visible = false;
         }
 
         private void seDeconnecterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            closallforms();
-            SetToolStripItems();
-            lblFullName.Text = string.Empty;
-            lblFullName.Visible = false;
+            if (seDeconnecterToolStripMenuItem.Text == "Se connecter")
+            {
+                //frmLogin frm = new frmLogin(this);
+                //frm.ShowDialog();
+            }
+            else
+            {
+                closallforms();
+                SetToolStripItems();
+                lblFullName.Text = "Utilisateur";
+                //lblFullName.Visible = false;
+            }
             frmLogin frm = new frmLogin(this);
             frm.ShowDialog();
         }
@@ -372,6 +408,34 @@ namespace PL.Interfaces.Main
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void lblFullName_DropDownOpening(object sender, EventArgs e)
+        {
+            //if (lblFullName.Text == "Utilisateur")
+            //{
+            //    seDeconnecterToolStripMenuItem.Text = "Se connecter";
+            //    compteToolStripMenuItem.Visible = false;
+            //}
+            //else
+            //{
+            //    seDeconnecterToolStripMenuItem.Text = "Se deconnecter";
+            //    compteToolStripMenuItem.Visible = true;
+            //}
+        }
+
+        private void lblFullName_DropDownOpened(object sender, EventArgs e)
+        {
+            if (lblFullName.Text == "Utilisateur")
+            {
+                seDeconnecterToolStripMenuItem.Text = "Se connecter";
+                compteToolStripMenuItem.Visible = false;
+            }
+            else
+            {
+                seDeconnecterToolStripMenuItem.Text = "Se deconnecter";
+                compteToolStripMenuItem.Visible = true;
+            }
         }
     }
 }

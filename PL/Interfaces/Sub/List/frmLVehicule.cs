@@ -104,6 +104,8 @@ namespace PL.Interfaces.Sub.List
 
         private void dgvVL_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
             DataGridViewRow row = dgvVL.Rows[e.RowIndex];
             idVL = int.Parse(row.Cells[colvl_ID.Name].Value.ToString());
             db = new ges_AutoEntities();
@@ -113,21 +115,8 @@ namespace PL.Interfaces.Sub.List
             form.ShowDialog();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            dgvVL.DataSource = db.Search_Vehicule(txtSearch.Text);
-            CountRow(dgvVL.Rows.Count);
-        }
-
         private void dgvVL_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dgvVL.Rows[e.RowIndex];
-            idVL = int.Parse(row.Cells[colvl_ID.Name].Value.ToString());
-            if (idVL > 0)
-            {
-                Verify_Buttons(false);
-                Refresh_Button_Supprimer();
-            }
         }
 
         private void dgvVL_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -141,6 +130,22 @@ namespace PL.Interfaces.Sub.List
         private void frmLVehicule_Load(object sender, EventArgs e)
         {
             Refresh_Button_Ajouter();
+        }
+
+        private void dgvVL_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvVL.CurrentRow != null)
+            {
+                idVL = int.Parse(dgvVL.CurrentRow.Cells[colvl_ID.Name].Value.ToString());
+                Verify_Buttons(false);
+                Refresh_Button_Supprimer();
+            }
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvVL.DataSource = db.Search_Vehicule(txtRecherche.Text);
+            CountRow(dgvVL.Rows.Count);
         }
     }
 }

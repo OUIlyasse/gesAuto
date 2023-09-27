@@ -41,21 +41,32 @@ namespace PL.Interfaces.Main
                     string fName = users.pers_Prenom.ToString();
                     string lName = users.pers_Nom.ToString();
                     string grade = users.grd_Grade;
+                    string service = db.get_Service_By_ID(users.svc_ID).FirstOrDefault();
 
                     Properties.Settings.Default.Nom = fName;
                     Properties.Settings.Default.Prenom = lName;
                     Properties.Settings.Default.idUtilisateur = users.util_ID;
+                    Properties.Settings.Default.idService = (int)users.svc_ID;
 
                     if (ckbRemember.Checked)
+                    {
                         Properties.Settings.Default.isRemember = true;
+                        Properties.Settings.Default.username = txtUsername.Text;
+                        Properties.Settings.Default.password = txtPassword.Text;
+                    }
                     else
+                    {
                         Properties.Settings.Default.isRemember = false;
+                        Properties.Settings.Default.username = "";
+                        Properties.Settings.Default.password = "";
+                    }
 
                     Properties.Settings.Default.Save();
                     Cursor = Cursors.Default;
 
                     main.lblFullName.Text = $"{grade} {fName} {lName}";
-                    main.lblFullName.Visible = true;
+                    main.lblService.Text = $"Service: {service}";
+                    //main.lblFullName.Visible = true;
                     Close();
                     main.idUtilisateur = users.util_ID;
                     main.Refresh_Menu();

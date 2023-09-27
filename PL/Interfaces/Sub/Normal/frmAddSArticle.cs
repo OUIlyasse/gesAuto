@@ -838,9 +838,9 @@ namespace PL.Interfaces.Sub.Normal
         private void loadQte(string vl, string article)
         {
             var rQte = db.ResteQteArticle(vl, article).FirstOrDefault() > 0 ? db.ResteQteArticle(vl, article).FirstOrDefault() : 0;
-            var um = db.Select_Unite_Mesure_By_Art_isDefault(db.get_Article_Info_By_Designation(article).FirstOrDefault().art_ID).FirstOrDefault();
-            lblQteTotal.Text = $"En stock: {rQte} {um}";
-            Info.SetToolTip(lblQteTotal, $"En stock: {rQte} {um}");
+            Unite_Mesure um = db.Select_Unite_Mesure_By_Art_isDefault(db.get_Article_Info_By_Designation(article).FirstOrDefault().art_ID).FirstOrDefault();
+            lblQteTotal.Text = $"En stock: {rQte} {um.unit_M_Nom}";
+            Info.SetToolTip(lblQteTotal, $"En stock: {rQte} {um.unit_M_Nom}");
         }
 
         private decimal calcule_Reste_Qte(string vl, string article, decimal qte, int idUMesure)
@@ -1645,7 +1645,7 @@ namespace PL.Interfaces.Sub.Normal
                 var TQte = db.ResteQteArticle(cmbxVL.Text, cmbxArticle.Text).FirstOrDefault() > 0 ? db.ResteQteArticle(cmbxVL.Text, cmbxArticle.Text).FirstOrDefault() : 0;
                 decimal Dqte = Convert.ToDecimal(txtQteLivree.Text);
                 decimal convert = Dqte * (decimal)db.get_Unite_Mesure_By_ID((int)cmbxUMesure.SelectedValue).FirstOrDefault().unit_M_Coefficient;
-                var um = db.Select_Unite_Mesure_By_Art_isDefault((int)cmbxArticle.SelectedValue).FirstOrDefault();
+                Unite_Mesure um = db.Select_Unite_Mesure_By_Art_isDefault((int)cmbxArticle.SelectedValue).FirstOrDefault();
 
                 if (TQte < convert)
                 {
@@ -1655,8 +1655,8 @@ namespace PL.Interfaces.Sub.Normal
                 }
                 else
                 {
-                    lblQteReste.Text = $"Reste: {calcule_Reste_Qte(cmbxVL.Text, cmbxArticle.Text, Dqte, (int)cmbxUMesure.SelectedValue)} {um}";
-                    Info.SetToolTip(lblQteReste, $"Reste: {calcule_Reste_Qte(cmbxVL.Text, cmbxArticle.Text, Dqte, (int)cmbxUMesure.SelectedValue)} {um}");
+                    lblQteReste.Text = $"Reste: {calcule_Reste_Qte(cmbxVL.Text, cmbxArticle.Text, Dqte, (int)cmbxUMesure.SelectedValue)} {um.unit_M_Nom}";
+                    Info.SetToolTip(lblQteReste, $"Reste: {calcule_Reste_Qte(cmbxVL.Text, cmbxArticle.Text, Dqte, (int)cmbxUMesure.SelectedValue)} {um.unit_M_Nom}");
                 }
             }
         }

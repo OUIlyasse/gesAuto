@@ -116,20 +116,6 @@ namespace PL.Interfaces.Sub.List
             form.ShowDialog();
         }
 
-        private void dgvArticle_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                DataGridViewRow row = dgvArticle.Rows[e.RowIndex];
-                idArticle = int.Parse(row.Cells[colart_ID.Name].Value.ToString());
-                if (idArticle > 0)
-                {
-                    Verify_Buttons(false);
-                    Refresh_Button_Supprimer();
-                }
-            }
-        }
-
         private void dgvArticle_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
             DataGridView dgv = (DataGridView)sender;
@@ -157,15 +143,25 @@ namespace PL.Interfaces.Sub.List
             form.Show();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            dgvArticle.DataSource = db.Search_Article_Info(txtSearch.Text, idService);
-            CountRow(dgvArticle.Rows.Count);
-        }
-
         private void frmLArticleInfo_Load(object sender, EventArgs e)
         {
             Refresh_Button_Ajouter();
+        }
+
+        private void dgvArticle_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvArticle.CurrentRow != null)
+            {
+                idArticle = int.Parse(dgvArticle.CurrentRow.Cells[colart_ID.Name].Value.ToString());
+                Verify_Buttons(false);
+                Refresh_Button_Supprimer();
+            }
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvArticle.DataSource = db.Search_Article_Info(txtRecherche.Text, idService);
+            CountRow(dgvArticle.Rows.Count);
         }
     }
 }

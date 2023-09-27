@@ -220,16 +220,6 @@ namespace PL.Interfaces.Sub.LCRUD
 
         #endregion Validating
 
-        #region Search
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            dgvUniteSoutien.DataSource = db.Search_Unite_Soutien(txtSearch.Text);
-            CountRow(dgvUniteSoutien.Rows.Count);
-        }
-
-        #endregion Search
-
         private void dgvUniteSoutien_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             db = new ges_AutoEntities();
@@ -259,6 +249,12 @@ namespace PL.Interfaces.Sub.LCRUD
 
             if (e.RowIndex == -1 || e.ColumnIndex == -1)
                 e.ContextMenuStrip = menuDGV;
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvUniteSoutien.DataSource = db.Search_Unite_Soutien(txtRecherche.Text);
+            CountRow(dgvUniteSoutien.Rows.Count);
         }
     }
 }

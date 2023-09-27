@@ -3100,13 +3100,22 @@ namespace DAL.DB
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_Unite_Mesure_Result>("Select_Unite_Mesure", art_IDParameter);
         }
     
-        public virtual ObjectResult<Select_Unite_Mesure_By_Art_isDefault_Result> Select_Unite_Mesure_By_Art_isDefault(Nullable<int> art_ID)
+        public virtual ObjectResult<Unite_Mesure> Select_Unite_Mesure_By_Art_isDefault(Nullable<int> art_ID)
         {
             var art_IDParameter = art_ID.HasValue ?
                 new ObjectParameter("art_ID", art_ID) :
                 new ObjectParameter("art_ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_Unite_Mesure_By_Art_isDefault_Result>("Select_Unite_Mesure_By_Art_isDefault", art_IDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Unite_Mesure>("Select_Unite_Mesure_By_Art_isDefault", art_IDParameter);
+        }
+    
+        public virtual ObjectResult<Unite_Mesure> Select_Unite_Mesure_By_Art_isDefault(Nullable<int> art_ID, MergeOption mergeOption)
+        {
+            var art_IDParameter = art_ID.HasValue ?
+                new ObjectParameter("art_ID", art_ID) :
+                new ObjectParameter("art_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Unite_Mesure>("Select_Unite_Mesure_By_Art_isDefault", mergeOption, art_IDParameter);
         }
     
         public virtual ObjectResult<Select_Unite_Mesure_By_IdArt_Result> Select_Unite_Mesure_By_IdArt(Nullable<int> art_ID)
@@ -5024,6 +5033,175 @@ namespace DAL.DB
                 new ObjectParameter("list_Nom", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Select_Lists_By_Lists", list_NomParameter);
+        }
+    
+        public virtual ObjectResult<string> get_Service_By_ID(Nullable<int> svc_ID)
+        {
+            var svc_IDParameter = svc_ID.HasValue ?
+                new ObjectParameter("svc_ID", svc_ID) :
+                new ObjectParameter("svc_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("get_Service_By_ID", svc_IDParameter);
+        }
+    
+        public virtual ObjectResult<Search_Armoire_Result> Search_Armoire(string search, Nullable<int> rayo_ID)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            var rayo_IDParameter = rayo_ID.HasValue ?
+                new ObjectParameter("rayo_ID", rayo_ID) :
+                new ObjectParameter("rayo_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Armoire_Result>("Search_Armoire", searchParameter, rayo_IDParameter);
+        }
+    
+        public virtual ObjectResult<Search_Rayonnage_Result> Search_Rayonnage(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Rayonnage_Result>("Search_Rayonnage", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_Bon_Entree_Result> Search_Bon_Entree(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Bon_Entree_Result>("Search_Bon_Entree", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_Bon_Entree_Article_Result> Search_Bon_Entree_Article(string search, Nullable<int> be_ID)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            var be_IDParameter = be_ID.HasValue ?
+                new ObjectParameter("be_ID", be_ID) :
+                new ObjectParameter("be_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Bon_Entree_Article_Result>("Search_Bon_Entree_Article", searchParameter, be_IDParameter);
+        }
+    
+        public virtual ObjectResult<Search_Bon_Retour_Result> Search_Bon_Retour(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Bon_Retour_Result>("Search_Bon_Retour", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_Bon_Retour_Article_Result> Search_Bon_Retour_Article(string search, Nullable<int> bt_ID)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            var bt_IDParameter = bt_ID.HasValue ?
+                new ObjectParameter("bt_ID", bt_ID) :
+                new ObjectParameter("bt_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Bon_Retour_Article_Result>("Search_Bon_Retour_Article", searchParameter, bt_IDParameter);
+        }
+    
+        public virtual ObjectResult<Search_Bon_Sortie_Result> Search_Bon_Sortie(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Bon_Sortie_Result>("Search_Bon_Sortie", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_Bon_Sortie_Article_Result> Search_Bon_Sortie_Article(string search, Nullable<int> bs_ID)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            var bs_IDParameter = bs_ID.HasValue ?
+                new ObjectParameter("bs_ID", bs_ID) :
+                new ObjectParameter("bs_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Bon_Sortie_Article_Result>("Search_Bon_Sortie_Article", searchParameter, bs_IDParameter);
+        }
+    
+        public virtual ObjectResult<Search_Emplacement_Result> Search_Emplacement(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Emplacement_Result>("Search_Emplacement", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_Fournisseurs_Result> Search_Fournisseurs(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Fournisseurs_Result>("Search_Fournisseurs", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_Personnel_Result> Search_Personnel(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Personnel_Result>("Search_Personnel", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_Bon_Entree_H_Result> Search_Bon_Entree_H(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Bon_Entree_H_Result>("Search_Bon_Entree_H", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_Bon_Retour_H_Result> Search_Bon_Retour_H(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Bon_Retour_H_Result>("Search_Bon_Retour_H", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_Bon_Sortie_H_Result> Search_Bon_Sortie_H(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_Bon_Sortie_H_Result>("Search_Bon_Sortie_H", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_PPersonnel_Result> Search_PPersonnel(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_PPersonnel_Result>("Search_PPersonnel", searchParameter);
+        }
+    
+        public virtual ObjectResult<Search_SommeQte_Result> Search_SommeQte(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_SommeQte_Result>("Search_SommeQte", searchParameter);
         }
     }
 }

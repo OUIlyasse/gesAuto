@@ -35,9 +35,23 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblCountB = new System.Windows.Forms.Label();
             this.txtSearchB = new PL.Controls.iText();
             this.btnBonNew = new System.Windows.Forms.Button();
             this.dgvA_EBon = new System.Windows.Forms.DataGridView();
+            this.colbe_A_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_A_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colvl_Marque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colart_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_A_Etat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colEtat = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colbe_Qte_Demandee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_Qte_Livree = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_Qte_Manque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_A_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUMesure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCodeUMesure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvEBon = new System.Windows.Forms.DataGridView();
             this.colb_be_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colbe_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,19 +67,7 @@
             this.btnBonProvisoire = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBonDefinitife = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearchA = new PL.Controls.iText();
-            this.colbe_A_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_A_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colvl_Marque = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colart_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_A_Etat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colEtat = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colbe_Qte_Demandee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_Qte_Livree = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_Qte_Manque = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_A_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUMesure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCodeUMesure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblCountA = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvA_EBon)).BeginInit();
@@ -76,6 +78,10 @@
             // btnSupprimer
             // 
             this.btnSupprimer.FlatAppearance.BorderSize = 0;
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.FlatAppearance.BorderSize = 0;
             // 
             // panel1
             // 
@@ -90,6 +96,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.lblCountB);
             this.groupBox1.Controls.Add(this.txtSearchB);
             this.groupBox1.Controls.Add(this.btnBonNew);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -100,12 +107,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bons";
             // 
+            // lblCountB
+            // 
+            this.lblCountB.AutoSize = true;
+            this.lblCountB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblCountB.Location = new System.Drawing.Point(6, 75);
+            this.lblCountB.Name = "lblCountB";
+            this.lblCountB.Size = new System.Drawing.Size(27, 20);
+            this.lblCountB.TabIndex = 20;
+            this.lblCountB.Text = "---";
+            // 
             // txtSearchB
             // 
-            this.txtSearchB.Location = new System.Drawing.Point(6, 45);
+            this.txtSearchB.Location = new System.Drawing.Point(6, 47);
             this.txtSearchB.Name = "txtSearchB";
-            this.txtSearchB.Size = new System.Drawing.Size(169, 28);
+            this.txtSearchB.Size = new System.Drawing.Size(170, 28);
             this.txtSearchB.TabIndex = 1;
+            this.txtSearchB.TextChanged += new System.EventHandler(this.txtSearchB_TextChanged);
             // 
             // btnBonNew
             // 
@@ -150,13 +169,13 @@
             this.colUMesure,
             this.colCodeUMesure});
             this.dgvA_EBon.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvA_EBon.Location = new System.Drawing.Point(206, 65);
+            this.dgvA_EBon.Location = new System.Drawing.Point(206, 79);
             this.dgvA_EBon.MultiSelect = false;
             this.dgvA_EBon.Name = "dgvA_EBon";
             this.dgvA_EBon.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -172,11 +191,139 @@
             this.dgvA_EBon.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvA_EBon.RowTemplate.Height = 24;
             this.dgvA_EBon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvA_EBon.Size = new System.Drawing.Size(664, 426);
+            this.dgvA_EBon.Size = new System.Drawing.Size(664, 412);
             this.dgvA_EBon.TabIndex = 2;
+            this.dgvA_EBon.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvA_EBon_CellDoubleClick);
             this.dgvA_EBon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvA_EBon_CellFormatting);
             this.dgvA_EBon.SelectionChanged += new System.EventHandler(this.dgvA_EBon_SelectionChanged);
-            this.dgvA_EBon.DoubleClick += new System.EventHandler(this.dgvA_EBon_DoubleClick);
+            // 
+            // colbe_A_ID
+            // 
+            this.colbe_A_ID.DataPropertyName = "be_A_ID";
+            this.colbe_A_ID.HeaderText = "Code bon article";
+            this.colbe_A_ID.MinimumWidth = 6;
+            this.colbe_A_ID.Name = "colbe_A_ID";
+            this.colbe_A_ID.ReadOnly = true;
+            this.colbe_A_ID.Visible = false;
+            // 
+            // colbe_ID
+            // 
+            this.colbe_ID.DataPropertyName = "be_ID";
+            this.colbe_ID.HeaderText = "Code bon";
+            this.colbe_ID.MinimumWidth = 6;
+            this.colbe_ID.Name = "colbe_ID";
+            this.colbe_ID.ReadOnly = true;
+            this.colbe_ID.Visible = false;
+            // 
+            // colbe_A_Date
+            // 
+            this.colbe_A_Date.DataPropertyName = "be_A_Date";
+            this.colbe_A_Date.HeaderText = "Date";
+            this.colbe_A_Date.MinimumWidth = 6;
+            this.colbe_A_Date.Name = "colbe_A_Date";
+            this.colbe_A_Date.ReadOnly = true;
+            this.colbe_A_Date.Visible = false;
+            // 
+            // colvl_Marque
+            // 
+            this.colvl_Marque.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colvl_Marque.DataPropertyName = "vl_Marque";
+            this.colvl_Marque.FillWeight = 270.7086F;
+            this.colvl_Marque.HeaderText = "Véhicule";
+            this.colvl_Marque.MinimumWidth = 6;
+            this.colvl_Marque.Name = "colvl_Marque";
+            this.colvl_Marque.ReadOnly = true;
+            this.colvl_Marque.Width = 130;
+            // 
+            // colart_Designation
+            // 
+            this.colart_Designation.DataPropertyName = "art_Designation";
+            this.colart_Designation.FillWeight = 21.86494F;
+            this.colart_Designation.HeaderText = "Article";
+            this.colart_Designation.MinimumWidth = 6;
+            this.colart_Designation.Name = "colart_Designation";
+            this.colart_Designation.ReadOnly = true;
+            // 
+            // colbe_A_Etat
+            // 
+            this.colbe_A_Etat.DataPropertyName = "be_A_Etat";
+            this.colbe_A_Etat.HeaderText = "Etat";
+            this.colbe_A_Etat.MinimumWidth = 6;
+            this.colbe_A_Etat.Name = "colbe_A_Etat";
+            this.colbe_A_Etat.ReadOnly = true;
+            this.colbe_A_Etat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colbe_A_Etat.Visible = false;
+            // 
+            // colEtat
+            // 
+            this.colEtat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colEtat.FillWeight = 85.5615F;
+            this.colEtat.HeaderText = "Etat";
+            this.colEtat.MinimumWidth = 6;
+            this.colEtat.Name = "colEtat";
+            this.colEtat.ReadOnly = true;
+            this.colEtat.Width = 45;
+            // 
+            // colbe_Qte_Demandee
+            // 
+            this.colbe_Qte_Demandee.DataPropertyName = "be_Qte_Demandee";
+            this.colbe_Qte_Demandee.HeaderText = "Qte Demandee";
+            this.colbe_Qte_Demandee.MinimumWidth = 6;
+            this.colbe_Qte_Demandee.Name = "colbe_Qte_Demandee";
+            this.colbe_Qte_Demandee.ReadOnly = true;
+            this.colbe_Qte_Demandee.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colbe_Qte_Demandee.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colbe_Qte_Demandee.Visible = false;
+            // 
+            // colbe_Qte_Livree
+            // 
+            this.colbe_Qte_Livree.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colbe_Qte_Livree.DataPropertyName = "be_Qte_Livree";
+            this.colbe_Qte_Livree.FillWeight = 21.86494F;
+            this.colbe_Qte_Livree.HeaderText = "Qte Livree";
+            this.colbe_Qte_Livree.MinimumWidth = 6;
+            this.colbe_Qte_Livree.Name = "colbe_Qte_Livree";
+            this.colbe_Qte_Livree.ReadOnly = true;
+            this.colbe_Qte_Livree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colbe_Qte_Livree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colbe_Qte_Livree.Width = 130;
+            // 
+            // colbe_Qte_Manque
+            // 
+            this.colbe_Qte_Manque.DataPropertyName = "be_Qte_Manque";
+            this.colbe_Qte_Manque.HeaderText = "Qte Manque";
+            this.colbe_Qte_Manque.MinimumWidth = 6;
+            this.colbe_Qte_Manque.Name = "colbe_Qte_Manque";
+            this.colbe_Qte_Manque.ReadOnly = true;
+            this.colbe_Qte_Manque.Visible = false;
+            // 
+            // colbe_A_Description
+            // 
+            this.colbe_A_Description.DataPropertyName = "be_A_Description";
+            this.colbe_A_Description.HeaderText = "Description";
+            this.colbe_A_Description.MinimumWidth = 6;
+            this.colbe_A_Description.Name = "colbe_A_Description";
+            this.colbe_A_Description.ReadOnly = true;
+            this.colbe_A_Description.Visible = false;
+            // 
+            // colUMesure
+            // 
+            this.colUMesure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colUMesure.DataPropertyName = "unit_M_Nom";
+            this.colUMesure.HeaderText = "Unite de mesure";
+            this.colUMesure.MinimumWidth = 6;
+            this.colUMesure.Name = "colUMesure";
+            this.colUMesure.ReadOnly = true;
+            this.colUMesure.Width = 150;
+            // 
+            // colCodeUMesure
+            // 
+            this.colCodeUMesure.DataPropertyName = "unit_M_ID";
+            this.colCodeUMesure.HeaderText = "code UMesure";
+            this.colCodeUMesure.MinimumWidth = 6;
+            this.colCodeUMesure.Name = "colCodeUMesure";
+            this.colCodeUMesure.ReadOnly = true;
+            this.colCodeUMesure.Visible = false;
             // 
             // dgvEBon
             // 
@@ -200,13 +347,13 @@
             this.colbe_Description,
             this.colbe_Status});
             this.dgvEBon.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvEBon.Location = new System.Drawing.Point(15, 91);
+            this.dgvEBon.Location = new System.Drawing.Point(15, 110);
             this.dgvEBon.MultiSelect = false;
             this.dgvEBon.Name = "dgvEBon";
             this.dgvEBon.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 10.2F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -222,11 +369,11 @@
             this.dgvEBon.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEBon.RowTemplate.Height = 24;
             this.dgvEBon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEBon.Size = new System.Drawing.Size(170, 394);
+            this.dgvEBon.Size = new System.Drawing.Size(170, 375);
             this.dgvEBon.TabIndex = 0;
             this.dgvEBon.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvEBon_CellContextMenuStripNeeded);
+            this.dgvEBon.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEBon_CellDoubleClick);
             this.dgvEBon.SelectionChanged += new System.EventHandler(this.dgvEBon_SelectionChanged);
-            this.dgvEBon.DoubleClick += new System.EventHandler(this.dgvEBon_DoubleClick);
             // 
             // colb_be_ID
             // 
@@ -341,141 +488,26 @@
             // 
             this.txtSearchA.Location = new System.Drawing.Point(206, 21);
             this.txtSearchA.Name = "txtSearchA";
-            this.txtSearchA.Size = new System.Drawing.Size(354, 28);
+            this.txtSearchA.Size = new System.Drawing.Size(354, 27);
             this.txtSearchA.TabIndex = 1;
+            this.txtSearchA.TextChanged += new System.EventHandler(this.txtSearchA_TextChanged);
             // 
-            // colbe_A_ID
+            // lblCountA
             // 
-            this.colbe_A_ID.DataPropertyName = "be_A_ID";
-            this.colbe_A_ID.HeaderText = "Code bon article";
-            this.colbe_A_ID.MinimumWidth = 6;
-            this.colbe_A_ID.Name = "colbe_A_ID";
-            this.colbe_A_ID.ReadOnly = true;
-            this.colbe_A_ID.Visible = false;
-            // 
-            // colbe_ID
-            // 
-            this.colbe_ID.DataPropertyName = "be_ID";
-            this.colbe_ID.HeaderText = "Code bon";
-            this.colbe_ID.MinimumWidth = 6;
-            this.colbe_ID.Name = "colbe_ID";
-            this.colbe_ID.ReadOnly = true;
-            this.colbe_ID.Visible = false;
-            // 
-            // colbe_A_Date
-            // 
-            this.colbe_A_Date.DataPropertyName = "be_A_Date";
-            this.colbe_A_Date.HeaderText = "Date";
-            this.colbe_A_Date.MinimumWidth = 6;
-            this.colbe_A_Date.Name = "colbe_A_Date";
-            this.colbe_A_Date.ReadOnly = true;
-            this.colbe_A_Date.Visible = false;
-            // 
-            // colvl_Marque
-            // 
-            this.colvl_Marque.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colvl_Marque.DataPropertyName = "vl_Marque";
-            this.colvl_Marque.FillWeight = 270.7086F;
-            this.colvl_Marque.HeaderText = "Véhicule";
-            this.colvl_Marque.MinimumWidth = 6;
-            this.colvl_Marque.Name = "colvl_Marque";
-            this.colvl_Marque.ReadOnly = true;
-            this.colvl_Marque.Width = 130;
-            // 
-            // colart_Designation
-            // 
-            this.colart_Designation.DataPropertyName = "art_Designation";
-            this.colart_Designation.FillWeight = 21.86494F;
-            this.colart_Designation.HeaderText = "Article";
-            this.colart_Designation.MinimumWidth = 6;
-            this.colart_Designation.Name = "colart_Designation";
-            this.colart_Designation.ReadOnly = true;
-            // 
-            // colbe_A_Etat
-            // 
-            this.colbe_A_Etat.DataPropertyName = "be_A_Etat";
-            this.colbe_A_Etat.HeaderText = "Etat";
-            this.colbe_A_Etat.MinimumWidth = 6;
-            this.colbe_A_Etat.Name = "colbe_A_Etat";
-            this.colbe_A_Etat.ReadOnly = true;
-            this.colbe_A_Etat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colbe_A_Etat.Visible = false;
-            // 
-            // colEtat
-            // 
-            this.colEtat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colEtat.FillWeight = 85.5615F;
-            this.colEtat.HeaderText = "Etat";
-            this.colEtat.MinimumWidth = 6;
-            this.colEtat.Name = "colEtat";
-            this.colEtat.ReadOnly = true;
-            this.colEtat.Width = 46;
-            // 
-            // colbe_Qte_Demandee
-            // 
-            this.colbe_Qte_Demandee.DataPropertyName = "be_Qte_Demandee";
-            this.colbe_Qte_Demandee.HeaderText = "Qte Demandee";
-            this.colbe_Qte_Demandee.MinimumWidth = 6;
-            this.colbe_Qte_Demandee.Name = "colbe_Qte_Demandee";
-            this.colbe_Qte_Demandee.ReadOnly = true;
-            this.colbe_Qte_Demandee.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colbe_Qte_Demandee.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colbe_Qte_Demandee.Visible = false;
-            // 
-            // colbe_Qte_Livree
-            // 
-            this.colbe_Qte_Livree.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colbe_Qte_Livree.DataPropertyName = "be_Qte_Livree";
-            this.colbe_Qte_Livree.FillWeight = 21.86494F;
-            this.colbe_Qte_Livree.HeaderText = "Qte Livree";
-            this.colbe_Qte_Livree.MinimumWidth = 6;
-            this.colbe_Qte_Livree.Name = "colbe_Qte_Livree";
-            this.colbe_Qte_Livree.ReadOnly = true;
-            this.colbe_Qte_Livree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colbe_Qte_Livree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colbe_Qte_Livree.Width = 130;
-            // 
-            // colbe_Qte_Manque
-            // 
-            this.colbe_Qte_Manque.DataPropertyName = "be_Qte_Manque";
-            this.colbe_Qte_Manque.HeaderText = "Qte Manque";
-            this.colbe_Qte_Manque.MinimumWidth = 6;
-            this.colbe_Qte_Manque.Name = "colbe_Qte_Manque";
-            this.colbe_Qte_Manque.ReadOnly = true;
-            this.colbe_Qte_Manque.Visible = false;
-            // 
-            // colbe_A_Description
-            // 
-            this.colbe_A_Description.DataPropertyName = "be_A_Description";
-            this.colbe_A_Description.HeaderText = "Description";
-            this.colbe_A_Description.MinimumWidth = 6;
-            this.colbe_A_Description.Name = "colbe_A_Description";
-            this.colbe_A_Description.ReadOnly = true;
-            this.colbe_A_Description.Visible = false;
-            // 
-            // colUMesure
-            // 
-            this.colUMesure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colUMesure.DataPropertyName = "unit_M_Nom";
-            this.colUMesure.HeaderText = "Unite de mesure";
-            this.colUMesure.MinimumWidth = 6;
-            this.colUMesure.Name = "colUMesure";
-            this.colUMesure.ReadOnly = true;
-            this.colUMesure.Width = 150;
-            // 
-            // colCodeUMesure
-            // 
-            this.colCodeUMesure.DataPropertyName = "unit_M_ID";
-            this.colCodeUMesure.HeaderText = "code UMesure";
-            this.colCodeUMesure.MinimumWidth = 6;
-            this.colCodeUMesure.Name = "colCodeUMesure";
-            this.colCodeUMesure.ReadOnly = true;
-            this.colCodeUMesure.Visible = false;
+            this.lblCountA.AutoSize = true;
+            this.lblCountA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblCountA.Location = new System.Drawing.Point(206, 51);
+            this.lblCountA.Name = "lblCountA";
+            this.lblCountA.Size = new System.Drawing.Size(27, 20);
+            this.lblCountA.TabIndex = 19;
+            this.lblCountA.Text = "---";
             // 
             // frmLBonEntree
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(882, 503);
+            this.Controls.Add(this.lblCountA);
             this.Controls.Add(this.txtSearchA);
             this.Controls.Add(this.dgvEBon);
             this.Controls.Add(this.dgvA_EBon);
@@ -483,11 +515,13 @@
             this.Name = "frmLBonEntree";
             this.Text = "Bons d\'entrée courants";
             this.Load += new System.EventHandler(this.frmLBonEntree_Load);
-            this.Controls.SetChildIndex(this.btnSupprimer, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.dgvA_EBon, 0);
             this.Controls.SetChildIndex(this.dgvEBon, 0);
             this.Controls.SetChildIndex(this.txtSearchA, 0);
+            this.Controls.SetChildIndex(this.lblCountA, 0);
+            this.Controls.SetChildIndex(this.btnAjouter, 0);
+            this.Controls.SetChildIndex(this.btnSupprimer, 0);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -534,5 +568,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colbe_A_Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUMesure;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodeUMesure;
+        private System.Windows.Forms.Label lblCountB;
+        private System.Windows.Forms.Label lblCountA;
     }
 }

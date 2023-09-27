@@ -102,6 +102,18 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
             }
         }
 
+        private void txtSearchA_TextChanged(object sender, EventArgs e)
+        {
+            dgvA_EBon.DataSource = db.Search_Bon_Entree_Article(txtSearchA.Text, idBonEntree);
+            lblCountA.Text = $"Ligne: {dgvA_EBon.Rows.Count}";
+        }
+
+        private void txtSearchB_TextChanged(object sender, EventArgs e)
+        {
+            dgvEBon.DataSource = db.Search_Bon_Entree_H(txtSearchB.Text);
+            lblCountB.Text = $"Ligne: {dgvEBon.Rows.Count}";
+        }
+
         private void dgvEBon_SelectionChanged(object sender, EventArgs e)
         {
             try

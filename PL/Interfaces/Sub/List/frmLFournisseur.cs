@@ -104,6 +104,8 @@ namespace PL.Interfaces.Sub.List
 
         private void dgvFournisseur_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
             DataGridViewRow row = dgvFournisseur.Rows[e.RowIndex];
             idFournisseur = int.Parse(row.Cells[colfrns_ID.Name].Value.ToString());
             db = new ges_AutoEntities();
@@ -111,26 +113,6 @@ namespace PL.Interfaces.Sub.List
             frmFournisseur form = new frmFournisseur(this, vl);
             form.Text = "Modifier un fournisseur";
             form.ShowDialog();
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            dgvFournisseur.DataSource = db.Search_Fournisseur(txtSearch.Text);
-            CountRow(dgvFournisseur.Rows.Count);
-        }
-
-        private void dgvFournisseur_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                DataGridViewRow row = dgvFournisseur.Rows[e.RowIndex];
-                idFournisseur = int.Parse(row.Cells[colfrns_ID.Name].Value.ToString());
-                if (idFournisseur > 0)
-                {
-                    Verify_Buttons(false);
-                    Refresh_Button_Supprimer();
-                }
-            }
         }
 
         private void dgvFournisseur_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -167,16 +149,18 @@ namespace PL.Interfaces.Sub.List
 
         private void dgvFournisseur_SelectionChanged(object sender, EventArgs e)
         {
-            //if (e.RowIndex != -1)
-            //{
-            //    DataGridViewRow row = dgvFournisseur.Rows[e.RowIndex];
-            //    idFournisseur = int.Parse(row.Cells[colfrns_ID.Name].Value.ToString());
-            //    if (idFournisseur > 0)
-            //    {
-            //        Verify_Buttons(false);
-            //        Refresh_Button_Supprimer();
-            //    }
-            //}
+            if (dgvFournisseur.CurrentRow != null)
+            {
+                idFournisseur = int.Parse(dgvFournisseur.CurrentRow.Cells[colfrns_ID.Name].Value.ToString());
+                Verify_Buttons(false);
+                Refresh_Button_Supprimer();
+            }
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvFournisseur.DataSource = db.Search_Fournisseurs(txtRecherche.Text);
+            CountRow(dgvFournisseur.Rows.Count);
         }
     }
 }

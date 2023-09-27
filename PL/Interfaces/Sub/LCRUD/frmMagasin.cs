@@ -238,12 +238,6 @@ namespace PL.Interfaces.Sub.LCRUD
             Refresh_Button_Supprimer();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            dgvMagasin.DataSource = db.Search_Magasin(txtSearch.Text);
-            CountRow(dgvMagasin.Rows.Count);
-        }
-
         private void btnNew_Click(object sender, EventArgs e)
         {
             newRecord();
@@ -255,6 +249,12 @@ namespace PL.Interfaces.Sub.LCRUD
 
             if (e.RowIndex == -1 || e.ColumnIndex == -1)
                 e.ContextMenuStrip = menuDGV;
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvMagasin.DataSource = db.Search_Magasin(txtRecherche.Text);
+            CountRow(dgvMagasin.Rows.Count);
         }
     }
 }

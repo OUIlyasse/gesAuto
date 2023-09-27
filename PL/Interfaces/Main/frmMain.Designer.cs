@@ -76,8 +76,9 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblFullName = new System.Windows.Forms.ToolStripDropDownButton();
-            this.seDeconnecterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seDeconnecterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblService = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -282,9 +283,9 @@
             this.uniteDeMesureToolStripMenuItem,
             this.suivieDenregistrementsToolStripMenuItem,
             this.annéesToolStripMenuItem,
-            this.btnPressePapiers,
             this.rayonnageEtArmoireToolStripMenuItem,
-            this.permissionToolStripMenuItem});
+            this.permissionToolStripMenuItem,
+            this.btnPressePapiers});
             this.utilitaireToolStripMenuItem.Name = "utilitaireToolStripMenuItem";
             this.utilitaireToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.utilitaireToolStripMenuItem.Text = "Utilitaires";
@@ -376,28 +377,28 @@
             // stockToolStripMenuItem1
             // 
             this.stockToolStripMenuItem1.Name = "stockToolStripMenuItem1";
-            this.stockToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.stockToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
             this.stockToolStripMenuItem1.Text = "Stock";
             this.stockToolStripMenuItem1.Click += new System.EventHandler(this.stockToolStripMenuItem1_Click);
             // 
             // articleToolStripMenuItem1
             // 
             this.articleToolStripMenuItem1.Name = "articleToolStripMenuItem1";
-            this.articleToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.articleToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
             this.articleToolStripMenuItem1.Text = "Article";
             this.articleToolStripMenuItem1.Click += new System.EventHandler(this.articleToolStripMenuItem1_Click);
             // 
             // véhiculeToolStripMenuItem1
             // 
             this.véhiculeToolStripMenuItem1.Name = "véhiculeToolStripMenuItem1";
-            this.véhiculeToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.véhiculeToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
             this.véhiculeToolStripMenuItem1.Text = "Véhicule";
             this.véhiculeToolStripMenuItem1.Click += new System.EventHandler(this.véhiculeToolStripMenuItem1_Click);
             // 
             // personnelToolStripMenuItem1
             // 
             this.personnelToolStripMenuItem1.Name = "personnelToolStripMenuItem1";
-            this.personnelToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.personnelToolStripMenuItem1.Size = new System.Drawing.Size(147, 26);
             this.personnelToolStripMenuItem1.Text = "Personnel";
             this.personnelToolStripMenuItem1.Click += new System.EventHandler(this.personnelToolStripMenuItem1_Click);
             // 
@@ -405,7 +406,7 @@
             // 
             this.journalToolStripMenuItem.Enabled = false;
             this.journalToolStripMenuItem.Name = "journalToolStripMenuItem";
-            this.journalToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.journalToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.journalToolStripMenuItem.Text = "Journal";
             this.journalToolStripMenuItem.Click += new System.EventHandler(this.journalToolStripMenuItem_Click);
             // 
@@ -449,7 +450,8 @@
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblFullName});
+            this.lblFullName,
+            this.lblService});
             this.statusStrip1.Location = new System.Drawing.Point(0, 536);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1000, 26);
@@ -465,20 +467,29 @@
             this.lblFullName.Image = ((System.Drawing.Image)(resources.GetObject("lblFullName.Image")));
             this.lblFullName.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(41, 24);
-            this.lblFullName.Text = "---";
-            // 
-            // seDeconnecterToolStripMenuItem
-            // 
-            this.seDeconnecterToolStripMenuItem.Name = "seDeconnecterToolStripMenuItem";
-            this.seDeconnecterToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
-            this.seDeconnecterToolStripMenuItem.Text = "Se deconnecter";
+            this.lblFullName.Size = new System.Drawing.Size(90, 24);
+            this.lblFullName.Text = "Utilisateur";
+            this.lblFullName.DropDownOpening += new System.EventHandler(this.lblFullName_DropDownOpening);
+            this.lblFullName.DropDownOpened += new System.EventHandler(this.lblFullName_DropDownOpened);
             // 
             // compteToolStripMenuItem
             // 
             this.compteToolStripMenuItem.Name = "compteToolStripMenuItem";
             this.compteToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
             this.compteToolStripMenuItem.Text = "Compte";
+            // 
+            // seDeconnecterToolStripMenuItem
+            // 
+            this.seDeconnecterToolStripMenuItem.Name = "seDeconnecterToolStripMenuItem";
+            this.seDeconnecterToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.seDeconnecterToolStripMenuItem.Text = "Se deconnecter";
+            this.seDeconnecterToolStripMenuItem.Click += new System.EventHandler(this.seDeconnecterToolStripMenuItem_Click);
+            // 
+            // lblService
+            // 
+            this.lblService.Name = "lblService";
+            this.lblService.Size = new System.Drawing.Size(18, 21);
+            this.lblService.Text = "...";
             // 
             // frmMain
             // 
@@ -557,5 +568,6 @@
         private System.Windows.Forms.ToolStripMenuItem compteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seDeconnecterToolStripMenuItem;
         public System.Windows.Forms.ToolStripDropDownButton lblFullName;
+        public System.Windows.Forms.ToolStripStatusLabel lblService;
     }
 }

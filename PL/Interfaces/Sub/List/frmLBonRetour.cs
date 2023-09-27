@@ -335,42 +335,6 @@ namespace PL.Interfaces.Sub.List
             }
         }
 
-        private void dgvEBon_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                db = new ges_AutoEntities();
-                int item = int.Parse(dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colb_bt_ID.Name].Value.ToString());
-                idBonRetour = item;
-                Bon_Retour bs = db.get_Bon_Retour(item).FirstOrDefault();
-                frmBonRetour form = new frmBonRetour(this, bs);
-                form.Text = "Modifier un bon de retour";
-                form.ShowDialog();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void dgvA_EBon_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvA_EBon.RowCount > 0)
-                {
-                    int id = int.Parse(dgvA_EBon.Rows[dgvA_EBon.CurrentRow.Index].Cells[colbt_A_ID.Name].Value.ToString());
-                    Bon_Retour_Article ei = db.get_Bon_Retour_Article(id).FirstOrDefault();
-                    //MessageBox.Show(ei.bs_A_ID.ToString());
-                    frmAddRArticle frm = new frmAddRArticle(this, ei);
-                    frm.Text = "Modifier un article";
-                    frm.ShowDialog();
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
-
         private void dgvEBon_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
             if (e.RowIndex == -1 || e.ColumnIndex == -1)
@@ -414,6 +378,56 @@ namespace PL.Interfaces.Sub.List
                 else
                     btnSupprimer.Enabled = false;
                 Refresh_Button_Supprimer();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void txtSearchA_TextChanged(object sender, EventArgs e)
+        {
+            dgvA_EBon.DataSource = db.Search_Bon_Retour_Article(txtSearchA.Text, idBonRetour);
+            CountRow(dgvA_EBon.Rows.Count);
+            PositionColumns();
+        }
+
+        private void txtSearchB_TextChanged(object sender, EventArgs e)
+        {
+            dgvEBon.DataSource = db.Search_Bon_Retour(txtSearchB.Text);
+            CountRow(dgvEBon.Rows.Count);
+        }
+
+        private void dgvA_EBon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex == -1)
+                    return;
+                int id = int.Parse(dgvA_EBon.Rows[dgvA_EBon.CurrentRow.Index].Cells[colbt_A_ID.Name].Value.ToString());
+                Bon_Retour_Article ei = db.get_Bon_Retour_Article(id).FirstOrDefault();
+                //MessageBox.Show(ei.bs_A_ID.ToString());
+                frmAddRArticle frm = new frmAddRArticle(this, ei);
+                frm.Text = "Modifier un article";
+                frm.ShowDialog();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void dgvEBon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex == -1)
+                    return;
+                db = new ges_AutoEntities();
+                int item = int.Parse(dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colb_bt_ID.Name].Value.ToString());
+                idBonRetour = item;
+                Bon_Retour bs = db.get_Bon_Retour(item).FirstOrDefault();
+                frmBonRetour form = new frmBonRetour(this, bs);
+                form.Text = "Modifier un bon de retour";
+                form.ShowDialog();
             }
             catch (Exception)
             {

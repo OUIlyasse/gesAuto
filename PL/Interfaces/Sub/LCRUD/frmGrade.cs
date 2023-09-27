@@ -199,16 +199,6 @@ namespace PL.Interfaces.Sub.LCRUD
 
         #endregion Validating
 
-        #region Search
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            dgvGrade.DataSource = db.Search_Grade(txtSearch.Text);
-            CountRow(dgvGrade.Rows.Count);
-        }
-
-        #endregion Search
-
         private void btnNew_Click(object sender, EventArgs e)
         {
             newRecord();
@@ -237,6 +227,12 @@ namespace PL.Interfaces.Sub.LCRUD
         private void frmGrade_Load(object sender, EventArgs e)
         {
             Refresh_Button_Ajouter();
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvGrade.DataSource = db.Search_Grade(txtRecherche.Text);
+            CountRow(dgvGrade.Rows.Count);
         }
     }
 }

@@ -43,11 +43,10 @@
             this.colbs_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colbs_Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colbs_Suppression = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCountB = new System.Windows.Forms.Label();
             this.txtSearchB = new PL.Controls.iText();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCountA = new System.Windows.Forms.Label();
             this.dgvA_SBon = new System.Windows.Forms.DataGridView();
-            this.txtSearchA = new PL.Controls.iText();
             this.colbs_A_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAbs_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colbs_A_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +59,7 @@
             this.colbs_A_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCodeUMesure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUMesure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSearchA = new PL.Controls.iText();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSBon)).BeginInit();
@@ -80,7 +80,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.dgvSBon);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblCountB);
             this.groupBox1.Controls.Add(this.txtSearchB);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(9, 12);
@@ -209,16 +209,16 @@
             this.colbs_Suppression.ReadOnly = true;
             this.colbs_Suppression.Visible = false;
             // 
-            // label1
+            // lblCountB
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(6, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 18);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.lblCountB.AutoSize = true;
+            this.lblCountB.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblCountB.Location = new System.Drawing.Point(6, 58);
+            this.lblCountB.Name = "lblCountB";
+            this.lblCountB.Size = new System.Drawing.Size(46, 18);
+            this.lblCountB.TabIndex = 6;
+            this.lblCountB.Text = "label1";
             // 
             // txtSearchB
             // 
@@ -226,17 +226,18 @@
             this.txtSearchB.Name = "txtSearchB";
             this.txtSearchB.Size = new System.Drawing.Size(170, 28);
             this.txtSearchB.TabIndex = 1;
+            this.txtSearchB.TextChanged += new System.EventHandler(this.txtSearchB_TextChanged);
             // 
-            // label2
+            // lblCountA
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(572, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 18);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "label2";
+            this.lblCountA.AutoSize = true;
+            this.lblCountA.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblCountA.Location = new System.Drawing.Point(572, 26);
+            this.lblCountA.Name = "lblCountA";
+            this.lblCountA.Size = new System.Drawing.Size(46, 18);
+            this.lblCountA.TabIndex = 7;
+            this.lblCountA.Text = "label2";
             // 
             // dgvA_SBon
             // 
@@ -270,7 +271,7 @@
             this.dgvA_SBon.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 10.2F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -289,13 +290,6 @@
             this.dgvA_SBon.Size = new System.Drawing.Size(664, 426);
             this.dgvA_SBon.TabIndex = 8;
             this.dgvA_SBon.DoubleClick += new System.EventHandler(this.dgvA_SBon_DoubleClick);
-            // 
-            // txtSearchA
-            // 
-            this.txtSearchA.Location = new System.Drawing.Point(212, 21);
-            this.txtSearchA.Name = "txtSearchA";
-            this.txtSearchA.Size = new System.Drawing.Size(354, 28);
-            this.txtSearchA.TabIndex = 4;
             // 
             // colbs_A_ID
             // 
@@ -415,16 +409,24 @@
             this.colUMesure.ReadOnly = true;
             this.colUMesure.Width = 150;
             // 
+            // txtSearchA
+            // 
+            this.txtSearchA.Location = new System.Drawing.Point(212, 21);
+            this.txtSearchA.Name = "txtSearchA";
+            this.txtSearchA.Size = new System.Drawing.Size(354, 27);
+            this.txtSearchA.TabIndex = 4;
+            this.txtSearchA.TextChanged += new System.EventHandler(this.txtSearchA_TextChanged);
+            // 
             // frmH_Sortie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 503);
             this.Controls.Add(this.dgvA_SBon);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblCountA);
             this.Controls.Add(this.txtSearchA);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Roboto", 10.2F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.Name = "frmH_Sortie";
@@ -449,8 +451,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private Controls.iText txtSearchB;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCountB;
+        private System.Windows.Forms.Label lblCountA;
         public System.Windows.Forms.DataGridView dgvSBon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colbs_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colbs_Date;

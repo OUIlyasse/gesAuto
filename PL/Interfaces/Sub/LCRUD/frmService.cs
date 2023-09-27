@@ -199,12 +199,6 @@ namespace PL.Interfaces.Sub.LCRUD
 
         #endregion Validating
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            dgvService.DataSource = db.Search_Service(txtSearch.Text);
-            CountRow(dgvService.Rows.Count);
-        }
-
         private void btnNew_Click(object sender, EventArgs e)
         {
             newRecord();
@@ -233,6 +227,12 @@ namespace PL.Interfaces.Sub.LCRUD
         private void frmService_Load(object sender, EventArgs e)
         {
             Refresh_Button_Ajouter();
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvService.DataSource = db.Search_Service(txtRecherche.Text);
+            CountRow(dgvService.Rows.Count);
         }
     }
 }

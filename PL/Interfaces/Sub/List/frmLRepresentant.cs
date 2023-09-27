@@ -105,6 +105,8 @@ namespace PL.Interfaces.Sub.List
 
         private void dgvRepresentant_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
             DataGridViewRow row = dgvRepresentant.Rows[e.RowIndex];
             idRepresentant = int.Parse(row.Cells[colrep_ID.Name].Value.ToString());
             db = new ges_AutoEntities();
@@ -114,29 +116,25 @@ namespace PL.Interfaces.Sub.List
             form.ShowDialog();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            dgvRepresentant.DataSource = db.Search_Representant(txtSearch.Text, idFournisseur);
-            CountRow(dgvRepresentant.Rows.Count);
-        }
-
-        private void dgvRepresentant_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                DataGridViewRow row = dgvRepresentant.Rows[e.RowIndex];
-                idRepresentant = int.Parse(row.Cells[colrep_ID.Name].Value.ToString());
-                if (idRepresentant > 0)
-                {
-                    Verify_Buttons(false);
-                    Refresh_Button_Supprimer();
-                }
-            }
-        }
-
         private void frmLRepresentant_Load(object sender, EventArgs e)
         {
             Refresh_Button_Ajouter();
+        }
+
+        private void dgvRepresentant_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvRepresentant.CurrentRow != null)
+            {
+                idRepresentant = int.Parse(dgvRepresentant.CurrentRow.Cells[colrep_ID.Name].Value.ToString());
+                Verify_Buttons(false);
+                Refresh_Button_Supprimer();
+            }
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvRepresentant.DataSource = db.Search_Representant(txtRecherche.Text, idFournisseur);
+            CountRow(dgvRepresentant.Rows.Count);
         }
 
         private void dgvRepresentant_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)

@@ -221,6 +221,12 @@ namespace PL.Interfaces.Sub.LCRUD
             Refresh_Button_Ajouter();
         }
 
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvRayonnage.DataSource = db.Search_Rayonnage(txtRecherche.Text);
+            CountRow(dgvRayonnage.Rows.Count);
+        }
+
         private void btnArmoire_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvRayonnage.Rows[dgvRayonnage.CurrentRow.Index];

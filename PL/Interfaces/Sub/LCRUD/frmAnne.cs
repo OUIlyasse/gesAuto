@@ -75,7 +75,7 @@ namespace PL.Interfaces.Sub.LCRUD
             txtLNumero.Text = f.an_LastNumero;
         }
 
-        private void CountRow(int? count)
+        private void CountRow(int count)
         {
             lblCount.Text = $"Ligne: {count}";
         }
@@ -182,7 +182,7 @@ namespace PL.Interfaces.Sub.LCRUD
         public override void getData()
         {
             dgvAnnee.DataSource = db.Select_Annees().ToList();
-            CountRow(db.Count_Annees().FirstOrDefault());
+            CountRow(dgvAnnee.Rows.Count);
         }
 
         public override void newRecord()

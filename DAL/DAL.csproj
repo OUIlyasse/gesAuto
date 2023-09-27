@@ -179,6 +179,9 @@
     <Compile Include="DB\Search_Annees_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\Search_Armoire_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\Search_Article_Info_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -188,7 +191,40 @@
     <Compile Include="DB\Search_Article_Reference_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\Search_Bon_Entree_Article_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Entree_H_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Entree_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Retour_Article_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Retour_H_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Retour_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Sortie_Article_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Sortie_H_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Sortie_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Emplacement_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\Search_Famille_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Fournisseurs_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Search_Fournisseur_Result.cs">
@@ -200,7 +236,16 @@
     <Compile Include="DB\Search_Magasin_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\Search_Personnel_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_PPersonnel_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\Search_Profil_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Rayonnage_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Search_Representant_Result.cs">
@@ -219,6 +264,9 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Search_Service_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_SommeQte_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Search_Unite_Soutien_Result.cs">
@@ -363,6 +411,9 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Select_Unite_Mesure_By_Art_isDefault_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Unite_Mesure_By_Art_isDefault_Result1.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Select_Unite_Mesure_By_IdArt_Result.cs">

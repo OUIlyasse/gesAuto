@@ -102,23 +102,10 @@ namespace PL.Interfaces.Sub.List
 
         #endregion Constarteur
 
-        #region Search
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtSearch.Text))
-                getData();
-            else
-            {
-                //dgvPersonnel.DataSource = db.Search_pers_Affecte(txtSearch.Text);
-                //CountRow(dgvPersonnel.Rows.Count);
-            }
-        }
-
-        #endregion Search
-
         private void dgvPersonnel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
             DataGridViewRow row = dgvPersonnel.Rows[e.RowIndex];
             idPersonnel = int.Parse(row.Cells[colpers_ID.Name].Value.ToString());
             db = new ges_AutoEntities();
@@ -126,17 +113,6 @@ namespace PL.Interfaces.Sub.List
             frmPersonnel form = new frmPersonnel(this, vl);
             form.Text = "Modifier un personnel";
             form.ShowDialog();
-        }
-
-        private void dgvPersonnel_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow row = dgvPersonnel.Rows[e.RowIndex];
-            idPersonnel = int.Parse(row.Cells[colpers_ID.Name].Value.ToString());
-            if (idPersonnel > 0)
-            {
-                Verify_Buttons(false);
-                Refresh_Button_Supprimer();
-            }
         }
 
         private void dgvPersonnel_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -150,6 +126,27 @@ namespace PL.Interfaces.Sub.List
         private void frmLPersonnel_Load(object sender, EventArgs e)
         {
             Refresh_Button_Ajouter();
+        }
+
+        private void dgvPersonnel_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvPersonnel.CurrentRow != null)
+            {
+                idPersonnel = int.Parse(dgvPersonnel.CurrentRow.Cells[colpers_ID.Name].Value.ToString());
+                Verify_Buttons(false);
+                Refresh_Button_Supprimer();
+            }
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvPersonnel.DataSource = db.Search_Personnel(txtRecherche.Text);
+                CountRow(dgvPersonnel.Rows.Count);
+            }
         }
     }
 }

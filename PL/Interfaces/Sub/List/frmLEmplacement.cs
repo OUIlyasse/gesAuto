@@ -104,6 +104,8 @@ namespace PL.Interfaces.Sub.List
 
         private void dgvEmplacement_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
             DataGridViewRow row = dgvEmplacement.Rows[e.RowIndex];
             idEmplacement = int.Parse(row.Cells[coleplc_ID.Name].Value.ToString());
             db = new ges_AutoEntities();
@@ -115,14 +117,26 @@ namespace PL.Interfaces.Sub.List
 
         private void dgvEmplacement_SelectionChanged(object sender, EventArgs e)
         {
-            bool status = dgvEmplacement.SelectedRows.Count > 0;
-            Verify_Buttons(status);
-            Refresh_Button_Supprimer();
+            if (dgvEmplacement.CurrentRow != null)
+            {
+                idEmplacement = int.Parse(dgvEmplacement.CurrentRow.Cells[coleplc_ID.Name].Value.ToString());
+                Verify_Buttons(false);
+                Refresh_Button_Supprimer();
+            }
+            //bool status = dgvEmplacement.SelectedRows.Count > 0;
+            //Verify_Buttons(status);
+            //Refresh_Button_Supprimer();
         }
 
         private void frmLEmplacement_Load(object sender, EventArgs e)
         {
             Refresh_Button_Ajouter();
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvEmplacement.DataSource = db.Search_Emplacement(txtRecherche.Text);
+            CountRow(dgvEmplacement.Rows.Count);
         }
     }
 }

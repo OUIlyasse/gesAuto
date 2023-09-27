@@ -334,42 +334,6 @@ namespace PL.Interfaces.Sub.List
             }
         }
 
-        private void dgvEBon_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                db = new ges_AutoEntities();
-                int item = int.Parse(dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbs_ID.Name].Value.ToString());
-                idBonSortie = item;
-                Bon_Sortie bs = db.Get_Bon_Sortie_By_ID(item).FirstOrDefault();
-                frmBonSortie form = new frmBonSortie(this, bs);
-                form.Text = "Modifier un bon de sortie";
-                form.ShowDialog();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void dgvA_EBon_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvA_EBon.RowCount > 0)
-                {
-                    int id = int.Parse(dgvA_EBon.Rows[dgvA_EBon.CurrentRow.Index].Cells[colbs_A_ID.Name].Value.ToString());
-                    Bon_Sortie_Article ei = db.Get_Bon_Sortie_Article(id).FirstOrDefault();
-                    //MessageBox.Show(ei.bs_A_ID.ToString());
-                    frmAddSArticle frm = new frmAddSArticle(this, ei);
-                    frm.Text = "Modifier un article";
-                    frm.ShowDialog();
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
-
         private void dgvEBon_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
             if (e.RowIndex == -1 || e.ColumnIndex == -1)
@@ -413,6 +377,56 @@ namespace PL.Interfaces.Sub.List
                 else
                     btnSupprimer.Enabled = false;
                 Refresh_Button_Supprimer();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void txtSearchA_TextChanged(object sender, EventArgs e)
+        {
+            dgvA_EBon.DataSource = db.Search_Bon_Sortie_Article(txtSearchA.Text, idBonSortie);
+            CountRow(dgvA_EBon.Rows.Count);
+            PositionColumns();
+        }
+
+        private void txtSearchB_TextChanged(object sender, EventArgs e)
+        {
+            dgvEBon.DataSource = db.Search_Bon_Sortie(txtSearchB.Text);
+            CountRow(dgvEBon.Rows.Count);
+        }
+
+        private void dgvA_EBon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex == -1)
+                    return;
+                int id = int.Parse(dgvA_EBon.Rows[dgvA_EBon.CurrentRow.Index].Cells[colbs_A_ID.Name].Value.ToString());
+                Bon_Sortie_Article ei = db.Get_Bon_Sortie_Article(id).FirstOrDefault();
+                //MessageBox.Show(ei.bs_A_ID.ToString());
+                frmAddSArticle frm = new frmAddSArticle(this, ei);
+                frm.Text = "Modifier un article";
+                frm.ShowDialog();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void dgvEBon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex == -1)
+                    return;
+                db = new ges_AutoEntities();
+                int item = int.Parse(dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbs_ID.Name].Value.ToString());
+                idBonSortie = item;
+                Bon_Sortie bs = db.Get_Bon_Sortie_By_ID(item).FirstOrDefault();
+                frmBonSortie form = new frmBonSortie(this, bs);
+                form.Text = "Modifier un bon de sortie";
+                form.ShowDialog();
             }
             catch (Exception)
             {

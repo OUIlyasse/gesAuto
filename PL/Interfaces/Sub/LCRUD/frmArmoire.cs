@@ -64,7 +64,7 @@ namespace PL.Interfaces.Sub.LCRUD
             txtDescription.Text = f.arm_Description;
         }
 
-        private void CountRow(int? count)
+        private void CountRow(int count)
         {
             lblCount.Text = $"Ligne: {count}";
         }
@@ -206,6 +206,12 @@ namespace PL.Interfaces.Sub.LCRUD
         private void btnNew_Click(object sender, EventArgs e)
         {
             newRecord();
+        }
+
+        private void txtRecherche_TextChanged(object sender, EventArgs e)
+        {
+            dgvRayonnage.DataSource = db.Search_Armoire(txtRecherche.Text, idRayonnage);
+            CountRow(dgvRayonnage.Rows.Count);
         }
 
         private void frmArmoire_Load(object sender, EventArgs e)

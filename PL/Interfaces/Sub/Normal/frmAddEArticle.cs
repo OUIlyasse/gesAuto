@@ -49,7 +49,7 @@ namespace PL.Interfaces.Sub.Normal
         {
             var rs = db.Select_Priv_Screen(idUtilisateur, "Reception d'un BL", getID_Lists("Entrees")).FirstOrDefault();
             if (rs != null)
-                btnModifier.Enabled = (bool)rs.priv_Supprimer;
+                btnModifier.Enabled = (bool)rs.priv_Modifier;
             else
                 btnModifier.Enabled = false;
         }
@@ -460,9 +460,12 @@ namespace PL.Interfaces.Sub.Normal
         private void loadQte(string vl, string article)
         {
             var rQte = db.ResteQteArticle(vl, article).FirstOrDefault() > 0 ? db.ResteQteArticle(vl, article).FirstOrDefault() : 0;
-            var um = db.Select_Unite_Mesure_By_Art_isDefault(db.get_Article_Info_By_Designation(article).FirstOrDefault().art_ID).FirstOrDefault();
-            lblQte.Text = $"En stock: {rQte} {um}";
-            Info.SetToolTip(lblQte, $"En stock: {rQte} {um}");
+            Unite_Mesure um = db.Select_Unite_Mesure_By_Art_isDefault(db.get_Article_Info_By_Designation(article).FirstOrDefault().art_ID).FirstOrDefault();
+            if (um != null)
+            {
+                lblQte.Text = $"En stock: {rQte} {um.unit_M_Nom}";
+                Info.SetToolTip(lblQte, $"En stock: {rQte} {um.unit_M_Nom}");
+            }
         }
 
         #endregion Codes

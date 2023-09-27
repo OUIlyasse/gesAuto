@@ -31,25 +31,25 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRayoSupprimer = new System.Windows.Forms.Button();
+            this.txtRayonnage = new System.Windows.Forms.TextBox();
+            this.btnRayoModifier = new System.Windows.Forms.Button();
+            this.btnRayoAjouter = new System.Windows.Forms.Button();
             this.gbArmoire = new System.Windows.Forms.GroupBox();
+            this.btnSystematic = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnArmSupprimer = new System.Windows.Forms.Button();
+            this.btnArmModifier = new System.Windows.Forms.Button();
+            this.btnArmAjouter = new System.Windows.Forms.Button();
+            this.txtArmoire = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.dgvArmoire = new System.Windows.Forms.DataGridView();
             this.colarm_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colarm_Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colarm_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colrayo_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDescription = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtArmoire = new System.Windows.Forms.TextBox();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnArmSupprimer = new System.Windows.Forms.Button();
-            this.btnArmModifier = new System.Windows.Forms.Button();
-            this.btnArmAjouter = new System.Windows.Forms.Button();
-            this.btnSystematic = new System.Windows.Forms.Button();
-            this.txtRayonnage = new System.Windows.Forms.TextBox();
-            this.btnRayoSupprimer = new System.Windows.Forms.Button();
-            this.btnRayoModifier = new System.Windows.Forms.Button();
-            this.btnRayoAjouter = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gbArmoire.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArmoire)).BeginInit();
@@ -67,6 +67,56 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rayonnage";
+            // 
+            // btnRayoSupprimer
+            // 
+            this.btnRayoSupprimer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRayoSupprimer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRayoSupprimer.FlatAppearance.BorderSize = 0;
+            this.btnRayoSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRayoSupprimer.Image = global::PL.Properties.Resources.Supprimer_48;
+            this.btnRayoSupprimer.Location = new System.Drawing.Point(627, 31);
+            this.btnRayoSupprimer.Name = "btnRayoSupprimer";
+            this.btnRayoSupprimer.Size = new System.Drawing.Size(49, 49);
+            this.btnRayoSupprimer.TabIndex = 25;
+            this.btnRayoSupprimer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRayoSupprimer.UseVisualStyleBackColor = true;
+            // 
+            // txtRayonnage
+            // 
+            this.txtRayonnage.Location = new System.Drawing.Point(32, 41);
+            this.txtRayonnage.Name = "txtRayonnage";
+            this.txtRayonnage.Size = new System.Drawing.Size(403, 28);
+            this.txtRayonnage.TabIndex = 19;
+            // 
+            // btnRayoModifier
+            // 
+            this.btnRayoModifier.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRayoModifier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRayoModifier.FlatAppearance.BorderSize = 0;
+            this.btnRayoModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRayoModifier.Image = global::PL.Properties.Resources.Modifier_48;
+            this.btnRayoModifier.Location = new System.Drawing.Point(547, 31);
+            this.btnRayoModifier.Name = "btnRayoModifier";
+            this.btnRayoModifier.Size = new System.Drawing.Size(49, 49);
+            this.btnRayoModifier.TabIndex = 24;
+            this.btnRayoModifier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRayoModifier.UseVisualStyleBackColor = true;
+            // 
+            // btnRayoAjouter
+            // 
+            this.btnRayoAjouter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRayoAjouter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRayoAjouter.FlatAppearance.BorderSize = 0;
+            this.btnRayoAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRayoAjouter.Image = global::PL.Properties.Resources.Ajouter_48;
+            this.btnRayoAjouter.Location = new System.Drawing.Point(467, 31);
+            this.btnRayoAjouter.Name = "btnRayoAjouter";
+            this.btnRayoAjouter.Size = new System.Drawing.Size(49, 49);
+            this.btnRayoAjouter.TabIndex = 23;
+            this.btnRayoAjouter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRayoAjouter.UseVisualStyleBackColor = true;
+            this.btnRayoAjouter.Click += new System.EventHandler(this.btnRayoAjouter_Click);
             // 
             // gbArmoire
             // 
@@ -86,6 +136,106 @@
             this.gbArmoire.TabIndex = 1;
             this.gbArmoire.TabStop = false;
             this.gbArmoire.Text = "Armoire";
+            // 
+            // btnSystematic
+            // 
+            this.btnSystematic.Location = new System.Drawing.Point(549, 21);
+            this.btnSystematic.Name = "btnSystematic";
+            this.btnSystematic.Size = new System.Drawing.Size(133, 34);
+            this.btnSystematic.TabIndex = 22;
+            this.btnSystematic.Text = "Systématique";
+            this.btnSystematic.UseVisualStyleBackColor = true;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNew.FlatAppearance.BorderSize = 0;
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNew.Image = global::PL.Properties.Resources.Fichier_48;
+            this.btnNew.Location = new System.Drawing.Point(20, 270);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(49, 49);
+            this.btnNew.TabIndex = 21;
+            this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNew.UseVisualStyleBackColor = true;
+            // 
+            // btnArmSupprimer
+            // 
+            this.btnArmSupprimer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnArmSupprimer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArmSupprimer.FlatAppearance.BorderSize = 0;
+            this.btnArmSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArmSupprimer.Image = global::PL.Properties.Resources.Supprimer_48;
+            this.btnArmSupprimer.Location = new System.Drawing.Point(260, 270);
+            this.btnArmSupprimer.Name = "btnArmSupprimer";
+            this.btnArmSupprimer.Size = new System.Drawing.Size(49, 49);
+            this.btnArmSupprimer.TabIndex = 20;
+            this.btnArmSupprimer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnArmSupprimer.UseVisualStyleBackColor = true;
+            // 
+            // btnArmModifier
+            // 
+            this.btnArmModifier.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnArmModifier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArmModifier.FlatAppearance.BorderSize = 0;
+            this.btnArmModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArmModifier.Image = global::PL.Properties.Resources.Modifier_48;
+            this.btnArmModifier.Location = new System.Drawing.Point(180, 270);
+            this.btnArmModifier.Name = "btnArmModifier";
+            this.btnArmModifier.Size = new System.Drawing.Size(49, 49);
+            this.btnArmModifier.TabIndex = 19;
+            this.btnArmModifier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnArmModifier.UseVisualStyleBackColor = true;
+            // 
+            // btnArmAjouter
+            // 
+            this.btnArmAjouter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnArmAjouter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArmAjouter.FlatAppearance.BorderSize = 0;
+            this.btnArmAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArmAjouter.Image = global::PL.Properties.Resources.Ajouter_48;
+            this.btnArmAjouter.Location = new System.Drawing.Point(100, 270);
+            this.btnArmAjouter.Name = "btnArmAjouter";
+            this.btnArmAjouter.Size = new System.Drawing.Size(49, 49);
+            this.btnArmAjouter.TabIndex = 5;
+            this.btnArmAjouter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnArmAjouter.UseVisualStyleBackColor = true;
+            // 
+            // txtArmoire
+            // 
+            this.txtArmoire.Location = new System.Drawing.Point(6, 61);
+            this.txtArmoire.Name = "txtArmoire";
+            this.txtArmoire.Size = new System.Drawing.Size(326, 28);
+            this.txtArmoire.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 20);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Armoire";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(6, 119);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(330, 128);
+            this.txtDescription.TabIndex = 6;
+            this.txtDescription.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 96);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Description";
             // 
             // dgvArmoire
             // 
@@ -161,155 +311,6 @@
             this.colrayo_ID.ReadOnly = true;
             this.colrayo_ID.Visible = false;
             // 
-            // txtDescription
-            // 
-            this.txtDescription.Location = new System.Drawing.Point(6, 119);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(330, 128);
-            this.txtDescription.TabIndex = 6;
-            this.txtDescription.Text = "";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 96);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 20);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Description";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Armoire";
-            // 
-            // txtArmoire
-            // 
-            this.txtArmoire.Location = new System.Drawing.Point(6, 61);
-            this.txtArmoire.Name = "txtArmoire";
-            this.txtArmoire.Size = new System.Drawing.Size(326, 28);
-            this.txtArmoire.TabIndex = 18;
-            // 
-            // btnNew
-            // 
-            this.btnNew.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNew.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNew.FlatAppearance.BorderSize = 0;
-            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNew.Image = global::PL.Properties.Resources.Fichier_48;
-            this.btnNew.Location = new System.Drawing.Point(20, 270);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(49, 49);
-            this.btnNew.TabIndex = 21;
-            this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNew.UseVisualStyleBackColor = true;
-            // 
-            // btnArmSupprimer
-            // 
-            this.btnArmSupprimer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnArmSupprimer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnArmSupprimer.FlatAppearance.BorderSize = 0;
-            this.btnArmSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArmSupprimer.Image = global::PL.Properties.Resources.Supprimer_48;
-            this.btnArmSupprimer.Location = new System.Drawing.Point(260, 270);
-            this.btnArmSupprimer.Name = "btnArmSupprimer";
-            this.btnArmSupprimer.Size = new System.Drawing.Size(49, 49);
-            this.btnArmSupprimer.TabIndex = 20;
-            this.btnArmSupprimer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnArmSupprimer.UseVisualStyleBackColor = true;
-            // 
-            // btnArmModifier
-            // 
-            this.btnArmModifier.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnArmModifier.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnArmModifier.FlatAppearance.BorderSize = 0;
-            this.btnArmModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArmModifier.Image = global::PL.Properties.Resources.Modifier_48;
-            this.btnArmModifier.Location = new System.Drawing.Point(180, 270);
-            this.btnArmModifier.Name = "btnArmModifier";
-            this.btnArmModifier.Size = new System.Drawing.Size(49, 49);
-            this.btnArmModifier.TabIndex = 19;
-            this.btnArmModifier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnArmModifier.UseVisualStyleBackColor = true;
-            // 
-            // btnArmAjouter
-            // 
-            this.btnArmAjouter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnArmAjouter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnArmAjouter.FlatAppearance.BorderSize = 0;
-            this.btnArmAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArmAjouter.Image = global::PL.Properties.Resources.Ajouter_48;
-            this.btnArmAjouter.Location = new System.Drawing.Point(100, 270);
-            this.btnArmAjouter.Name = "btnArmAjouter";
-            this.btnArmAjouter.Size = new System.Drawing.Size(49, 49);
-            this.btnArmAjouter.TabIndex = 5;
-            this.btnArmAjouter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnArmAjouter.UseVisualStyleBackColor = true;
-            // 
-            // btnSystematic
-            // 
-            this.btnSystematic.Location = new System.Drawing.Point(549, 21);
-            this.btnSystematic.Name = "btnSystematic";
-            this.btnSystematic.Size = new System.Drawing.Size(133, 34);
-            this.btnSystematic.TabIndex = 22;
-            this.btnSystematic.Text = "Systématique";
-            this.btnSystematic.UseVisualStyleBackColor = true;
-            // 
-            // txtRayonnage
-            // 
-            this.txtRayonnage.Location = new System.Drawing.Point(32, 41);
-            this.txtRayonnage.Name = "txtRayonnage";
-            this.txtRayonnage.Size = new System.Drawing.Size(403, 28);
-            this.txtRayonnage.TabIndex = 19;
-            // 
-            // btnRayoSupprimer
-            // 
-            this.btnRayoSupprimer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRayoSupprimer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRayoSupprimer.FlatAppearance.BorderSize = 0;
-            this.btnRayoSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRayoSupprimer.Image = global::PL.Properties.Resources.Supprimer_48;
-            this.btnRayoSupprimer.Location = new System.Drawing.Point(627, 31);
-            this.btnRayoSupprimer.Name = "btnRayoSupprimer";
-            this.btnRayoSupprimer.Size = new System.Drawing.Size(49, 49);
-            this.btnRayoSupprimer.TabIndex = 25;
-            this.btnRayoSupprimer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRayoSupprimer.UseVisualStyleBackColor = true;
-            // 
-            // btnRayoModifier
-            // 
-            this.btnRayoModifier.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRayoModifier.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRayoModifier.FlatAppearance.BorderSize = 0;
-            this.btnRayoModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRayoModifier.Image = global::PL.Properties.Resources.Modifier_48;
-            this.btnRayoModifier.Location = new System.Drawing.Point(547, 31);
-            this.btnRayoModifier.Name = "btnRayoModifier";
-            this.btnRayoModifier.Size = new System.Drawing.Size(49, 49);
-            this.btnRayoModifier.TabIndex = 24;
-            this.btnRayoModifier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRayoModifier.UseVisualStyleBackColor = true;
-            // 
-            // btnRayoAjouter
-            // 
-            this.btnRayoAjouter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRayoAjouter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRayoAjouter.FlatAppearance.BorderSize = 0;
-            this.btnRayoAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRayoAjouter.Image = global::PL.Properties.Resources.Ajouter_48;
-            this.btnRayoAjouter.Location = new System.Drawing.Point(467, 31);
-            this.btnRayoAjouter.Name = "btnRayoAjouter";
-            this.btnRayoAjouter.Size = new System.Drawing.Size(49, 49);
-            this.btnRayoAjouter.TabIndex = 23;
-            this.btnRayoAjouter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRayoAjouter.UseVisualStyleBackColor = true;
-            // 
             // frmAddRayoArm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -319,7 +320,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Lucida Sans", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddRayoArm";

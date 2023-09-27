@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.lblCount = new System.Windows.Forms.Label();
             this.dgvRepresentant = new System.Windows.Forms.DataGridView();
             this.colrep_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colrep_Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +41,8 @@
             this.colfrns_Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuDGV = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnColonne = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtRecherche = new PL.Controls.iText();
+            this.lblCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRepresentant)).BeginInit();
             this.menuDGV.SuspendLayout();
             this.SuspendLayout();
@@ -55,35 +54,6 @@
             // btnAjouter
             // 
             this.btnAjouter.FlatAppearance.BorderSize = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 20);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Recherche";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(115, 20);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(279, 27);
-            this.txtSearch.TabIndex = 19;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // lblCount
-            // 
-            this.lblCount.AutoSize = true;
-            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.lblCount.Location = new System.Drawing.Point(12, 67);
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(27, 20);
-            this.lblCount.TabIndex = 18;
-            this.lblCount.Text = "---";
             // 
             // dgvRepresentant
             // 
@@ -106,7 +76,7 @@
             this.colrep_Observation,
             this.colfrns_Nom});
             this.dgvRepresentant.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvRepresentant.Location = new System.Drawing.Point(12, 93);
+            this.dgvRepresentant.Location = new System.Drawing.Point(12, 74);
             this.dgvRepresentant.MultiSelect = false;
             this.dgvRepresentant.Name = "dgvRepresentant";
             this.dgvRepresentant.ReadOnly = true;
@@ -128,11 +98,11 @@
             this.dgvRepresentant.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRepresentant.RowTemplate.Height = 24;
             this.dgvRepresentant.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRepresentant.Size = new System.Drawing.Size(858, 398);
+            this.dgvRepresentant.Size = new System.Drawing.Size(858, 417);
             this.dgvRepresentant.TabIndex = 16;
-            this.dgvRepresentant.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRepresentant_CellClick);
             this.dgvRepresentant.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvRepresentant_CellContextMenuStripNeeded);
             this.dgvRepresentant.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRepresentant_CellDoubleClick);
+            this.dgvRepresentant.SelectionChanged += new System.EventHandler(this.dgvRepresentant_SelectionChanged);
             // 
             // colrep_ID
             // 
@@ -207,12 +177,32 @@
             this.btnColonne.Size = new System.Drawing.Size(133, 24);
             this.btnColonne.Text = "Colonne";
             // 
+            // txtRecherche
+            // 
+            this.txtRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRecherche.Location = new System.Drawing.Point(12, 21);
+            this.txtRecherche.Name = "txtRecherche";
+            this.txtRecherche.Size = new System.Drawing.Size(366, 27);
+            this.txtRecherche.TabIndex = 28;
+            this.txtRecherche.TextChanged += new System.EventHandler(this.txtRecherche_TextChanged);
+            // 
+            // lblCount
+            // 
+            this.lblCount.AutoSize = true;
+            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblCount.Location = new System.Drawing.Point(12, 51);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(27, 20);
+            this.lblCount.TabIndex = 27;
+            this.lblCount.Text = "---";
+            // 
             // frmLRepresentant
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(882, 503);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.txtRecherche);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.dgvRepresentant);
             this.Name = "frmLRepresentant";
@@ -222,8 +212,7 @@
             this.Controls.SetChildIndex(this.btnSupprimer, 0);
             this.Controls.SetChildIndex(this.dgvRepresentant, 0);
             this.Controls.SetChildIndex(this.lblCount, 0);
-            this.Controls.SetChildIndex(this.txtSearch, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.txtRecherche, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRepresentant)).EndInit();
             this.menuDGV.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -232,10 +221,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label lblCount;
         public System.Windows.Forms.DataGridView dgvRepresentant;
         private System.Windows.Forms.ContextMenuStrip menuDGV;
         private System.Windows.Forms.ToolStripMenuItem btnColonne;
@@ -246,5 +231,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colrep_Tele;
         private System.Windows.Forms.DataGridViewTextBoxColumn colrep_Observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colfrns_Nom;
+        private Controls.iText txtRecherche;
+        private System.Windows.Forms.Label lblCount;
     }
 }

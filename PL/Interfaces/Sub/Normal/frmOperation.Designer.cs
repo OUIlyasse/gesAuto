@@ -49,11 +49,8 @@
             this.lblArticle = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblVL = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperation)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvOperation
@@ -212,7 +209,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(490, 167);
+            this.groupBox1.Size = new System.Drawing.Size(958, 167);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             // 
@@ -221,7 +218,7 @@
             this.lblType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblType.Location = new System.Drawing.Point(166, 133);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(310, 20);
+            this.lblType.Size = new System.Drawing.Size(786, 20);
             this.lblType.TabIndex = 30;
             this.lblType.Text = "---";
             this.lblType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -241,7 +238,7 @@
             this.lblReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblReference.Location = new System.Drawing.Point(166, 98);
             this.lblReference.Name = "lblReference";
-            this.lblReference.Size = new System.Drawing.Size(310, 20);
+            this.lblReference.Size = new System.Drawing.Size(786, 20);
             this.lblReference.TabIndex = 28;
             this.lblReference.Text = "---";
             this.lblReference.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -261,7 +258,7 @@
             this.lblArticle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblArticle.Location = new System.Drawing.Point(166, 63);
             this.lblArticle.Name = "lblArticle";
-            this.lblArticle.Size = new System.Drawing.Size(310, 20);
+            this.lblArticle.Size = new System.Drawing.Size(786, 20);
             this.lblArticle.TabIndex = 26;
             this.lblArticle.Text = "---";
             this.lblArticle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -281,37 +278,16 @@
             this.lblVL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVL.Location = new System.Drawing.Point(166, 28);
             this.lblVL.Name = "lblVL";
-            this.lblVL.Size = new System.Drawing.Size(310, 20);
+            this.lblVL.Size = new System.Drawing.Size(786, 20);
             this.lblVL.TabIndex = 24;
             this.lblVL.Text = "---";
             this.lblVL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Location = new System.Drawing.Point(530, 47);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(440, 72);
-            this.groupBox3.TabIndex = 24;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Recherche";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(6, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(428, 27);
-            this.textBox1.TabIndex = 0;
             // 
             // frmOperation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 653);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvOperation);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -326,8 +302,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperation)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -344,8 +318,6 @@
         private System.Windows.Forms.Label lblArticle;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblVL;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colopera_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colbon_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colopera_Date;

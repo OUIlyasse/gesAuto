@@ -52,6 +52,18 @@
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.FlatAppearance.BorderSize = 0;
+            // 
+            // btnModifier
+            // 
+            this.btnModifier.FlatAppearance.BorderSize = 0;
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.FlatAppearance.BorderSize = 0;
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -75,6 +87,7 @@
             this.txtRecherche.Name = "txtRecherche";
             this.txtRecherche.Size = new System.Drawing.Size(308, 27);
             this.txtRecherche.TabIndex = 7;
+            this.txtRecherche.TextChanged += new System.EventHandler(this.txtRecherche_TextChanged);
             // 
             // lblCount
             // 
@@ -244,7 +257,6 @@
             this.ClientSize = new System.Drawing.Size(1018, 503);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmRayonnage";

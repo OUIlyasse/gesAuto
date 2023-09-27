@@ -28,28 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtSearchA = new PL.Controls.iText();
             this.dgvA_EBon = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dgvEBon = new System.Windows.Forms.DataGridView();
-            this.colb_be_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_Reference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_PV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colfrns_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colrep_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colbe_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.be_Suppression = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.txtSearchB = new PL.Controls.iText();
-            this.label2 = new System.Windows.Forms.Label();
             this.colbe_A_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colbe_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colbe_A_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +46,22 @@
             this.colbe_A_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUMesure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCodeUMesure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblCountB = new System.Windows.Forms.Label();
+            this.dgvEBon = new System.Windows.Forms.DataGridView();
+            this.colb_be_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_Reference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_PV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colfrns_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colrep_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colbe_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.be_Suppression = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtSearchB = new PL.Controls.iText();
+            this.lblCountA = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvA_EBon)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -72,8 +72,9 @@
             // 
             this.txtSearchA.Location = new System.Drawing.Point(212, 21);
             this.txtSearchA.Name = "txtSearchA";
-            this.txtSearchA.Size = new System.Drawing.Size(354, 28);
+            this.txtSearchA.Size = new System.Drawing.Size(354, 27);
             this.txtSearchA.TabIndex = 4;
+            this.txtSearchA.TextChanged += new System.EventHandler(this.txtSearchA_TextChanged);
             // 
             // dgvA_EBon
             // 
@@ -105,219 +106,27 @@
             this.dgvA_EBon.MultiSelect = false;
             this.dgvA_EBon.Name = "dgvA_EBon";
             this.dgvA_EBon.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvA_EBon.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvA_EBon.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvA_EBon.RowHeadersVisible = false;
             this.dgvA_EBon.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvA_EBon.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvA_EBon.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvA_EBon.RowTemplate.Height = 24;
             this.dgvA_EBon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvA_EBon.Size = new System.Drawing.Size(664, 426);
             this.dgvA_EBon.TabIndex = 5;
             this.dgvA_EBon.DoubleClick += new System.EventHandler(this.dgvA_EBon_DoubleClick);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 503);
-            this.panel1.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.dgvEBon);
-            this.groupBox1.Controls.Add(this.txtSearchB);
-            this.groupBox1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(9, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(182, 479);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Bons";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(6, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 18);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
-            // 
-            // dgvEBon
-            // 
-            this.dgvEBon.AllowUserToAddRows = false;
-            this.dgvEBon.AllowUserToDeleteRows = false;
-            this.dgvEBon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvEBon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEBon.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvEBon.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvEBon.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            this.dgvEBon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEBon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colb_be_ID,
-            this.colbe_Date,
-            this.colbe_Designation,
-            this.colbe_Reference,
-            this.colbe_PV,
-            this.colfrns_ID,
-            this.colrep_ID,
-            this.colbe_Description,
-            this.colbe_Status,
-            this.be_Suppression});
-            this.dgvEBon.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvEBon.Location = new System.Drawing.Point(6, 79);
-            this.dgvEBon.MultiSelect = false;
-            this.dgvEBon.Name = "dgvEBon";
-            this.dgvEBon.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEBon.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvEBon.RowHeadersVisible = false;
-            this.dgvEBon.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvEBon.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvEBon.RowTemplate.Height = 24;
-            this.dgvEBon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEBon.Size = new System.Drawing.Size(170, 394);
-            this.dgvEBon.TabIndex = 2;
-            this.dgvEBon.SelectionChanged += new System.EventHandler(this.dgvEBon_SelectionChanged);
-            this.dgvEBon.DoubleClick += new System.EventHandler(this.dgvEBon_DoubleClick);
-            // 
-            // colb_be_ID
-            // 
-            this.colb_be_ID.DataPropertyName = "be_ID";
-            this.colb_be_ID.HeaderText = "code Bon";
-            this.colb_be_ID.MinimumWidth = 6;
-            this.colb_be_ID.Name = "colb_be_ID";
-            this.colb_be_ID.ReadOnly = true;
-            this.colb_be_ID.Visible = false;
-            // 
-            // colbe_Date
-            // 
-            this.colbe_Date.DataPropertyName = "be_Date";
-            this.colbe_Date.HeaderText = "Date";
-            this.colbe_Date.MinimumWidth = 6;
-            this.colbe_Date.Name = "colbe_Date";
-            this.colbe_Date.ReadOnly = true;
-            this.colbe_Date.Visible = false;
-            // 
-            // colbe_Designation
-            // 
-            this.colbe_Designation.DataPropertyName = "be_Designation";
-            this.colbe_Designation.HeaderText = "Bon";
-            this.colbe_Designation.MinimumWidth = 6;
-            this.colbe_Designation.Name = "colbe_Designation";
-            this.colbe_Designation.ReadOnly = true;
-            // 
-            // colbe_Reference
-            // 
-            this.colbe_Reference.DataPropertyName = "be_Reference";
-            this.colbe_Reference.HeaderText = "Reference";
-            this.colbe_Reference.MinimumWidth = 6;
-            this.colbe_Reference.Name = "colbe_Reference";
-            this.colbe_Reference.ReadOnly = true;
-            this.colbe_Reference.Visible = false;
-            // 
-            // colbe_PV
-            // 
-            this.colbe_PV.DataPropertyName = "be_PV";
-            this.colbe_PV.HeaderText = "be_PV";
-            this.colbe_PV.MinimumWidth = 6;
-            this.colbe_PV.Name = "colbe_PV";
-            this.colbe_PV.ReadOnly = true;
-            this.colbe_PV.Visible = false;
-            // 
-            // colfrns_ID
-            // 
-            this.colfrns_ID.DataPropertyName = "frns_ID";
-            this.colfrns_ID.HeaderText = "frns_ID";
-            this.colfrns_ID.MinimumWidth = 6;
-            this.colfrns_ID.Name = "colfrns_ID";
-            this.colfrns_ID.ReadOnly = true;
-            this.colfrns_ID.Visible = false;
-            // 
-            // colrep_ID
-            // 
-            this.colrep_ID.DataPropertyName = "rep_ID";
-            this.colrep_ID.HeaderText = "rep_ID";
-            this.colrep_ID.MinimumWidth = 6;
-            this.colrep_ID.Name = "colrep_ID";
-            this.colrep_ID.ReadOnly = true;
-            this.colrep_ID.Visible = false;
-            // 
-            // colbe_Description
-            // 
-            this.colbe_Description.DataPropertyName = "be_Description";
-            this.colbe_Description.HeaderText = "be_Description";
-            this.colbe_Description.MinimumWidth = 6;
-            this.colbe_Description.Name = "colbe_Description";
-            this.colbe_Description.ReadOnly = true;
-            this.colbe_Description.Visible = false;
-            // 
-            // colbe_Status
-            // 
-            this.colbe_Status.DataPropertyName = "be_Status";
-            this.colbe_Status.HeaderText = "be_Status";
-            this.colbe_Status.MinimumWidth = 6;
-            this.colbe_Status.Name = "colbe_Status";
-            this.colbe_Status.ReadOnly = true;
-            this.colbe_Status.Visible = false;
-            // 
-            // be_Suppression
-            // 
-            this.be_Suppression.DataPropertyName = "be_Suppression";
-            this.be_Suppression.HeaderText = "be_Suppression";
-            this.be_Suppression.MinimumWidth = 6;
-            this.be_Suppression.Name = "be_Suppression";
-            this.be_Suppression.ReadOnly = true;
-            this.be_Suppression.Visible = false;
-            // 
-            // txtSearchB
-            // 
-            this.txtSearchB.Location = new System.Drawing.Point(6, 27);
-            this.txtSearchB.Name = "txtSearchB";
-            this.txtSearchB.Size = new System.Drawing.Size(170, 28);
-            this.txtSearchB.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(572, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 18);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "label2";
             // 
             // colbe_A_ID
             // 
@@ -437,16 +246,209 @@
             this.colCodeUMesure.ReadOnly = true;
             this.colCodeUMesure.Visible = false;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 503);
+            this.panel1.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.lblCountB);
+            this.groupBox1.Controls.Add(this.dgvEBon);
+            this.groupBox1.Controls.Add(this.txtSearchB);
+            this.groupBox1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(9, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(182, 479);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Bons";
+            // 
+            // lblCountB
+            // 
+            this.lblCountB.AutoSize = true;
+            this.lblCountB.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblCountB.Location = new System.Drawing.Point(6, 58);
+            this.lblCountB.Name = "lblCountB";
+            this.lblCountB.Size = new System.Drawing.Size(46, 18);
+            this.lblCountB.TabIndex = 6;
+            this.lblCountB.Text = "label1";
+            // 
+            // dgvEBon
+            // 
+            this.dgvEBon.AllowUserToAddRows = false;
+            this.dgvEBon.AllowUserToDeleteRows = false;
+            this.dgvEBon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvEBon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEBon.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvEBon.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvEBon.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dgvEBon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEBon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colb_be_ID,
+            this.colbe_Date,
+            this.colbe_Designation,
+            this.colbe_Reference,
+            this.colbe_PV,
+            this.colfrns_ID,
+            this.colrep_ID,
+            this.colbe_Description,
+            this.colbe_Status,
+            this.be_Suppression});
+            this.dgvEBon.GridColor = System.Drawing.SystemColors.Control;
+            this.dgvEBon.Location = new System.Drawing.Point(6, 79);
+            this.dgvEBon.MultiSelect = false;
+            this.dgvEBon.Name = "dgvEBon";
+            this.dgvEBon.ReadOnly = true;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEBon.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvEBon.RowHeadersVisible = false;
+            this.dgvEBon.RowHeadersWidth = 51;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvEBon.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvEBon.RowTemplate.Height = 24;
+            this.dgvEBon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEBon.Size = new System.Drawing.Size(170, 394);
+            this.dgvEBon.TabIndex = 2;
+            this.dgvEBon.SelectionChanged += new System.EventHandler(this.dgvEBon_SelectionChanged);
+            this.dgvEBon.DoubleClick += new System.EventHandler(this.dgvEBon_DoubleClick);
+            // 
+            // colb_be_ID
+            // 
+            this.colb_be_ID.DataPropertyName = "be_ID";
+            this.colb_be_ID.HeaderText = "code Bon";
+            this.colb_be_ID.MinimumWidth = 6;
+            this.colb_be_ID.Name = "colb_be_ID";
+            this.colb_be_ID.ReadOnly = true;
+            this.colb_be_ID.Visible = false;
+            // 
+            // colbe_Date
+            // 
+            this.colbe_Date.DataPropertyName = "be_Date";
+            this.colbe_Date.HeaderText = "Date";
+            this.colbe_Date.MinimumWidth = 6;
+            this.colbe_Date.Name = "colbe_Date";
+            this.colbe_Date.ReadOnly = true;
+            this.colbe_Date.Visible = false;
+            // 
+            // colbe_Designation
+            // 
+            this.colbe_Designation.DataPropertyName = "be_Designation";
+            this.colbe_Designation.HeaderText = "Bon";
+            this.colbe_Designation.MinimumWidth = 6;
+            this.colbe_Designation.Name = "colbe_Designation";
+            this.colbe_Designation.ReadOnly = true;
+            // 
+            // colbe_Reference
+            // 
+            this.colbe_Reference.DataPropertyName = "be_Reference";
+            this.colbe_Reference.HeaderText = "Reference";
+            this.colbe_Reference.MinimumWidth = 6;
+            this.colbe_Reference.Name = "colbe_Reference";
+            this.colbe_Reference.ReadOnly = true;
+            this.colbe_Reference.Visible = false;
+            // 
+            // colbe_PV
+            // 
+            this.colbe_PV.DataPropertyName = "be_PV";
+            this.colbe_PV.HeaderText = "be_PV";
+            this.colbe_PV.MinimumWidth = 6;
+            this.colbe_PV.Name = "colbe_PV";
+            this.colbe_PV.ReadOnly = true;
+            this.colbe_PV.Visible = false;
+            // 
+            // colfrns_ID
+            // 
+            this.colfrns_ID.DataPropertyName = "frns_ID";
+            this.colfrns_ID.HeaderText = "frns_ID";
+            this.colfrns_ID.MinimumWidth = 6;
+            this.colfrns_ID.Name = "colfrns_ID";
+            this.colfrns_ID.ReadOnly = true;
+            this.colfrns_ID.Visible = false;
+            // 
+            // colrep_ID
+            // 
+            this.colrep_ID.DataPropertyName = "rep_ID";
+            this.colrep_ID.HeaderText = "rep_ID";
+            this.colrep_ID.MinimumWidth = 6;
+            this.colrep_ID.Name = "colrep_ID";
+            this.colrep_ID.ReadOnly = true;
+            this.colrep_ID.Visible = false;
+            // 
+            // colbe_Description
+            // 
+            this.colbe_Description.DataPropertyName = "be_Description";
+            this.colbe_Description.HeaderText = "be_Description";
+            this.colbe_Description.MinimumWidth = 6;
+            this.colbe_Description.Name = "colbe_Description";
+            this.colbe_Description.ReadOnly = true;
+            this.colbe_Description.Visible = false;
+            // 
+            // colbe_Status
+            // 
+            this.colbe_Status.DataPropertyName = "be_Status";
+            this.colbe_Status.HeaderText = "be_Status";
+            this.colbe_Status.MinimumWidth = 6;
+            this.colbe_Status.Name = "colbe_Status";
+            this.colbe_Status.ReadOnly = true;
+            this.colbe_Status.Visible = false;
+            // 
+            // be_Suppression
+            // 
+            this.be_Suppression.DataPropertyName = "be_Suppression";
+            this.be_Suppression.HeaderText = "be_Suppression";
+            this.be_Suppression.MinimumWidth = 6;
+            this.be_Suppression.Name = "be_Suppression";
+            this.be_Suppression.ReadOnly = true;
+            this.be_Suppression.Visible = false;
+            // 
+            // txtSearchB
+            // 
+            this.txtSearchB.Location = new System.Drawing.Point(6, 27);
+            this.txtSearchB.Name = "txtSearchB";
+            this.txtSearchB.Size = new System.Drawing.Size(170, 28);
+            this.txtSearchB.TabIndex = 1;
+            this.txtSearchB.TextChanged += new System.EventHandler(this.txtSearchB_TextChanged);
+            // 
+            // lblCountA
+            // 
+            this.lblCountA.AutoSize = true;
+            this.lblCountA.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblCountA.Location = new System.Drawing.Point(572, 26);
+            this.lblCountA.Name = "lblCountA";
+            this.lblCountA.Size = new System.Drawing.Size(46, 18);
+            this.lblCountA.TabIndex = 7;
+            this.lblCountA.Text = "label2";
+            // 
             // frmH_Entree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 503);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblCountA);
             this.Controls.Add(this.txtSearchA);
             this.Controls.Add(this.dgvA_EBon);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Roboto", 10.2F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.Name = "frmH_Entree";
@@ -473,8 +475,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private Controls.iText txtSearchB;
         public System.Windows.Forms.DataGridView dgvEBon;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCountB;
+        private System.Windows.Forms.Label lblCountA;
         private System.Windows.Forms.DataGridViewTextBoxColumn colb_be_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colbe_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn colbe_Designation;

@@ -80,5 +80,10 @@ namespace PL.Interfaces.Sub.Normal
                 }
             }
         }
+
+        private void txtSearch_TextAlignChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

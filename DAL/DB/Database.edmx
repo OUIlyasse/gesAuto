@@ -935,7 +935,9 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Bon_Entree_Article_Bon_Entree">
-          <End Role="Bon_Entree" Type="Self.Bon_Entree" Multiplicity="0..1" />
+          <End Role="Bon_Entree" Type="Self.Bon_Entree" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Bon_Entree_Article" Type="Self.Bon_Entree_Article" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bon_Entree">
@@ -1043,7 +1045,9 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Bon_Retour_Article_Bon_Retour">
-          <End Role="Bon_Retour" Type="Self.Bon_Retour" Multiplicity="0..1" />
+          <End Role="Bon_Retour" Type="Self.Bon_Retour" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Bon_Retour_Article" Type="Self.Bon_Retour_Article" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bon_Retour">
@@ -1103,7 +1107,9 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Bon_Sortie_Article_Bon_Sortie">
-          <End Role="Bon_Sortie" Type="Self.Bon_Sortie" Multiplicity="0..1" />
+          <End Role="Bon_Sortie" Type="Self.Bon_Sortie" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Bon_Sortie_Article" Type="Self.Bon_Sortie_Article" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bon_Sortie">
@@ -1754,6 +1760,9 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="unit_M_Nom" Type="nvarchar" Mode="In" />
           <Parameter Name="unit_M_Abreviation" Type="nchar" Mode="In" />
         </Function>
+        <Function Name="get_Service_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="svc_ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="get_Unite_Mesure_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="unit_M_ID" Type="int" Mode="In" />
         </Function>
@@ -2148,8 +2157,12 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
         <Function Name="Search_Annees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Search_Armoire" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="rayo_ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Search_Article_Info" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Search" Type="nvarchar" Mode="In" />
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="svc_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="Search_Article_Photo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2160,16 +2173,58 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="art_ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="Search_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Entree_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Retour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Retour_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="bt_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Retour_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Sortie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Sortie_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Sortie_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Emplacement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="Search_Famille" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="Search_Fournisseur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Search_Fournisseurs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="Search_Grade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="Search_Magasin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Personnel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_PPersonnel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="Search_Profil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2193,11 +2248,17 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="qte" Type="decimal" Mode="In" />
           <Parameter Name="qteOpear" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Search_Rayonnage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="Search_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="frns_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="Search_Service" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_SommeQte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="Search_Unite_Soutien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -5640,7 +5701,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <FunctionImport Name="Select_Unite_Mesure" ReturnType="Collection(ges_AutoModel.Select_Unite_Mesure_Result)">
           <Parameter Name="art_ID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Select_Unite_Mesure_By_Art_isDefault" ReturnType="Collection(ges_AutoModel.Select_Unite_Mesure_By_Art_isDefault_Result)">
+          <FunctionImport Name="Select_Unite_Mesure_By_Art_isDefault" EntitySet="Unite_Mesure" ReturnType="Collection(ges_AutoModel.Unite_Mesure)">
           <Parameter Name="art_ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Select_Unite_Mesure_By_IdArt" ReturnType="Collection(ges_AutoModel.Select_Unite_Mesure_By_IdArt_Result)">
@@ -6151,6 +6212,61 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           </FunctionImport>
           <FunctionImport Name="Select_Lists_By_Lists" ReturnType="Collection(Int32)">
           <Parameter Name="list_Nom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_Service_By_ID" ReturnType="Collection(String)">
+          <Parameter Name="svc_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Armoire" ReturnType="Collection(ges_AutoModel.Search_Armoire_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="rayo_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Rayonnage" ReturnType="Collection(ges_AutoModel.Search_Rayonnage_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Entree" ReturnType="Collection(ges_AutoModel.Search_Bon_Entree_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Entree_Article" ReturnType="Collection(ges_AutoModel.Search_Bon_Entree_Article_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="be_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Retour" ReturnType="Collection(ges_AutoModel.Search_Bon_Retour_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Retour_Article" ReturnType="Collection(ges_AutoModel.Search_Bon_Retour_Article_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="bt_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Sortie" ReturnType="Collection(ges_AutoModel.Search_Bon_Sortie_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Sortie_Article" ReturnType="Collection(ges_AutoModel.Search_Bon_Sortie_Article_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Emplacement" ReturnType="Collection(ges_AutoModel.Search_Emplacement_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Fournisseurs" ReturnType="Collection(ges_AutoModel.Search_Fournisseurs_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Personnel" ReturnType="Collection(ges_AutoModel.Search_Personnel_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Entree_H" ReturnType="Collection(ges_AutoModel.Search_Bon_Entree_H_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Retour_H" ReturnType="Collection(ges_AutoModel.Search_Bon_Retour_H_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Sortie_H" ReturnType="Collection(ges_AutoModel.Search_Bon_Sortie_H_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_PPersonnel" ReturnType="Collection(ges_AutoModel.Search_PPersonnel_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_SommeQte" ReturnType="Collection(ges_AutoModel.Search_SommeQte_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Etat_Explicatif_UMesure_Result">
@@ -7245,6 +7361,218 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Property Type="Boolean" Name="priv_Ajouter" Nullable="true" />
           <Property Type="Boolean" Name="priv_Modifier" Nullable="true" />
           <Property Type="Boolean" Name="priv_Supprimer" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Unite_Mesure_By_Art_isDefault_Result1">
+          <Property Type="Int32" Name="unit_M_ID" Nullable="false" />
+          <Property Type="Int32" Name="art_ID" Nullable="true" />
+          <Property Type="String" Name="unit_M_Nom" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="unit_M_Abreviation" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="unit_M_Coefficient" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="unit_M_isDefault" Nullable="true" />
+          <Property Type="Decimal" Name="unit_M_Min" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="unit_M_Max" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="unit_M_Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Armoire_Result">
+          <Property Type="Int32" Name="arm_ID" Nullable="false" />
+          <Property Type="String" Name="arm_Nom" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="arm_Description" Nullable="true" />
+          <Property Type="Int32" Name="rayo_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Rayonnage_Result">
+          <Property Type="Int32" Name="rayo_ID" Nullable="false" />
+          <Property Type="String" Name="rayo_Nom" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="rayo_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Entree_Result">
+          <Property Type="Int32" Name="be_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_Date" Nullable="true" />
+          <Property Type="String" Name="be_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="be_Reference" Nullable="true" />
+          <Property Type="String" Name="be_PV" Nullable="true" />
+          <Property Type="Int32" Name="frns_ID" Nullable="true" />
+          <Property Type="Int32" Name="rep_ID" Nullable="true" />
+          <Property Type="String" Name="be_Description" Nullable="true" />
+          <Property Type="Boolean" Name="be_Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Entree_Article_Result">
+          <Property Type="Int32" Name="be_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_A_Date" Nullable="true" />
+          <Property Type="String" Name="vl_Marque" Nullable="true" />
+          <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="be_A_Etat" Nullable="true" />
+          <Property Type="Decimal" Name="be_Qte_Livree" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="be_ID" Nullable="true" />
+          <Property Type="String" Name="be_A_Description" Nullable="true" />
+          <Property Type="Int32" Name="unit_M_ID" Nullable="true" />
+          <Property Type="String" Name="unit_M_Nom" Nullable="true" MaxLength="350" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Retour_Result">
+          <Property Type="Int32" Name="bt_ID" Nullable="false" />
+          <Property Type="String" Name="bt_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="bt_Date" Nullable="true" />
+          <Property Type="String" Name="bt_Reference" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="bt_Description" Nullable="true" />
+          <Property Type="Boolean" Name="bt_Status" Nullable="true" />
+          <Property Type="Boolean" Name="bt_Suppression" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Retour_Article_Result">
+          <Property Type="Int32" Name="bt_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bt_A_Date" Nullable="true" />
+          <Property Type="String" Name="vl_Marque" Nullable="true" />
+          <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="bt_A_Etat" Nullable="true" />
+          <Property Type="Decimal" Name="bt_Qte_Livree" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="bt_ID" Nullable="true" />
+          <Property Type="String" Name="bt_A_Description" Nullable="true" />
+          <Property Type="Int32" Name="unit_M_ID" Nullable="false" />
+          <Property Type="String" Name="unit_M_Nom" Nullable="true" MaxLength="350" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Sortie_Result">
+          <Property Type="Int32" Name="bs_ID" Nullable="false" />
+          <Property Type="String" Name="bs_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="bs_Date" Nullable="true" />
+          <Property Type="String" Name="bs_Reference" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="bs_Description" Nullable="true" />
+          <Property Type="Boolean" Name="bs_Status" Nullable="true" />
+          <Property Type="Boolean" Name="bs_Suppression" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Sortie_Article_Result">
+          <Property Type="Int32" Name="bs_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_A_Date" Nullable="true" />
+          <Property Type="String" Name="vl_Marque" Nullable="true" />
+          <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="bs_A_Etat" Nullable="true" />
+          <Property Type="Decimal" Name="bs_Qte_Livree" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="bs_ID" Nullable="true" />
+          <Property Type="String" Name="bs_A_Description" Nullable="true" />
+          <Property Type="Int32" Name="unit_M_ID" Nullable="false" />
+          <Property Type="String" Name="unit_M_Nom" Nullable="true" MaxLength="350" />
+        </ComplexType>
+        <ComplexType Name="Search_Emplacement_Result">
+          <Property Type="Int32" Name="eplc_ID" Nullable="false" />
+          <Property Type="DateTime" Name="eplc_Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="mags_Magasin" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ref_reference" Nullable="true" />
+          <Property Type="String" Name="rayo_Nom" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="arm_Nom" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="eplc_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Fournisseurs_Result">
+          <Property Type="Int32" Name="frns_ID" Nullable="false" />
+          <Property Type="String" Name="frns_Nom" Nullable="true" />
+          <Property Type="String" Name="frns_Adresse" Nullable="true" />
+          <Property Type="String" Name="frns_Adresse2" Nullable="true" />
+          <Property Type="String" Name="frns_Code_Postal" Nullable="true" />
+          <Property Type="String" Name="vil_Nom" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="frns_Email" Nullable="true" />
+          <Property Type="String" Name="frns_GSM" Nullable="true" />
+          <Property Type="String" Name="frns_GSM2" Nullable="true" />
+          <Property Type="String" Name="frns_Fixe1" Nullable="true" />
+          <Property Type="String" Name="frns_Fixe2" Nullable="true" />
+          <Property Type="String" Name="frns_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Personnel_Result">
+          <Property Type="Int32" Name="pers_ID" Nullable="false" />
+          <Property Type="String" Name="pers_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Prenom_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Nom_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_Mle_FA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="grd_Grade" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="unt_Unite" Nullable="true" />
+          <Property Type="DateTime" Name="pers_Date_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Lieu_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Lieu_Naissance_Ar" Nullable="true" />
+          <Property Type="DateTime" Name="pers_Date_Engagement" Nullable="true" />
+          <Property Type="DateTime" Name="pers_Date_Nomination" Nullable="true" />
+          <Property Type="String" Name="pers_Reff_Nomination" Nullable="true" />
+          <Property Type="String" Name="pers_Origine" Nullable="true" />
+          <Property Type="String" Name="pers_Origine_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_CIN" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Sexe" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Adresse_Personnelle" Nullable="true" />
+          <Property Type="String" Name="pers_Adresse_Personnelle_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_Carte_FA" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Specialite" Nullable="true" />
+          <Property Type="String" Name="pers_Fonction" Nullable="true" />
+          <Property Type="String" Name="pers_Fonction_Ar" Nullable="true" />
+          <Property Type="Decimal" Name="pers_Taille" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="pers_Sit_Fam" Nullable="true" />
+          <Property Type="String" Name="pers_Sit_Fam_Ar" Nullable="true" />
+          <Property Type="String" Name="pers_E_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_E_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_E_CIN" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="pers_E_Date_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_E_Lieu_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Nbr_Enf" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_PPR" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="gs_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Mutuel" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Immatriculation" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pers_Affiliation" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="pers_Date_Affiliation" Nullable="true" />
+          <Property Type="String" Name="pers_Pere_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Pere_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Pere_CIN" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="pers_Pere_Date_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Pere_Lieu_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Mere_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Mere_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Mere_CIN" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="pers_Mere_Date_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Mere_Lieu_Naissance" Nullable="true" />
+          <Property Type="String" Name="pers_Niv_Instrution" Nullable="true" />
+          <Property Type="String" Name="pers_Diplome_Universitaire" Nullable="true" />
+          <Property Type="String" Name="pers_Num_Passeport" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="pers_Num_Arm_Chasse" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Entree_H_Result">
+          <Property Type="Int32" Name="be_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_Date" Nullable="true" />
+          <Property Type="String" Name="be_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="be_Reference" Nullable="true" />
+          <Property Type="String" Name="be_PV" Nullable="true" />
+          <Property Type="Int32" Name="frns_ID" Nullable="true" />
+          <Property Type="Int32" Name="rep_ID" Nullable="true" />
+          <Property Type="String" Name="be_Description" Nullable="true" />
+          <Property Type="Boolean" Name="be_Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Retour_H_Result">
+          <Property Type="Int32" Name="bt_ID" Nullable="false" />
+          <Property Type="String" Name="bt_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="bt_Date" Nullable="true" />
+          <Property Type="String" Name="bt_Reference" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="bt_Description" Nullable="true" />
+          <Property Type="Boolean" Name="bt_Status" Nullable="true" />
+          <Property Type="Boolean" Name="bt_Suppression" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Sortie_H_Result">
+          <Property Type="Int32" Name="bs_ID" Nullable="false" />
+          <Property Type="String" Name="bs_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="bs_Date" Nullable="true" />
+          <Property Type="String" Name="bs_Reference" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="bs_Description" Nullable="true" />
+          <Property Type="Boolean" Name="bs_Status" Nullable="true" />
+          <Property Type="Boolean" Name="bs_Suppression" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_PPersonnel_Result">
+          <Property Type="Int32" Name="pers_ID" Nullable="false" />
+          <Property Type="String" Name="pers_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Mle_FA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="grd_Grade" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="Search_SommeQte_Result">
+          <Property Type="String" Name="vl_Marque" Nullable="true" />
+          <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ref_reference" Nullable="true" />
+          <Property Type="Decimal" Name="mvt_Qte" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -8718,19 +9046,6 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Select_Unite_Mesure_By_Art_isDefault" FunctionName="ges_AutoModel.Store.Select_Unite_Mesure_By_Art_isDefault">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ges_AutoModel.Select_Unite_Mesure_By_Art_isDefault_Result">
-                <ScalarProperty Name="unit_M_ID" ColumnName="unit_M_ID" />
-                <ScalarProperty Name="art_ID" ColumnName="art_ID" />
-                <ScalarProperty Name="unit_M_Nom" ColumnName="unit_M_Nom" />
-                <ScalarProperty Name="unit_M_Abreviation" ColumnName="unit_M_Abreviation" />
-                <ScalarProperty Name="unit_M_Coefficient" ColumnName="unit_M_Coefficient" />
-                <ScalarProperty Name="unit_M_isDefault" ColumnName="unit_M_isDefault" />
-                <ScalarProperty Name="unit_M_Min" ColumnName="unit_M_Min" />
-                <ScalarProperty Name="unit_M_Max" ColumnName="unit_M_Max" />
-                <ScalarProperty Name="unit_M_Status" ColumnName="unit_M_Status" />
-              </ComplexTypeMapping>
-            </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Select_Unite_Mesure_By_IdArt" FunctionName="ges_AutoModel.Store.Select_Unite_Mesure_By_IdArt">
             <ResultMapping>
@@ -9433,6 +9748,272 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Select_Lists_By_Lists" FunctionName="ges_AutoModel.Store.Select_Lists_By_Lists" />
+          <FunctionImportMapping FunctionImportName="get_Service_By_ID" FunctionName="ges_AutoModel.Store.get_Service_By_ID" />
+          <FunctionImportMapping FunctionImportName="Search_Armoire" FunctionName="ges_AutoModel.Store.Search_Armoire">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Armoire_Result">
+                <ScalarProperty Name="arm_ID" ColumnName="arm_ID" />
+                <ScalarProperty Name="arm_Nom" ColumnName="arm_Nom" />
+                <ScalarProperty Name="arm_Description" ColumnName="arm_Description" />
+                <ScalarProperty Name="rayo_ID" ColumnName="rayo_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Rayonnage" FunctionName="ges_AutoModel.Store.Search_Rayonnage">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Rayonnage_Result">
+                <ScalarProperty Name="rayo_ID" ColumnName="rayo_ID" />
+                <ScalarProperty Name="rayo_Nom" ColumnName="rayo_Nom" />
+                <ScalarProperty Name="rayo_Description" ColumnName="rayo_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Entree" FunctionName="ges_AutoModel.Store.Search_Bon_Entree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Bon_Entree_Result">
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_Date" ColumnName="be_Date" />
+                <ScalarProperty Name="be_Designation" ColumnName="be_Designation" />
+                <ScalarProperty Name="be_Reference" ColumnName="be_Reference" />
+                <ScalarProperty Name="be_PV" ColumnName="be_PV" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+                <ScalarProperty Name="be_Description" ColumnName="be_Description" />
+                <ScalarProperty Name="be_Status" ColumnName="be_Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Entree_Article" FunctionName="ges_AutoModel.Store.Search_Bon_Entree_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Bon_Entree_Article_Result">
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+                <ScalarProperty Name="be_A_Date" ColumnName="be_A_Date" />
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="be_A_Etat" ColumnName="be_A_Etat" />
+                <ScalarProperty Name="be_Qte_Livree" ColumnName="be_Qte_Livree" />
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_A_Description" ColumnName="be_A_Description" />
+                <ScalarProperty Name="unit_M_ID" ColumnName="unit_M_ID" />
+                <ScalarProperty Name="unit_M_Nom" ColumnName="unit_M_Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Retour" FunctionName="ges_AutoModel.Store.Search_Bon_Retour">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Bon_Retour_Result">
+                <ScalarProperty Name="bt_ID" ColumnName="bt_ID" />
+                <ScalarProperty Name="bt_Designation" ColumnName="bt_Designation" />
+                <ScalarProperty Name="bt_Date" ColumnName="bt_Date" />
+                <ScalarProperty Name="bt_Reference" ColumnName="bt_Reference" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="bt_Description" ColumnName="bt_Description" />
+                <ScalarProperty Name="bt_Status" ColumnName="bt_Status" />
+                <ScalarProperty Name="bt_Suppression" ColumnName="bt_Suppression" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Retour_Article" FunctionName="ges_AutoModel.Store.Search_Bon_Retour_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Bon_Retour_Article_Result">
+                <ScalarProperty Name="bt_A_ID" ColumnName="bt_A_ID" />
+                <ScalarProperty Name="bt_A_Date" ColumnName="bt_A_Date" />
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="bt_A_Etat" ColumnName="bt_A_Etat" />
+                <ScalarProperty Name="bt_Qte_Livree" ColumnName="bt_Qte_Livree" />
+                <ScalarProperty Name="bt_ID" ColumnName="bt_ID" />
+                <ScalarProperty Name="bt_A_Description" ColumnName="bt_A_Description" />
+                <ScalarProperty Name="unit_M_ID" ColumnName="unit_M_ID" />
+                <ScalarProperty Name="unit_M_Nom" ColumnName="unit_M_Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Sortie" FunctionName="ges_AutoModel.Store.Search_Bon_Sortie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Bon_Sortie_Result">
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_Designation" ColumnName="bs_Designation" />
+                <ScalarProperty Name="bs_Date" ColumnName="bs_Date" />
+                <ScalarProperty Name="bs_Reference" ColumnName="bs_Reference" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="bs_Description" ColumnName="bs_Description" />
+                <ScalarProperty Name="bs_Status" ColumnName="bs_Status" />
+                <ScalarProperty Name="bs_Suppression" ColumnName="bs_Suppression" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Sortie_Article" FunctionName="ges_AutoModel.Store.Search_Bon_Sortie_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Bon_Sortie_Article_Result">
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+                <ScalarProperty Name="bs_A_Date" ColumnName="bs_A_Date" />
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="bs_A_Etat" ColumnName="bs_A_Etat" />
+                <ScalarProperty Name="bs_Qte_Livree" ColumnName="bs_Qte_Livree" />
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_A_Description" ColumnName="bs_A_Description" />
+                <ScalarProperty Name="unit_M_ID" ColumnName="unit_M_ID" />
+                <ScalarProperty Name="unit_M_Nom" ColumnName="unit_M_Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Emplacement" FunctionName="ges_AutoModel.Store.Search_Emplacement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Emplacement_Result">
+                <ScalarProperty Name="eplc_ID" ColumnName="eplc_ID" />
+                <ScalarProperty Name="eplc_Date" ColumnName="eplc_Date" />
+                <ScalarProperty Name="mags_Magasin" ColumnName="mags_Magasin" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="rayo_Nom" ColumnName="rayo_Nom" />
+                <ScalarProperty Name="arm_Nom" ColumnName="arm_Nom" />
+                <ScalarProperty Name="eplc_Description" ColumnName="eplc_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Fournisseurs" FunctionName="ges_AutoModel.Store.Search_Fournisseurs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Fournisseurs_Result">
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="frns_Nom" ColumnName="frns_Nom" />
+                <ScalarProperty Name="frns_Adresse" ColumnName="frns_Adresse" />
+                <ScalarProperty Name="frns_Adresse2" ColumnName="frns_Adresse2" />
+                <ScalarProperty Name="frns_Code_Postal" ColumnName="frns_Code_Postal" />
+                <ScalarProperty Name="vil_Nom" ColumnName="vil_Nom" />
+                <ScalarProperty Name="frns_Email" ColumnName="frns_Email" />
+                <ScalarProperty Name="frns_GSM" ColumnName="frns_GSM" />
+                <ScalarProperty Name="frns_GSM2" ColumnName="frns_GSM2" />
+                <ScalarProperty Name="frns_Fixe1" ColumnName="frns_Fixe1" />
+                <ScalarProperty Name="frns_Fixe2" ColumnName="frns_Fixe2" />
+                <ScalarProperty Name="frns_Description" ColumnName="frns_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Personnel" FunctionName="ges_AutoModel.Store.Search_Personnel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Personnel_Result">
+                <ScalarProperty Name="pers_ID" ColumnName="pers_ID" />
+                <ScalarProperty Name="pers_Prenom" ColumnName="pers_Prenom" />
+                <ScalarProperty Name="pers_Prenom_Ar" ColumnName="pers_Prenom_Ar" />
+                <ScalarProperty Name="pers_Nom" ColumnName="pers_Nom" />
+                <ScalarProperty Name="pers_Nom_Ar" ColumnName="pers_Nom_Ar" />
+                <ScalarProperty Name="pers_Mle_FA" ColumnName="pers_Mle_FA" />
+                <ScalarProperty Name="grd_Grade" ColumnName="grd_Grade" />
+                <ScalarProperty Name="unt_Unite" ColumnName="unt_Unite" />
+                <ScalarProperty Name="pers_Date_Naissance" ColumnName="pers_Date_Naissance" />
+                <ScalarProperty Name="pers_Lieu_Naissance" ColumnName="pers_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Lieu_Naissance_Ar" ColumnName="pers_Lieu_Naissance_Ar" />
+                <ScalarProperty Name="pers_Date_Engagement" ColumnName="pers_Date_Engagement" />
+                <ScalarProperty Name="pers_Date_Nomination" ColumnName="pers_Date_Nomination" />
+                <ScalarProperty Name="pers_Reff_Nomination" ColumnName="pers_Reff_Nomination" />
+                <ScalarProperty Name="pers_Origine" ColumnName="pers_Origine" />
+                <ScalarProperty Name="pers_Origine_Ar" ColumnName="pers_Origine_Ar" />
+                <ScalarProperty Name="pers_CIN" ColumnName="pers_CIN" />
+                <ScalarProperty Name="pers_Sexe" ColumnName="pers_Sexe" />
+                <ScalarProperty Name="pers_Adresse_Personnelle" ColumnName="pers_Adresse_Personnelle" />
+                <ScalarProperty Name="pers_Adresse_Personnelle_Ar" ColumnName="pers_Adresse_Personnelle_Ar" />
+                <ScalarProperty Name="pers_Carte_FA" ColumnName="pers_Carte_FA" />
+                <ScalarProperty Name="pers_Specialite" ColumnName="pers_Specialite" />
+                <ScalarProperty Name="pers_Fonction" ColumnName="pers_Fonction" />
+                <ScalarProperty Name="pers_Fonction_Ar" ColumnName="pers_Fonction_Ar" />
+                <ScalarProperty Name="pers_Taille" ColumnName="pers_Taille" />
+                <ScalarProperty Name="pers_Sit_Fam" ColumnName="pers_Sit_Fam" />
+                <ScalarProperty Name="pers_Sit_Fam_Ar" ColumnName="pers_Sit_Fam_Ar" />
+                <ScalarProperty Name="pers_E_Prenom" ColumnName="pers_E_Prenom" />
+                <ScalarProperty Name="pers_E_Nom" ColumnName="pers_E_Nom" />
+                <ScalarProperty Name="pers_E_CIN" ColumnName="pers_E_CIN" />
+                <ScalarProperty Name="pers_E_Date_Naissance" ColumnName="pers_E_Date_Naissance" />
+                <ScalarProperty Name="pers_E_Lieu_Naissance" ColumnName="pers_E_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Nbr_Enf" ColumnName="pers_Nbr_Enf" />
+                <ScalarProperty Name="pers_PPR" ColumnName="pers_PPR" />
+                <ScalarProperty Name="gs_Nom" ColumnName="gs_Nom" />
+                <ScalarProperty Name="pers_Mutuel" ColumnName="pers_Mutuel" />
+                <ScalarProperty Name="pers_Immatriculation" ColumnName="pers_Immatriculation" />
+                <ScalarProperty Name="pers_Affiliation" ColumnName="pers_Affiliation" />
+                <ScalarProperty Name="pers_Date_Affiliation" ColumnName="pers_Date_Affiliation" />
+                <ScalarProperty Name="pers_Pere_Prenom" ColumnName="pers_Pere_Prenom" />
+                <ScalarProperty Name="pers_Pere_Nom" ColumnName="pers_Pere_Nom" />
+                <ScalarProperty Name="pers_Pere_CIN" ColumnName="pers_Pere_CIN" />
+                <ScalarProperty Name="pers_Pere_Date_Naissance" ColumnName="pers_Pere_Date_Naissance" />
+                <ScalarProperty Name="pers_Pere_Lieu_Naissance" ColumnName="pers_Pere_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Mere_Prenom" ColumnName="pers_Mere_Prenom" />
+                <ScalarProperty Name="pers_Mere_Nom" ColumnName="pers_Mere_Nom" />
+                <ScalarProperty Name="pers_Mere_CIN" ColumnName="pers_Mere_CIN" />
+                <ScalarProperty Name="pers_Mere_Date_Naissance" ColumnName="pers_Mere_Date_Naissance" />
+                <ScalarProperty Name="pers_Mere_Lieu_Naissance" ColumnName="pers_Mere_Lieu_Naissance" />
+                <ScalarProperty Name="pers_Niv_Instrution" ColumnName="pers_Niv_Instrution" />
+                <ScalarProperty Name="pers_Diplome_Universitaire" ColumnName="pers_Diplome_Universitaire" />
+                <ScalarProperty Name="pers_Num_Passeport" ColumnName="pers_Num_Passeport" />
+                <ScalarProperty Name="pers_Num_Arm_Chasse" ColumnName="pers_Num_Arm_Chasse" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Entree_H" FunctionName="ges_AutoModel.Store.Search_Bon_Entree_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Bon_Entree_H_Result">
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_Date" ColumnName="be_Date" />
+                <ScalarProperty Name="be_Designation" ColumnName="be_Designation" />
+                <ScalarProperty Name="be_Reference" ColumnName="be_Reference" />
+                <ScalarProperty Name="be_PV" ColumnName="be_PV" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+                <ScalarProperty Name="be_Description" ColumnName="be_Description" />
+                <ScalarProperty Name="be_Status" ColumnName="be_Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Retour_H" FunctionName="ges_AutoModel.Store.Search_Bon_Retour_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Bon_Retour_H_Result">
+                <ScalarProperty Name="bt_ID" ColumnName="bt_ID" />
+                <ScalarProperty Name="bt_Designation" ColumnName="bt_Designation" />
+                <ScalarProperty Name="bt_Date" ColumnName="bt_Date" />
+                <ScalarProperty Name="bt_Reference" ColumnName="bt_Reference" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="bt_Description" ColumnName="bt_Description" />
+                <ScalarProperty Name="bt_Status" ColumnName="bt_Status" />
+                <ScalarProperty Name="bt_Suppression" ColumnName="bt_Suppression" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Sortie_H" FunctionName="ges_AutoModel.Store.Search_Bon_Sortie_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_Bon_Sortie_H_Result">
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_Designation" ColumnName="bs_Designation" />
+                <ScalarProperty Name="bs_Date" ColumnName="bs_Date" />
+                <ScalarProperty Name="bs_Reference" ColumnName="bs_Reference" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="bs_Description" ColumnName="bs_Description" />
+                <ScalarProperty Name="bs_Status" ColumnName="bs_Status" />
+                <ScalarProperty Name="bs_Suppression" ColumnName="bs_Suppression" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_PPersonnel" FunctionName="ges_AutoModel.Store.Search_PPersonnel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_PPersonnel_Result">
+                <ScalarProperty Name="pers_ID" ColumnName="pers_ID" />
+                <ScalarProperty Name="pers_Prenom" ColumnName="pers_Prenom" />
+                <ScalarProperty Name="pers_Nom" ColumnName="pers_Nom" />
+                <ScalarProperty Name="pers_Mle_FA" ColumnName="pers_Mle_FA" />
+                <ScalarProperty Name="grd_Grade" ColumnName="grd_Grade" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_SommeQte" FunctionName="ges_AutoModel.Store.Search_SommeQte">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_SommeQte_Result">
+                <ScalarProperty Name="vl_Marque" ColumnName="vl_Marque" />
+                <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
+                <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
+                <ScalarProperty Name="mvt_Qte" ColumnName="mvt_Qte" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
