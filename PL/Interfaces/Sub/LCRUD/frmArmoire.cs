@@ -210,8 +210,13 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            dgvRayonnage.DataSource = db.Search_Armoire(txtRecherche.Text, idRayonnage);
-            CountRow(dgvRayonnage.Rows.Count);
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvRayonnage.DataSource = db.Search_Armoire(txtRecherche.Text, idRayonnage);
+                CountRow(dgvRayonnage.Rows.Count);
+            }
         }
 
         private void frmArmoire_Load(object sender, EventArgs e)

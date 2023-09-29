@@ -35,7 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCountB = new System.Windows.Forms.Label();
             this.txtSearchB = new PL.Controls.iText();
             this.btnBonNew = new System.Windows.Forms.Button();
             this.dgvA_EBon = new System.Windows.Forms.DataGridView();
@@ -95,7 +95,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblCountB);
             this.groupBox1.Controls.Add(this.txtSearchB);
             this.groupBox1.Controls.Add(this.btnBonNew);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -106,16 +106,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bons";
             // 
-            // label1
+            // lblCountB
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(6, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 20);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "---";
+            this.lblCountB.AutoSize = true;
+            this.lblCountB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblCountB.Location = new System.Drawing.Point(6, 76);
+            this.lblCountB.Name = "lblCountB";
+            this.lblCountB.Size = new System.Drawing.Size(27, 20);
+            this.lblCountB.TabIndex = 24;
+            this.lblCountB.Text = "---";
             // 
             // txtSearchB
             // 
@@ -555,7 +555,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colbs_A_Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUMesure;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodeUMesure;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCountB;
         private System.Windows.Forms.Label lblCountA;
         private Controls.iText txtSearchA;
     }

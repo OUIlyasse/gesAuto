@@ -159,8 +159,13 @@ namespace PL.Interfaces.Sub.List
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            dgvFournisseur.DataSource = db.Search_Fournisseurs(txtRecherche.Text);
-            CountRow(dgvFournisseur.Rows.Count);
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvFournisseur.DataSource = db.Search_Fournisseurs(txtRecherche.Text);
+                CountRow(dgvFournisseur.Rows.Count);
+            }
         }
     }
 }

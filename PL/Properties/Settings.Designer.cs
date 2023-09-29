@@ -73,7 +73,7 @@ namespace PL.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server = WIN-28RLD1ANCTK\\ILYASSE; Database = master; Integrated Security = True;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server = ILYASSE-PC\\ILYASSE; Database = master; Integrated Security = True;")]
         public string conStringMaster {
             get {
                 return ((string)(this["conStringMaster"]));

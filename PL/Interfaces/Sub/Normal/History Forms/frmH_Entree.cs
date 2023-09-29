@@ -17,12 +17,17 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
 
         #region Codes
 
+        private void CountRow(int count, Label lbl)
+        {
+            lbl.Text = $"Ligne: {count}";
+        }
+
         #region Bon d'entree
 
         public void getData_EBon()
         {
-            var rs = db.Select_H_Bon_Entree().ToList();
-            dgvEBon.DataSource = rs;
+            dgvEBon.DataSource = db.Select_H_Bon_Entree().ToList();
+            CountRow(dgvEBon.Rows.Count, lblCountB);
         }
 
         private int getIdEBon(string item)
@@ -104,14 +109,27 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
 
         private void txtSearchA_TextChanged(object sender, EventArgs e)
         {
-            dgvA_EBon.DataSource = db.Search_Bon_Entree_Article(txtSearchA.Text, idBonEntree);
-            lblCountA.Text = $"Ligne: {dgvA_EBon.Rows.Count}";
+            string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbe_Designation.Name].Value}";
+
+            if (string.IsNullOrEmpty(txtSearchA.Text))
+                dgvA_EBon.DataSource = db.Select_Bon_Entree_Article(getIdEBon(item)).ToList();
+            else
+            {
+                dgvA_EBon.DataSource = db.Search_Bon_Entree_Article(txtSearchA.Text, idBonEntree);
+            }
+            CountRow(dgvA_EBon.Rows.Count, lblCountA);
+            PositionColumns();
         }
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            dgvEBon.DataSource = db.Search_Bon_Entree_H(txtSearchB.Text);
-            lblCountB.Text = $"Ligne: {dgvEBon.Rows.Count}";
+            if (string.IsNullOrEmpty(txtSearchB.Text))
+                getData_EBon();
+            else
+            {
+                dgvEBon.DataSource = db.Search_Bon_Entree_H(txtSearchB.Text);
+                CountRow(dgvEBon.Rows.Count, lblCountB);
+            }
         }
 
         private void dgvEBon_SelectionChanged(object sender, EventArgs e)

@@ -220,8 +220,13 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            dgvAnnee.DataSource = db.Search_Annees(txtSearch.Text);
-            CountRow(dgvAnnee.Rows.Count);
+            if (string.IsNullOrEmpty(txtSearch.Text))
+                getData();
+            else
+            {
+                dgvAnnee.DataSource = db.Search_Annees(txtSearch.Text);
+                CountRow(dgvAnnee.Rows.Count);
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)

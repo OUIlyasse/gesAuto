@@ -231,8 +231,13 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            dgvService.DataSource = db.Search_Service(txtRecherche.Text);
-            CountRow(dgvService.Rows.Count);
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvService.DataSource = db.Search_Service(txtRecherche.Text);
+                CountRow(dgvService.Rows.Count);
+            }
         }
     }
 }

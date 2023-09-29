@@ -144,8 +144,13 @@ namespace PL.Interfaces.Sub.List
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            dgvVL.DataSource = db.Search_Vehicule(txtRecherche.Text);
-            CountRow(dgvVL.Rows.Count);
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvVL.DataSource = db.Search_Vehicule(txtRecherche.Text);
+                CountRow(dgvVL.Rows.Count);
+            }
         }
     }
 }

@@ -218,8 +218,13 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            dgvFamille.DataSource = db.Search_Famille(txtRecherche.Text);
-            CountRow(dgvFamille.Rows.Count);
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvFamille.DataSource = db.Search_Famille(txtRecherche.Text);
+                CountRow(dgvFamille.Rows.Count);
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)

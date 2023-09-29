@@ -253,8 +253,13 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            dgvUniteSoutien.DataSource = db.Search_Unite_Soutien(txtRecherche.Text);
-            CountRow(dgvUniteSoutien.Rows.Count);
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvUniteSoutien.DataSource = db.Search_Unite_Soutien(txtRecherche.Text);
+                CountRow(dgvUniteSoutien.Rows.Count);
+            }
         }
     }
 }

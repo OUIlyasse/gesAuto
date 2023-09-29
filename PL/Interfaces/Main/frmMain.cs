@@ -318,6 +318,10 @@ namespace PL.Interfaces.Main
                         idUtilisateur = users.util_ID;
                         Refresh_Menu();
                         break;
+                    default:
+                        frmLogin frm = new frmLogin(this);
+                        frm.ShowDialog();
+                        break;
                 }
             }
             else

@@ -213,7 +213,7 @@
             // 
             this.lblCountB.AutoSize = true;
             this.lblCountB.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblCountB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.lblCountB.Location = new System.Drawing.Point(6, 58);
             this.lblCountB.Name = "lblCountB";
             this.lblCountB.Size = new System.Drawing.Size(46, 18);
@@ -232,7 +232,7 @@
             // 
             this.lblCountA.AutoSize = true;
             this.lblCountA.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblCountA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.lblCountA.Location = new System.Drawing.Point(572, 26);
             this.lblCountA.Name = "lblCountA";
             this.lblCountA.Size = new System.Drawing.Size(46, 18);

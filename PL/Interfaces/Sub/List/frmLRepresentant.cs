@@ -133,8 +133,13 @@ namespace PL.Interfaces.Sub.List
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            dgvRepresentant.DataSource = db.Search_Representant(txtRecherche.Text, idFournisseur);
-            CountRow(dgvRepresentant.Rows.Count);
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvRepresentant.DataSource = db.Search_Representant(txtRecherche.Text, idFournisseur);
+                CountRow(dgvRepresentant.Rows.Count);
+            }
         }
 
         private void dgvRepresentant_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)

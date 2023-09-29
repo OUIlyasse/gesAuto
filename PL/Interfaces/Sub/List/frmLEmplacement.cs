@@ -135,8 +135,13 @@ namespace PL.Interfaces.Sub.List
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            dgvEmplacement.DataSource = db.Search_Emplacement(txtRecherche.Text);
-            CountRow(dgvEmplacement.Rows.Count);
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvEmplacement.DataSource = db.Search_Emplacement(txtRecherche.Text);
+                CountRow(dgvEmplacement.Rows.Count);
+            }
         }
     }
 }

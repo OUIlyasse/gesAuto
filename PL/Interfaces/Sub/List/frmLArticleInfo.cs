@@ -160,8 +160,13 @@ namespace PL.Interfaces.Sub.List
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            dgvArticle.DataSource = db.Search_Article_Info(txtRecherche.Text, idService);
-            CountRow(dgvArticle.Rows.Count);
+            if (string.IsNullOrEmpty(txtRecherche.Text))
+                getData();
+            else
+            {
+                dgvArticle.DataSource = db.Search_Article_Info(txtRecherche.Text, idService);
+                CountRow(dgvArticle.Rows.Count);
+            }
         }
     }
 }

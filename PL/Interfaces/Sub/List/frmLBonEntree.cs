@@ -54,12 +54,8 @@ namespace PL.Interfaces.Sub.List
 
         public void getData_EBon()
         {
-            //List<string> list = new List<string>();
-
-            var rs = db.Select_Bon_Entree().ToList();
-            //foreach (var item in result)
-            //    list.Add(item.be_Designation);
-            dgvEBon.DataSource = rs;
+            dgvEBon.DataSource = db.Select_Bon_Entree().ToList();
+            CountRows(dgvEBon.Rows.Count, lblCountB);
         }
 
         private int getIdEBon(string item)
@@ -232,6 +228,11 @@ namespace PL.Interfaces.Sub.List
 
         #endregion Mouvement
 
+        private void CountRows(int count, Label lbl)
+        {
+            lbl.Text = $"Ligne: {count}";
+        }
+
         #endregion Codes
 
         #region Overrides
@@ -329,6 +330,7 @@ namespace PL.Interfaces.Sub.List
                 if (item != null)
                 {
                     dgvA_EBon.DataSource = db.Select_Bon_Entree_Article(getIdEBon(item)).ToList();
+                    CountRows(dgvA_EBon.Rows.Count, lblCountA);
                     PositionColumns();
                 }
             }
@@ -370,15 +372,28 @@ namespace PL.Interfaces.Sub.List
 
         private void txtSearchA_TextChanged(object sender, EventArgs e)
         {
-            dgvA_EBon.DataSource = db.Search_Bon_Entree_Article(txtSearchA.Text, idBonEntree);
-            CountRow(dgvA_EBon.Rows.Count);
+            string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbe_Designation.Name].Value}";
+            if (string.IsNullOrEmpty(txtSearchA.Text))
+            {
+                dgvA_EBon.DataSource = db.Select_Bon_Entree_Article(getIdEBon(item)).ToList();
+            }
+            else
+            {
+                dgvA_EBon.DataSource = db.Search_Bon_Entree_Article(txtSearchA.Text, idBonEntree);
+            }
+            CountRows(dgvA_EBon.Rows.Count, lblCountA);
             PositionColumns();
         }
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            dgvEBon.DataSource = db.Search_Bon_Entree(txtSearchB.Text);
-            CountRow(dgvEBon.Rows.Count);
+            if (string.IsNullOrEmpty(txtSearchB.Text))
+                getData_EBon();
+            else
+            {
+                dgvEBon.DataSource = db.Search_Bon_Entree(txtSearchB.Text);
+                CountRows(dgvEBon.Rows.Count, lblCountB);
+            }
         }
 
         private void dgvA_EBon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
