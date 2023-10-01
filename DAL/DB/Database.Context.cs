@@ -64,7 +64,6 @@ namespace DAL.DB
         public virtual DbSet<Ville> Villes { get; set; }
         public virtual DbSet<List> Lists { get; set; }
         public virtual DbSet<Screen> Screens { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<v_Utilisateur> v_Utilisateur { get; set; }
         public virtual DbSet<v_Bon_Reference> v_Bon_Reference { get; set; }
         public virtual DbSet<v_Bon_Retour_Article> v_Bon_Retour_Article { get; set; }
@@ -82,6 +81,7 @@ namespace DAL.DB
         public virtual DbSet<vwPersonnel> vwPersonnels { get; set; }
         public virtual DbSet<vwRepresentant> vwRepresentants { get; set; }
         public virtual DbSet<vwUniteSoutien> vwUniteSoutiens { get; set; }
+        public virtual DbSet<Enregistrement> Enregistrements { get; set; }
     
         public virtual ObjectResult<Nullable<int>> Count_Annees()
         {
@@ -4829,7 +4829,7 @@ namespace DAL.DB
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Utilisateur", util_IDParameter, pers_IDParameter, util_IdentifiantParameter, util_MotPasseParameter, svc_IDParameter);
         }
     
-        public virtual int Update_Priv(Nullable<int> util_ID, Nullable<int> scrn_ID, Nullable<bool> priv_Afficher, Nullable<bool> priv_Ajouter, Nullable<bool> priv_Modifier, Nullable<bool> priv_Supprimer)
+        public virtual int Update_Priv(Nullable<int> util_ID, Nullable<int> scrn_ID, Nullable<bool> priv_Afficher, Nullable<bool> priv_Ajouter, Nullable<bool> priv_Modifier, Nullable<bool> priv_Supprimer, Nullable<bool> priv_Imprimer)
         {
             var util_IDParameter = util_ID.HasValue ?
                 new ObjectParameter("util_ID", util_ID) :
@@ -4855,7 +4855,11 @@ namespace DAL.DB
                 new ObjectParameter("priv_Supprimer", priv_Supprimer) :
                 new ObjectParameter("priv_Supprimer", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Priv", util_IDParameter, scrn_IDParameter, priv_AfficherParameter, priv_AjouterParameter, priv_ModifierParameter, priv_SupprimerParameter);
+            var priv_ImprimerParameter = priv_Imprimer.HasValue ?
+                new ObjectParameter("priv_Imprimer", priv_Imprimer) :
+                new ObjectParameter("priv_Imprimer", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Priv", util_IDParameter, scrn_IDParameter, priv_AfficherParameter, priv_AjouterParameter, priv_ModifierParameter, priv_SupprimerParameter, priv_ImprimerParameter);
         }
     
         public virtual ObjectResult<Select_Screen_By_idList_Result> Select_Screen_By_idList(Nullable<int> list_ID)
@@ -5202,6 +5206,80 @@ namespace DAL.DB
                 new ObjectParameter("Search", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_SommeQte_Result>("Search_SommeQte", searchParameter);
+        }
+    
+        public virtual ObjectResult<Utilisateur> get_Utilisateur_By_idUtilisateur(Nullable<int> util_ID)
+        {
+            var util_IDParameter = util_ID.HasValue ?
+                new ObjectParameter("util_ID", util_ID) :
+                new ObjectParameter("util_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Utilisateur>("get_Utilisateur_By_idUtilisateur", util_IDParameter);
+        }
+    
+        public virtual ObjectResult<Utilisateur> get_Utilisateur_By_idUtilisateur(Nullable<int> util_ID, MergeOption mergeOption)
+        {
+            var util_IDParameter = util_ID.HasValue ?
+                new ObjectParameter("util_ID", util_ID) :
+                new ObjectParameter("util_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Utilisateur>("get_Utilisateur_By_idUtilisateur", mergeOption, util_IDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Update_Utilisateur_Only(Nullable<int> util_ID, string util_Identifiant, string util_MotPasse)
+        {
+            var util_IDParameter = util_ID.HasValue ?
+                new ObjectParameter("util_ID", util_ID) :
+                new ObjectParameter("util_ID", typeof(int));
+    
+            var util_IdentifiantParameter = util_Identifiant != null ?
+                new ObjectParameter("util_Identifiant", util_Identifiant) :
+                new ObjectParameter("util_Identifiant", typeof(string));
+    
+            var util_MotPasseParameter = util_MotPasse != null ?
+                new ObjectParameter("util_MotPasse", util_MotPasse) :
+                new ObjectParameter("util_MotPasse", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Update_Utilisateur_Only", util_IDParameter, util_IdentifiantParameter, util_MotPasseParameter);
+        }
+    
+        public virtual int Insert_Enregistrement(Nullable<System.DateTime> eng_Date, Nullable<System.TimeSpan> eng_Time, Nullable<int> util_ID, string eng_pc_Name, string eng_Operation)
+        {
+            var eng_DateParameter = eng_Date.HasValue ?
+                new ObjectParameter("eng_Date", eng_Date) :
+                new ObjectParameter("eng_Date", typeof(System.DateTime));
+    
+            var eng_TimeParameter = eng_Time.HasValue ?
+                new ObjectParameter("eng_Time", eng_Time) :
+                new ObjectParameter("eng_Time", typeof(System.TimeSpan));
+    
+            var util_IDParameter = util_ID.HasValue ?
+                new ObjectParameter("util_ID", util_ID) :
+                new ObjectParameter("util_ID", typeof(int));
+    
+            var eng_pc_NameParameter = eng_pc_Name != null ?
+                new ObjectParameter("eng_pc_Name", eng_pc_Name) :
+                new ObjectParameter("eng_pc_Name", typeof(string));
+    
+            var eng_OperationParameter = eng_Operation != null ?
+                new ObjectParameter("eng_Operation", eng_Operation) :
+                new ObjectParameter("eng_Operation", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_Enregistrement", eng_DateParameter, eng_TimeParameter, util_IDParameter, eng_pc_NameParameter, eng_OperationParameter);
+        }
+    
+        public virtual ObjectResult<Select_v_Enregistrement_Result> Select_v_Enregistrement()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_v_Enregistrement_Result>("Select_v_Enregistrement");
+        }
+    
+        public virtual ObjectResult<Search_v_Enregistrement_Result> Search_v_Enregistrement(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("Search", search) :
+                new ObjectParameter("Search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Search_v_Enregistrement_Result>("Search_v_Enregistrement", searchParameter);
         }
     }
 }

@@ -114,6 +114,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un véhicule");
                         iTools.sucMsg("Information", "Votre véhicule a bien ajouté");
                         base.Add_Data();
                         Verify_Buttons(true);
@@ -152,6 +153,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un véhicule");
                         iTools.sucMsg("Information", "Votre véhicule a bien modifié");
                         base.Update_Data();
                         Verify_Buttons(true);
@@ -173,6 +175,7 @@ namespace PL.Interfaces.Sub.CRUD
                 try
                 {
                     db.Delete_Vehicule_Temp(idVL);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un véhicule");
                     iTools.sucMsg("Information", "Votre véhicule  a bien supprimé");
                     base.Delete_Data();
                     Verify_Buttons(true);

@@ -31,8 +31,8 @@ namespace PL.Interfaces.Sub.Normal
 
         private void getData()
         {
-            var rs = db.SommeQte();
-            dgvStock.DataSource = rs;
+            dgvStock.DataSource = db.SommeQte();
+            lblCountA.Text = $"Ligne: {dgvStock.Rows.Count}";
         }
 
         private void showOperation(char operation)
@@ -153,8 +153,13 @@ namespace PL.Interfaces.Sub.Normal
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            dgvStock.DataSource = db.Search_SommeQte(txtSearch.Text);
-            lblCountA.Text = $"Ligne: {dgvStock.Rows.Count}";
+            if (txtSearch.Text == "Recherche")
+                getData();
+            else
+            {
+                dgvStock.DataSource = db.Search_SommeQte(txtSearch.Text);
+                lblCountA.Text = $"Ligne: {dgvStock.Rows.Count}";
+            }
         }
     }
 }

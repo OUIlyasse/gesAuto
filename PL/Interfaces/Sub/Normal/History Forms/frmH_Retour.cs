@@ -30,6 +30,7 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
         {
             var rs = db.Select_H_Bon_Retour().ToList();
             dgvEBon.DataSource = rs;
+            CountRow(dgvEBon.Rows.Count, lblCountB);
         }
 
         private int getIdRBon(string item)
@@ -142,6 +143,8 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
         private void frmLBonEntree_Load(object sender, EventArgs e)
         {
             PositionColumns();
+            CountRow(dgvA_EBon.Rows.Count, lblCountA);
+            CountRow(dgvEBon.Rows.Count, lblCountB);
         }
 
         public void dgvEBon_SelectionChanged(object sender, EventArgs e)
@@ -156,6 +159,7 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
                     if (item != null)
                     {
                         dgvA_EBon.DataSource = db.Select_v_Bon_Retour_Article(getIdRBon(item)).ToList();
+                        CountRow(dgvA_EBon.Rows.Count, lblCountA);
                         PositionColumns();
                     }
                 }
@@ -201,19 +205,25 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
 
         private void txtSearchA_TextChanged(object sender, EventArgs e)
         {
-            string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbt_Designation.Name].Value}";
+            try
+            {
+                string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbt_Designation.Name].Value}";
 
-            if (string.IsNullOrEmpty(txtSearchA.Text))
-                dgvA_EBon.DataSource = db.Select_v_Bon_Retour_Article(getIdRBon(item)).ToList();
-            else
-                dgvA_EBon.DataSource = db.Search_Bon_Retour_Article(txtSearchA.Text, idBonRetour);
-            CountRow(dgvA_EBon.Rows.Count, lblCountA);
-            PositionColumns();
+                if (txtSearchA.Text == "Recherche")
+                    dgvEBon_SelectionChanged(null, null);
+                else
+                    dgvA_EBon.DataSource = db.Search_Bon_Retour_Article(txtSearchA.Text, idBonRetour);
+                CountRow(dgvA_EBon.Rows.Count, lblCountA);
+                PositionColumns();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearchB.Text))
+            if (txtSearchB.Text == "Recherche")
                 getData_RBon();
             else
             {

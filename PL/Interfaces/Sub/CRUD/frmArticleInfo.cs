@@ -205,6 +205,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un image");
                         iTools.sucMsg("Information", "L'image a bien ajouté");
                         newRecord_Photo();
                         break;
@@ -261,6 +262,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un image");
                         iTools.sucMsg("Information", "L'image a bien modifié");
                         newRecord_Photo();
                         break;
@@ -281,6 +283,7 @@ namespace PL.Interfaces.Sub.CRUD
                 try
                 {
                     db.Delete_Article_Photo_Temp(idPhoto);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un image");
                     iTools.sucMsg("Information", "Votre image  a bien supprimé");
                     newRecord_Photo();
                 }
@@ -370,6 +373,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un référence");
                         iTools.sucMsg("Information", "La référence a bien ajouté");
                         newRecord_Reference();
                         break;
@@ -401,6 +405,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un référence");
                         iTools.sucMsg("Information", "La référence a bien modifié");
                         newRecord_Reference();
                         break;
@@ -421,6 +426,7 @@ namespace PL.Interfaces.Sub.CRUD
                 try
                 {
                     db.Delete_Article_Reference_Temp(idReference);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un référence");
                     iTools.sucMsg("Information", "Votre référence  a bien supprimé");
                     newRecord_Reference();
                 }
@@ -653,6 +659,7 @@ namespace PL.Interfaces.Sub.CRUD
                 try
                 {
                     db.Delete_Unite_Mesure(id);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un unité de mesure");
                     iTools.sucMsg("Information", "Votre unité de mesure  a bien supprimé");
                 }
                 catch (Exception ex)
@@ -715,6 +722,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un article");
                         iTools.sucMsg("Information", "Cet article a bien ajouté");
                         activeControls(true);
                         Verify_Buttons(true);
@@ -762,6 +770,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un article");
                         iTools.sucMsg("Information", "Cet article a bien modifié");
                         base.Update_Data();
                         Verify_Buttons(true);
@@ -790,7 +799,8 @@ namespace PL.Interfaces.Sub.CRUD
 
                     //delete article
                     db.Delete_Article_Info_Temp(idArticle);
-                    iTools.sucMsg("Information", "Votre fournisseur  a bien supprimé");
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un article");
+                    iTools.sucMsg("Information", "Votre article  a bien supprimé");
                     base.Delete_Data();
                     Verify_Buttons(true);
                     activeControls(false);
@@ -1043,6 +1053,7 @@ namespace PL.Interfaces.Sub.CRUD
                             setValue_UMesure();
                             break;
                     }
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un unité de mesure");
                 }
                 else
                 {
@@ -1058,6 +1069,7 @@ namespace PL.Interfaces.Sub.CRUD
                             setValue_UMesure();
                             break;
                     }
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un unité de mesure");
                 }
             }
             //}

@@ -210,6 +210,17 @@
           <Property Name="mags_ID" Type="int" />
           <Property Name="eplc_Description" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Enregistrement">
+          <Key>
+            <PropertyRef Name="eng_ID" />
+          </Key>
+          <Property Name="eng_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eng_Date" Type="date" />
+          <Property Name="eng_Time" Type="time" Precision="7" />
+          <Property Name="util_ID" Type="int" />
+          <Property Name="eng_pc_Name" Type="nvarchar(max)" />
+          <Property Name="eng_Operation" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Famille">
           <Key>
             <PropertyRef Name="fam_ID" />
@@ -418,16 +429,6 @@
           <Property Name="svc_description" Type="nvarchar(max)" />
           <Property Name="svc_Status" Type="bit" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Unite_Mesure">
           <Key>
             <PropertyRef Name="unit_M_ID" />
@@ -592,6 +593,7 @@ warning 6002: The table/view 'ges_Auto.dbo.v_Priv' does not have a primary key d
           <Property Name="priv_Ajouter" Type="bit" />
           <Property Name="priv_Modifier" Type="bit" />
           <Property Name="priv_Supprimer" Type="bit" />
+          <Property Name="priv_Imprimer" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'ges_Auto.dbo.v_Utilisateur' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1216,6 +1218,18 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Enregistrement_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
+          <End Role="Enregistrement" Type="Self.Enregistrement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="util_ID" />
+            </Principal>
+            <Dependent Role="Enregistrement">
+              <PropertyRef Name="util_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Fournisseur_Ville">
           <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
           <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="*" />
@@ -1699,7 +1713,6 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="art_Abreviation" Type="nchar" Mode="In" />
           <Parameter Name="svc_ID" Type="int" Mode="In" />
         </Function>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="get_Annees_By_Annee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="an_Annee" Type="nvarchar(max)" Mode="In" />
         </Function>
@@ -1772,6 +1785,9 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
         </Function>
         <Function Name="get_Utilisateur_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pers_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Utilisateur_By_idUtilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="util_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="get_Vehicule_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vl_ID" Type="int" Mode="In" />
@@ -1923,6 +1939,13 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="rayo_ID" Type="int" Mode="In" />
           <Parameter Name="mags_ID" Type="int" Mode="In" />
           <Parameter Name="eplc_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Enregistrement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eng_Date" Type="date" Mode="In" />
+          <Parameter Name="eng_Time" Type="time" Mode="In" />
+          <Parameter Name="util_ID" Type="int" Mode="In" />
+          <Parameter Name="eng_pc_Name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="eng_Operation" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="Insert_Famille" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fam_ID" Type="int" Mode="In" />
@@ -2264,6 +2287,9 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
         <Function Name="Search_Unite_Soutien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Search_v_Enregistrement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="Search_Vehicule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
         </Function>
@@ -2439,6 +2465,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="bt_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="Select_v_Emplacement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_v_Enregistrement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Select_v_Get_E_Bon_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="be_A_ID" Type="int" Mode="In" />
         </Function>
@@ -2508,36 +2535,6 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="vil_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="SommeQte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Status_Unite_Mesure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="art_ID" Type="int" Mode="In" />
           <Parameter Name="unit_M_Nom" Type="nvarchar" Mode="In" />
@@ -2772,6 +2769,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="priv_Ajouter" Type="bit" Mode="In" />
           <Parameter Name="priv_Modifier" Type="bit" Mode="In" />
           <Parameter Name="priv_Supprimer" Type="bit" Mode="In" />
+          <Parameter Name="priv_Imprimer" Type="bit" Mode="In" />
         </Function>
         <Function Name="Update_Profil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="prof_ID" Type="int" Mode="In" />
@@ -2819,6 +2817,11 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="util_Identifiant" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="util_MotPasse" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="svc_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Update_Utilisateur_Only" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="util_ID" Type="int" Mode="In" />
+          <Parameter Name="util_Identifiant" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="util_MotPasse" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="Update_Vehicule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vl_ID" Type="int" Mode="In" />
@@ -2876,6 +2879,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <EntitySet Name="Bon_Sortie" EntityType="Self.Bon_Sortie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bon_Sortie_Article" EntityType="Self.Bon_Sortie_Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Emplacement" EntityType="Self.Emplacement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enregistrement" EntityType="Self.Enregistrement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Famille" EntityType="Self.Famille" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
@@ -2891,7 +2895,6 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <EntitySet Name="Representant" EntityType="Self.Representant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Screen" EntityType="Self.Screen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unite_Mesure" EntityType="Self.Unite_Mesure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unite_Soutien" EntityType="Self.Unite_Soutien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
@@ -2974,7 +2977,8 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
     [v_Priv].[priv_Afficher] AS [priv_Afficher], 
     [v_Priv].[priv_Ajouter] AS [priv_Ajouter], 
     [v_Priv].[priv_Modifier] AS [priv_Modifier], 
-    [v_Priv].[priv_Supprimer] AS [priv_Supprimer]
+    [v_Priv].[priv_Supprimer] AS [priv_Supprimer], 
+    [v_Priv].[priv_Imprimer] AS [priv_Imprimer]
     FROM [dbo].[v_Priv] AS [v_Priv]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Utilisateur" EntityType="Self.v_Utilisateur" store:Type="Views" store:Schema="dbo">
@@ -3296,6 +3300,10 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <AssociationSet Name="FK_Emplacement_Rayonnage" Association="Self.FK_Emplacement_Rayonnage">
             <End Role="Rayonnage" EntitySet="Rayonnage" />
             <End Role="Emplacement" EntitySet="Emplacement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enregistrement_Utilisateur" Association="Self.FK_Enregistrement_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Enregistrement" EntitySet="Enregistrement" />
           </AssociationSet>
           <AssociationSet Name="FK_Fournisseur_Ville" Association="Self.FK_Fournisseur_Ville">
             <End Role="Ville" EntitySet="Ville" />
@@ -3925,6 +3933,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <NavigationProperty Name="pers_Affecte" Relationship="Self.FK_Utilisateur_pers_Affecte" FromRole="Utilisateur" ToRole="pers_Affecte" />
           <NavigationProperty Name="Profil" Relationship="Self.FK_Utilisateur_Profil" FromRole="Utilisateur" ToRole="Profil" />
           <NavigationProperty Name="Service" Relationship="Self.FK_Utilisateur_Service" FromRole="Utilisateur" ToRole="Service" />
+          <NavigationProperty Name="Enregistrements" Relationship="ges_AutoModel.FK_Enregistrement_Utilisateur" FromRole="Utilisateur" ToRole="Enregistrement" />
         </EntityType>
         <EntityType Name="Vehicule">
           <Key>
@@ -6122,7 +6131,6 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           </FunctionImport>
           <EntitySet Name="Lists" EntityType="ges_AutoModel.List" />
           <EntitySet Name="Screens" EntityType="ges_AutoModel.Screen" />
-          <EntitySet Name="sysdiagrams" EntityType="ges_AutoModel.sysdiagram" />
           <AssociationSet Name="FK_Screen_Lists" Association="ges_AutoModel.FK_Screen_Lists">
             <End Role="List" EntitySet="Lists" />
             <End Role="Screen" EntitySet="Screens" />
@@ -6146,6 +6154,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
             <Parameter Name="priv_Ajouter" Mode="In" Type="Boolean" />
             <Parameter Name="priv_Modifier" Mode="In" Type="Boolean" />
             <Parameter Name="priv_Supprimer" Mode="In" Type="Boolean" />
+            <Parameter Name="priv_Imprimer" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="Select_Screen_By_idList" ReturnType="Collection(ges_AutoModel.Select_Screen_By_idList_Result)">
           <Parameter Name="list_ID" Mode="In" Type="Int32" />
@@ -6266,7 +6275,31 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Parameter Name="Search" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Search_SommeQte" ReturnType="Collection(ges_AutoModel.Search_SommeQte_Result)">
-            <Parameter Name="Search" Mode="In" Type="String" />
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_Utilisateur_By_idUtilisateur" EntitySet="Utilisateurs" ReturnType="Collection(ges_AutoModel.Utilisateur)">
+          <Parameter Name="util_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Utilisateur_Only" ReturnType="Collection(Int32)">
+            <Parameter Name="util_ID" Mode="In" Type="Int32" />
+            <Parameter Name="util_Identifiant" Mode="In" Type="String" />
+            <Parameter Name="util_MotPasse" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Enregistrements" EntityType="ges_AutoModel.Enregistrement" />
+          <AssociationSet Name="FK_Enregistrement_Utilisateur" Association="ges_AutoModel.FK_Enregistrement_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateurs" />
+            <End Role="Enregistrement" EntitySet="Enregistrements" />
+          </AssociationSet>
+          <FunctionImport Name="Insert_Enregistrement">
+            <Parameter Name="eng_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="eng_Time" Mode="In" Type="Time" />
+            <Parameter Name="util_ID" Mode="In" Type="Int32" />
+            <Parameter Name="eng_pc_Name" Mode="In" Type="String" />
+            <Parameter Name="eng_Operation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Select_v_Enregistrement" ReturnType="Collection(ges_AutoModel.Select_v_Enregistrement_Result)" />
+          <FunctionImport Name="Search_v_Enregistrement" ReturnType="Collection(ges_AutoModel.Search_v_Enregistrement_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Etat_Explicatif_UMesure_Result">
@@ -7005,16 +7038,6 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Property Name="list_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="List" Relationship="ges_AutoModel.FK_Screen_Lists" FromRole="Screen" ToRole="List" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <Association Name="FK_Screen_Lists">
           <End Type="ges_AutoModel.List" Role="List" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -7041,6 +7064,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Property Type="Boolean" Name="priv_Ajouter" Nullable="true" />
           <Property Type="Boolean" Name="priv_Modifier" Nullable="true" />
           <Property Type="Boolean" Name="priv_Supprimer" Nullable="true" />
+          <Property Type="Boolean" Name="priv_Imprimer" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Select_Screen_By_idList_Result">
           <Property Type="Int32" Name="scrn_ID" Nullable="false" />
@@ -7160,6 +7184,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Property Name="priv_Ajouter" Type="Boolean" />
           <Property Name="priv_Modifier" Type="Boolean" />
           <Property Name="priv_Supprimer" Type="Boolean" />
+          <Property Name="priv_Imprimer" Type="Boolean" />
         </EntityType>
         <EntityType Name="View_1">
           <Key>
@@ -7361,6 +7386,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Property Type="Boolean" Name="priv_Ajouter" Nullable="true" />
           <Property Type="Boolean" Name="priv_Modifier" Nullable="true" />
           <Property Type="Boolean" Name="priv_Supprimer" Nullable="true" />
+          <Property Type="Boolean" Name="priv_Imprimer" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Select_Unite_Mesure_By_Art_isDefault_Result1">
           <Property Type="Int32" Name="unit_M_ID" Nullable="false" />
@@ -7540,6 +7566,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Property Type="Int32" Name="rep_ID" Nullable="true" />
           <Property Type="String" Name="be_Description" Nullable="true" />
           <Property Type="Boolean" Name="be_Status" Nullable="true" />
+          <Property Type="Boolean" Name="be_Suppression" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Search_Bon_Retour_H_Result">
           <Property Type="Int32" Name="bt_ID" Nullable="false" />
@@ -7573,6 +7600,52 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <Property Type="String" Name="art_Designation" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="ref_reference" Nullable="true" />
           <Property Type="Decimal" Name="mvt_Qte" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <EntityType Name="Enregistrement">
+          <Key>
+            <PropertyRef Name="eng_ID" />
+          </Key>
+          <Property Name="eng_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eng_Date" Type="DateTime" Precision="0" />
+          <Property Name="eng_Time" Type="Time" Precision="7" />
+          <Property Name="util_ID" Type="Int32" />
+          <Property Name="eng_pc_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eng_Operation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Utilisateur" Relationship="ges_AutoModel.FK_Enregistrement_Utilisateur" FromRole="Enregistrement" ToRole="Utilisateur" />
+        </EntityType>
+        <Association Name="FK_Enregistrement_Utilisateur">
+          <End Type="ges_AutoModel.Utilisateur" Role="Utilisateur" Multiplicity="0..1" />
+          <End Type="ges_AutoModel.Enregistrement" Role="Enregistrement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="util_ID" />
+            </Principal>
+            <Dependent Role="Enregistrement">
+              <PropertyRef Name="util_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Select_v_Enregistrement_Result">
+          <Property Type="Int32" Name="eng_ID" Nullable="false" />
+          <Property Type="DateTime" Name="eng_Date" Nullable="true" />
+          <Property Type="Time" Name="eng_Time" Nullable="true" />
+          <Property Type="String" Name="util_Identifiant" Nullable="true" />
+          <Property Type="String" Name="pers_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Mle_FA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="eng_pc_Name" Nullable="true" />
+          <Property Type="String" Name="eng_Operation" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_v_Enregistrement_Result">
+          <Property Type="Int32" Name="eng_ID" Nullable="false" />
+          <Property Type="DateTime" Name="eng_Date" Nullable="true" />
+          <Property Type="Time" Name="eng_Time" Nullable="true" />
+          <Property Type="String" Name="util_Identifiant" Nullable="true" />
+          <Property Type="String" Name="pers_Prenom" Nullable="true" />
+          <Property Type="String" Name="pers_Nom" Nullable="true" />
+          <Property Type="String" Name="pers_Mle_FA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="eng_pc_Name" Nullable="true" />
+          <Property Type="String" Name="eng_Operation" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -9363,17 +9436,6 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ges_AutoModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Select_Lists" FunctionName="ges_AutoModel.Store.Select_Lists">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ges_AutoModel.Select_Lists_Result">
@@ -9392,6 +9454,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
                 <ScalarProperty Name="priv_Ajouter" ColumnName="priv_Ajouter" />
                 <ScalarProperty Name="priv_Modifier" ColumnName="priv_Modifier" />
                 <ScalarProperty Name="priv_Supprimer" ColumnName="priv_Supprimer" />
+                <ScalarProperty Name="priv_Imprimer" ColumnName="priv_Imprimer" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -9406,30 +9469,6 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ges_AutoModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ges_AutoModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ges_AutoModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ges_AutoModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ges_AutoModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ges_AutoModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ges_AutoModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ges_AutoModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ges_AutoModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="v_Utilisateur">
             <EntityTypeMapping TypeName="ges_AutoModel.v_Utilisateur">
               <MappingFragment StoreEntitySet="v_Utilisateur">
@@ -9526,6 +9565,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
           <EntitySetMapping Name="v_Priv">
             <EntityTypeMapping TypeName="ges_AutoModel.v_Priv">
               <MappingFragment StoreEntitySet="v_Priv">
+                <ScalarProperty Name="priv_Imprimer" ColumnName="priv_Imprimer" />
                 <ScalarProperty Name="priv_Supprimer" ColumnName="priv_Supprimer" />
                 <ScalarProperty Name="priv_Modifier" ColumnName="priv_Modifier" />
                 <ScalarProperty Name="priv_Ajouter" ColumnName="priv_Ajouter" />
@@ -9744,6 +9784,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
                 <ScalarProperty Name="priv_Ajouter" ColumnName="priv_Ajouter" />
                 <ScalarProperty Name="priv_Modifier" ColumnName="priv_Modifier" />
                 <ScalarProperty Name="priv_Supprimer" ColumnName="priv_Supprimer" />
+                <ScalarProperty Name="priv_Imprimer" ColumnName="priv_Imprimer" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -9962,6 +10003,7 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
                 <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
                 <ScalarProperty Name="be_Description" ColumnName="be_Description" />
                 <ScalarProperty Name="be_Status" ColumnName="be_Status" />
+                <ScalarProperty Name="be_Suppression" ColumnName="be_Suppression" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -10011,6 +10053,51 @@ warning 6002: The table/view 'ges_Auto.dbo.vwUniteSoutien' does not have a prima
                 <ScalarProperty Name="art_Designation" ColumnName="art_Designation" />
                 <ScalarProperty Name="ref_reference" ColumnName="ref_reference" />
                 <ScalarProperty Name="mvt_Qte" ColumnName="mvt_Qte" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Utilisateur_By_idUtilisateur" FunctionName="ges_AutoModel.Store.get_Utilisateur_By_idUtilisateur" />
+          <FunctionImportMapping FunctionImportName="Update_Utilisateur_Only" FunctionName="ges_AutoModel.Store.Update_Utilisateur_Only" />
+          <EntitySetMapping Name="Enregistrements">
+            <EntityTypeMapping TypeName="ges_AutoModel.Enregistrement">
+              <MappingFragment StoreEntitySet="Enregistrement">
+                <ScalarProperty Name="eng_Operation" ColumnName="eng_Operation" />
+                <ScalarProperty Name="eng_pc_Name" ColumnName="eng_pc_Name" />
+                <ScalarProperty Name="util_ID" ColumnName="util_ID" />
+                <ScalarProperty Name="eng_Time" ColumnName="eng_Time" />
+                <ScalarProperty Name="eng_Date" ColumnName="eng_Date" />
+                <ScalarProperty Name="eng_ID" ColumnName="eng_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Insert_Enregistrement" FunctionName="ges_AutoModel.Store.Insert_Enregistrement" />
+          <FunctionImportMapping FunctionImportName="Select_v_Enregistrement" FunctionName="ges_AutoModel.Store.Select_v_Enregistrement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Select_v_Enregistrement_Result">
+                <ScalarProperty Name="eng_ID" ColumnName="eng_ID" />
+                <ScalarProperty Name="eng_Date" ColumnName="eng_Date" />
+                <ScalarProperty Name="eng_Time" ColumnName="eng_Time" />
+                <ScalarProperty Name="util_Identifiant" ColumnName="util_Identifiant" />
+                <ScalarProperty Name="pers_Prenom" ColumnName="pers_Prenom" />
+                <ScalarProperty Name="pers_Nom" ColumnName="pers_Nom" />
+                <ScalarProperty Name="pers_Mle_FA" ColumnName="pers_Mle_FA" />
+                <ScalarProperty Name="eng_pc_Name" ColumnName="eng_pc_Name" />
+                <ScalarProperty Name="eng_Operation" ColumnName="eng_Operation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_v_Enregistrement" FunctionName="ges_AutoModel.Store.Search_v_Enregistrement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ges_AutoModel.Search_v_Enregistrement_Result">
+                <ScalarProperty Name="eng_ID" ColumnName="eng_ID" />
+                <ScalarProperty Name="eng_Date" ColumnName="eng_Date" />
+                <ScalarProperty Name="eng_Time" ColumnName="eng_Time" />
+                <ScalarProperty Name="util_Identifiant" ColumnName="util_Identifiant" />
+                <ScalarProperty Name="pers_Prenom" ColumnName="pers_Prenom" />
+                <ScalarProperty Name="pers_Nom" ColumnName="pers_Nom" />
+                <ScalarProperty Name="pers_Mle_FA" ColumnName="pers_Mle_FA" />
+                <ScalarProperty Name="eng_pc_Name" ColumnName="eng_pc_Name" />
+                <ScalarProperty Name="eng_Operation" ColumnName="eng_Operation" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

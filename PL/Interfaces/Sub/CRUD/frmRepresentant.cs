@@ -18,6 +18,7 @@ namespace PL.Interfaces.Sub.CRUD
         private int idRepresentant, idFournisseur;
         private Representant representant;
         private frmLRepresentant frmLRepresentant;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Variables
 
@@ -93,6 +94,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 2:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un representant");
                         iTools.sucMsg("Information", "Votre representant a bien ajouté");
                         base.Add_Data();
                         Verify_Buttons(true);
@@ -137,6 +139,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un representant");
                         MessageBox.Show($"CIN {txtCin.Text} est existe déjà", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtCin.Focus();
                         break;
@@ -163,6 +166,7 @@ namespace PL.Interfaces.Sub.CRUD
                 try
                 {
                     db.Delete_Representant_Temp(idRepresentant);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un representant");
                     iTools.sucMsg("Information", "Ce representant  a bien supprimé");
                     base.Delete_Data();
                     Verify_Buttons(true);

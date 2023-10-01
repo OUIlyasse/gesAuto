@@ -313,11 +313,12 @@ namespace PL.Interfaces.Main
                         string grade = users.grd_Grade;
                         string service = db.get_Service_By_ID(users.svc_ID).FirstOrDefault();
 
-                        lblFullName.Text = $"{grade} {fName} {lName}";
+                        lblFullName.Text = $"{grade} {lName} {fName}";
                         lblService.Text = $"Service: {service}";
-                        idUtilisateur = users.util_ID;
+                        idUtilisateur = Properties.Settings.Default.idUtilisateur;
                         Refresh_Menu();
                         break;
+
                     default:
                         frmLogin frm = new frmLogin(this);
                         frm.ShowDialog();
@@ -440,6 +441,18 @@ namespace PL.Interfaces.Main
                 seDeconnecterToolStripMenuItem.Text = "Se deconnecter";
                 compteToolStripMenuItem.Visible = true;
             }
+        }
+
+        private void compteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAccount frm = new frmAccount(idUtilisateur);
+            frm.ShowDialog();
+        }
+
+        private void suivieDutilisateursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSuivieUsers frm = new frmSuivieUsers();
+            OpenForm(frm);
         }
     }
 }

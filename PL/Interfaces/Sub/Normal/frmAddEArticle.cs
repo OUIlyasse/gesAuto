@@ -245,6 +245,7 @@ namespace PL.Interfaces.Sub.Normal
                 {
                     case 1:
                         Add_Update_Reference(bs.be_ID, bsA.be_A_ID);
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un article de bon d'entrée");
                         transaction.Commit();
                         iTools.sucMsg("Information", "Votre article a bien ajouté");
                         //newRecord();
@@ -291,6 +292,7 @@ namespace PL.Interfaces.Sub.Normal
                     switch (rs)
                     {
                         case 1:
+                            db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un article de bon d'entrée");
                             transaction.Commit();
                             iTools.sucMsg("Information", "Votre article a bien modifié");
                             //newRecord();

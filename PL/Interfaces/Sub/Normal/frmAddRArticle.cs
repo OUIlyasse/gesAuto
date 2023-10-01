@@ -636,7 +636,9 @@ namespace PL.Interfaces.Sub.Normal
                             Add_Update_Reference(bs.bt_ID, bsA.bt_A_ID);
                             //Add_Update_CodeBarre(bs.bs_ID);
                             //Update_Last_CodeBarre();
+                            db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un article de bon de retour");
                             transaction.Commit();
+
                             iTools.sucMsg("Information", "Votre article a bien ajouté");
                             //newRecord();
                             getData();
@@ -690,6 +692,7 @@ namespace PL.Interfaces.Sub.Normal
                     {
                         case 1:
                             Bon_Retour_Article bsA = db.get_Bon_Retour_Article_By_ID(bonArt.bt_A_ID).FirstOrDefault();
+                            db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un article de bon de retour");
                             transaction.Commit();
                             iTools.sucMsg("Information", "Votre article a bien modifié");
                             getData();

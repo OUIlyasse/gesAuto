@@ -393,7 +393,7 @@ namespace PL.Interfaces.Sub.List
         {
             string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbs_Designation.Name].Value}";
 
-            if (string.IsNullOrEmpty(txtSearchA.Text))
+            if (txtSearchA.Text == "Recherche")
                 dgvA_EBon.DataSource = db.Select_Bon_Sortie_Article(getIdSBon(item)).ToList();
             else
                 dgvA_EBon.DataSource = db.Search_Bon_Sortie_Article(txtSearchA.Text, idBonSortie);
@@ -404,7 +404,7 @@ namespace PL.Interfaces.Sub.List
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearchB.Text))
+            if (txtSearchB.Text == "Recherche")
                 getData_SBon();
             else
             {

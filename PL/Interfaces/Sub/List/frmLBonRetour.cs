@@ -394,7 +394,7 @@ namespace PL.Interfaces.Sub.List
         {
             string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbt_Designation.Name].Value}";
 
-            if (string.IsNullOrEmpty(txtSearchA.Text))
+            if (txtSearchA.Text == "Recherche")
                 dgvA_EBon.DataSource = db.Select_v_Bon_Retour_Article(getIdRBon(item)).ToList();
             else
                 dgvA_EBon.DataSource = db.Search_Bon_Retour_Article(txtSearchA.Text, idBonRetour);
@@ -405,7 +405,7 @@ namespace PL.Interfaces.Sub.List
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearchB.Text))
+            if (txtSearchB.Text == "Recherche")
                 getData_RBon();
             else
             {

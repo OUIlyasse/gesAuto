@@ -22,5 +22,6 @@ namespace DAL.DB
         public Nullable<int> rep_ID { get; set; }
         public string be_Description { get; set; }
         public Nullable<bool> be_Status { get; set; }
+        public Nullable<bool> be_Suppression { get; set; }
     }
 }

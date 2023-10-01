@@ -1,9 +1,15 @@
 ﻿using System;
-using System.Drawing;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Management;
+using Microsoft.Win32;
 using System.Windows.Forms;
 using Tools.iUtile;
 using Tulpep.NotificationWindow;
+using System.Drawing;
+using System.IO;
 
 namespace Tools
 {
@@ -12,8 +18,190 @@ namespace Tools
         #region Variables
 
         private static NotifyIcon ni = new NotifyIcon();
+        private static ManagementObjectSearcher mos = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
+        private static OperatingSystem os = Environment.OSVersion;
+        private static StringBuilder systemInfo = new StringBuilder(string.Empty);
+        private static Version ver = os.Version;
 
         #endregion Variables
+
+        #region PC
+
+        public static string getBuild()
+        {
+            return ver.Build.ToString();
+        }
+
+        public static List<string> getLogicalDrivesInfo()
+        {
+            List<string> result = new List<string>();
+            foreach (System.IO.DriveInfo DriveInfo1 in System.IO.DriveInfo.GetDrives())
+            {
+                try
+                {
+                    result.Add(DriveInfo1.Name.ToString()); //DriveName
+                    result.Add(DriveInfo1.VolumeLabel.ToString()); // VolumeLabel
+                    result.Add(DriveInfo1.DriveType.ToString()); //DriveType
+                    result.Add(DriveInfo1.DriveFormat.ToString()); //DriveFormat
+                    result.Add(DriveInfo1.TotalSize.ToString()); //TotalSize
+                    result.Add(DriveInfo1.AvailableFreeSpace.ToString()); //AvailableFreeSpace
+                }
+                catch { }
+            }
+            return result;
+        }
+
+        public static string getName()
+        {
+            return Environment.MachineName;
+        }
+
+        public static List<string> getOperatingSystemArchitecture()
+        {
+            List<string> list = new List<string>();
+            foreach (ManagementObject managementObject in mos.Get())
+            {
+                if (managementObject["OSArchitecture"] != null)
+                {
+                    list.Add(managementObject["OSArchitecture"].ToString());
+                }
+            }
+            return list;
+        }
+
+        public static List<string> getOperatingSystemName()
+        {
+            List<string> list = new List<string>();
+            foreach (ManagementObject managementObject in mos.Get())
+            {
+                if (managementObject["Caption"] != null)
+                {
+                    list.Add(managementObject["Caption"].ToString());
+                }
+            }
+            return list;
+        }
+
+        public static List<string> getOperatingSystemServicePacke()
+        {
+            List<string> list = new List<string>();
+            foreach (ManagementObject managementObject in mos.Get())
+            {
+                if (managementObject["CSDVersion"] != null)
+                {
+                    list.Add(managementObject["CSDVersion"].ToString());
+                }
+            }
+            return list;
+        }
+
+        public static string getOStype()
+        {
+            string OStype = "";
+            if (Environment.Is64BitOperatingSystem) { OStype = "64-Bit"; } else { OStype = "32-Bit"; }
+            return OStype;
+        }
+
+        public static string getOSVersion()
+        {
+            return Environment.OSVersion.ToString();
+        }
+
+        public static string getProcessorArchitecture()
+        {
+            return Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE").ToString();
+        }
+
+        public static string getProcessorCount()
+        {
+            return Environment.ProcessorCount.ToString();
+        }
+
+        public static string getProcessorInfo()
+        {
+            RegistryKey processor_name = Registry.LocalMachine.OpenSubKey(@"Hardware\Description\System\CentralProcessor\0", RegistryKeyPermissionCheck.ReadSubTree);
+            if (processor_name != null)
+            {
+                if (processor_name.GetValue("ProcessorNameString") != null)
+                    return processor_name.GetValue("ProcessorNameString").ToString();
+                else
+                    return string.Empty;
+            }
+            else
+                return string.Empty;
+        }
+
+        public static string getProcessorLevel()
+        {
+            return Environment.GetEnvironmentVariable("PROCESSOR_LEVEL").ToString();
+        }
+
+        public static string getProcessorModel()
+        {
+            return Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER").ToString();
+        }
+
+        public static string getRevesrionMajor()
+        {
+            return ver.MajorRevision.ToString();
+        }
+
+        public static string getRevesrionMinor()
+        {
+            return ver.MinorRevision.ToString();
+        }
+
+        public static string getSystemDirectory()
+        {
+            return Environment.SystemDirectory.ToString();
+        }
+
+        public static string getSystemPlatform()
+        {
+            return os.Platform.ToString();
+        }
+
+        public static string getSystemServicePack()
+        {
+            return os.ServicePack.ToString();
+        }
+
+        public static string getSystemVersionString()
+        {
+            return os.VersionString.ToString();
+        }
+
+        public static string getSystemVesrion()
+        {
+            return os.Version.ToString();
+        }
+
+        public static string getUserDomainName()
+        {
+            return Environment.UserDomainName.ToString();
+        }
+
+        public static string getUserName()
+        {
+            return Environment.UserName.ToString();
+        }
+
+        public static string getVersion()
+        {
+            return Environment.Version.ToString();
+        }
+
+        public static string getVesrionMajor()
+        {
+            return ver.Major.ToString();
+        }
+
+        public static string getVesrionMinor()
+        {
+            return ver.Minor.ToString();
+        }
+
+        #endregion PC
 
         #region Text
 

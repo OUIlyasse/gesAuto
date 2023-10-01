@@ -180,6 +180,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un emplacement");
                         iTools.sucMsg("Information", "Votre emplacement a bien ajouté");
                         base.Add_Data();
                         Verify_Buttons(true);
@@ -236,6 +237,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un emplacement");
                         iTools.sucMsg("Information", "Votre emplacement a bien modifié");
                         base.Update_Data();
                         Verify_Buttons(true);
@@ -257,6 +259,7 @@ namespace PL.Interfaces.Sub.CRUD
                 try
                 {
                     db.Delete_Emplacement(idEmplacement);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un emplacement");
                     iTools.sucMsg("Information", "Cet emplacement a bien supprimé");
                     base.Delete_Data();
                     Verify_Buttons(true);

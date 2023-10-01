@@ -73,6 +73,7 @@ namespace PL.Interfaces.Sub.List
                 try
                 {
                     var rs = db.Delete_pers_Affecte_Temp(idPersonnel);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un personnel");
                     iTools.sucMsg("Information", "Votre personnel a bien supprimé");
                     getData();
                     Verify_Buttons(true);
@@ -140,7 +141,7 @@ namespace PL.Interfaces.Sub.List
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtRecherche.Text))
+            if (txtRecherche.Text == "Recherche")
                 getData();
             else
             {

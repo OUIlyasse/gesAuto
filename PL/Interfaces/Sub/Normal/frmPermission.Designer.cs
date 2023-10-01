@@ -50,7 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtSearchPersonnel = new PL.Controls.iText();
             this.dgvPersonnel = new System.Windows.Forms.DataGridView();
             this.colpers_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colgrd_Grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +73,8 @@
             this.colpriv_Ajouter = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colpriv_Modifier = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colpriv_Supprimer = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colpriv_Imprimer = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtSearchPersonnel = new PL.Controls.iText();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnel)).BeginInit();
@@ -248,16 +249,6 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Personnel";
-            // 
-            // txtSearchPersonnel
-            // 
-            this.txtSearchPersonnel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearchPersonnel.Location = new System.Drawing.Point(6, 53);
-            this.txtSearchPersonnel.Name = "txtSearchPersonnel";
-            this.txtSearchPersonnel.Size = new System.Drawing.Size(202, 28);
-            this.txtSearchPersonnel.TabIndex = 0;
-            this.txtSearchPersonnel.TextChanged += new System.EventHandler(this.txtSearchPersonnel_TextChanged);
             // 
             // dgvPersonnel
             // 
@@ -493,7 +484,7 @@
             this.dgvPermission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvPermission.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPermission.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvPermission.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvPermission.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvPermission.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
@@ -505,7 +496,8 @@
             this.colpriv_Afficher,
             this.colpriv_Ajouter,
             this.colpriv_Modifier,
-            this.colpriv_Supprimer});
+            this.colpriv_Supprimer,
+            this.colpriv_Imprimer});
             this.dgvPermission.GridColor = System.Drawing.SystemColors.Control;
             this.dgvPermission.Location = new System.Drawing.Point(157, 52);
             this.dgvPermission.MultiSelect = false;
@@ -538,6 +530,7 @@
             this.colutil_ID.Name = "colutil_ID";
             this.colutil_ID.ReadOnly = true;
             this.colutil_ID.Visible = false;
+            this.colutil_ID.Width = 94;
             // 
             // colscrn_ID
             // 
@@ -546,6 +539,7 @@
             this.colscrn_ID.Name = "colscrn_ID";
             this.colscrn_ID.ReadOnly = true;
             this.colscrn_ID.Visible = false;
+            this.colscrn_ID.Width = 101;
             // 
             // colscrn_Nom
             // 
@@ -553,6 +547,7 @@
             this.colscrn_Nom.HeaderText = "Ecran";
             this.colscrn_Nom.Name = "colscrn_Nom";
             this.colscrn_Nom.ReadOnly = true;
+            this.colscrn_Nom.Width = 83;
             // 
             // colpriv_Afficher
             // 
@@ -585,6 +580,23 @@
             this.colpriv_Supprimer.HeaderText = "Supprimer";
             this.colpriv_Supprimer.Name = "colpriv_Supprimer";
             this.colpriv_Supprimer.Width = 102;
+            // 
+            // colpriv_Imprimer
+            // 
+            this.colpriv_Imprimer.DataPropertyName = "priv_Imprimer";
+            this.colpriv_Imprimer.HeaderText = "Imprimer";
+            this.colpriv_Imprimer.Name = "colpriv_Imprimer";
+            this.colpriv_Imprimer.Width = 93;
+            // 
+            // txtSearchPersonnel
+            // 
+            this.txtSearchPersonnel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchPersonnel.Location = new System.Drawing.Point(6, 53);
+            this.txtSearchPersonnel.Name = "txtSearchPersonnel";
+            this.txtSearchPersonnel.Size = new System.Drawing.Size(202, 28);
+            this.txtSearchPersonnel.TabIndex = 0;
+            this.txtSearchPersonnel.TextChanged += new System.EventHandler(this.txtSearchPersonnel_TextChanged);
             // 
             // frmPermission
             // 
@@ -653,6 +665,7 @@
         public System.Windows.Forms.DataGridView dgvList;
         private System.Windows.Forms.DataGridViewTextBoxColumn collist_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn collist_Nom;
+        private System.Windows.Forms.CheckBox ckbAdmin;
         private System.Windows.Forms.DataGridViewTextBoxColumn colutil_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colscrn_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colscrn_Nom;
@@ -660,6 +673,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn colpriv_Ajouter;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colpriv_Modifier;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colpriv_Supprimer;
-        private System.Windows.Forms.CheckBox ckbAdmin;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colpriv_Imprimer;
     }
 }

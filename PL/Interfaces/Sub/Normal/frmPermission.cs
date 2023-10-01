@@ -97,6 +97,7 @@ namespace PL.Interfaces.Sub.Normal
             dtPermission.Columns.Add("priv_Ajouter", typeof(bool));
             dtPermission.Columns.Add("priv_Modifier", typeof(bool));
             dtPermission.Columns.Add("priv_Supprimer", typeof(bool));
+            dtPermission.Columns.Add("priv_Imprimer", typeof(bool));
         }
 
         private void LoadPermission(int idList)
@@ -105,7 +106,7 @@ namespace PL.Interfaces.Sub.Normal
             var rs = db.Select_Priv(idUtilisateur, idList).ToList();
             //Init_DataTable();
             foreach (var item in rs)
-                dtPermission.Rows.Add(item.util_ID, item.scrn_ID, item.scrn_Nom, item.priv_Afficher, item.priv_Ajouter, item.priv_Modifier, item.priv_Supprimer);
+                dtPermission.Rows.Add(item.util_ID, item.scrn_ID, item.scrn_Nom, item.priv_Afficher, item.priv_Ajouter, item.priv_Modifier, item.priv_Supprimer, item.priv_Imprimer);
             dgvPermission.DataSource = dtPermission;
         }
 
@@ -120,7 +121,8 @@ namespace PL.Interfaces.Sub.Normal
                     bool ajouter = dgvPermission.Rows[i].Cells[colpriv_Ajouter.Name].Value.Equals(true || false);
                     bool modifier = dgvPermission.Rows[i].Cells[colpriv_Modifier.Name].Value.Equals(true || false);
                     bool supprimer = dgvPermission.Rows[i].Cells[colpriv_Supprimer.Name].Value.Equals(true || false);
-                    db.Update_Priv(idUtilisateur, idScreen, affichage, ajouter, modifier, supprimer);
+                    bool imprimer = dgvPermission.Rows[i].Cells[colpriv_Imprimer.Name].Value.Equals(true || false);
+                    db.Update_Priv(idUtilisateur, idScreen, affichage, ajouter, modifier, supprimer, imprimer);
                 }
                 return true;
             }
@@ -202,6 +204,7 @@ namespace PL.Interfaces.Sub.Normal
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un utilisateur");
                         iTools.sucMsg("Information", "Utilisateur a bien ajouté");
                         VerifyButton(false);
                         break;
@@ -247,6 +250,7 @@ namespace PL.Interfaces.Sub.Normal
                 //Update permission
                 if (Update_Permission())
                 {
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un utilisateur");
                     iTools.sucMsg("Information", "Utilisateur a bien modifié");
                     VerifyButton(false);
                 }
@@ -268,6 +272,7 @@ namespace PL.Interfaces.Sub.Normal
                     int rs = (int)db.Delete_Utilisateur(idUtilisateur);
 
                     //form.txtStatus.Caption = "Votre code a bien ajouté";
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un utilisateur");
                     iTools.sucMsg("Information", "L'utilisateur a bien supprimé");
                     newRecord();
                     empty_Data();
@@ -321,7 +326,7 @@ namespace PL.Interfaces.Sub.Normal
             if (ckbAffiche.Checked)
             {
                 txtPassword.UseSystemPasswordChar = false;
-                txtPassword.UseSystemPasswordChar = false;
+                txtRPassword.UseSystemPasswordChar = false;
                 txtRPassword.Enabled = false;
             }
             else
@@ -393,7 +398,13 @@ namespace PL.Interfaces.Sub.Normal
 
         private void txtSearchPersonnel_TextChanged(object sender, EventArgs e)
         {
-            dgvPersonnel.DataSource = db.Search_PPersonnel(txtSearchPersonnel.Text);
+            if (txtSearchPersonnel.Text == "Recherche")
+                loadPersonnel();
+            else
+            {
+                dgvPersonnel.DataSource = db.Search_PPersonnel(txtSearchPersonnel.Text);
+                //lblCount.Text = $"Ligne: {dgvPersonnel.Rows.Count}";
+            }
         }
 
         private void ckbAdmin_CheckedChanged(object sender, EventArgs e)
@@ -406,7 +417,7 @@ namespace PL.Interfaces.Sub.Normal
                     var rs = db.Select_Screen_By_idList(idList).ToList();
                     foreach (var item in rs)
                     {
-                        db.Update_Priv(idUtilisateur, item.scrn_ID, true, true, true, true);
+                        db.Update_Priv(idUtilisateur, item.scrn_ID, true, true, true, true, true);
                     }
                 }
             }

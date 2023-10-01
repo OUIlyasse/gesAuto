@@ -134,6 +134,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un bon de sortie");
                         iTools.sucMsg("Information", "Votre bon a bien ajouté");
                         base.Add_Data();
                         Verify_Buttons(true);
@@ -179,6 +180,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un bon de sortie");
                         iTools.sucMsg("Information", "Votre bon a bien modifié");
                         base.Update_Data();
                         Verify_Buttons(true);
@@ -200,6 +202,7 @@ namespace PL.Interfaces.Sub.CRUD
                 try
                 {
                     db.Delete_Bon_Sortie_Temp(idBonSortie);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un bon de sortie");
                     iTools.sucMsg("Information", "Ce bon a bien supprimé");
                     base.Delete_Data();
                     Verify_Buttons(true);

@@ -92,6 +92,7 @@ namespace PL.Interfaces.Sub.LCRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un rayonnage");
                         iTools.sucMsg("Information", "Le rayonnage a bien ajouté");
                         newRecord();
                         break;
@@ -124,6 +125,7 @@ namespace PL.Interfaces.Sub.LCRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un rayonnage");
                         iTools.sucMsg("Information", "Le rayonnage a bien modifié");
                         newRecord();
                         break;
@@ -146,6 +148,7 @@ namespace PL.Interfaces.Sub.LCRUD
                 {
                     db.Delete_Armoire_By_idRayonnage(idRayonnage);
                     db.Delete_Rayonnage(idRayonnage);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un rayonnage");
                     iTools.sucMsg("Information", "Votre rayonnage  a bien supprimé");
                     newRecord();
                 }
@@ -223,7 +226,7 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtRecherche.Text))
+            if (txtRecherche.Text == "Recherche")
                 getData();
             else
             {

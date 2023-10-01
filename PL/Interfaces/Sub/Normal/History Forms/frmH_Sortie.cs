@@ -28,6 +28,7 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
         {
             var rs = db.Select_H_Bon_Sortie().ToList();
             dgvSBon.DataSource = rs;
+            CountRow(dgvSBon.Rows.Count, lblCountB);
         }
 
         private int getIdSBon(string item)
@@ -105,14 +106,16 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
         private void frmH_Sortie_Load(object sender, EventArgs e)
         {
             PositionColumns();
+            CountRow(dgvA_SBon.Rows.Count, lblCountA);
+            CountRow(dgvSBon.Rows.Count, lblCountB);
         }
 
         private void txtSearchA_TextChanged(object sender, EventArgs e)
         {
             string item = $"{dgvSBon.Rows[dgvSBon.CurrentRow.Index].Cells[colbs_Designation.Name].Value}";
 
-            if (string.IsNullOrEmpty(txtSearchA.Text))
-                dgvA_SBon.DataSource = db.Select_Bon_Sortie_Article(getIdSBon(item)).ToList();
+            if (txtSearchA.Text == "Recherche")
+                dgvSBon_SelectionChanged(null, null);
             else
             {
                 dgvA_SBon.DataSource = db.Search_Bon_Sortie_Article(txtSearchA.Text, idBonEntree);
@@ -123,7 +126,7 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearchB.Text))
+            if (txtSearchB.Text == "Recherche")
                 getData_SBon();
             else
             {
@@ -142,6 +145,7 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
                 if (item != null)
                 {
                     dgvA_SBon.DataSource = db.Select_Bon_Sortie_Article(getIdSBon(item)).ToList();
+                    CountRow(dgvA_SBon.Rows.Count, lblCountA);
                     PositionColumns();
                 }
             }

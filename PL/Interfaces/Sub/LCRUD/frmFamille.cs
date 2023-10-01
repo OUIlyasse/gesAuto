@@ -92,6 +92,7 @@ namespace PL.Interfaces.Sub.LCRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter une famille");
                         iTools.sucMsg("Information", "La famille a bien ajouté");
                         newRecord();
                         break;
@@ -124,6 +125,7 @@ namespace PL.Interfaces.Sub.LCRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier une famille");
                         iTools.sucMsg("Information", "La famille a bien modifié");
                         newRecord();
                         break;
@@ -145,6 +147,7 @@ namespace PL.Interfaces.Sub.LCRUD
                 try
                 {
                     db.Delete_Famille_Temp(idFamille);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer une famille");
                     iTools.sucMsg("Information", "Votre famille  a bien supprimé");
                     newRecord();
                 }
@@ -218,7 +221,7 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtRecherche.Text))
+            if (txtRecherche.Text == "Recherche")
                 getData();
             else
             {

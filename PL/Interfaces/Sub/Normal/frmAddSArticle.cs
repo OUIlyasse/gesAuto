@@ -25,6 +25,7 @@ namespace PL.Interfaces.Sub.Normal
         private int rowSelected;
         private int rsStatus;
         private int svc = Properties.Settings.Default.idService;
+        private int idUtilisateur = Properties.Settings.Default.idUtilisateur;
 
         #endregion Fields
 
@@ -483,6 +484,7 @@ namespace PL.Interfaces.Sub.Normal
                         case 1:
                             Bon_Sortie_Article bsA = db.Get_Bon_Sortie_Article(id).FirstOrDefault();
                             Add_Update_Reference(bs.bs_ID, bsA.bs_A_ID);
+                            db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un article de bon de sortie");
                             //Add_Update_CodeBarre(bs.bs_ID);
                             //Update_Last_CodeBarre();
                             transaction.Commit();
@@ -550,6 +552,7 @@ namespace PL.Interfaces.Sub.Normal
                             //Add_Update_Reference(bs.bs_ID, bsA.bs_A_ID);
                             //Add_Update_CodeBarre(bs.bs_ID);
                             //Update_Last_CodeBarre();
+                            db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un article de bon de sortie");
                             transaction.Commit();
                             iTools.sucMsg("Information", "Votre article a bien modifié");
                             //newRecord();

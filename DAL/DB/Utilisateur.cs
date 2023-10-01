@@ -14,6 +14,12 @@ namespace DAL.DB
     
     public partial class Utilisateur
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Utilisateur()
+        {
+            this.Enregistrements = new HashSet<Enregistrement>();
+        }
+    
         public int util_ID { get; set; }
         public Nullable<int> pers_ID { get; set; }
         public Nullable<System.DateTime> util_Date { get; set; }
@@ -25,5 +31,7 @@ namespace DAL.DB
         public virtual pers_Affecte pers_Affecte { get; set; }
         public virtual Profil Profil { get; set; }
         public virtual Service Service { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Enregistrement> Enregistrements { get; set; }
     }
 }

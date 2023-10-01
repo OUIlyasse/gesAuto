@@ -97,7 +97,6 @@
         <AssociationConnector Association="ges_AutoModel.FK_Vehicule_Article_Vehicule" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ges_AutoModel.List" Width="1.5" PointX="3.75" PointY="1" />
         <EntityTypeShape EntityType="ges_AutoModel.Screen" Width="1.5" PointX="6" PointY="0.875" />
-        <EntityTypeShape EntityType="ges_AutoModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" />
         <AssociationConnector Association="ges_AutoModel.FK_Screen_Lists" />
         <EntityTypeShape EntityType="ges_AutoModel.v_Utilisateur" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="ges_AutoModel.v_Bon_Reference" Width="1.5" PointX="5.75" PointY="3.75" />
@@ -116,6 +115,8 @@
         <EntityTypeShape EntityType="ges_AutoModel.vwPersonnel" Width="1.5" PointX="12.75" PointY="4.75" />
         <EntityTypeShape EntityType="ges_AutoModel.vwRepresentant" Width="1.5" PointX="4.75" PointY="11.75" />
         <EntityTypeShape EntityType="ges_AutoModel.vwUniteSoutien" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ges_AutoModel.Enregistrement" Width="1.5" PointX="15.75" PointY="50.5" />
+        <AssociationConnector Association="ges_AutoModel.FK_Enregistrement_Utilisateur" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

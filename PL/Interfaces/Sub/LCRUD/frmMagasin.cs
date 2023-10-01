@@ -107,6 +107,7 @@ namespace PL.Interfaces.Sub.LCRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un magasin");
                         iTools.sucMsg("Information", "Le magasin a bien ajouté");
                         newRecord();
                         break;
@@ -145,6 +146,7 @@ namespace PL.Interfaces.Sub.LCRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un magasin");
                         iTools.sucMsg("Information", "Le magasin a bien modifié");
                         newRecord();
                         break;
@@ -166,6 +168,7 @@ namespace PL.Interfaces.Sub.LCRUD
                 try
                 {
                     db.Delete_Magasin_Temp(idMagasin);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un magasin");
                     iTools.sucMsg("Information", "Votre magasin a bien supprimé");
                     newRecord();
                 }
@@ -253,7 +256,7 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtRecherche.Text))
+            if (txtRecherche.Text == "Recherche")
                 getData();
             else
             {

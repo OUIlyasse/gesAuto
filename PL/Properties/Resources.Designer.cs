@@ -243,6 +243,16 @@ namespace PL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Invisible_32 {
+            get {
+                object obj = ResourceManager.GetObject("Invisible_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Mandatory_action_24 {
             get {
                 object obj = ResourceManager.GetObject("Mandatory_action_24", resourceCulture);
@@ -456,6 +466,16 @@ namespace PL.Properties {
         internal static System.Drawing.Bitmap Vérifié_32 {
             get {
                 object obj = ResourceManager.GetObject("Vérifié_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Visible_32 {
+            get {
+                object obj = ResourceManager.GetObject("Visible_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

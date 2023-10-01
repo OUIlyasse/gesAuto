@@ -12,12 +12,15 @@ namespace DAL.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class Enregistrement
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int eng_ID { get; set; }
+        public Nullable<System.DateTime> eng_Date { get; set; }
+        public Nullable<System.TimeSpan> eng_Time { get; set; }
+        public Nullable<int> util_ID { get; set; }
+        public string eng_pc_Name { get; set; }
+        public string eng_Operation { get; set; }
+    
+        public virtual Utilisateur Utilisateur { get; set; }
     }
 }

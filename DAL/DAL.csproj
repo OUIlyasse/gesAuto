@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -114,6 +115,9 @@
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
     <Compile Include="DB\Emplacement.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Enregistrement.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Etat_Explicatif_UMesure_Result.cs">
@@ -276,6 +280,9 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Search_Ville_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_v_Enregistrement_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Select_Annees_Result.cs">
@@ -443,6 +450,9 @@
     <Compile Include="DB\Select_v_Emplacement_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\Select_v_Enregistrement_Result.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\Select_v_Get_E_Bon_Article_Result.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -456,9 +466,6 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\sysdiagram.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Unite_Mesure.cs">

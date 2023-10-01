@@ -73,6 +73,7 @@ namespace PL.Interfaces.Sub.List
                 try
                 {
                     var rs = db.Delete_Emplacement(idEmplacement);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un emplacement");
                     iTools.sucMsg("Information", "Votre emplacement a bien supprimé");
                     getData();
                     Verify_Buttons(true);
@@ -135,7 +136,7 @@ namespace PL.Interfaces.Sub.List
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtRecherche.Text))
+            if (txtRecherche.Text == "Recherche")
                 getData();
             else
             {

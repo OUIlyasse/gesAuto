@@ -107,6 +107,7 @@ namespace PL.Interfaces.Sub.LCRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un unité de soutien");
                         iTools.sucMsg("Information", "L'unité de soutien a bien ajouté");
                         newRecord();
                         break;
@@ -145,6 +146,7 @@ namespace PL.Interfaces.Sub.LCRUD
                         break;
 
                     case 1:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un unité de soutien");
                         iTools.sucMsg("Information", "L'unité de soutien a bien modifié");
                         newRecord();
                         break;
@@ -166,6 +168,7 @@ namespace PL.Interfaces.Sub.LCRUD
                 try
                 {
                     db.Delete_Unite_Soutien_Temp(idUniteSoutien);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un unité de soutien");
                     iTools.sucMsg("Information", "Votre unité de soutien  a bien supprimé");
                     newRecord();
                 }
@@ -253,7 +256,7 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtRecherche.Text))
+            if (txtRecherche.Text == "Recherche")
                 getData();
             else
             {

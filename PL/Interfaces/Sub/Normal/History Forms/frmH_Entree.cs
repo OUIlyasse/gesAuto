@@ -71,6 +71,8 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
         private void frmH_Entree_Load(object sender, EventArgs e)
         {
             PositionColumns();
+            CountRow(dgvA_EBon.Rows.Count, lblCountA);
+            CountRow(dgvEBon.Rows.Count, lblCountB);
         }
 
         private void dgvEBon_DoubleClick(object sender, EventArgs e)
@@ -111,8 +113,8 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
         {
             string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbe_Designation.Name].Value}";
 
-            if (string.IsNullOrEmpty(txtSearchA.Text))
-                dgvA_EBon.DataSource = db.Select_Bon_Entree_Article(getIdEBon(item)).ToList();
+            if (txtSearchA.Text == "Recherche")
+                dgvEBon_SelectionChanged(null, null);
             else
             {
                 dgvA_EBon.DataSource = db.Search_Bon_Entree_Article(txtSearchA.Text, idBonEntree);
@@ -123,7 +125,7 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearchB.Text))
+            if (txtSearchB.Text == "Recherche")
                 getData_EBon();
             else
             {
@@ -142,6 +144,7 @@ namespace PL.Interfaces.Sub.Normal.History_Forms
                 if (item != null)
                 {
                     dgvA_EBon.DataSource = db.Select_Bon_Entree_Article(getIdEBon(item)).ToList();
+                    CountRow(dgvA_EBon.Rows.Count, lblCountA);
                     PositionColumns();
                 }
             }

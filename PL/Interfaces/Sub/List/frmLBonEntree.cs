@@ -265,6 +265,7 @@ namespace PL.Interfaces.Sub.List
                                     case 1:
                                         transaction.Commit();
                                         //form.txtStatus.Caption = "Votre code a bien ajouté";
+                                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un article de bon d'entrée");
                                         iTools.sucMsg("Information", "Votre article a bien supprimé");
                                         dgvEBon_SelectionChanged(null, null);
 
@@ -373,7 +374,7 @@ namespace PL.Interfaces.Sub.List
         private void txtSearchA_TextChanged(object sender, EventArgs e)
         {
             string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbe_Designation.Name].Value}";
-            if (string.IsNullOrEmpty(txtSearchA.Text))
+            if (txtSearchA.Text == "Recherche")
             {
                 dgvA_EBon.DataSource = db.Select_Bon_Entree_Article(getIdEBon(item)).ToList();
             }
@@ -387,7 +388,7 @@ namespace PL.Interfaces.Sub.List
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearchB.Text))
+            if (txtSearchB.Text == "Recherche")
                 getData_EBon();
             else
             {

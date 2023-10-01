@@ -20,5 +20,6 @@ namespace DAL.DB
         public Nullable<bool> priv_Ajouter { get; set; }
         public Nullable<bool> priv_Modifier { get; set; }
         public Nullable<bool> priv_Supprimer { get; set; }
+        public Nullable<bool> priv_Imprimer { get; set; }
     }
 }

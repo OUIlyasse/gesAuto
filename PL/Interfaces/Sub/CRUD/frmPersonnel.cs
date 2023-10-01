@@ -267,6 +267,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 2:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un personnel");
                         iTools.sucMsg("Information", "Le personnel a bien ajouté");
                         base.Add_Data();
                         Verify_Buttons(true);
@@ -349,6 +350,7 @@ namespace PL.Interfaces.Sub.CRUD
                         break;
 
                     case 2:
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Modifier un personnel");
                         iTools.sucMsg("Information", "Le personnel a bien modifié");
                         base.Add_Data();
                         Verify_Buttons(true);
@@ -370,6 +372,7 @@ namespace PL.Interfaces.Sub.CRUD
                 try
                 {
                     db.Delete_pers_Affecte_Temp(idPersonnel);
+                    db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Supprimer un personnel");
                     iTools.sucMsg("Information", "ce personnel a bien supprimé");
                     base.Delete_Data();
                     Verify_Buttons(true);
