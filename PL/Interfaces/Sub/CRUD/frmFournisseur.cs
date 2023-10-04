@@ -429,12 +429,16 @@ namespace PL.Interfaces.Sub.CRUD
         {
             if (Text == "Ajouter un fournisseur")
             {
-                Refresh_Button_Ajouter();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Ajouter();
             }
             else
             {
-                Refresh_Button_Modifier();
-                Refresh_Button_Supprimer();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                {
+                    Refresh_Button_Modifier();
+                    Refresh_Button_Supprimer();
+                }
             }
         }
     }

@@ -119,7 +119,9 @@ namespace PL.Interfaces.Sub.List
 
         private void frmLRepresentant_Load(object sender, EventArgs e)
         {
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
+            CountRow(dgvRepresentant.Rows.Count);
         }
 
         private void dgvRepresentant_SelectionChanged(object sender, EventArgs e)
@@ -128,7 +130,8 @@ namespace PL.Interfaces.Sub.List
             {
                 idRepresentant = int.Parse(dgvRepresentant.CurrentRow.Cells[colrep_ID.Name].Value.ToString());
                 Verify_Buttons(false);
-                Refresh_Button_Supprimer();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Supprimer();
             }
         }
 

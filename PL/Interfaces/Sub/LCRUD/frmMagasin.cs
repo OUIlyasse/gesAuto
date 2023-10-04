@@ -226,7 +226,8 @@ namespace PL.Interfaces.Sub.LCRUD
         private void frmMagasin_Load(object sender, EventArgs e)
         {
             LoadVille();
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
         }
 
         private void dgvMagasin_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -237,8 +238,11 @@ namespace PL.Interfaces.Sub.LCRUD
             Magasin mags = db.Show_Magasin_By_ID(idMagasin).FirstOrDefault();
             setValue(mags);
             Verify_Buttons(false);
-            Refresh_Button_Modifier();
-            Refresh_Button_Supprimer();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+            {
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)

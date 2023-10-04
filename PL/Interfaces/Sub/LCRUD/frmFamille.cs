@@ -204,7 +204,8 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void frmFamille_Load(object sender, EventArgs e)
         {
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
         }
 
         private void dgvFamille_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -215,8 +216,11 @@ namespace PL.Interfaces.Sub.LCRUD
             Famille famille = db.Show_Famille_By_ID(idFamille).FirstOrDefault();
             setValue(famille);
             Verify_Buttons(false);
-            Refresh_Button_Modifier();
-            Refresh_Button_Supprimer();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+            {
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

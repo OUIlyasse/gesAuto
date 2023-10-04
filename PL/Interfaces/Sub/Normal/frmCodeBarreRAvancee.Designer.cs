@@ -106,10 +106,10 @@
             // 
             // txtQte
             // 
+            this.txtQte.Font = new System.Drawing.Font("Roboto", 10.2F);
             this.txtQte.Location = new System.Drawing.Point(476, 32);
             this.txtQte.Name = "txtQte";
-            this.txtQte.Font = new System.Drawing.Font("Roboto", 10.2F);
-            this.txtQte.Size = new System.Drawing.Size(82, 26);
+            this.txtQte.Size = new System.Drawing.Size(82, 28);
             this.txtQte.TabIndex = 46;
             // 
             // label2
@@ -118,7 +118,7 @@
             this.label2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(429, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 19);
+            this.label2.Size = new System.Drawing.Size(36, 20);
             this.label2.TabIndex = 45;
             this.label2.Text = "Qte";
             // 
@@ -131,7 +131,7 @@
             this.cmbxAnnee.FormattingEnabled = true;
             this.cmbxAnnee.Location = new System.Drawing.Point(108, 32);
             this.cmbxAnnee.Name = "cmbxAnnee";
-            this.cmbxAnnee.Size = new System.Drawing.Size(177, 27);
+            this.cmbxAnnee.Size = new System.Drawing.Size(177, 28);
             this.cmbxAnnee.TabIndex = 43;
             this.cmbxAnnee.ValueMember = "fam_ID";
             this.cmbxAnnee.SelectedIndexChanged += new System.EventHandler(this.cmbxAnnee_SelectedIndexChanged);
@@ -142,16 +142,16 @@
             this.label4.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(20, 36);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 19);
+            this.label4.Size = new System.Drawing.Size(58, 20);
             this.label4.TabIndex = 29;
             this.label4.Text = "Année";
             // 
             // txtDu
             // 
+            this.txtDu.Font = new System.Drawing.Font("Roboto", 10.2F);
             this.txtDu.Location = new System.Drawing.Point(103, 82);
             this.txtDu.Name = "txtDu";
-            this.txtDu.Font = new System.Drawing.Font("Roboto", 10.2F);
-            this.txtDu.Size = new System.Drawing.Size(93, 26);
+            this.txtDu.Size = new System.Drawing.Size(93, 28);
             this.txtDu.TabIndex = 34;
             // 
             // label6
@@ -160,16 +160,16 @@
             this.label6.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(61, 86);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 19);
+            this.label6.Size = new System.Drawing.Size(31, 20);
             this.label6.TabIndex = 30;
             this.label6.Text = "DU";
             // 
             // txtAu
             // 
+            this.txtAu.Font = new System.Drawing.Font("Roboto", 10.2F);
             this.txtAu.Location = new System.Drawing.Point(310, 82);
             this.txtAu.Name = "txtAu";
-            this.txtAu.Font = new System.Drawing.Font("Roboto", 10.2F);
-            this.txtAu.Size = new System.Drawing.Size(93, 26);
+            this.txtAu.Size = new System.Drawing.Size(93, 28);
             this.txtAu.TabIndex = 44;
             // 
             // label1
@@ -178,7 +178,7 @@
             this.label1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(268, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 19);
+            this.label1.Size = new System.Drawing.Size(31, 20);
             this.label1.TabIndex = 41;
             this.label1.Text = "AU";
             // 
@@ -198,7 +198,7 @@
             this.label7.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(30, 79);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 19);
+            this.label7.Size = new System.Drawing.Size(87, 20);
             this.label7.TabIndex = 54;
             this.label7.Text = "Référence";
             // 
@@ -218,7 +218,7 @@
             this.label5.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(30, 31);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 19);
+            this.label5.Size = new System.Drawing.Size(60, 20);
             this.label5.TabIndex = 48;
             this.label5.Text = "Article";
             // 
@@ -244,9 +244,10 @@
             this.lblQteArt.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQteArt.Location = new System.Drawing.Point(564, 31);
             this.lblQteArt.Name = "lblQteArt";
-            this.lblQteArt.Size = new System.Drawing.Size(31, 19);
+            this.lblQteArt.Size = new System.Drawing.Size(29, 20);
             this.lblQteArt.TabIndex = 49;
             this.lblQteArt.Text = "00";
+            this.lblQteArt.Visible = false;
             // 
             // lblAbreviation
             // 
@@ -254,7 +255,7 @@
             this.lblAbreviation.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAbreviation.Location = new System.Drawing.Point(485, 31);
             this.lblAbreviation.Name = "lblAbreviation";
-            this.lblAbreviation.Size = new System.Drawing.Size(24, 19);
+            this.lblAbreviation.Size = new System.Drawing.Size(30, 20);
             this.lblAbreviation.TabIndex = 53;
             this.lblAbreviation.Text = "---";
             // 
@@ -266,9 +267,10 @@
             this.button1.TabIndex = 58;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // frmCodeBarreAvancee
+            // frmCodeBarreRAvancee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -287,7 +289,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCodeBarreAvancee";
+            this.Name = "frmCodeBarreRAvancee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modifier le code barre";
             this.groupBox2.ResumeLayout(false);

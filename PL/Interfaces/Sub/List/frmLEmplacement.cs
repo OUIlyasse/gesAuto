@@ -122,7 +122,8 @@ namespace PL.Interfaces.Sub.List
             {
                 idEmplacement = int.Parse(dgvEmplacement.CurrentRow.Cells[coleplc_ID.Name].Value.ToString());
                 Verify_Buttons(false);
-                Refresh_Button_Supprimer();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Supprimer();
             }
             //bool status = dgvEmplacement.SelectedRows.Count > 0;
             //Verify_Buttons(status);
@@ -131,7 +132,9 @@ namespace PL.Interfaces.Sub.List
 
         private void frmLEmplacement_Load(object sender, EventArgs e)
         {
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
+            CountRow(dgvEmplacement.Rows.Count);
         }
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)

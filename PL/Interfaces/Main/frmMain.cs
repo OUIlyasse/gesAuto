@@ -131,6 +131,23 @@ namespace PL.Interfaces.Main
             }
         }
 
+        public void Active_Menu()
+        {
+            foreach (ToolStripMenuItem obj in menuStrip1.Items)
+            {
+                foreach (var item in obj.DropDownItems)
+                {
+                    if (item.GetType().Equals(typeof(ToolStripMenuItem)))
+                    {
+                        if (((ToolStripMenuItem)item).Text != "Quitter" && ((ToolStripMenuItem)item).Text != "About" && ((ToolStripMenuItem)item).Text != "Presse-papiers" && ((ToolStripMenuItem)item).Text != "Journal")
+                        {
+                            ((ToolStripMenuItem)item).Enabled = true;
+                        }
+                    }
+                }
+            }
+        }
+
         private int getID_Lists(string list)
         {
             return (int)db.Select_Lists_By_Lists(list).FirstOrDefault();
@@ -348,6 +365,16 @@ namespace PL.Interfaces.Main
                 {
                 }
             }
+            if (Properties.Settings.Default.isRemember == false)
+            {
+                Properties.Settings.Default.idService = 0;
+                Properties.Settings.Default.Nom = string.Empty;
+                Properties.Settings.Default.Prenom = string.Empty;
+                Properties.Settings.Default.idUtilisateur = 0;
+                Properties.Settings.Default.username = string.Empty;
+                Properties.Settings.Default.password = string.Empty;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void stockToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -404,6 +431,9 @@ namespace PL.Interfaces.Main
                 closallforms();
                 SetToolStripItems();
                 lblFullName.Text = "Utilisateur";
+                lblService.Text = string.Empty;
+                Properties.Settings.Default.isRemember = false;
+                Properties.Settings.Default.Save();
                 //lblFullName.Visible = false;
             }
             frmLogin frm = new frmLogin(this);

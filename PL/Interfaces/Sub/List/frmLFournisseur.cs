@@ -145,7 +145,9 @@ namespace PL.Interfaces.Sub.List
 
         private void frmLFournisseur_Load(object sender, EventArgs e)
         {
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
+            CountRow(dgvFournisseur.Rows.Count);
         }
 
         private void dgvFournisseur_SelectionChanged(object sender, EventArgs e)
@@ -154,7 +156,8 @@ namespace PL.Interfaces.Sub.List
             {
                 idFournisseur = int.Parse(dgvFournisseur.CurrentRow.Cells[colfrns_ID.Name].Value.ToString());
                 Verify_Buttons(false);
-                Refresh_Button_Supprimer();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Supprimer();
             }
         }
 

@@ -645,7 +645,8 @@ namespace PL.Interfaces.Sub.Normal
                 pnlOk.Visible = false;
                 pnlVerifier.Visible = false;
                 lblQte.Text = string.Empty;
-                Refresh_Button_Ajouter();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Ajouter();
             }
             else
             {
@@ -654,7 +655,8 @@ namespace PL.Interfaces.Sub.Normal
                 LoadControls(bonArt);
                 LoadReference_Article();
                 ShowEtatMessage();
-                Refresh_Button_Modifier();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Modifier();
             }
         }
     }

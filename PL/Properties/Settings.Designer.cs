@@ -25,7 +25,6 @@ namespace PL.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int idService {
             get {
                 return ((int)(this["idService"]));

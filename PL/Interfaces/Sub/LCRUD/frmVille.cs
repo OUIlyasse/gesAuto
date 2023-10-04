@@ -215,8 +215,11 @@ namespace PL.Interfaces.Sub.LCRUD
             Ville ville = db.Show_Ville_By_ID(idVille).FirstOrDefault();
             setValue(ville);
             Verify_Buttons(false);
-            Refresh_Button_Modifier();
-            Refresh_Button_Supprimer();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+            {
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
+            }
         }
 
         private void dgvVille_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -229,7 +232,8 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void frmVille_Load(object sender, EventArgs e)
         {
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
         }
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)

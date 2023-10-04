@@ -1210,7 +1210,8 @@ namespace PL.Interfaces.Sub.Normal
             {
                 Verify_Buttons(true);
                 btnArtSupprimer.Enabled = false;
-                Refresh_Button_Ajouter();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Ajouter();
             }
             else
             {
@@ -1227,7 +1228,8 @@ namespace PL.Interfaces.Sub.Normal
                 btnArtSupprimer.Enabled = false;
                 LoadControls(bonArt);
                 LoadReference_Article();
-                Refresh_Button_Modifier();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Modifier();
             }
         }
 

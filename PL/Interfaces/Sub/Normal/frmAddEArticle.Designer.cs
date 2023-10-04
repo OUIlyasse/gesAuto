@@ -61,7 +61,7 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.Info = new System.Windows.Forms.ToolTip(this.components);
-            this.txtQteLivree = new PL.Controls.iText();
+            this.txtQteLivree = new System.Windows.Forms.TextBox();
             this.gbInfo.SuspendLayout();
             this.gbRef.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReference)).BeginInit();
@@ -73,8 +73,8 @@
             // 
             // gbInfo
             // 
-            this.gbInfo.Controls.Add(this.cmbxUMesure);
             this.gbInfo.Controls.Add(this.txtQteLivree);
+            this.gbInfo.Controls.Add(this.cmbxUMesure);
             this.gbInfo.Controls.Add(this.lblQte);
             this.gbInfo.Controls.Add(this.txtDescription);
             this.gbInfo.Controls.Add(this.cmbxVL);
@@ -144,7 +144,7 @@
             this.label7.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(16, 77);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 20);
+            this.label7.Size = new System.Drawing.Size(77, 20);
             this.label7.TabIndex = 24;
             this.label7.Text = "Véhicule";
             // 
@@ -168,7 +168,7 @@
             this.label5.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(16, 35);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 20);
+            this.label5.Size = new System.Drawing.Size(60, 20);
             this.label5.TabIndex = 16;
             this.label5.Text = "Article";
             // 
@@ -179,7 +179,7 @@
             this.label3.Location = new System.Drawing.Point(16, 192);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 20);
+            this.label3.Size = new System.Drawing.Size(99, 20);
             this.label3.TabIndex = 20;
             this.label3.Text = "Description";
             // 
@@ -189,7 +189,7 @@
             this.label2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(16, 119);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 20);
+            this.label2.Size = new System.Drawing.Size(87, 20);
             this.label2.TabIndex = 18;
             this.label2.Text = "Qte Livree";
             // 
@@ -437,10 +437,11 @@
             // 
             // txtQteLivree
             // 
+            this.txtQteLivree.Font = new System.Drawing.Font("Roboto", 10.2F);
             this.txtQteLivree.Location = new System.Drawing.Point(135, 115);
             this.txtQteLivree.Name = "txtQteLivree";
             this.txtQteLivree.Size = new System.Drawing.Size(140, 28);
-            this.txtQteLivree.TabIndex = 2;
+            this.txtQteLivree.TabIndex = 49;
             // 
             // frmAddEArticle
             // 
@@ -508,8 +509,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colBon_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQte;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBon;
-        public Controls.iText txtQteLivree;
         private System.Windows.Forms.ComboBox cmbxUMesure;
         private System.Windows.Forms.ToolTip Info;
+        public System.Windows.Forms.TextBox txtQteLivree;
     }
 }

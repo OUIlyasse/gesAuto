@@ -215,8 +215,11 @@ namespace PL.Interfaces.Sub.LCRUD
             Profil profil = db.Show_Profil_By_ID(idProfil).FirstOrDefault();
             setValue(profil);
             Verify_Buttons(false);
-            Refresh_Button_Modifier();
-            Refresh_Button_Supprimer();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+            {
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
+            }
         }
 
         private void dgvProfil_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -229,7 +232,8 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void frmProfil_Load(object sender, EventArgs e)
         {
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
         }
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)

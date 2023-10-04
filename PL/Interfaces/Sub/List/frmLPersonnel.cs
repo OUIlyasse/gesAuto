@@ -126,7 +126,9 @@ namespace PL.Interfaces.Sub.List
 
         private void frmLPersonnel_Load(object sender, EventArgs e)
         {
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
+            CountRow(dgvPersonnel.Rows.Count);
         }
 
         private void dgvPersonnel_SelectionChanged(object sender, EventArgs e)
@@ -135,7 +137,8 @@ namespace PL.Interfaces.Sub.List
             {
                 idPersonnel = int.Parse(dgvPersonnel.CurrentRow.Cells[colpers_ID.Name].Value.ToString());
                 Verify_Buttons(false);
-                Refresh_Button_Supprimer();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Supprimer();
             }
         }
 

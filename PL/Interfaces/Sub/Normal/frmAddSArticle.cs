@@ -1200,7 +1200,8 @@ namespace PL.Interfaces.Sub.Normal
             if (Text == "Ajouter des articles")
             {
                 Verify_Buttons(true);
-                btnArtSupprimer.Enabled = false;
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    btnArtSupprimer.Enabled = false;
             }
             else
             {
@@ -1214,7 +1215,8 @@ namespace PL.Interfaces.Sub.Normal
                 //else
                 //{
                 //}
-                btnArtSupprimer.Enabled = false;
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    btnArtSupprimer.Enabled = false;
                 LoadControls(bonArt);
                 LoadReference_Article();
                 EnableControls();

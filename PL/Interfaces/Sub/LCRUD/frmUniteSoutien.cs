@@ -231,8 +231,11 @@ namespace PL.Interfaces.Sub.LCRUD
             Unite_Soutien us = db.Show_Unite_Soutien_By_ID(idUniteSoutien).FirstOrDefault();
             setValue(us);
             Verify_Buttons(false);
-            Refresh_Button_Modifier();
-            Refresh_Button_Supprimer();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+            {
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -243,7 +246,8 @@ namespace PL.Interfaces.Sub.LCRUD
         private void frmUniteSoutien_Load(object sender, EventArgs e)
         {
             LoadVille();
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
         }
 
         private void dgvUniteSoutien_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)

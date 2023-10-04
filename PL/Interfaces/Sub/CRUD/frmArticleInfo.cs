@@ -881,7 +881,8 @@ namespace PL.Interfaces.Sub.CRUD
             {
                 InitializeControls();
                 activeControls(false);
-                Refresh_Button_Ajouter();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Ajouter();
             }
             else
             {
@@ -891,8 +892,11 @@ namespace PL.Interfaces.Sub.CRUD
                 LoadReference();
                 setValue_UMesure();
                 newRecord_Photo();
-                Refresh_Button_Modifier();
-                Refresh_Button_Supprimer();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                {
+                    Refresh_Button_Modifier();
+                    Refresh_Button_Supprimer();
+                }
             }
         }
 

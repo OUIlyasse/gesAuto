@@ -306,7 +306,9 @@ namespace PL.Interfaces.Sub.List
         private void frmLBonEntree_Load(object sender, EventArgs e)
         {
             PositionColumns();
-            Refresh_Button_Ajouter();
+            //btnAjouter.Enabled = false;
+            CountRows(dgvA_EBon.Rows.Count, lblCountA);
+            CountRows(dgvEBon.Rows.Count, lblCountB);
         }
 
         private void dgvA_EBon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -325,15 +327,23 @@ namespace PL.Interfaces.Sub.List
         {
             try
             {
-                db = new ges_AutoEntities();
-                string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbs_Designation.Name].Value}";
-                idBonSortie = int.Parse(dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbs_ID.Name].Value.ToString());
-                if (item != null)
+                if (dgvEBon.CurrentRow != null)
                 {
-                    dgvA_EBon.DataSource = db.Select_Bon_Sortie_Article(getIdSBon(item)).ToList();
-                    CountRows(dgvA_EBon.Rows.Count, lblCountA);
-                    PositionColumns();
+                    db = new ges_AutoEntities();
+                    string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbs_Designation.Name].Value}";
+                    idBonSortie = int.Parse(dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbs_ID.Name].Value.ToString());
+                    if (item != null)
+                    {
+                        dgvA_EBon.DataSource = db.Select_Bon_Sortie_Article(getIdSBon(item)).ToList();
+                        CountRows(dgvA_EBon.Rows.Count, lblCountA);
+                        PositionColumns();
+                        //Refresh_Button_Ajouter();
+                    }
                 }
+                else
+                    btnAjouter.Enabled = false;
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Ajouter();
             }
             catch (Exception)
             {
@@ -382,7 +392,8 @@ namespace PL.Interfaces.Sub.List
                 }
                 else
                     btnSupprimer.Enabled = false;
-                Refresh_Button_Supprimer();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Supprimer();
             }
             catch (Exception)
             {
@@ -393,8 +404,8 @@ namespace PL.Interfaces.Sub.List
         {
             string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbs_Designation.Name].Value}";
 
-            if (txtSearchA.Text == "Recherche")
-                dgvA_EBon.DataSource = db.Select_Bon_Sortie_Article(getIdSBon(item)).ToList();
+            if (txtSearchA.Text == "Recherche" || string.IsNullOrEmpty(txtSearchA.Text))
+                dgvEBon_SelectionChanged(null, null);
             else
                 dgvA_EBon.DataSource = db.Search_Bon_Sortie_Article(txtSearchA.Text, idBonSortie);
 
@@ -404,7 +415,7 @@ namespace PL.Interfaces.Sub.List
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearchB.Text == "Recherche")
+            if (txtSearchB.Text == "Recherche" || string.IsNullOrEmpty(txtSearchB.Text))
                 getData_SBon();
             else
             {

@@ -117,10 +117,13 @@
             // 
             // txtSearchB
             // 
+            this.txtSearchB.ForeColor = System.Drawing.Color.Gray;
             this.txtSearchB.Location = new System.Drawing.Point(6, 45);
             this.txtSearchB.Name = "txtSearchB";
+            this.txtSearchB.PlaceholderText = "Recherche";
             this.txtSearchB.Size = new System.Drawing.Size(169, 28);
             this.txtSearchB.TabIndex = 1;
+            this.txtSearchB.Text = "Recherche";
             this.txtSearchB.TextChanged += new System.EventHandler(this.txtSearchB_TextChanged);
             // 
             // btnBonNew
@@ -432,7 +435,7 @@
             this.btnBonProvisoire,
             this.btnBonDefinitife});
             this.menuBon.Name = "menuBon";
-            this.menuBon.Size = new System.Drawing.Size(204, 76);
+            this.menuBon.Size = new System.Drawing.Size(204, 104);
             // 
             // btnEntreeStock
             // 
@@ -466,10 +469,13 @@
             // 
             // txtSearchA
             // 
+            this.txtSearchA.ForeColor = System.Drawing.Color.Gray;
             this.txtSearchA.Location = new System.Drawing.Point(206, 21);
             this.txtSearchA.Name = "txtSearchA";
+            this.txtSearchA.PlaceholderText = "Recherche";
             this.txtSearchA.Size = new System.Drawing.Size(354, 27);
             this.txtSearchA.TabIndex = 20;
+            this.txtSearchA.Text = "Recherche";
             this.txtSearchA.TextChanged += new System.EventHandler(this.txtSearchA_TextChanged);
             // 
             // frmLBonRetour

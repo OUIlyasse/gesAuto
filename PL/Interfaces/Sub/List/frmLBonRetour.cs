@@ -107,64 +107,64 @@ namespace PL.Interfaces.Sub.List
 
         private void mvt_Retour()
         {
-            using (var transaction = db.Database.BeginTransaction())
+            //using (var transaction = db.Database.BeginTransaction())
+            //{
+            //try
+            //{
+            if (!VerifiStatusBonArticle(idBonRetour))
             {
-                try
-                {
-                    if (!VerifiStatusBonArticle(idBonRetour))
-                    {
-                        MessageBox.Show("Veuillez régler ce bon avec ses articles", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                MessageBox.Show("Veuillez régler ce bon avec ses articles", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                    bool rs = false;
-                    foreach (int ba in getId_Bon_Article(idBonRetour))
+            bool rs = false;
+            foreach (int ba in getId_Bon_Article(idBonRetour))
+            {
+                foreach (var vl in getVLByID(ba))
+                {
+                    foreach (var art in getArticleByID(ba))
                     {
-                        foreach (var vl in getVLByID(ba))
+                        foreach (var reff in getReferences(ba))
                         {
-                            foreach (var art in getArticleByID(ba))
+                            //str += $"VL: {getVLByID(ba)} || Art: {getArticleByID(ba)} || ref: {getReferenceByID(reff.Key)} || Qte: {reff.Value.ToString()}" + Environment.NewLine;
+                            int max = maxID_Mouvement();
+                            int idUMesure = getUMesureIDByidArticle(ba);
+                            //MessageBox.Show($"{max.ToString()} {ba} {reff}");
+                            int rss = (int)db.Insert_Mouvement(max, getDateBon(idBonRetour), getDocRefBon(idBonRetour), reff.Key, vl, art, reff.Value, getCoefficient(idUMesure), idUMesure, "R", idBonRetour, null, null, ba).FirstOrDefault();
+                            switch (rss)
                             {
-                                foreach (var reff in getReferences(ba))
-                                {
-                                    //str += $"VL: {getVLByID(ba)} || Art: {getArticleByID(ba)} || ref: {getReferenceByID(reff.Key)} || Qte: {reff.Value.ToString()}" + Environment.NewLine;
-                                    int max = maxID_Mouvement();
-                                    int idUMesure = getUMesureIDByidArticle(ba);
-                                    //MessageBox.Show($"{max.ToString()} {ba} {reff}");
-                                    int rss = (int)db.Insert_Mouvement(max, getDateBon(idBonRetour), getDocRefBon(idBonRetour), reff.Key, vl, art, reff.Value, getCoefficient(idUMesure), idUMesure, "R", idBonRetour, null, null, ba).FirstOrDefault();
-                                    switch (rss)
-                                    {
-                                        case 1:
-                                            //transaction.Commit();
-                                            rs = true;
-                                            break;
-                                    }
-                                }
+                                case 1:
+                                    //transaction.Commit();
+                                    rs = true;
+                                    break;
                             }
                         }
                     }
-                    if (rs)
-                    {
-                        Bon_Retour ba = getBon(idBonRetour);
-                        int output = (int)db.History_Bon_Retour(ba.bt_ID).FirstOrDefault();
-
-                        switch (output)
-                        {
-                            case 1:
-                                transaction.Commit();
-                                db.SaveChanges();
-                                getData_RBon();
-                                iTools.sucMsg("Information", "Votre bon a bien exploité");
-                                break;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    iTools.errorMsg("Erreur", ex.Message);
-                    //form.txtStatus.Caption = ex.Message;
                 }
             }
+            if (rs)
+            {
+                Bon_Retour ba = getBon(idBonRetour);
+                int output = (int)db.History_Bon_Retour(ba.bt_ID).FirstOrDefault();
+
+                switch (output)
+                {
+                    case 1:
+                        //transaction.Commit();
+                        db.SaveChanges();
+                        getData_RBon();
+                        iTools.sucMsg("Information", "Votre bon a bien exploité");
+                        break;
+                }
+            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    transaction.Rollback();
+            //    iTools.errorMsg("Erreur", ex.Message);
+            //    //form.txtStatus.Caption = ex.Message;
+            //}
+            //}
         }
 
         private string getDocRefBon(int idBonEntree)
@@ -304,7 +304,10 @@ namespace PL.Interfaces.Sub.List
         private void frmLBonEntree_Load(object sender, EventArgs e)
         {
             PositionColumns();
-            Refresh_Button_Ajouter();
+            //btnAjouter.Enabled = false;
+            CountRows(dgvA_EBon.Rows.Count, lblCountA);
+            CountRows(dgvEBon.Rows.Count, lblCountB);
+            //dgvEBon_SelectionChanged(this, new EventArgs());
         }
 
         private void dgvA_EBon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -321,24 +324,29 @@ namespace PL.Interfaces.Sub.List
 
         public void dgvEBon_SelectionChanged(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+            if (dgvEBon.CurrentRow != null)
             {
-                if (dgvEBon.CurrentCell.RowIndex != -1 || dgvEBon.CurrentCell.ColumnIndex != -1)
+                db = new ges_AutoEntities();
+                string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbt_Designation.Name].Value}";
+                idBonRetour = int.Parse(dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colb_bt_ID.Name].Value.ToString());
+                if (item != null)
                 {
-                    db = new ges_AutoEntities();
-                    string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbt_Designation.Name].Value}";
-                    idBonRetour = int.Parse(dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colb_bt_ID.Name].Value.ToString());
-                    if (item != null)
-                    {
-                        dgvA_EBon.DataSource = db.Select_v_Bon_Retour_Article(getIdRBon(item)).ToList();
-                        CountRows(dgvA_EBon.Rows.Count, lblCountA);
-                        PositionColumns();
-                    }
+                    dgvA_EBon.DataSource = db.Select_v_Bon_Retour_Article(getIdRBon(item)).ToList();
+                    CountRows(dgvA_EBon.Rows.Count, lblCountA);
+                    PositionColumns();
+                    //Refresh_Button_Ajouter();
                 }
             }
-            catch (Exception)
-            {
-            }
+            else
+                btnAjouter.Enabled = false;
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
+            //}
+            //catch (Exception)
+            //{
+            //}
         }
 
         private void dgvEBon_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -370,6 +378,7 @@ namespace PL.Interfaces.Sub.List
             {
                 mvt_Retour();
             }
+            dgvEBon_SelectionChanged(null, null);
         }
 
         private void dgvA_EBon_SelectionChanged(object sender, EventArgs e)
@@ -383,7 +392,8 @@ namespace PL.Interfaces.Sub.List
                 }
                 else
                     btnSupprimer.Enabled = false;
-                Refresh_Button_Supprimer();
+                if (Properties.Settings.Default.idUtilisateur != 0)
+                    Refresh_Button_Supprimer();
             }
             catch (Exception)
             {
@@ -394,8 +404,8 @@ namespace PL.Interfaces.Sub.List
         {
             string item = $"{dgvEBon.Rows[dgvEBon.CurrentRow.Index].Cells[colbt_Designation.Name].Value}";
 
-            if (txtSearchA.Text == "Recherche")
-                dgvA_EBon.DataSource = db.Select_v_Bon_Retour_Article(getIdRBon(item)).ToList();
+            if (txtSearchA.Text == "Recherche" || string.IsNullOrEmpty(txtSearchA.Text))
+                dgvEBon_SelectionChanged(null, null);
             else
                 dgvA_EBon.DataSource = db.Search_Bon_Retour_Article(txtSearchA.Text, idBonRetour);
 
@@ -405,7 +415,7 @@ namespace PL.Interfaces.Sub.List
 
         private void txtSearchB_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearchB.Text == "Recherche")
+            if (txtSearchB.Text == "Recherche" || string.IsNullOrEmpty(txtSearchB.Text))
                 getData_RBon();
             else
             {

@@ -75,5 +75,9 @@ namespace PL.Interfaces.Sub.Normal
         private void btnRayoAjouter_Click(object sender, System.EventArgs e)
         {
         }
+
+        private void frmAddRayoArm_Load(object sender, System.EventArgs e)
+        {
+        }
     }
 }

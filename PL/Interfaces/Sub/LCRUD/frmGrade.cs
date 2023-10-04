@@ -92,8 +92,8 @@ namespace PL.Interfaces.Sub.LCRUD
                         break;
 
                     case 1:
-                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un grade");
                         iTools.sucMsg("Information", "Le grade a bien ajouté");
+                        db.Insert_Enregistrement(DateTime.Now.Date, DateTime.Now.TimeOfDay, idUtilisateur, iTools.getName(), "Ajouter un grade");
                         newRecord();
                         break;
                 }
@@ -215,8 +215,11 @@ namespace PL.Interfaces.Sub.LCRUD
             Grade grade = db.Show_Grade_By_ID(idGrade).FirstOrDefault();
             setValue(grade);
             Verify_Buttons(false);
-            Refresh_Button_Modifier();
-            Refresh_Button_Supprimer();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+            {
+                Refresh_Button_Modifier();
+                Refresh_Button_Supprimer();
+            }
         }
 
         private void dgvGrade_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -229,7 +232,8 @@ namespace PL.Interfaces.Sub.LCRUD
 
         private void frmGrade_Load(object sender, EventArgs e)
         {
-            Refresh_Button_Ajouter();
+            if (Properties.Settings.Default.idUtilisateur != 0)
+                Refresh_Button_Ajouter();
         }
 
         private void txtRecherche_TextChanged(object sender, EventArgs e)

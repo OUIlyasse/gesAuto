@@ -328,6 +328,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rayonnage et armoire";
+            this.Load += new System.EventHandler(this.frmAddRayoArm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.gbArmoire.ResumeLayout(false);
