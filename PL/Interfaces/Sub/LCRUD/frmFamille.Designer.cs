@@ -42,10 +42,10 @@
             this.btnColonne = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnNew = new System.Windows.Forms.Button();
-            this.txtDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAnnee = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFamille)).BeginInit();
             this.menuDGV.SuspendLayout();
@@ -83,10 +83,13 @@
             // 
             this.txtRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRecherche.ForeColor = System.Drawing.Color.Gray;
             this.txtRecherche.Location = new System.Drawing.Point(194, 28);
             this.txtRecherche.Name = "txtRecherche";
+            this.txtRecherche.PlaceholderText = "Recherche";
             this.txtRecherche.Size = new System.Drawing.Size(308, 27);
             this.txtRecherche.TabIndex = 8;
+            this.txtRecherche.Text = "Recherche";
             this.txtRecherche.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblCount
@@ -189,8 +192,8 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.btnNew);
             this.groupBox2.Controls.Add(this.txtDescription);
+            this.groupBox2.Controls.Add(this.btnNew);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtAnnee);
@@ -214,18 +217,6 @@
             this.btnNew.TabIndex = 12;
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDescription.Location = new System.Drawing.Point(17, 156);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(420, 178);
-            this.txtDescription.TabIndex = 1;
-            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // label3
             // 
@@ -254,6 +245,18 @@
             this.txtAnnee.Size = new System.Drawing.Size(420, 27);
             this.txtAnnee.TabIndex = 0;
             this.txtAnnee.Validating += new System.ComponentModel.CancelEventHandler(this.txtFamille_Validating);
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.Location = new System.Drawing.Point(17, 156);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(420, 178);
+            this.txtDescription.TabIndex = 13;
+            this.txtDescription.Text = "";
+            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // frmFamille
             // 
@@ -284,7 +287,6 @@
         private System.Windows.Forms.Label lblCount;
         public System.Windows.Forms.DataGridView dgvFamille;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip menuDGV;
@@ -295,5 +297,6 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtAnnee;
         private Controls.iText txtRecherche;
+        private System.Windows.Forms.RichTextBox txtDescription;
     }
 }

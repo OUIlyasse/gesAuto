@@ -239,6 +239,10 @@ namespace PL.Interfaces.Sub.LCRUD
             }
         }
 
+        private void txtDescription_Validating(object sender, CancelEventArgs e)
+        {
+        }
+
         private void btnArmoire_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvRayonnage.Rows[dgvRayonnage.CurrentRow.Index];

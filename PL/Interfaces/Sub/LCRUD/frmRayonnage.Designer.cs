@@ -83,10 +83,13 @@
             // 
             this.txtRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRecherche.ForeColor = System.Drawing.Color.Gray;
             this.txtRecherche.Location = new System.Drawing.Point(194, 27);
             this.txtRecherche.Name = "txtRecherche";
+            this.txtRecherche.PlaceholderText = "Recherche";
             this.txtRecherche.Size = new System.Drawing.Size(308, 27);
             this.txtRecherche.TabIndex = 7;
+            this.txtRecherche.Text = "Recherche";
             this.txtRecherche.TextChanged += new System.EventHandler(this.txtRecherche_TextChanged);
             // 
             // lblCount
@@ -193,6 +196,7 @@
             this.txtDescription.Size = new System.Drawing.Size(420, 178);
             this.txtDescription.TabIndex = 7;
             this.txtDescription.Text = "";
+            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // btnNew
             // 

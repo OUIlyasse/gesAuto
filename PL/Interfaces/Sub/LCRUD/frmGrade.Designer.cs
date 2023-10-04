@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuDGV = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnColonne = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtRecherche = new PL.Controls.iText();
             this.lblCount = new System.Windows.Forms.Label();
             this.dgvGrade = new System.Windows.Forms.DataGridView();
             this.colgrd_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,11 +42,10 @@
             this.colgrd_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnNew = new System.Windows.Forms.Button();
-            this.txtDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGrade = new System.Windows.Forms.TextBox();
-            this.txtRecherche = new PL.Controls.iText();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.menuDGV.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrade)).BeginInit();
@@ -93,6 +93,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Affichage";
             // 
+            // txtRecherche
+            // 
+            this.txtRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRecherche.ForeColor = System.Drawing.Color.Gray;
+            this.txtRecherche.Location = new System.Drawing.Point(194, 28);
+            this.txtRecherche.Name = "txtRecherche";
+            this.txtRecherche.PlaceholderText = "Recherche";
+            this.txtRecherche.Size = new System.Drawing.Size(308, 27);
+            this.txtRecherche.TabIndex = 9;
+            this.txtRecherche.Text = "Recherche";
+            this.txtRecherche.TextChanged += new System.EventHandler(this.txtRecherche_TextChanged);
+            // 
             // lblCount
             // 
             this.lblCount.AutoSize = true;
@@ -126,22 +139,22 @@
             this.dgvGrade.MultiSelect = false;
             this.dgvGrade.Name = "dgvGrade";
             this.dgvGrade.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGrade.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGrade.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvGrade.RowHeadersVisible = false;
             this.dgvGrade.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvGrade.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvGrade.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvGrade.RowTemplate.Height = 24;
             this.dgvGrade.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGrade.Size = new System.Drawing.Size(496, 412);
@@ -176,8 +189,8 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.btnNew);
             this.groupBox2.Controls.Add(this.txtDescription);
+            this.groupBox2.Controls.Add(this.btnNew);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtGrade);
@@ -201,18 +214,6 @@
             this.btnNew.TabIndex = 12;
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDescription.Location = new System.Drawing.Point(17, 156);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(420, 178);
-            this.txtDescription.TabIndex = 1;
-            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // label3
             // 
@@ -242,15 +243,17 @@
             this.txtGrade.TabIndex = 0;
             this.txtGrade.Validating += new System.ComponentModel.CancelEventHandler(this.txtGrade_Validating);
             // 
-            // txtRecherche
+            // txtDescription
             // 
-            this.txtRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRecherche.Location = new System.Drawing.Point(194, 28);
-            this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(308, 27);
-            this.txtRecherche.TabIndex = 9;
-            this.txtRecherche.TextChanged += new System.EventHandler(this.txtRecherche_TextChanged);
+            this.txtDescription.Location = new System.Drawing.Point(17, 156);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(420, 178);
+            this.txtDescription.TabIndex = 13;
+            this.txtDescription.Text = "";
+            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // frmGrade
             // 
@@ -282,7 +285,6 @@
         public System.Windows.Forms.DataGridView dgvGrade;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtGrade;
@@ -290,5 +292,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colgrd_Grade;
         private System.Windows.Forms.DataGridViewTextBoxColumn colgrd_Description;
         private Controls.iText txtRecherche;
+        private System.Windows.Forms.RichTextBox txtDescription;
     }
 }

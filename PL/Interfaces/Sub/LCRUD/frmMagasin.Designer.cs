@@ -33,13 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnNew = new System.Windows.Forms.Button();
-            this.txtDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbxVille = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMagasin = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtRecherche = new PL.Controls.iText();
             this.lblCount = new System.Windows.Forms.Label();
             this.dgvMagasin = new System.Windows.Forms.DataGridView();
             this.colmags_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +48,7 @@
             this.colmags_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuDGV = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnColonne = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtRecherche = new PL.Controls.iText();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMagasin)).BeginInit();
@@ -71,8 +71,8 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.btnNew);
             this.groupBox2.Controls.Add(this.txtDescription);
+            this.groupBox2.Controls.Add(this.btnNew);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cmbxVille);
@@ -98,18 +98,6 @@
             this.btnNew.TabIndex = 13;
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDescription.Location = new System.Drawing.Point(17, 192);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(420, 141);
-            this.txtDescription.TabIndex = 2;
-            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // label3
             // 
@@ -173,6 +161,19 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Affichage";
+            // 
+            // txtRecherche
+            // 
+            this.txtRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRecherche.ForeColor = System.Drawing.Color.Gray;
+            this.txtRecherche.Location = new System.Drawing.Point(194, 28);
+            this.txtRecherche.Name = "txtRecherche";
+            this.txtRecherche.PlaceholderText = "Recherche";
+            this.txtRecherche.Size = new System.Drawing.Size(308, 27);
+            this.txtRecherche.TabIndex = 10;
+            this.txtRecherche.Text = "Recherche";
+            this.txtRecherche.TextChanged += new System.EventHandler(this.txtRecherche_TextChanged);
             // 
             // lblCount
             // 
@@ -280,15 +281,17 @@
             this.btnColonne.Size = new System.Drawing.Size(133, 24);
             this.btnColonne.Text = "Colonne";
             // 
-            // txtRecherche
+            // txtDescription
             // 
-            this.txtRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRecherche.Location = new System.Drawing.Point(194, 28);
-            this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(308, 27);
-            this.txtRecherche.TabIndex = 10;
-            this.txtRecherche.TextChanged += new System.EventHandler(this.txtRecherche_TextChanged);
+            this.txtDescription.Location = new System.Drawing.Point(17, 192);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(420, 141);
+            this.txtDescription.TabIndex = 14;
+            this.txtDescription.Text = "";
+            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // frmMagasin
             // 
@@ -318,7 +321,6 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbxVille;
@@ -334,5 +336,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colmags_Description;
         private System.Windows.Forms.Button btnNew;
         private Controls.iText txtRecherche;
+        private System.Windows.Forms.RichTextBox txtDescription;
     }
 }
